@@ -1,15 +1,22 @@
 Body{
 	background-color: brown;
 }
+* {
+    box-sizing: border-box;
+}
 
 .h1{
 	text-color: blue;
 }
-
+.body_content{
+	box-sizing: border-box;
+	height: 1000px;
+}
 .PH_ads{
 	display: inline-block;
     position: relative;
 	width: 20%;
+	height: 100%;
 	background-color: lightgrey;
 }
 
@@ -17,6 +24,7 @@ Body{
 	display: inline-block;
     position: relative;
 	width: 59%;
+	height: 100%;
 	background-color: lightgrey;
 }
 
@@ -24,6 +32,7 @@ Body{
 	display: inline-block;
     position: relative;
 	width: 20%;
+	height: 100%;
 	background-color: lightgrey;
 }
 .navbar{

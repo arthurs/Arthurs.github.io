@@ -10,17 +10,18 @@
 </div>
 <div class= "body_content";>
 <div class= "PH_ads";>
-<p>test text</p>
+<p>w/e here</p>
 </div>
 <div class= "PH_main_content";>
-<p>test text</p>
+<p>Main here</p>
 </div>
 <div class= "PH_modules_list";>
-<p>test text</p>
+<p>modules here</p>
 </div>
 </div>
 <div class = "footer";>
 <div class ="navbar";>
+<p>Navbar</p>
 </div>
 </div>
 </body>
