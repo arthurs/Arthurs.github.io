@@ -1,5 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DND TOOLS</title> 
+</head>
 <link rel="stylesheet" type="text/css" href="DNDStyle.css">
-
-<div Id = "header";  >
+<body>
+<div Id = "Header1";  >
 <h1>Hello world this is me<h1>
 </div>
+<div class= "body_content";>
+<div class= "PH_ads";>
+<p>test text</p>
+</div>
+<div Id= "PH_main_content";>
+<p>test text</p>
+</div>
+<div Id= "PH_modules_list";>
+<p>test text</p>
+</div>
+</div>
+</body>
+</html>
