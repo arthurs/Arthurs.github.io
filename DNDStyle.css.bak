@@ -16,7 +16,7 @@ Body{
 .PH_main_content{
 	display: inline-block;
     position: relative;
-	width: 60%;
+	width: 59%;
 	background-color: lightgrey;
 }
 

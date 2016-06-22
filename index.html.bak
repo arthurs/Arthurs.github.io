@@ -12,11 +12,15 @@
 <div class= "PH_ads";>
 <p>test text</p>
 </div>
-<div Id= "PH_main_content";>
+<div class= "PH_main_content";>
 <p>test text</p>
 </div>
-<div Id= "PH_modules_list";>
+<div class= "PH_modules_list";>
 <p>test text</p>
+</div>
+</div>
+<div class = "footer";>
+<div class ="navbar";>
 </div>
 </div>
 </body>
