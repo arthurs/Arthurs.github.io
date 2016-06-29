@@ -1,46 +1,24 @@
 Body{
-	background-color: brown;
+	background-color: #FAEBD7;
 }
 * {
     box-sizing: border-box;
 }
-
-.h1{
-	text-color: blue;
+h1{
+	color:White;
 }
+
+
 .body_content{
 	box-sizing: border-box;
 	height: 1000px;
 }
-.PH_ads{
-	display: inline-block;
-    position: relative;
-	width: 20%;
-	height: 100%;
-	background-color: lightgrey;
-	vertical-align: top;
-}
-
-.PH_main_content{
-	display: inline-block;
-    position: relative;
-	width: 59%;
-	height: 100%;
-	background-color: lightgrey;
-	vertical-align: top;
-}
-
-.PH_modules_list{
-	display: inline-block;
-    position: relative;
-	width: 20%;
-	height: 100%;
-	background-color: lightgrey;
-	vertical-align: top;
+li a:hover {
+    background-color: #111;
 }
 .navbar{
 		width: 100%;
-	background-color: lightgrey;
+	background-color: grey;
 }
 
 .navbarmenu{
@@ -76,6 +54,50 @@ display: inline-block;
 	width: 20%;
 	padding: 0% 2.5%;
 }
-li a:hover {
-    background-color: #111;
+
+.News_contentborder{
+	border-style: solid;
+    border-color: #ff0000 ;
+	min-height: 20%;
+	max-height: 23.5%;
+	margin: 5px;
 }
+.News_contentobject{
+	display: inline-flex;
+}
+.News_botlinkbox{
+margin-left: 90%;
+}
+.News_Header{
+	min-height: 5%;
+}
+.PH_ads{
+	display: inline-block;
+    position: relative;
+	width: 10%;
+	height: 100%;
+	background-color: lightgrey;
+	vertical-align: top;
+}
+
+.PH_main_content{
+	display: inline-block;
+    position: relative;
+	width: 69%;
+	height: 100%;
+	background-color: grey;
+	vertical-align: top;
+}
+
+.PH_modules_list{
+	display: inline-block;
+    position: relative;
+	width: 20%;
+	height: 100%;
+	background-color: Black;
+	vertical-align: top;
+}
+.sickdragonimg_ph{
+	min-height: 200px;
+}
+
