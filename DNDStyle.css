@@ -16,6 +16,9 @@ h1{
 li a:hover {
     background-color: #111;
 }
+li.active{
+    background-color: #FF0000;
+}
 .navbar{
 		width: 100%;
 	background-color: grey;
