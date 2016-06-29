@@ -12,6 +12,7 @@
 
 		<script> 
 			function nextTurn(){
+				var found = false;
 				$("#order li").each(function(idx, li){
 					if ($(li).hasClass("active")){
 						$(li).removeClass("active");
@@ -20,13 +21,26 @@
 						} else {
 							$($("#order li").get(idx + 1)).addClass("active");
 						}
+						found = true;
 						return false;
 					}
 				});
+
+				if (!found) {
+					$("#order li").first().addClass("active");
+				}
 			}
 
 			function add(){
-				$("#order").append("<li>" + $("#initiative").val() + "|" + $("#name").val() + "</li>")
+				var initiative = 0;
+				if ($("#initiative").val() == -1) {
+					initiative = parseInt(Math.random() * 20 + 1);
+				} else {
+					initiative = $("#initiative").val();
+				}
+
+				$("#order").append("<li>" + initiative + " | " + $("#name").val() + "</li>")
+
 				var items = $("#order li").get();
 				items.sort(function(a,b){
 					var keyA = $(a).text();
@@ -36,7 +50,6 @@
 					if (parseInt(keyA.split("|")) > parseInt(keyB.split("|"))) return 1;
 					return 0;
 				});
-				console.log(items);
 				$("#order").empty().append(items.reverse());
 			}
 		</script>
@@ -55,7 +68,7 @@
 			<div class= "PH_main_content" id="main">
 
 				<ul id="order" style="list-style-type:none">
-					<li class="active">15 | blake</li>
+					<li>15 | blake</li>
 					<li>10 |tom</li>
 					<li>5 | gobblin</li>
 				</ul> 
