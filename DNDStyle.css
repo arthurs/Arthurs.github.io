@@ -63,7 +63,11 @@ display: inline-block;
 	margin: 5px;
 }
 .News_contentobject{
-	display: inline-flex;
+	display: inline-block;
+	height: 100%;
+	max-width:49%;
+	margin: 2px;
+
 }
 .News_botlinkbox{
 margin-left: 90%;
