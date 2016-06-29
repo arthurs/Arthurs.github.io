@@ -63,6 +63,7 @@ display: inline-block;
 	margin: 5px;
 }
 .News_contentobject{
+	vertical-align: top;
 	display: inline-block;
 	height: 100%;
 	max-width:49%;
