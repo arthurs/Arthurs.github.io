@@ -16,6 +16,9 @@ h1{
 li a:hover {
     background-color: #111;
 }
+li.active{
+    background-color: #FF0000;
+}
 .navbar{
 		width: 100%;
 	background-color: grey;
@@ -37,7 +40,7 @@ margin: 0px 25%;
 }
 .navbarmenu li{
 	display: inline;
-
+list-style-type:none;
 }
 .navbarmenu li a{
    box-sizing:border-box;
@@ -55,6 +58,38 @@ display: inline-block;
 	padding: 0% 2.5%;
 }
 
+.Modulenavbarmenu{
+	box-sizing: border-box;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px;
+	margin: 0px 0px 0px 0%;
+}
+.Modulenavbarmenu ul{
+box-sizing: border-box;
+width: 99%;
+padding: 0px;
+
+margin: 1%;
+}
+.Modulenavbarmenu li{
+width: 100%;
+margin:  2% 0px;
+list-style-type:none;
+}
+.Modulenavbarmenu li a{
+   box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+	display:block;
+	color: white;
+	text-align: center;
+	font-size: 5px;
+	text-decoration: none;
+
+}
+
+
 .News_contentborder{
 	border-style: solid;
     border-color: #ff0000 ;
@@ -63,6 +98,7 @@ display: inline-block;
 	margin: 5px;
 }
 .News_contentobject{
+	vertical-align: top;
 	display: inline-block;
 	height: 100%;
 	max-width:49%;
