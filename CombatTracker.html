@@ -40,7 +40,17 @@
 					initiative = $("#initiative").val();
 				}
 
-				$("#order").append("<li>" + initiative + " | " + $("#name").val() + "</li>")
+				var item = "";
+
+				item += "<li>";
+				item += initiative ;
+				item += " | ";
+				item += $("#name").val();
+				item += " | ";
+				item += "<button id=\"add\" type=\"button\" onclick=\"removeChar(this)\">Remove</button>"
+				item += "</li>";
+
+				$("#order").append(item)
 
 				var items = $("#order li").get();
 				items.sort(function(a,b){
@@ -52,6 +62,11 @@
 					return 0;
 				});
 				$("#order").empty().append(items.reverse());
+			}
+
+			function removeChar(sender) {
+				console.log(sender);
+				$(sender).parent().remove();
 			}
 		</script>
 
@@ -70,7 +85,7 @@
 
 				<ul id="order" style="list-style-type:none">
 					<li>15 | blake</li>
-					<li>10 |tom</li>
+					<li>10 | tom</li>
 					<li>5 | gobblin</li>
 				</ul> 
 
