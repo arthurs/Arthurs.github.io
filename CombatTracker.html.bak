@@ -7,7 +7,6 @@
 		<script> 
 		    $(function(){
 		      $("#Header1").load("Header.html"); 
-			  $("#PH_modules_list").load("Modules.html"); 
 		    });
 		</script> 
 
@@ -82,6 +81,7 @@
 
 			</div>
 			<div class= "PH_modules_list";>
+				<p>modules here</p>
 			</div>
 		</div>
 		<div class = "footer";>
