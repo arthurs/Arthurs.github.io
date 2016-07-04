@@ -16,7 +16,7 @@ h1{
 li a:hover {
     background-color: #111;
 }
-li.active{
+tr.active{
     background-color: #FF0000;
 }
 .navbar{
