@@ -1,5 +1,5 @@
 Body{
-	background-color: #FAEBD7;
+	background-image: url("wood_1.PNG");
 }
 * {
     box-sizing: border-box;
