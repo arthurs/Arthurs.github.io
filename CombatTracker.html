@@ -14,13 +14,13 @@
 		<script> 
 			function nextTurn(){
 				var found = false;
-				$("#order li").each(function(idx, li){
-					if ($(li).hasClass("active")){
-						$(li).removeClass("active");
-						if (idx == $("#order li").length - 1){
-							$($("#order li").get(0)).addClass("active");
+				$("#order tr").each(function(idx, tr){
+					if ($(tr).hasClass("active")){
+						$(tr).removeClass("active");
+						if (idx == $("#order tr").length - 1){
+							$($("#order tr").get(1)).addClass("active");
 						} else {
-							$($("#order li").get(idx + 1)).addClass("active");
+							$($("#order tr").get(idx + 1)).addClass("active");
 						}
 						found = true;
 						return false;
@@ -28,7 +28,7 @@
 				});
 
 				if (!found) {
-					$("#order li").first().addClass("active");
+					$("#order tr:nth-child(2)").addClass("active");
 				}
 			}
 
@@ -42,48 +42,64 @@
 
 				var item = "";
 
-				item += "<li>";
+				item += "<tr><td>";
 				item += initiative ;
-				item += " | ";
+				item += "</td><td>";
 				item += $("#name").val();
-				item += " | ";
+				item += "</td><td>";
 				item += $("#health").val();
-				item += " | ";
-				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, 1)\">add 1HP</button>"
-				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, 5)\">add 5HP</button>"
-				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, 10)\">add 10HP</button>"
-				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, -1)\">minus 1HP</button>"
-				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, -5)\">minus 5HP</button>"
-				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, -10)\">minus 10HP</button>"
+				item += "</td><td>";
+				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, 1)\">+1HP</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, 5)\">+5HP</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, 10)\">+10HP</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, -1)\">-1HP</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, -5)\">-5HP</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"addHealth(this, -10)\">-10HP</button>"
 				item += "<button id=\"add\" type=\"button\" onclick=\"removeChar(this)\">Remove</button>"
-				item += "</li>";
+				item += "<button id=\"add\" type=\"button\" onclick=\"duplicate(this)\">Add Copy</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"change(this, 0)\">Change Initiative</button>"
+				item += "<button id=\"add\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button>"
+				item += "</td></tr>";
 
 				$("#order").append(item)
 
-				var items = $("#order li").get();
+				var items = $("#order").find("tr:gt(0)").toArray();
 				items.sort(function(a,b){
-					var keyA = $(a).text();
-					var keyB = $(b).text();
+					var keyA = $(a).children('td').html()
+					var keyB = $(b).children('td').html()
 
-					if (parseInt(keyA.split("|")) < parseInt(keyB.split("|"))) return -1;
-					if (parseInt(keyA.split("|")) > parseInt(keyB.split("|"))) return 1;
+					if (parseInt(keyA) < parseInt(keyB)) return -1;
+					if (parseInt(keyA) > parseInt(keyB)) return 1;
 					return 0;
 				});
-				$("#order").empty().append(items.reverse());
+				items.reverse();
+				for (var i = 0; i < items.length; i++){$("#order").append(items[i])}
 			}
 
 			function removeChar(sender) {
-				$(sender).parent().remove();
+				$(sender).parent().parent().remove();
 			}
 
 			function addHealth(sender, amount) {
-				var row = $(sender).parent()
+				var row = $(sender).parent().parent()
 				var children = row.children();
-				var items = row.text().split(" | ");
-				items[2] = parseInt(items[2]) + amount;
-				items[3] = ""
-				var values = items.join(" | ");
-				row.text(values).append(children);
+				var newHealth = parseInt($(children[2]).html()) + amount
+				children[2] = "<td>" + newHealth + "</td>";
+				$($(sender).parent().parent().children()[2]).replaceWith(children[2]);
+			}
+
+			function duplicate(sender) {
+				$("#order").append("<tr>" + $(sender).parent().parent().html() + "</tr>");
+			}
+
+			function change(sender, column) {
+				var value = prompt("Enter new value", "");
+				if (value != null) {
+				    var row = $(sender).parent().parent()
+					var children = row.children();
+					children[column] = "<td>" + value + "</td>";
+					$($(sender).parent().parent().children()[column]).replaceWith(children[column]);
+				}
 			}
 		</script>
 
@@ -100,8 +116,14 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 
-				<ul id="order" style="list-style-type:none">
-				</ul> 
+				<table id="order" border="1">
+					<tr>
+						<th>Initiative</th>
+						<th>Name</th>
+						<th>Health</th>
+						<th>Actions</th>
+					</tr>
+				</table>
 
 				<button id="turn" type="button" onclick="nextTurn()">Next Turn</button>
 
