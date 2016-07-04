@@ -3,11 +3,20 @@ Body{
 }
 * {
     box-sizing: border-box;
+
 }
 h1{
 	color:White;
 }
-
+.navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
+	border-style: solid;
+	background-color: transparent;
+	border-width: 20px 18px;
+	-moz-border-image: url(./Metal_Border.png) 20 18 repeat;
+	-webkit-border-image: url(./Metal_Border.png) 20 18 repeat;
+	-o-border-image: url(./Metal_Border.png) 20 18 repeat;
+	border-image: url(./Metal_Border.png) 20 18 fill repeat;
+}
 
 .body_content{
 	box-sizing: border-box;
@@ -21,7 +30,6 @@ tr.active{
 }
 .navbar{
 		width: 100%;
-	background-color: grey;
 }
 
 .navbarmenu{
@@ -116,7 +124,6 @@ margin-left: 90%;
     position: relative;
 	width: 10%;
 	height: 100%;
-	background-color: lightgrey;
 	vertical-align: top;
 }
 
@@ -125,7 +132,6 @@ margin-left: 90%;
     position: relative;
 	width: 69%;
 	height: 100%;
-	background-color: grey;
 	vertical-align: top;
 }
 
@@ -134,7 +140,6 @@ margin-left: 90%;
     position: relative;
 	width: 20%;
 	height: 100%;
-	background-color: Black;
 	vertical-align: top;
 }
 .sickdragonimg_ph{

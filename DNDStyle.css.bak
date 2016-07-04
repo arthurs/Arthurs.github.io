@@ -1,13 +1,22 @@
 Body{
-	background-image: url("wood_1.png");
+	background-image: url("./wood_1.png");
 }
 * {
     box-sizing: border-box;
+
 }
 h1{
 	color:White;
 }
-
+.navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
+	border-style: solid;
+	background-color: transparent;
+	border-width: 20px 18px;
+	-moz-border-image: url(./Metal_Border.png) 20 18 repeat;
+	-webkit-border-image: url(./Metal_Border.png) 20 18 repeat;
+	-o-border-image: url(./Metal_Border.png) 20 18 repeat;
+	border-image: url(./Metal_Border.png) 20 18 fill repeat;
+}
 
 .body_content{
 	box-sizing: border-box;
@@ -16,7 +25,7 @@ h1{
 li a:hover {
     background-color: #111;
 }
-li.active{
+tr.active{
     background-color: #FF0000;
 }
 .navbar{
