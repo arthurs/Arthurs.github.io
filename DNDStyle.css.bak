@@ -3,11 +3,16 @@ Body{
 }
 * {
     box-sizing: border-box;
+	color:White;
 
+}
+button{
+	background-color: blue;
 }
 h1{
 	color:White;
 }
+
 .navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
 	border-style: solid;
 	background-color: transparent;

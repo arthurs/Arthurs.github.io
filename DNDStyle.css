@@ -6,9 +6,13 @@ Body{
 	color:White;
 
 }
+button{
+	background-color: brown;
+}
 h1{
 	color:White;
 }
+
 .navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
 	border-style: solid;
 	background-color: transparent;
