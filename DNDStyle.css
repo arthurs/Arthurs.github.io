@@ -3,11 +3,19 @@ Body{
 }
 * {
     box-sizing: border-box;
+	color:White;
 
+}
+button{
+	background-color: brown;
+}
+input{
+	color:Black;
 }
 h1{
 	color:White;
 }
+
 .navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
 	border-style: solid;
 	background-color: transparent;
@@ -99,8 +107,8 @@ list-style-type:none;
 
 
 .News_contentborder{
-	border-style: solid;
-    border-color: #ff0000 ;
+/*    	border-style: solid;
+ border-color: #ff0000 ; */
 	min-height: 20%;
 	max-height: 23.5%;
 	margin: 5px;
