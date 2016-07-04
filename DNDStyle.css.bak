@@ -30,7 +30,6 @@ tr.active{
 }
 .navbar{
 		width: 100%;
-	background-color: grey;
 }
 
 .navbarmenu{
@@ -125,7 +124,6 @@ margin-left: 90%;
     position: relative;
 	width: 10%;
 	height: 100%;
-	background-color: lightgrey;
 	vertical-align: top;
 }
 
@@ -134,7 +132,6 @@ margin-left: 90%;
     position: relative;
 	width: 69%;
 	height: 100%;
-	background-color: grey;
 	vertical-align: top;
 }
 
@@ -143,7 +140,6 @@ margin-left: 90%;
     position: relative;
 	width: 20%;
 	height: 100%;
-	background-color: Black;
 	vertical-align: top;
 }
 .sickdragonimg_ph{
