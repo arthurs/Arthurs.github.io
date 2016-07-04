@@ -9,6 +9,9 @@ Body{
 button{
 	background-color: brown;
 }
+input{
+	color:Black;
+}
 h1{
 	color:White;
 }
@@ -105,7 +108,7 @@ list-style-type:none;
 
 .News_contentborder{
 	border-style: solid;
-    border-color: #ff0000 ;
+/*     border-color: #ff0000 ; */
 	min-height: 20%;
 	max-height: 23.5%;
 	margin: 5px;
