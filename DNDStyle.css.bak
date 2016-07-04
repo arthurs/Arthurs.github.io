@@ -84,7 +84,7 @@ list-style-type:none;
 	display:block;
 	color: white;
 	text-align: center;
-	font-size: 5px;
+	font-size: 25px;
 	text-decoration: none;
 
 }
