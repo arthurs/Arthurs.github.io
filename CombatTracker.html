@@ -61,8 +61,12 @@
 				item += "<button id=\"change_name_but\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button>"
 				item += "</td></tr>";
 
-				$("#order").append(item)
+				$("#order").append(item);
 
+				sort();
+			}
+
+			function sort() {
 				var items = $("#order").find("tr:gt(0)").toArray();
 				items.sort(function(a,b){
 					var keyA = $(a).children('td').html()
@@ -90,6 +94,7 @@
 
 			function duplicate(sender) {
 				$("#order").append("<tr>" + $(sender).parent().parent().html() + "</tr>");
+				sort();
 			}
 
 			function change(sender, column) {
@@ -100,6 +105,7 @@
 					children[column] = "<td>" + value + "</td>";
 					$($(sender).parent().parent().children()[column]).replaceWith(children[column]);
 				}
+				sort();
 			}
 		</script>
 
