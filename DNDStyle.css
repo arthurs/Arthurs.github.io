@@ -166,6 +166,17 @@ margin-left: 90%;
 	height: 100%;
 	vertical-align: top;
 }
+.Print_preview{
+	background-color: #F5F5F5;
+	display: inline-block;
+	vertical-align: top;
+	height: 297mm; 
+	width: 200mm;
+	padding: 0 0 0 7px;
+	left: 50%;
+	position: absolute;
+	margin-left: -149mm;
+}
 
 .PH_main_content{
 	display: inline-block;
