@@ -44,7 +44,7 @@
 
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
-          $("#page").children().each(function(idx, card){
+          $("#Print_preview").children().each(function(idx, card){
             if ($.trim($(card).html()) == "") {
               $(card).html(text);
               return false;
@@ -53,22 +53,22 @@
         }
 
         function clearLast(){
-          $("#page").children().each(function(idx, card){
+          $("#Print_preview").children().each(function(idx, card){
             if ($.trim($(card).html()) == "" && idx > 0) {
-              $($("#page").children().get(idx - 1)).html("");
+              $($("#Print_preview").children().get(idx - 1)).html("");
               return false;
             }
           });
         }
 
         function clearAll(){
-          $("#page").children().each(function(idx, card){
+          $("#Print_preview").children().each(function(idx, card){
             $(card).html("");
           });
         }
 
         function printPage() {
-          var printContents = $("#page").html();
+          var printContents = $("#Print_preview").html();
           var originalContents = $("body").html();
           
           $("body").html(printContents);
