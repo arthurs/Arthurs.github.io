@@ -24,7 +24,25 @@
           text += "<b>Classes: </b>" + $("#Classes").val() + "<br />";
           text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br /><br />";
 
-          text += $("#Description").val();
+          text += $("#Description").val().replace(/\n/g, '<br/>');
+
+          $("#page").children().each(function(idx, card){
+            if ($.trim($(card).html()) == "") {
+              $(card).html(text);
+              return false;
+            }
+          });
+        }
+
+        function addLoot(){
+          var text = "";
+          
+          text += "<b>Name: </b>" + $("#LootName").val() + "<br />";
+          text += "<b>Type: </b>" + $("#LootType").val() + "<br />";
+          text += "<b>Weight: </b>" + $("#LootWeight").val() + "<br />";
+          text += "<b>Value: </b>" + $("#LootCost").val() + "<br /><br />";
+
+          text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
           $("#page").children().each(function(idx, card){
             if ($.trim($(card).html()) == "") {
@@ -109,7 +127,7 @@
         Range: <input type="text" id="Range"> <br />
         Components: <input type="text" id="Components"> <br />
         Duration: <input type="text" id="Duration"> <br />
-        Classes (need this????): <input type="text" id="Classes"> <br />
+        Classes: <input type="text" id="Classes"> <br />
         Level: <input type="text" id="Level"> <br />
         School: <input type="text" id="School"> <br />
         Explination: <br />
@@ -118,7 +136,22 @@
         <button id="add" type="button" onclick="clearLast()">Clear Last</button>
         <button id="add" type="button" onclick="clearAll()">Clear All</button>
         <br />
+        <br />
+        <br />
+        <br />
+
+        Name <input type="text" id="LootName"> <br />
+        Type <input type="text" id="LootType"> <br />
+        Weight <input type="text" id="LootWeight"> <br />
+        Cost <input type="text" id="LootCost"> <br />
+        <textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
+        <button id="add" type="button" onclick="addLoot()">Add</button>
+        <br />
+        <br />
         <button id="add" type="button" onclick="printPage()">Print Cards</button>
+
+        
+
       </div>
       <div class= "PH_modules_list" id="PH_modules_list">
       </div>
