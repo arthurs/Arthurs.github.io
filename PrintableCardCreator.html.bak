@@ -84,7 +84,13 @@
     </script> 
 
     <style>
-
+    #Print_preview {
+        height: 297mm; 
+        width: 210mm;
+        left: 50%;
+        position: absolute;
+        margin-left: -149mm;
+    }
     .print {
         height: 297mm; 
         width: 210mm;
