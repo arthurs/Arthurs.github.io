@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+		<script> 
+			var itemsList = new Object();
+		    $(function(){
+  	      	  $("#Header1").load("Header.html"); 
+    		  $("#PH_modules_list").load("Modules.html");
+
+    		  $.get('Items.txt', function(data) {
+    		  		var lines = data.split("\n");
+    		  		var current = "";
+    		  		var depth = 0;
+    		  		$(lines).each(function(idx,itm){
+    		  			if ($.trim(itm) != "") {
+    		  				if (itm.indexOf("/") == 1) {
+    		  					depth -= 1;
+    		  					if (depth == 0){
+    		  						current = "";
+    		  					} else {
+    		  						itemsList[current].push("");
+    		  					}
+    		  				} else {
+    		  					if (current === "") {
+    		  						var item = itm.replace('<', '');
+    		  						var item = item.replace('>', '');
+    		  						var item = item.trim();
+
+    		  						itemsList[item] = new Array()
+    		  						current = item;
+    		  						depth += 1;
+
+    		  						var button = "<button type=\"button\" onclick=\"changeList('" + item + "')\">" + item + "</button>";
+    		  						$("#itemsDiv").prepend(button)
+    		  					} else {
+    		  						itemsList[current].push(itm);
+    		  						if (itm.indexOf("<") == 0 && itm.indexOf(">") == (itm.length -2)) {
+										depth += 1;
+    		  						}
+								}
+		  					}
+    		  			}
+		  			});
+			  }, 'text');
+		    });
+
+		    function changeList(name) {
+		    	$("#items").empty();
+		    	$(itemsList[name]).each(function(idx, itm) {
+		    		if (itm.indexOf("<") >= 0) {
+		    			itm = itm.replace("<", "-");
+		    			itm = itm.replace(">", "-");
+		    			var option = '<option value="' + itm + '">' + itm + '</option>';
+		    			$("#items").append($(option));
+		    		} else {
+		    			var info = itm.split("-");
+		    			var option = '<option value="'+ info[1] + '">' + info[0] + '</option>';
+		    			$("#items").append($(option));
+		    		}
+		    	});
+		    	$("#items").attr("size", itemsList[name].length);
+		    }
+		</script> 
+
+		<style>
+		    #inventory { 
+		        width: 49%;
+		        display: inline-block;
+		        vertical-align: top;
+		    }
+		    #itemsDiv { 
+		        width: 49%;
+		        display: inline-block;
+		        vertical-align: top;
+		    }
+	    </style>
+
+		<title>DND TOOLS</title> 
+	</head>
+	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
+	<body>
+		<div Id = "Header1">
+			<! import header goes here />
+		</div>
+		<div Class = "sickdragonimg_ph">
+		</div>
+		<div class= "body_content">
+			<div class= "PH_ads">
+				<p>w/e here</p>
+			</div>
+			<div class= "PH_main_content" id="main">
+				<div id="inventory">
+					<b>Current Inventory:</b><br />
+				</div>
+				<div id="itemsDiv">
+					<br />
+					Items: <br /> <select id="items" size="40" style='height: 100%; max-height: 700px'> </select><br />
+					<button id="add" type="button" onclick="add()">Add Item</button>
+				</div>
+				
+			</div>
+			<div class= "PH_modules_list" id="PH_modules_list">
+			</div>
+		</div>
+		<div class = "footer">
+			<div class ="navbar">
+				<p>Navbar</p>
+			</div>
+		</div>
+	</body>
+</html>
+

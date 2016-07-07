@@ -1,0 +1,253 @@
+<Armour>
+
+<Light Armor>
+Padded-8
+Leather-10
+Studded leather-13
+</Light Armor>
+
+<Medium Armor>
+Hide-12
+Chain shirt-20
+Seale mai!-45
+Breastplate-20
+Half plate-40
+</Medium Armor>
+
+<HeavyArmor>
+Ring mail-40
+Chain mail-55
+Splint-60
+Plate-65
+</HeavyArmor>
+
+<Shield>
+Shield-6
+</Shield>
+
+</Armour>
+
+<Weapons>
+
+<Simple Melee Weapons>
+Club-2
+Dagger-1
+Greatclub-10
+Handaxe-2
+Javelin-2
+Light Hammer-2
+Mace-4
+Quarterstaff-4
+Sickle-2
+Spear-3
+</Simple Melee Weapons>
+
+<Simple Ranged Weapons>
+Crossbow, Light-5
+Dart-0.25
+Shortbow-2
+Sling-0
+</Simple Ranged Weapons>
+
+<Martial Melee Weapons>
+Battleaxe-4
+Flail-2
+Glaive-6
+Greataxe-7
+Greatsword-6
+Halberd-6
+Lance-6
+Longsword-3
+Maul-10
+Morningstar-4
+Pike-18
+Rapier-2
+Scimitar-3
+Shortsword-2
+Trident-4
+War pick-2
+Warhammer-2
+Whip-3
+</Martial Melee Weapons>
+
+<Martial Ranged Weapons>
+Blowgun-1
+Crossbow, hand-3
+Crossbow, heavy-18
+Longbow-2
+Net-3
+</Martial Ranged Weapons>
+
+</Weapons>
+
+<Adventuring Gear>
+
+Abacus-2
+Acid (vial)-1 
+Alchemist's fire (flask)-1 
+
+<Ammunition>
+Arrows (20)-1 
+Blowgun needles (50)-1
+Crossbow bolts (20)-1.5 
+Sling bullets (20)-1.5 
+</Ammunition>
+
+Antitoxin (vial)-0
+
+<Arcane Focus>
+Crystal-1
+Orb-3
+Rod-2
+Staff-4
+Wand-1
+</Arcane Focus>
+
+Backpack-5
+Ball bearings (bag of 1000)-2
+Barrel-70
+Basket-2
+Bedroll-7
+Bell-0
+Blanket-3
+Block and tackle-5
+Book-5
+Botlle, glass-2
+Bucket-2
+Caltrops (bag of 20)-2
+Candle-0
+Case, crossbow bolt-1
+Case, map or scroll-1
+Chain (10 feet)-10 
+Chalk (1 piece)-0
+Chest-25
+Climber's kit-12
+Clothes, common-3
+Clothes, costume-4
+Clothes, fine-6
+Clothes, traveler's-4
+Component pouch-2
+Crowbar-5
+
+<Druidic Focus>
+Sprig of mistletoe-0
+Totem-0
+Wooden staff-4
+Yew wand-1 
+</Druidic Focus>
+
+Fishing tackle-4
+Flask or tankard-1 
+Grappling hook-4
+Hammer-3
+Hammer, sledge-10
+Healer's kit-3
+
+<Holy symbol>
+Amulet-1
+Emblem-0
+Reliquary-2
+</Holy symbol>
+
+Holy water (flask)-1
+Hourglass-1
+Hunting trap-25
+Ink (1 ounce bottle)-0
+Ink pen-0
+Jug or pitcher-4
+Ladder (10 foot)-25
+Lamp-1
+Lantern, bullseye-2
+Lantern, hooded-2
+Lock-1
+Magnifying glass-0
+Manacles-6
+Mess kit-1
+Mirror, steel-0.5
+Oil (flask)-1
+Paper (one sheet)-0
+Parchment (one sheet)-0
+Perfume (vial)-0
+Pick, miner's-10
+Piton-0.25
+Poison, basic (vial)-0
+Pole (10 foot)-7
+Pot, iron-10
+Polion of healing-0.5
+Pouch-1
+Quiver-1
+Ram, portable-35
+Rations (l day)-2
+Robes-4
+Rope, hempen (50 feet)-10
+Rope, silk (50 feet)-5
+Sack-0.5
+Scale, merchant's-3
+Sealing wax-0
+Shovel-5
+Signal whistle-0
+Signet ring-0
+Soap-0
+Spellbook-3
+Spikes, iron (10)-5
+Spyglass-1
+Tent, two person-20
+Tinderbox-1
+Torch-1
+Vial-0
+Waterskin-0
+Whetstone-1
+
+</Adventuring Gear>
+
+<Tools>
+
+<Artisan's Tools>
+Alchemist's supplies-8
+Brewer's supplies-9
+Calligrapher's supplies-5
+Carpenter's tools-6
+Cartographer's tools-6
+Cobbler's tools-5
+Cook's utensils-8
+Glassblower's tools-5
+Jeweler's tools-2
+Leatherworker's tools-5
+Mason's tools-8
+Painter's supplies-5
+Potter's tools-3
+Smith's tools-8
+Tinker's tools-10
+Weaver's tools-5
+Woodcarver's tools-5
+</Artisan's Tools>
+
+Disguise kit-3
+Forgery kit-5
+
+<Gaming set>
+Dice set-0
+Dragonchess set-0.5
+Playing card set-0
+Three Dragon Ante set-0
+</Gaming set>
+
+Herbalism kit-3
+
+<Musical instrument>
+Bagpipes-6
+Drum-3
+Dulcimer-10
+Flute-1 
+Lute-2
+Lyre-2
+Horn-2
+Pan Rute-2
+Shawm-1
+Viol-1
+</Musical instrument>
+
+Navigator's tools-2
+Poisoner's kit-2
+Thieves' tools-1 
+</Tools>
