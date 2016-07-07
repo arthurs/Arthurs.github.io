@@ -18,6 +18,12 @@ input{
 textarea{
 	color:Black;
 }
+select option{
+	color:Black;
+}
+select{
+	color:Black;
+}
 h1{
 	color:White;
 }
