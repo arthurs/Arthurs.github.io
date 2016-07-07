@@ -9,6 +9,9 @@ Body{
 button{
 	background-color: brown;
 }
+table{
+	    border-color: transparent;
+}
 input{
 	color:Black;
 }
@@ -17,6 +20,26 @@ textarea{
 }
 h1{
 	color:White;
+}
+#add1_but,#add5_but,#add10_but{
+	background-color: green;
+	height:50px;
+	width: 55px;
+}
+#add-1_but,#add-5_but,#add-10_but{
+	background-color: red;
+	height:50px;
+	width: 55px;
+}
+#remove_but{
+	background-color: Black;
+}
+#copy_but,#changeini_but,#change_name_but{
+	background-color: blue;
+}
+#turn{
+	height:60px;
+	width: 80px;
 }
 
 .navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
