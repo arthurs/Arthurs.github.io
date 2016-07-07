@@ -1,5 +1,6 @@
-<h1>Modules</h1>
+
 <div class ="Modulenavbar">
+<h1>Modules</h1>
 	<div class = "Modulenavbarmenu">
 		<ul >
 		  <li><a href="CombatTracker.html">Combat Tracker </a></li>
