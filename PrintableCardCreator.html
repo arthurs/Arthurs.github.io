@@ -34,10 +34,34 @@
           });
         }
 
+        function clearLast(){
+          $("#page").children().each(function(idx, card){
+            if ($.trim($(card).html()) == "" && idx > 0) {
+              $($("#page").children().get(idx - 1)).html("");
+              return false;
+            }
+          });
+        }
+
         function clearAll(){
           $("#page").children().each(function(idx, card){
             $(card).html("");
           });
+        }
+
+        function printPage() {
+          var printContents = $("#page").html();
+          var originalContents = $("body").html();
+          
+          $("body").html(printContents);
+
+          $("body").addClass("print");
+
+          window.print();
+
+          $("body").removeClass("print");
+
+          $("body").html(originalContents);
         }
     </script> 
 
@@ -48,7 +72,10 @@
         left: 50%;
         position: absolute;
         margin-left: -149mm;
-        padding-left: 5px;
+    }
+    .print {
+        height: 297mm; 
+        width: 210mm;
     }
     .card {
         font-size: 12px;
@@ -58,8 +85,8 @@
         border-style: solid;
         border-width: 1px 1px;
         border-color: white;
-        margin: 4mm 1mm 0mm 0mm;
         vertical-align: top;
+        margin: 4mm 1mm 0mm 0mm;
     }
     </style>
 
@@ -87,8 +114,11 @@
         School: <input type="text" id="School"> <br />
         Explination: <br />
         <textarea rows="4" cols="50" id="Description"> </textarea> <br />
-        <button id="add" type="button" onclick="add()">add</button>
+        <button id="add" type="button" onclick="add()">Add</button>
+        <button id="add" type="button" onclick="clearLast()">Clear Last</button>
         <button id="add" type="button" onclick="clearAll()">Clear All</button>
+        <br />
+        <button id="add" type="button" onclick="printPage()">Print Cards</button>
       </div>
       <div class= "PH_modules_list" id="PH_modules_list">
       </div>
