@@ -11,10 +11,55 @@
         });
     </script> 
 
+    <script> 
+        function add(){
+          var text = "";
+          text += "<b>" + $("#Name").val() + "</b> &nbsp &nbsp &nbsp &nbsp";
+          text += $("#School").val() + "&nbsp";
+          text += $("#Level").val() + "<br />";
+          text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br />";
+          text += "<b>Range: </b>" + $("#Range").val() + "<br />";
+          text += "<b>Components: </b>" + $("#Components").val() + "<br />";
+          text += "<b>Duration: </b>" + $("#Duration").val() + "<br />";
+          text += "<b>Classes: </b>" + $("#Classes").val() + "<br />";
+          text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br /><br />";
+
+          text += $("#Description").val();
+
+          $("#page").children().each(function(idx, card){
+            if ($.trim($(card).html()) == "") {
+              $(card).html(text);
+              return false;
+            }
+          });
+        }
+
+        function clearAll(){
+          $("#page").children().each(function(idx, card){
+            $(card).html("");
+          });
+        }
+    </script> 
+
     <style>
     #page {
-        height:297mm; 
-        width:210mm;
+        height: 297mm; 
+        width: 210mm;
+        left: 50%;
+        position: absolute;
+        margin-left: -149mm;
+        padding-left: 5px;
+    }
+    .card {
+        font-size: 12px;
+        height: 89mm; 
+        width: 64mm;
+        display: inline-block;
+        border-style: solid;
+        border-width: 1px 1px;
+        border-color: white;
+        margin: 4mm 1mm 0mm 0mm;
+        vertical-align: top;
     }
     </style>
 
@@ -31,8 +76,19 @@
       <div class= "PH_ads">
         <p>w/e here</p>
       </div>
-      <div class= "PH_main_content" id="page">
-      test
+      <div class= "PH_main_content">
+        Name: <input type="text" id="Name"> <br />
+        Casting time: <input type="text" id="CastingTime"> <br />
+        Range: <input type="text" id="Range"> <br />
+        Components: <input type="text" id="Components"> <br />
+        Duration: <input type="text" id="Duration"> <br />
+        Classes (need this????): <input type="text" id="Classes"> <br />
+        Level: <input type="text" id="Level"> <br />
+        School: <input type="text" id="School"> <br />
+        Explination: <br />
+        <textarea rows="4" cols="50" id="Description"> </textarea> <br />
+        <button id="add" type="button" onclick="add()">add</button>
+        <button id="add" type="button" onclick="clearAll()">Clear All</button>
       </div>
       <div class= "PH_modules_list" id="PH_modules_list">
       </div>
@@ -40,6 +96,26 @@
     <div class = "footer">
       <div class ="navbar">
         <p>Navbar</p>
+      </div>
+    </div>
+    <div class= "PH_main_content" id="page">
+      <div id="1-1" class="card">
+      </div>
+      <div id="1-2" class="card">
+      </div>
+      <div id="1-3" class="card">
+      </div>
+      <div id="2-1" class="card">
+      </div>
+      <div id="2-2" class="card">
+      </div>
+      <div id="2-3" class="card">
+      </div>
+      <div id="3-1" class="card">
+      </div>
+      <div id="3-2" class="card">
+      </div>
+      <div id="3-3" class="card">
       </div>
     </div>
   </body>
