@@ -100,6 +100,8 @@
 			   			item += "</td><td>";
 			   			item += $("#items").val();
 			   			item += "</td><td>";
+			   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"increment(this, 1)\">+1</button>"
+			   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"increment(this, -1)\">-1</button>"
 			   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"removeItem(this)\">Remove</button>"
 			   			item += "</td></tr>";
 
@@ -184,7 +186,23 @@
 
 				$("#inv tr").last().remove();
 				total();
-				calc();
+			}
+
+			function increment(sender, inc) {
+				var row = $(sender).parent().parent();
+				var amount = parseInt($($(row).children().get(1)).html());
+				var weight = parseInt($($(row).children().get(2)).html()) / amount;
+
+				amount += inc;
+
+				if (amount == 0) {
+					removeItem(sender);
+				} else {
+					$($(row).children().get(1)).html(amount);
+					$($(row).children().get(2)).html(weight * amount);
+				}
+				$("#inv tr").last().remove();
+				total();
 			}
 		</script> 
 
