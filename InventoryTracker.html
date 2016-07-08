@@ -63,6 +63,71 @@
 		    	});
 		    	$("#items").attr("size", itemsList[name].length);
 		    }
+
+		   	function add() {
+		   		$("#inv tr").last().remove();
+
+		   		var itemName = $("#items option:selected").text();
+				var found = false;
+
+		   		if ($.isNumeric($("#items").val())) {
+		   			$("#inv tr").each(function(idx,itm){
+		   				if ($($(itm).children()[0]).html() == itemName){
+		   					var amount = parseInt($($(itm).children().get(1)).html());
+		   					amount += 1;
+		   					$($(itm).children().get(1)).html(amount);
+
+		   					var weight = parseInt($($(itm).children().get(2)).html());
+		   					weight += parseInt($("#items").val());
+		   					$($(itm).children().get(2)).html(weight);
+
+		   					found = true;
+		   					return false;
+		   				}	
+		   			});
+
+		   			if (!found) {
+			   			var item = ""
+			   			item += "<tr><td>";
+			   			item += itemName
+			   			item += "</td><td>";
+			   			item += "1";
+			   			item += "</td><td>";
+			   			item += $("#items").val();
+			   			item += "</td><td>";
+			   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"removeItem(this)\">Remove</button>"
+			   			item += "</td></tr>";
+
+			   			$("#inv").append(item);
+		   			}
+		   		}
+		   		total();
+		   	}
+
+		   	function total() {
+		   		var total = 0;
+		   		$("#inv tr").each(function(idx, itm){
+		   			if ($.isNumeric($($(itm).children()[2]).html())){
+		   				total += parseInt($($(itm).children()[2]).html());
+		   			}
+		   		});
+		   		$("#weight").html("Total Weight: " + total);
+
+		   		var item;
+		   		item += "<tr><td>";
+	   			item += "<b>Total Weight</b>";
+	   			item += "</td><td>";
+	   			item += total;
+	   			item += "</td></tr>";
+	   			$("#inv").append(item);
+		   	}
+
+		   	function removeItem(sender) {
+				$(sender).parent().parent().remove();
+				$("#inv tr").last().remove();
+				total();
+			}
+
 		</script> 
 
 		<style>
@@ -93,7 +158,20 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 				<div id="inventory">
-					<b>Current Inventory:</b><br />
+					<b>Current Inventory:</b>
+					<span id="weight">Total Weight: 0</span>
+					<br />
+					<table id="inv" border="1">
+					<tr>
+						<th>Item Name</th>
+						<th>Amount</th>
+						<th>Weight</th>
+					</tr>
+					<tr>
+						<td><b>Total Weight</b></td>
+						<td>0</td>
+					</tr>
+				</table>
 				</div>
 				<div id="itemsDiv">
 					<br />
