@@ -162,6 +162,30 @@
 					}
 				}
 			}
+
+			function save() {
+				var saveStr = new Object();
+
+				saveStr["strength"] = $("#Strength").val();
+
+				saveStr["table"] = JSON.stringify($($("#inv").get(0)).html());
+
+				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
+			}
+
+			function load() {
+				var loadStr = JSON.parse(window.prompt("Load","Enter saved string"));
+
+				if (loadStr != null) {
+					$("#Strength").val(loadStr["strength"]);
+
+					$($("#inv").get(0)).html(JSON.parse(loadStr["table"]));
+				}
+
+				$("#inv tr").last().remove();
+				total();
+				calc();
+			}
 		</script> 
 
 		<style>
@@ -215,6 +239,9 @@
 						<td>0</td>
 					</tr>
 				</table>
+
+				<button id="add" type="button" onclick="save()">Save</button>
+				<button id="add" type="button" onclick="load()">Load</button>
 				</div>
 				<div id="itemsDiv">
 					<br />
