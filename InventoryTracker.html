@@ -5,6 +5,11 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 		<script> 
+			onload = function () {
+		       var e = document.getElementById('Strength');
+		       e.oninput = calc;
+		    };
+
 			var itemsList = new Object();
 		    $(function(){
   	      	  $("#Header1").load("Header.html"); 
@@ -120,6 +125,8 @@
 	   			item += total;
 	   			item += "</td></tr>";
 	   			$("#inv").append(item);
+
+	   			calc();
 		   	}
 
 		   	function removeItem(sender) {
@@ -128,6 +135,33 @@
 				total();
 			}
 
+			function calc() {
+				if ($.isNumeric($("#Strength").val())) {
+					var encumbered = 5 * $("#Strength").val();
+					var heavy = 10 * $("#Strength").val();
+					var max = 15 * $("#Strength").val();
+
+					var total = parseInt($($("#inv tr").last().children().get(1)).html());
+
+					if (total < encumbered){
+						$("#capacity").html("Carrying Cappacity: " + encumbered);
+						$("#Free").html("Free Weight: " + (encumbered - total));
+						$("#Effects").html("Current Effects: None");
+					} else if (total < heavy) {
+						$("#capacity").html("Carrying Cappacity: " + heavy);
+						$("#Free").html("Free Weight: " + (heavy - total));
+						$("#Effects").html("Current Effects: Encumbered");
+					} else if (total < max) {
+						$("#capacity").html("Carrying Cappacity: " + max);
+						$("#Free").html("Free Weight: " + (max - total));
+						$("#Effects").html("Current Effects: Heavily Encumbered");
+					} else {
+						$("#capacity").html("Carrying Cappacity: " + max);
+						$("#Free").html("Free Weight: 0");
+						$("#Effects").html("Current Effects: Over Weight");
+					}
+				}
+			}
 		</script> 
 
 		<style>
@@ -158,8 +192,17 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 				<div id="inventory">
-					<b>Current Inventory:</b>
+					Character Strength: <input type="text" id="Strength" onchange="calc()">
+					<br />
+					<span id="capacity">Carrying Cappacity: 0</span>
+					<br />
 					<span id="weight">Total Weight: 0</span>
+					<br />
+					<span id="Free">Free Weight: 0</span>
+					<br />
+					<span id="Effects">Current Effects: None</span>
+					<br />
+					<b>Current Inventory:</b>
 					<br />
 					<table id="inv" border="1">
 					<tr>
