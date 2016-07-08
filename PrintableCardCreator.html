@@ -26,7 +26,7 @@
 
           text += $("#Description").val().replace(/\n/g, '<br/>');
 
-          $("#page").children().each(function(idx, card){
+          $("#Print_preview").children().each(function(idx, card){
             if ($.trim($(card).html()) == "") {
               $(card).html(text);
               return false;
