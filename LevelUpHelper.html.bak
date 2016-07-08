@@ -132,23 +132,23 @@
 					<input name ="savingThrows"  input type ="checkbox" id="charCHAsavethrow">Charisma</input><br>
 					<label>proficiencies</label><br>
 					<ul class = "doublelist">
-						<li><input name ="proficiencies"  input type ="checkbox" id="profAcrobatics_DEX">Acrobatics(Dex)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profAnimalHandling_WIS">Animal Handling(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profArcana_INT">Arcana(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profAthletics_STR">Athletics(Str)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profDeception_CHA">Deception(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profHistory_INT">History(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profInsight_WIS">Insight(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profIntimidation_CHA">Intimidation(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profInvestigation_INT">Investigation(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profMedicine_WIS">Medicine(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profNature_INT">Nature(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profPerception_WIS">Perception(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profPerformance_CHA">Performance(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profPersuasion_CHA">Persuasion(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profSleightOfHand_DEX">Sleight Of Hand(Dex)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profStealth_DEX">Stealth(Dex)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profAcrobatics_DEX">Acrobatics(Dex)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profAnimalHandling_WIS">Animal Handling(Wis)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profArcana_INT">Arcana(Int)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profAthletics_STR">Athletics(Str)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profDeception_CHA">Deception(Cha)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profHistory_INT">History(Int)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profInsight_WIS">Insight(Wis)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profIntimidation_CHA">Intimidation(Cha)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profInvestigation_INT">Investigation(Int)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profMedicine_WIS">Medicine(Wis)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profNature_INT">Nature(Int)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profPerception_WIS">Perception(Wis)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profPerformance_CHA">Performance(Cha)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profPersuasion_CHA">Persuasion(Cha)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profSleightOfHand_DEX">Sleight Of Hand(Dex)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profStealth_DEX">Stealth(Dex)</input></li>
+					<li><input name ="proficiencies"  input type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
 					</ul>
 						
 <!-- 					new charecter or import 

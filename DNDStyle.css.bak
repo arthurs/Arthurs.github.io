@@ -10,12 +10,18 @@ button{
 	background-color: brown;
 }
 table{
-	    border-color: transparent;
+	border-color: transparent;
 }
 input{
 	color:Black;
 }
 textarea{
+	color:Black;
+}
+select option{
+	color:Black;
+}
+select{
 	color:Black;
 }
 h1{
@@ -40,6 +46,18 @@ h1{
 #turn{
 	height:60px;
 	width: 80px;
+}
+
+.doublelist{
+	-webkit-column-count: 2; -webkit-column-gap:20px;
+	-moz-column-count:2; -moz-column-gap:20px;
+	-o-column-count:2; -o-column-gap:20px;
+	column-count:2; column-gap:20px;\
+
+}
+.doublelist li{
+		display: inline;
+	list-style-type:none;
 }
 
 .navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
@@ -74,15 +92,14 @@ tr.active{
 	margin: 0px 0px 16px 0%;
 }
 .navbarmenu ul{
-box-sizing: border-box;
-width: 50%;
-padding: 0px;
-
-margin: 0px 25%;
+	box-sizing: border-box;
+	width: 50%;
+	padding: 0px;
+	margin: 0px 25%;
 }
 .navbarmenu li{
 	display: inline;
-list-style-type:none;
+	list-style-type:none;
 }
 .navbarmenu li a{
    box-sizing:border-box;
@@ -95,7 +112,7 @@ list-style-type:none;
 
 }
 .navbarmenu a{
-display: inline-block;
+	display: inline-block;
 	width: 20%;
 	padding: 0% 2.5%;
 }
@@ -108,21 +125,20 @@ display: inline-block;
 	margin: 0px 0px 0px 0%;
 }
 .Modulenavbarmenu ul{
-box-sizing: border-box;
-width: 99%;
-padding: 0px;
-
-margin: 1%;
+	box-sizing: border-box;
+	width: 99%;
+	padding: 0px;
+	margin: 1%;
 }
 .Modulenavbarmenu li{
-width: 100%;
-margin:  2% 0px;
-list-style-type:none;
+	width: 100%;
+	margin:  2% 0px;
+	list-style-type:none;
 }
 .Modulenavbarmenu li a{
-   box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
 	display:block;
 	color: white;
 	text-align: center;
@@ -148,7 +164,7 @@ list-style-type:none;
 
 }
 .News_botlinkbox{
-margin-left: 90%;
+	margin-left: 90%;
 }
 .News_Header{
 	min-height: 5%;
@@ -166,7 +182,7 @@ margin-left: 90%;
 	vertical-align: top;
 	height: 297mm; 
 	width: 200mm;
-	padding: 0 0 0 6px;
+	padding: 0 0 0 7px;
 	left: 50%;
 	position: absolute;
 	margin-left: -149mm;
