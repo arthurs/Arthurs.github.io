@@ -9,6 +9,97 @@
 		      $("#Header1").load("Header.html"); 
 			  $("#PH_modules_list").load("Modules.html"); 
 		    });
+
+		    function addNpc() {
+		    	var item = ""
+	   			item += "<tr><td>";
+	   			item += $("#npcName").val();
+	   			item += "</td><td>";
+	   			item += $("#npcPage").val();
+	   			item += "</td><td>";
+	   			item += $("#npcNumber").val();
+	   			item += "</td><td>";
+	   			item += $("#npcCr").val();
+	   			item += "</td><td>";
+	   			item += $("#npcExp").val();
+				item += "</td><td>";
+	   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"removeItem(this)\">Remove</button>"
+	   			item += "</td></tr>";
+
+	   			$("#encounters").append(item);
+		    }
+
+		    function removeItem(sender) {
+				$(sender).parent().parent().remove();
+			}
+
+			function calc() {
+				var experiance = 0;
+				var scaledExp = 0;
+
+				var pcAmount = parseInt($("#pcNumber").val()) || 0;
+				var pcLevel = parseInt($("#pcLevel").val()) || 0;
+
+				var easyCap = 25 * pcAmount * pcLevel;
+				var mediumCap = 50 * pcAmount * pcLevel;
+				var hardCap = 75 * pcAmount * pcLevel;
+				var deadlyCap = 100 * pcAmount * pcLevel;
+
+				var npcAmount = 0;
+
+				$("#encounters tr").each(function(idx, itm){
+		   			if ($.isNumeric($($(itm).children()[4]).html())){
+		   				experiance += parseInt($($(itm).children()[4]).html()) * parseInt($($(itm).children()[2]).html());
+		   				npcAmount += parseInt($($(itm).children()[2]).html())
+		   			}
+		   		});
+
+				
+				switch (true) {
+					case (npcAmount == 1):
+						console.log(1);
+						scaledExp = experiance * 1;
+						break;
+					case (npcAmount == 2):
+						console.log(1.5);
+						scaledExp = experiance * 1.5;
+						break;
+					case (3 <= npcAmount && npcAmount <= 6):
+						console.log(2);
+						scaledExp = experiance * 2;
+						break;
+					case (7 <= npcAmount && npcAmount  <= 10):
+						console.log(2.5);
+						scaledExp = experiance * 2.5;
+						break;
+					case (11 <= npcAmount && npcAmount  <= 14):
+						console.log(3);
+						scaledExp = experiance * 3;
+						break;
+					case (14 < npcAmount):
+						console.log(4);
+						scaledExp = experiance * 4;
+						break;
+				} 
+
+
+				switch (true) {
+					case (scaledExp <= easyCap):
+						$("#encDiff").html("Easy");
+						break;
+					case (npcAmount <= mediumCap):
+						$("#encDiff").html("Medium");
+						break;
+					case (npcAmount <= hardCap):
+						$("#encDiff").html("Hard");
+						break;
+					case (npcAmount <= deadlyCap):
+						$("#encDiff").html("Deadly");
+						break;
+				}
+
+				$("#encExp").html(experiance);
+			}
 		</script> 
 
 		<title>DND TOOLS</title> 
