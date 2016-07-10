@@ -37,13 +37,16 @@
 				var experiance = 0;
 				var scaledExp = 0;
 
+				var pcGear = parseInt($("#pcGear").val()) || 1;
 				var pcAmount = parseInt($("#pcNumber").val()) || 0;
 				var pcLevel = parseInt($("#pcLevel").val()) || 0;
 
-				var easyCap = 25 * pcAmount * pcLevel;
-				var mediumCap = 50 * pcAmount * pcLevel;
-				var hardCap = 75 * pcAmount * pcLevel;
-				var deadlyCap = 100 * pcAmount * pcLevel;
+				var easyCap = 25 * pcAmount * pcLevel * pcGear;
+				var mediumCap = 50 * pcAmount * pcLevel * pcGear;
+				var hardCap = 75 * pcAmount * pcLevel * pcGear;
+				var deadlyCap = 100 * pcAmount * pcLevel * pcGear;
+
+				console.log(easyCap);
 
 				var npcAmount = 0;
 
