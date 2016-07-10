@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+		<script> 
+		    $(function(){
+		      $("#Header1").load("Header.html"); 
+			  $("#PH_modules_list").load("Modules.html"); 
+		    });
+		</script> 
+
+		<title>DND TOOLS</title> 
+	</head>
+	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
+	<body>
+		<div Id = "Header1">
+			<! import header goes here />
+		</div>
+		<div Class = "sickdragonimg_ph">
+		</div>
+		<div class= "body_content">
+			<div class= "PH_ads">
+				<p>w/e here</p>
+			</div>
+			<div class= "PH_main_content" id="main">
+				<span><b> Player Characters: </b><br /> </span>
+				<span>Amount: </span><input type="text" id="pcNumber"> <br />
+				<span>Average Level: </span><input type="text" id="pcLevel"> <br />
+				<span>Gear Multiplier: </span><input type="text" id="pcGear"> <br />
+				<br />
+				<span><b> Enemies: </b><br /> </span>
+				<span>Name: </span><input type="text" id="npcName"> <br />
+				<span>Page Number: </span><input type="text" id="npcPage"> <br />
+				<span>Amount: </span><input type="text" id="npcNumber"> <br />
+				<span>Challange Rating: </span><input type="text" id="npcCr"> <br />
+				<span>Experiance: </span><input type="text" id="npcExp"> <br />
+				<button id="add" type="button" onclick="addNpc()">Add enemy</button>
+				<br />
+				<button id="add" type="button" onclick="calc()">Calculate Encounter</button>
+				<br />
+				<br />
+				<table id="encounters" border="1">
+					<tr>
+						<th>Enemy Name</th>
+						<th>Page Number</th>
+						<th>Amount</th>
+						<th>Chalange rating</th>
+						<th>Experiance</th>
+					</tr>
+				</table>
+
+				<br />
+				<span><b>Encounter statistics: </b><br /> </span>
+				<span><b>Dificulty: </b> </span> <span id="encDiff"> </span> <br />
+				<span><b>Experiance: </b> </span> <span id="encExp"> </span> <br />
+			</div>
+			<div class= "PH_modules_list" id="PH_modules_list">
+			</div>
+		</div>
+		<div class = "footer">
+			<div class ="navbar">
+				<p>Navbar</p>
+			</div>
+		</div>
+	</body>
+</html>
