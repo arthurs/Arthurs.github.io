@@ -196,6 +196,11 @@
 
 				saveStr["table"] = JSON.stringify($($("#inv").get(0)).html());
 
+				saveStr["copper"] = $("#copper").val();
+				saveStr["silver"] = $("#silver").val();
+				saveStr["gold"] = $("#gold").val();
+				saveStr["platinum"] = $("#platinum").val();
+
 				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
 			}
 
@@ -206,6 +211,11 @@
 					$("#Strength").val(loadStr["strength"]);
 
 					$($("#inv").get(0)).html(JSON.parse(loadStr["table"]));
+
+					$("#copper").val(loadStr["copper"]);
+					$("#silver").val(loadStr["silver"]);
+					$("#gold").val(loadStr["gold"]);
+					$("#platinum").val(loadStr["platinum"]);
 				}
 
 				$("#inv tr").last().remove();
