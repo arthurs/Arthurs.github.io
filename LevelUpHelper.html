@@ -29,6 +29,10 @@
 		    function removeClass(sender) {
 		    	$(sender).parent().remove();
 		    }
+
+		    function calcMod(sender){
+		    	console.log(sender);
+		    }
 		</script> 
 
 		<title>DND TOOLS</title> 
@@ -108,12 +112,12 @@
 					<label>Stastistics:</label><br>
 					<table Class = "statsTable">
 					  <tr>
-						<td><input input type="text" id="charSTR">Strength</input></td>
-						<td><input input type="text" id="charDEX">Dexterity</input></td>
-						<td><input input type="text" id="charCON">Constitution</input></td>
-						<td><input input type="text" id="charINT">Intelligence</input></td>
-						<td><input input type="text" id="charWIS">Wisdom</input></td>
-						<td><input input type="text" id="charCHA">Charisma</input></td>
+						<td><input input type="text" id="charSTR" oninput="calcMod(this)">Strength</input></td>
+						<td><input input type="text" id="charDEX" oninput="calcMod(this)">Dexterity</input></td>
+						<td><input input type="text" id="charCON" oninput="calcMod(this)">Constitution</input></td>
+						<td><input input type="text" id="charINT" oninput="calcMod(this)">Intelligence</input></td>
+						<td><input input type="text" id="charWIS" oninput="calcMod(this)">Wisdom</input></td>
+						<td><input input type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
 					  </tr>
 					  <tr>
 						<td><label id ="STRmod">+0</label></td>
@@ -157,7 +161,7 @@
 						<li><input name ="languages"  input type ="checkbox" id="langDwarvish">Dwarvish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langElvish">Elvish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langGiant">Giant</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langGnomish">Gnomishinput></li>
+						<li><input name ="languages"  input type ="checkbox" id="langGnomish">Gnomish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langGoblin">Goblin</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langHalfing">Halfling</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langOrc">Orc</input></li>

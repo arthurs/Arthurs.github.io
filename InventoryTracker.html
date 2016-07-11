@@ -5,23 +5,6 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 		<script> 
-			onload = function () {
-		       var e = document.getElementById('Strength');
-		       e.oninput = calc;
-
-		       e = document.getElementById('copper');
-		       e.oninput = total;
-
-		       e = document.getElementById('silver');
-		       e.oninput = total;
-
-		       e = document.getElementById('gold');
-		       e.oninput = total;
-
-		       e = document.getElementById('platinum');
-		       e.oninput = total;
-		    };
-
 			var itemsList = new Object();
 		    $(function(){
   	      	  $("#Header1").load("Header.html"); 
@@ -268,7 +251,7 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 				<div id="inventory">
-					Character Strength: <input type="text" id="Strength" onchange="calc()">
+					Character Strength: <input type="text" id="Strength" oninput="calc()">
 					<br />
 					<span id="capacity">Carrying Cappacity: 0</span>
 					<br />
@@ -295,13 +278,13 @@
 				<button id="add" type="button" onclick="save()">Save</button>
 				<button id="add" type="button" onclick="load()">Load</button>
 				<br />
-				Copper Coins: <input type="text" id="copper" onchange="total()">
+				Copper Coins: <input type="text" id="copper" oninput="total()">
 				<br />
-				Silver Coins: <input type="text" id="silver" onchange="total()">
+				Silver Coins: <input type="text" id="silver" oninput="total()">
 				<br />
-				Gold Coins: <input type="text" id="gold" onchange="total()">
+				Gold Coins: <input type="text" id="gold" oninput="total()">
 				<br />
-				Platinum Coins: <input type="text" id="platinum" onchange="total()">
+				Platinum Coins: <input type="text" id="platinum" oninput="total()">
 				<br />
 				</div>
 				<div id="itemsDiv">
