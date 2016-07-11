@@ -56,18 +56,16 @@ h1{
 
 }
 .doublelist li{
-		display: inline;
 	list-style-type:none;
 }
 
 .navbarmenu,.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
 	border-style: solid;
-	background-color: transparent;
-	border-width: 20px 18px;
-	-moz-border-image: url(./Metal_Border.png) 20 18 repeat;
-	-webkit-border-image: url(./Metal_Border.png) 20 18 repeat;
-	-o-border-image: url(./Metal_Border.png) 20 18 repeat;
-	border-image: url(./Metal_Border.png) 20 18 fill repeat;
+	border-width: 27px;
+	-moz-border-image: url(Metal_Border_2.png) 27 repeat;
+	-webkit-border-image: url(Metal_Border_2.png) 27 repeat;
+	-o-border-image: url(Metal_Border_2.png) 27 repeat;
+	border-image: url(Metal_Border_2.png) 27 fill repeat;
 }
 
 .body_content{
@@ -134,6 +132,9 @@ tr.active{
 	width: 100%;
 	margin:  2% 0px;
 	list-style-type:none;
+border-width: 5px;
+border-style: inset;
+border-color: black;
 }
 .Modulenavbarmenu li a{
 	box-sizing:border-box;
@@ -141,7 +142,7 @@ tr.active{
 	-webkit-box-sizing:border-box;
 	display:block;
 	color: white;
-	text-align: center;
+	text-align: left;
 	font-size: 25px;
 	text-decoration: none;
 
