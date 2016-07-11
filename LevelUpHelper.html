@@ -31,7 +31,36 @@
 		    }
 
 		    function calcMod(sender){
-		    	console.log(sender);
+
+		    	var col = $("#statsTable tr").first().children().index($(sender).parent());
+
+		    	var mod = $(sender).val();
+		    	mod = mod / 2;
+		    	mod = mod - 5;
+		    	mod = Math.floor(mod);
+
+
+		    	switch (col) {
+					case 0:
+						$("#STRmod").html(mod);
+						break;
+					case 1:
+						$("#DEXmod").html(mod);
+						break;
+					case 2:
+						$("#CONmod").html(mod);
+						break;
+					case 3:
+						$("#INTmod").html(mod);
+						break;
+					case 4:
+						$("#WISmod").html(mod);
+						break;
+					case 5:
+						$("#CHAmod").html(mod);
+						break;
+				}
+		    	//var pcLevel = parseInt($("#pcLevel").val()) || 0;
 		    }
 		</script> 
 
@@ -110,7 +139,7 @@
 					  </tr>
 					</table>
 					<label>Stastistics:</label><br>
-					<table Class = "statsTable">
+					<table Class = "statsTable" id="statsTable">
 					  <tr>
 						<td><input input type="text" id="charSTR" oninput="calcMod(this)">Strength</input></td>
 						<td><input input type="text" id="charDEX" oninput="calcMod(this)">Dexterity</input></td>
