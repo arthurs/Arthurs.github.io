@@ -167,6 +167,15 @@
 
 				}
 		    }
+
+		    function exportChar(sender) {
+		    	var txt = '<?xml version="1.0" encoding="UTF-8"?>';
+		    	txt += '<fields xmlns:xfdf="http://ns.adobe.com/xfdf-transition/">';
+		    	txt += '<AC>12</AC>';
+		    	txt += '</fields>';
+
+		    	sender.href = 'data:xml/plain;charset=utf-8,' + encodeURIComponent(txt);
+		    }
 		</script> 
 
 		<title>DND TOOLS</title> 
@@ -184,7 +193,8 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 				<div>
-					<h1>Character Helper</h1>	
+					<h1>Character Helper</h1>
+					<a href="" id="link" onclick="exportChar(this)" download="Character.xml">Export</a>	<br />
 					<label>Name:</label>
 					<input type="text" id="charName"></input><br />
 					<label>Race:</label>
