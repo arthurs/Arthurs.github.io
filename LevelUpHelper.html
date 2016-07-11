@@ -140,14 +140,13 @@
 
 
 					$.each(loadStr["class"], function(idx, itm){
-						console.log(itm);
 						if (idx > 0) {
 							addClass();
 						}
 						$($($("#classes").children().get(idx)).children().get(1)).val(itm["class"]);
 						$($($("#classes").children().get(idx)).children().get(3)).val(itm["level"]);
 					});
-					
+
 
 					$("#proficienciesList input:checked").each(function(idx, itm) {
 						$(itm).prop('checked', false);
