@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+		<script> 
+		    $(function(){
+		      $("#Header1").load("Header.html"); 
+			  $("#PH_modules_list").load("Modules.html"); 
+		    });
+		</script> 
+
+		<title>DND TOOLS</title> 
+	</head>
+	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
+	<body>
+		<div Id = "Header1">
+			<! import header goes here />
+		</div>
+		<div Class = "sickdragonimg_ph">
+		</div>
+		<div class= "body_content">
+			<div class= "PH_ads">
+				<p>w/e here</p>
+			</div>
+			<div class= "PH_main_content" id="main">
+				<div class= "News_Header">
+					<h1>News</h1>
+				</div>
+				<div class= "News_contentborder"Id = "news1">
+					<div class = "News_contentobject">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Dados_4_a_20_caras_trans.png" alt="role playing dice" style="width:150px;height:150px;">
+					</div>
+					<div class = "News_contentobject">
+						<p>This website that will provide various modules that aim to support utility for DND/RPGs. These modules will be presented in a simple manor that will be easy to use and learn.</p>
+					</div>
+				</div>
+				<div class= "News_contentborder"Id = "news2">
+				</div>
+				<div class= "News_contentborder"Id = "news3">
+				</div>
+				<div class= "News_contentborder"Id = "news4">
+				</div>
+				<div class = "News_botlinkbox">
+					<a href="#archive">Archive</a>
+				</div>
+			</div>
+			<div class= "PH_modules_list" id="PH_modules_list">
+			<div class ="Modulenavbar">
+<h1>Modules</h1>
+	<div class = "Modulenavbarmenu">
+		<ul >
+		  <li><a href="CombatTracker.html">Combat Tracker </a></li>
+		  <li><a href="PrintableCardCreator.html">Card Creator</a></li>
+		  <li><a href="InventoryTracker.html">Inventory Tracker</a></li>
+		  <li><a href="LevelUpHelper.html">Level Up Helper</a></li>
+		</ul>
+	</div>
+</div> 
+			</div>
+		</div>
+		<div class = "footer">
+			<div class ="navbar">
+				<p>Navbar</p>
+			</div>
+		</div>
+	</body>
+</html>
