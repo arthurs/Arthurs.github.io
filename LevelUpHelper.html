@@ -92,16 +92,13 @@
 				}
 
 				saveStr["class"] = $("#classes").html(); //may not work may need to loop
-
 				saveStr["alignment"] = $("input[name=alignment]:checked").val();
+				saveStr["proficiencies"] = $("#proficienciesList input:checked");
+				saveStr["languages"] = $("#languagesList input:checked");
+				saveStr["background"] = $("#backgrounds").val();
+
 
 				saveStr["statistics"] = JSON.stringify($("#statsTable").html());
-
-				saveStr["proficiencies"] = $("#proficienciesList input:checked");
-
-				saveStr["languages"] = $("#languagesList input:checked");
-
-				saveStr["background"] = $("#backgrounds").val();
 
 				saveStr["attacks"] = JSON.stringify($("#attacksTable").html());
 
@@ -109,7 +106,22 @@
 		    }
 
 		    function load() {
+		    	var loadStr = JSON.parse(window.prompt("Load","Enter saved string"));
 
+				if (loadStr != null) {
+					$("#charName").val(loadStr["name"]);
+					$("#charRace").val(loadStr["race"]);
+					$("#classes").html(loadStr["class"]);
+					$("#backgrounds").val(loadStr["background"]);
+
+					$("input[value='" + loadStr["alignment"] +"'").prop('checked', true);;
+					//lang + prof
+
+
+					$($("#statsTable").get(0)).html(JSON.parse(loadStr["statistics"]));
+					$($("#attacksTable").get(0)).html(JSON.parse(loadStr["attacks"]));
+
+				}
 		    }
 		</script> 
 
