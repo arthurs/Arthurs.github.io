@@ -34,7 +34,7 @@
 
 		    	var col = $("#statsTable tr").first().children().index($(sender).parent());
 
-		    	var mod = $(sender).val();
+		    	var mod = parseInt($(sender).val()) || 0;
 		    	mod = mod / 2;
 		    	mod = mod - 5;
 		    	mod = Math.floor(mod);
@@ -60,7 +60,6 @@
 						$("#CHAmod").html(mod);
 						break;
 				}
-		    	//var pcLevel = parseInt($("#pcLevel").val()) || 0;
 		    }
 
 		    function addAttack() {
