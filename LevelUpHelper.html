@@ -93,10 +93,19 @@
 
 				saveStr["class"] = $("#classes").html(); //may not work may need to loop
 				saveStr["alignment"] = $("input[name=alignment]:checked").val();
-				saveStr["proficiencies"] = $("#proficienciesList input:checked");
-				saveStr["languages"] = $("#languagesList input:checked");
-				saveStr["background"] = $("#backgrounds").val();
 
+				saveStr["proficiencies"] = new Array();
+				saveStr["languages"] = new Array();
+
+				$("#proficienciesList input:checked").each(function(idx, itm) {
+					saveStr["proficiencies"].push($(itm).val());
+				});
+				
+				$("#languagesList input:checked").each(function(idx, itm) {
+					saveStr["languages"].push($(itm).val());
+				});
+
+				saveStr["background"] = $("#backgrounds").val();
 
 				saveStr["statistics"] = JSON.stringify($("#statsTable").html());
 
@@ -114,9 +123,21 @@
 					$("#classes").html(loadStr["class"]);
 					$("#backgrounds").val(loadStr["background"]);
 
-					$("input[value='" + loadStr["alignment"] +"'").prop('checked', true);;
-					//lang + prof
+					$("input[value=" + loadStr["alignment"] + "]").prop('checked', true);
 
+					$("#proficienciesList input:checked").each(function(idx, itm) {
+						$(itm).prop('checked', false);
+					});
+					$(loadStr["proficiencies"]).each(function(idx, itm) {
+						$("input[name=proficiencies][value='" + itm + "']").prop('checked', true);
+					});
+
+					$("#languagesList input:checked").each(function(idx, itm) {
+						$(itm).prop('checked', false);
+					});
+					$(loadStr["languages"]).each(function(idx, itm) {
+						$("input[name=languages][value='" + itm + "']").prop('checked', true);
+					});
 
 					$($("#statsTable").get(0)).html(JSON.parse(loadStr["statistics"]));
 					$($("#attacksTable").get(0)).html(JSON.parse(loadStr["attacks"]));
@@ -142,7 +163,7 @@
 				<div>
 					<h1>Character Helper</h1>	
 					<label>Name:</label>
-					<input input type="text" id="charName"></input><br />
+					<input type="text" id="charName"></input><br />
 					<label>Race:</label>
 					<select id="charRace">
 					  <option value="Human">Human</option>
@@ -155,7 +176,7 @@
 					  <option value="Dragonborne">Dragonborn</option>
 					</select>
 					<span>custom:</span>
-					<input input type="text" id="charRaceCustom"></input><br />
+					<input type="text" id="charRaceCustom"></input><br />
 					
 					<span id="classes">
 					<span name="class">
@@ -175,7 +196,7 @@
 					  <option value="Wizard">Wizard</option>
 					</select>
 					<span>level:</span>
-					<input input type="text" id="charLvl1"></input>
+					<input type="text" id="charLvl1"></input>
 					</span>
 					<br />
 					</span>
@@ -184,30 +205,30 @@
 					<label>Alignment:</label>
 					<table Class = "alignmentTable">
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LGradio" value="LG">Lawful Good</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "NGradio" value="NG">Neutral Good</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CGradio" value="CG">Chaotic Good</input></td>
+						<td><input name ="alignment"  type = "radio" id = "LGradio" value="LG">Lawful Good</input></td>
+						<td><input name ="alignment"  type = "radio" id = "NGradio" value="NG">Neutral Good</input></td>
+						<td><input name ="alignment"  type = "radio" id = "CGradio" value="CG">Chaotic Good</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LNradio" value="LN">Lawful Neutral</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "TNradio" value="TN">True Neutral</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CNradio" value="CN">Chaotic Neutral</input></td>
+						<td><input name ="alignment"  type = "radio" id = "LNradio" value="LN">Lawful Neutral</input></td>
+						<td><input name ="alignment"  type = "radio" id = "TNradio" value="TN">True Neutral</input></td>
+						<td><input name ="alignment"  type = "radio" id = "CNradio" value="CN">Chaotic Neutral</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LEradio" value="LE">Lawful Evil</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "NEradio" value="NE">Neutral Evil</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CLradio" value="CE">Chaotic Evil</input></td>
+						<td><input name ="alignment"  type = "radio" id = "LEradio" value="LE">Lawful Evil</input></td>
+						<td><input name ="alignment"  type = "radio" id = "NEradio" value="NE">Neutral Evil</input></td>
+						<td><input name ="alignment"  type = "radio" id = "CLradio" value="CE">Chaotic Evil</input></td>
 					  </tr>
 					</table>
 					<label>Stastistics:</label><br />
 					<table Class = "statsTable" id="statsTable">
 					  <tr>
-						<td><input input type="text" id="charSTR" oninput="calcMod(this)">Strength</input></td>
-						<td><input input type="text" id="charDEX" oninput="calcMod(this)">Dexterity</input></td>
-						<td><input input type="text" id="charCON" oninput="calcMod(this)">Constitution</input></td>
-						<td><input input type="text" id="charINT" oninput="calcMod(this)">Intelligence</input></td>
-						<td><input input type="text" id="charWIS" oninput="calcMod(this)">Wisdom</input></td>
-						<td><input input type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
+						<td><input type="text" id="charSTR" oninput="calcMod(this)">Strength</input></td>
+						<td><input type="text" id="charDEX" oninput="calcMod(this)">Dexterity</input></td>
+						<td><input type="text" id="charCON" oninput="calcMod(this)">Constitution</input></td>
+						<td><input type="text" id="charINT" oninput="calcMod(this)">Intelligence</input></td>
+						<td><input type="text" id="charWIS" oninput="calcMod(this)">Wisdom</input></td>
+						<td><type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
 					  </tr>
 					  <tr>
 						<td><label id ="STRmod">+0</label></td>
@@ -219,50 +240,50 @@
 					  </tr>
 					</table>
 					<label>Saving Throws</label><br />
-					<input name ="savingThrows"  input type ="checkbox" id="charSTRsavethrow">Strength</input>
-					<input name ="savingThrows"  input type ="checkbox" id="charDEXsavethrow">Dexterity</input>
-					<input name ="savingThrows"  input type ="checkbox" id="charCONsavethrow">Constitution</input>
-					<input name ="savingThrows"  input type ="checkbox" id="charINTsavethrow">Intelligence</input>
-					<input name ="savingThrows"  input type ="checkbox" id="charWISsavethrow">Wisdom</input>
-					<input name ="savingThrows"  input type ="checkbox" id="charCHAsavethrow">Charisma</input><br />
+					<input name ="savingThrows"  type ="checkbox" id="charSTRsavethrow">Strength</input>
+					<input name ="savingThrows"  type ="checkbox" id="charDEXsavethrow">Dexterity</input>
+					<input name ="savingThrows"  type ="checkbox" id="charCONsavethrow">Constitution</input>
+					<input name ="savingThrows"  type ="checkbox" id="charINTsavethrow">Intelligence</input>
+					<input name ="savingThrows"  type ="checkbox" id="charWISsavethrow">Wisdom</input>
+					<input name ="savingThrows"  type ="checkbox" id="charCHAsavethrow">Charisma</input><br />
 					<label>proficiencies</label><br />
 					<ul class = "doublelist" id="proficienciesList">
-						<li><input name ="proficiencies"  input type ="checkbox" id="profAcrobatics_DEX">Acrobatics(Dex)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profAnimalHandling_WIS">Animal Handling(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profArcana_INT">Arcana(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profAthletics_STR">Athletics(Str)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profDeception_CHA">Deception(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profHistory_INT">History(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profInsight_WIS">Insight(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profIntimidation_CHA">Intimidation(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profInvestigation_INT">Investigation(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profMedicine_WIS">Medicine(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profNature_INT">Nature(Int)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profPerception_WIS">Perception(Wis)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profPerformance_CHA">Performance(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profPersuasion_CHA">Persuasion(Cha)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profSleightOfHand_DEX">Sleight Of Hand(Dex)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profStealth_DEX">Stealth(Dex)</input></li>
-						<li><input name ="proficiencies"  input type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
+						<li><input name ="proficiencies" value="Acrobatics" type ="checkbox" id="profAcrobatics_DEX">Acrobatics(Dex)</input></li>
+						<li><input name ="proficiencies" value="Animal Handling" type ="checkbox" id="profAnimalHandling_WIS">Animal Handling(Wis)</input></li>
+						<li><input name ="proficiencies" value="Arcana" type ="checkbox" id="profArcana_INT">Arcana(Int)</input></li>
+						<li><input name ="proficiencies" value="Athletics" type ="checkbox" id="profAthletics_STR">Athletics(Str)</input></li>
+						<li><input name ="proficiencies" value="Deception" type ="checkbox" id="profDeception_CHA">Deception(Cha)</input></li>
+						<li><input name ="proficiencies" value="History" type ="checkbox" id="profHistory_INT">History(Int)</input></li>
+						<li><input name ="proficiencies" value="Insight" type ="checkbox" id="profInsight_WIS">Insight(Wis)</input></li>
+						<li><input name ="proficiencies" value="Intimidation" type ="checkbox" id="profIntimidation_CHA">Intimidation(Cha)</input></li>
+						<li><input name ="proficiencies" value="Investigation" type ="checkbox" id="profInvestigation_INT">Investigation(Int)</input></li>
+						<li><input name ="proficiencies" value="Medicine" type ="checkbox" id="profMedicine_WIS">Medicine(Wis)</input></li>
+						<li><input name ="proficiencies" value="Nature" type ="checkbox" id="profNature_INT">Nature(Int)</input></li>
+						<li><input name ="proficiencies" value="Perception" type ="checkbox" id="profPerception_WIS">Perception(Wis)</input></li>
+						<li><input name ="proficiencies" value="Performance" type ="checkbox" id="profPerformance_CHA">Performance(Cha)</input></li>
+						<li><input name ="proficiencies" value="Persuasion" type ="checkbox" id="profPersuasion_CHA">Persuasion(Cha)</input></li>
+						<li><input name ="proficiencies" value="Sleight Of Hand" type ="checkbox" id="profSleightOfHand_DEX">Sleight Of Hand(Dex)</input></li>
+						<li><input name ="proficiencies" value="Stealth" type ="checkbox" id="profStealth_DEX">Stealth(Dex)</input></li>
+						<li><input name ="proficiencies" value="Survival" type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
 					</ul>
 					<label>languages</label><br />
 					<ul class = "doublelist" id="languagesList">
-						<li><input name ="languages"  input type ="checkbox" id="langCommon">Common</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langDwarvish">Dwarvish</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langElvish">Elvish</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langGiant">Giant</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langGnomish">Gnomish</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langGoblin">Goblin</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langHalfing">Halfling</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langOrc">Orc</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langAbyssal">Abyssal</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langCelestial">Celestial</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langDraconic">Draconic</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langDeepSpeech">Deep Speech</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langInfernal">Infernal</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langPrimordial">Primordial</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langSylvan">Sylvan</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langUnderCommon">UnderCommon</input></li>
+						<li><input name ="languages" value="Common" type ="checkbox" id="langCommon">Common</input></li>
+						<li><input name ="languages" value="Dwarvish" type ="checkbox" id="langDwarvish">Dwarvish</input></li>
+						<li><input name ="languages" value="Elvish" type ="checkbox" id="langElvish">Elvish</input></li>
+						<li><input name ="languages" value="Giant" type ="checkbox" id="langGiant">Giant</input></li>
+						<li><input name ="languages" value="Gnomish" type ="checkbox" id="langGnomish">Gnomish</input></li>
+						<li><input name ="languages" value="Goblin" type ="checkbox" id="langGoblin">Goblin</input></li>
+						<li><input name ="languages" value="Halfling" type ="checkbox" id="langHalfing">Halfling</input></li>
+						<li><input name ="languages" value="Orc" type ="checkbox" id="langOrc">Orc</input></li>
+						<li><input name ="languages" value="Abyssal" type ="checkbox" id="langAbyssal">Abyssal</input></li>
+						<li><input name ="languages" value="Celestial" type ="checkbox" id="langCelestial">Celestial</input></li>
+						<li><input name ="languages" value="Draconic" type ="checkbox" id="langDraconic">Draconic</input></li>
+						<li><input name ="languages" value="Deep Speech" type ="checkbox" id="langDeepSpeech">Deep Speech</input></li>
+						<li><input name ="languages" value="Infernal" type ="checkbox" id="langInfernal">Infernal</input></li>
+						<li><input name ="languages" value="Primordial" type ="checkbox" id="langPrimordial">Primordial</input></li>
+						<li><input name ="languages" value="Sylvan" type ="checkbox" id="langSylvan">Sylvan</input></li>
+						<li><input name ="languages" value="UnderCommon" type ="checkbox" id="langUnderCommon">UnderCommon</input></li>
 					</ul>
 					<label>Background</label><br />
 					<select id="backgrounds">
