@@ -9,6 +9,26 @@
 		      $("#Header1").load("Header.html"); 
 			  $("#PH_modules_list").load("Modules.html"); 
 		    });
+
+		    function addClass() {
+		    	var span = '<span name="class">';
+
+		    	span += $("span[name=class]").first().html();
+
+		    	span += "<button id=\"remove_but\" type=\"button\" onclick=\"removeClass(this)\">Remove</button>"
+
+		    	span += "<br />"
+
+		    	span += "</span>";
+
+
+		    	$("#classes").append(span);
+
+		    }
+
+		    function removeClass(sender) {
+		    	$(sender).parent().remove();
+		    }
 		</script> 
 
 		<title>DND TOOLS</title> 
@@ -40,7 +60,11 @@
 					  <option value="Halfing">Halfling</option>
 					  <option value="Dragonborne">Dragonborn</option>
 					</select>
+					<span>custom:</span>
 					<input input type="text" id="charRaceCustom"></input><br>
+					
+					<span id="classes">
+					<span name="class">
 					<label>Class</label>
 					<select id="charClass1">
 					  <option value="Barbarian">Barbarian</option>
@@ -56,36 +80,13 @@
 					  <option value="Warlock">Warlock</option>
 					  <option value="Wizard">Wizard</option>					  
 					</select>
-				<!-- 	Hide multiclasss option untill clicked, also a radio button would be better -->
-					<button id = "multiClassCheck">Multiclass?</button>
-<!-- 										<select id="charClass2">
-					  <option value="Barbarian">Barbarian</option>
-					  <option value="Bard">Bard</option>
-					  <option value="Cleric">Cleric</option>
-					  <option value="Druid">Druid</option>
-					  <option value="Fighter">Fighter</option>
-					  <option value="Monk">Monk</option>
-					  <option value="Paladin">Paladin</option>
-					  <option value="Ranger">Ranger</option>
-					  <option value="Rogue">Rogue</option>
-					  <option value="Sorcerer">Sorcerer</option>
-					  <option value="Warlock">Warlock</option>
-					  <option value="Wizard">Wizard</option>					  
-					</select>
-										<select id="charClass3">
-					  <option value="Barbarian">Barbarian</option>
-					  <option value="Bard">Bard</option>
-					  <option value="Cleric">Cleric</option>
-					  <option value="Druid">Druid</option>
-					  <option value="Fighter">Fighter</option>
-					  <option value="Monk">Monk</option>
-					  <option value="Paladin">Paladin</option>
-					  <option value="Ranger">Ranger</option>
-					  <option value="Rogue">Rogue</option>
-					  <option value="Sorcerer">Sorcerer</option>
-					  <option value="Warlock">Warlock</option>
-					  <option value="Wizard">Wizard</option>					  
-					</select> --><br>
+					<span>level:</span>
+					<input input type="text" id="charLvl1"></input>
+					</span>
+					<br>
+					</span>
+					<button id = "multiClassCheck" onclick="addClass()">Add Class</button>
+					<br>
 					<label>Alignment:</label>
 					<table Class = "alignmentTable">
 					  <tr>
