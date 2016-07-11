@@ -83,15 +83,22 @@
 				var saveStr = new Object();
 
 				saveStr["name"] = $("#charName").val();
+				saveStr["background"] = $("#backgrounds").val();
+
+
+				saveStr["alignment"] = $("input[name=alignment]:checked").val();
+
 
 				if ($("#charRace").val() == "Custom") {
 					saveStr["race"] = $("#charRaceCustom").val();
 				} else {
 					saveStr["race"] = $("#charRace").val();
+					console.log($("#charRace").val())
 				}
 
+
 				saveStr["class"] = $("#classes").html(); //may not work may need to loop
-				saveStr["alignment"] = $("input[name=alignment]:checked").val();
+
 
 				saveStr["proficiencies"] = new Array();
 				saveStr["languages"] = new Array();
@@ -104,10 +111,8 @@
 					saveStr["languages"].push($(itm).val());
 				});
 
-				saveStr["background"] = $("#backgrounds").val();
 
 				saveStr["statistics"] = JSON.stringify($("#statsTable").html());
-
 				saveStr["attacks"] = JSON.stringify($("#attacksTable").html());
 
 				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
@@ -118,11 +123,17 @@
 
 				if (loadStr != null) {
 					$("#charName").val(loadStr["name"]);
-					$("#charRace").val(loadStr["race"]);
-					$("#classes").html(loadStr["class"]);
 					$("#backgrounds").val(loadStr["background"]);
 
+
 					$("input[value=" + loadStr["alignment"] + "]").prop('checked', true);
+
+
+					$("#charRace").val(loadStr["race"]);
+
+
+					$("#classes").html(loadStr["class"]);
+
 
 					$("#proficienciesList input:checked").each(function(idx, itm) {
 						$(itm).prop('checked', false);
