@@ -5,11 +5,6 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 		<script> 
-			onload = function () {
-		       var e = document.getElementById('Strength');
-		       e.oninput = calc;
-		    };
-
 			var itemsList = new Object();
 		    $(function(){
   	      	  $("#Header1").load("Header.html"); 
@@ -112,12 +107,24 @@
 		   	}
 
 		   	function total() {
+		   		if ($($("#inv tr").last().children().get(0)).html() == "<b>Total Weight</b>"){
+		   			$("#inv tr").last().remove();
+		   		}
+
 		   		var total = 0;
 		   		$("#inv tr").each(function(idx, itm){
 		   			if ($.isNumeric($($(itm).children()[2]).html())){
 		   				total += parseInt($($(itm).children()[2]).html());
 		   			}
 		   		});
+
+		   		var copperAmount = parseInt($("#copper").val()) || 0;
+		   		var silverAmount = parseInt($("#silver").val()) || 0;
+		   		var goldAmount = parseInt($("#gold").val()) || 0;
+		   		var platinumAmount = parseInt($("#platinum").val()) || 0;
+
+		   		total += Math.floor((copperAmount + silverAmount + goldAmount + platinumAmount) / 50);
+
 		   		$("#weight").html("Total Weight: " + total);
 
 		   		var item;
@@ -172,6 +179,11 @@
 
 				saveStr["table"] = JSON.stringify($($("#inv").get(0)).html());
 
+				saveStr["copper"] = $("#copper").val();
+				saveStr["silver"] = $("#silver").val();
+				saveStr["gold"] = $("#gold").val();
+				saveStr["platinum"] = $("#platinum").val();
+
 				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
 			}
 
@@ -182,6 +194,11 @@
 					$("#Strength").val(loadStr["strength"]);
 
 					$($("#inv").get(0)).html(JSON.parse(loadStr["table"]));
+
+					$("#copper").val(loadStr["copper"]);
+					$("#silver").val(loadStr["silver"]);
+					$("#gold").val(loadStr["gold"]);
+					$("#platinum").val(loadStr["platinum"]);
 				}
 
 				$("#inv tr").last().remove();
@@ -224,7 +241,7 @@
 	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
 	<body>
 		<div Id = "Header1">
-			<! import header goes here />
+			<!-- import header goes here -->
 		</div>
 		<div Class = "sickdragonimg_ph">
 		</div>
@@ -234,7 +251,7 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 				<div id="inventory">
-					Character Strength: <input type="text" id="Strength" onchange="calc()">
+					Character Strength: <input type="text" id="Strength" oninput="calc()">
 					<br />
 					<span id="capacity">Carrying Cappacity: 0</span>
 					<br />
@@ -260,6 +277,15 @@
 
 				<button id="add" type="button" onclick="save()">Save</button>
 				<button id="add" type="button" onclick="load()">Load</button>
+				<br />
+				Copper Coins: <input type="text" id="copper" oninput="total()">
+				<br />
+				Silver Coins: <input type="text" id="silver" oninput="total()">
+				<br />
+				Gold Coins: <input type="text" id="gold" oninput="total()">
+				<br />
+				Platinum Coins: <input type="text" id="platinum" oninput="total()">
+				<br />
 				</div>
 				<div id="itemsDiv">
 					<br />

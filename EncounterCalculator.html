@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+		<script> 
+		    $(function(){
+		      $("#Header1").load("Header.html"); 
+			  $("#PH_modules_list").load("Modules.html"); 
+		    });
+
+		    function addNpc() {
+		    	var item = ""
+	   			item += "<tr><td>";
+	   			item += $("#npcName").val();
+	   			item += "</td><td>";
+	   			item += $("#npcPage").val();
+	   			item += "</td><td>";
+	   			item += $("#npcNumber").val();
+	   			item += "</td><td>";
+	   			item += $("#npcCr").val();
+	   			item += "</td><td>";
+	   			item += $("#npcExp").val();
+				item += "</td><td>";
+	   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"removeItem(this)\">Remove</button>"
+	   			item += "</td></tr>";
+
+	   			$("#encounters").append(item);
+		    }
+
+		    function removeItem(sender) {
+				$(sender).parent().parent().remove();
+			}
+
+			function calc() {
+				var experiance = 0;
+				var scaledExp = 0;
+
+				var pcGear = parseInt($("#pcGear").val()) || 1;
+				var pcAmount = parseInt($("#pcNumber").val()) || 0;
+				var pcLevel = parseInt($("#pcLevel").val()) || 0;
+
+				var easyCap = 25 * pcAmount * pcLevel * pcGear;
+				var mediumCap = 50 * pcAmount * pcLevel * pcGear;
+				var hardCap = 75 * pcAmount * pcLevel * pcGear;
+				var deadlyCap = 100 * pcAmount * pcLevel * pcGear;
+
+				console.log(easyCap);
+
+				var npcAmount = 0;
+
+				$("#encounters tr").each(function(idx, itm){
+		   			if ($.isNumeric($($(itm).children()[4]).html())){
+		   				experiance += parseInt($($(itm).children()[4]).html()) * parseInt($($(itm).children()[2]).html());
+		   				npcAmount += parseInt($($(itm).children()[2]).html())
+		   			}
+		   		});
+
+				
+				switch (true) {
+					case (npcAmount == 1):
+						scaledExp = experiance * 1;
+						break;
+					case (npcAmount == 2):
+						scaledExp = experiance * 1.5;
+						break;
+					case (3 <= npcAmount && npcAmount <= 6):
+						scaledExp = experiance * 2;
+						break;
+					case (7 <= npcAmount && npcAmount  <= 10):
+						scaledExp = experiance * 2.5;
+						break;
+					case (11 <= npcAmount && npcAmount  <= 14):
+						scaledExp = experiance * 3;
+						break;
+					case (14 < npcAmount):
+						scaledExp = experiance * 4;
+						break;
+				} 
+
+
+				switch (true) {
+					case (scaledExp <= easyCap):
+						$("#encDiff").html("Easy");
+						break;
+					case (npcAmount <= mediumCap):
+						$("#encDiff").html("Medium");
+						break;
+					case (npcAmount <= hardCap):
+						$("#encDiff").html("Hard");
+						break;
+					case (npcAmount <= deadlyCap):
+						$("#encDiff").html("Deadly");
+						break;
+				}
+
+				$("#encExp").html(experiance);
+			}
+		</script> 
+
+		<title>DND TOOLS</title> 
+	</head>
+	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
+	<body>
+		<div Id = "Header1">
+			<!-- import header goes here -->
+		</div>
+		<div Class = "sickdragonimg_ph">
+		</div>
+		<div class= "body_content">
+			<div class= "PH_ads">
+				<p>w/e here</p>
+			</div>
+			<div class= "PH_main_content" id="main">
+				<span><b> Player Characters: </b><br /> </span>
+				<span>Amount: </span><input type="text" id="pcNumber"> <br />
+				<span>Average Level: </span><input type="text" id="pcLevel"> <br />
+				<span>Gear Multiplier: </span><input type="text" id="pcGear"> <br />
+				<br />
+				<span><b> Enemies: </b><br /> </span>
+				<span>Name: </span><input type="text" id="npcName"> <br />
+				<span>Page Number: </span><input type="text" id="npcPage"> <br />
+				<span>Amount: </span><input type="text" id="npcNumber"> <br />
+				<span>Challange Rating: </span><input type="text" id="npcCr"> <br />
+				<span>Experiance: </span><input type="text" id="npcExp"> <br />
+				<button id="add" type="button" onclick="addNpc()">Add enemy</button>
+				<br />
+				<button id="add" type="button" onclick="calc()">Calculate Encounter</button>
+				<br />
+				<br />
+				<table id="encounters" border="1">
+					<tr>
+						<th>Enemy Name</th>
+						<th>Page Number</th>
+						<th>Amount</th>
+						<th>Chalange rating</th>
+						<th>Experiance</th>
+					</tr>
+				</table>
+
+				<br />
+				<span><b>Encounter statistics: </b><br /> </span>
+				<span><b>Dificulty: </b> </span> <span id="encDiff"> </span> <br />
+				<span><b>Experiance: </b> </span> <span id="encExp"> </span> <br />
+			</div>
+			<div class= "PH_modules_list" id="PH_modules_list">
+			</div>
+		</div>
+		<div class = "footer">
+			<div class ="navbar">
+				<p>Navbar</p>
+			</div>
+		</div>
+	</body>
+</html>

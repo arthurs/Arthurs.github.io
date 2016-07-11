@@ -9,6 +9,120 @@
 		      $("#Header1").load("Header.html"); 
 			  $("#PH_modules_list").load("Modules.html"); 
 		    });
+
+		    function addClass() {
+		    	var span = '<span name="class">';
+
+		    	span += $("span[name=class]").first().html();
+
+		    	span += "<button name=\"remove_but\" type=\"button\" onclick=\"removeClass(this)\">Remove</button>"
+
+		    	span += "<br />"
+
+		    	span += "</span>";
+
+
+		    	$("#classes").append(span);
+
+		    }
+
+		    function removeClass(sender) {
+		    	$(sender).parent().remove();
+		    }
+
+		    function calcMod(sender){
+
+		    	var col = $("#statsTable tr").first().children().index($(sender).parent());
+
+		    	var mod = $(sender).val();
+		    	mod = mod / 2;
+		    	mod = mod - 5;
+		    	mod = Math.floor(mod);
+
+
+		    	switch (col) {
+					case 0:
+						$("#STRmod").html(mod);
+						break;
+					case 1:
+						$("#DEXmod").html(mod);
+						break;
+					case 2:
+						$("#CONmod").html(mod);
+						break;
+					case 3:
+						$("#INTmod").html(mod);
+						break;
+					case 4:
+						$("#WISmod").html(mod);
+						break;
+					case 5:
+						$("#CHAmod").html(mod);
+						break;
+				}
+		    	//var pcLevel = parseInt($("#pcLevel").val()) || 0;
+		    }
+
+		    function addAttack() {
+		    	var row = "<tr>";
+		    	row += '<td><input name="attName"></input></td>';
+				row += '<td><input name="attBonus"></input></td>';
+				row += '<td><input name="attType"></input></td>';
+				row += '<td><input name="attDmg"></input></td>';
+				row += '<td><input name="attDetails"></input></td>';
+				row += '<td><button id="remove_but" type="button" onclick="removeAttack(this)">Remove</button></td>';
+				row += '</tr>';
+
+				$("#attacksTable").append(row);
+		    }
+
+		    function removeAttack(sender) {
+		    	$(sender).parent().parent().remove();
+		    }
+
+		    function save() {
+				var saveStr = new Object();
+
+				saveStr["name"] = $("#charName").val();
+
+				if ($("#charRace").val() == "Custom") {
+					saveStr["race"] = $("#charRaceCustom").val();
+				} else {
+					saveStr["race"] = $("#charRace").val();
+				}
+
+				saveStr["class"] = $("#classes").html(); //may not work may need to loop
+				saveStr["alignment"] = $("input[name=alignment]:checked").val();
+				saveStr["proficiencies"] = $("#proficienciesList input:checked");
+				saveStr["languages"] = $("#languagesList input:checked");
+				saveStr["background"] = $("#backgrounds").val();
+
+
+				saveStr["statistics"] = JSON.stringify($("#statsTable").html());
+
+				saveStr["attacks"] = JSON.stringify($("#attacksTable").html());
+
+				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
+		    }
+
+		    function load() {
+		    	var loadStr = JSON.parse(window.prompt("Load","Enter saved string"));
+
+				if (loadStr != null) {
+					$("#charName").val(loadStr["name"]);
+					$("#charRace").val(loadStr["race"]);
+					$("#classes").html(loadStr["class"]);
+					$("#backgrounds").val(loadStr["background"]);
+
+					$("input[value='" + loadStr["alignment"] +"'").prop('checked', true);;
+					//lang + prof
+
+
+					$($("#statsTable").get(0)).html(JSON.parse(loadStr["statistics"]));
+					$($("#attacksTable").get(0)).html(JSON.parse(loadStr["attacks"]));
+
+				}
+		    }
 		</script> 
 
 		<title>DND TOOLS</title> 
@@ -16,7 +130,7 @@
 	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
 	<body>
 		<div Id = "Header1">
-			<! import header goes here />
+			<!-- import header goes here -->
 		</div>
 		<div Class = "sickdragonimg_ph">
 		</div>
@@ -28,7 +142,7 @@
 				<div>
 					<h1>Character Helper</h1>	
 					<label>Name:</label>
-					<input input type="text" id="charName"></input><br>
+					<input input type="text" id="charName"></input><br />
 					<label>Race:</label>
 					<select id="charRace">
 					  <option value="Human">Human</option>
@@ -40,9 +154,13 @@
 					  <option value="Halfing">Halfling</option>
 					  <option value="Dragonborne">Dragonborn</option>
 					</select>
-					<input input type="text" id="charRaceCustom"></input><br>
+					<span>custom:</span>
+					<input input type="text" id="charRaceCustom"></input><br />
+					
+					<span id="classes">
+					<span name="class">
 					<label>Class</label>
-					<select id="charClass1">
+					<select name="charClass">
 					  <option value="Barbarian">Barbarian</option>
 					  <option value="Bard">Bard</option>
 					  <option value="Cleric">Cleric</option>
@@ -54,65 +172,42 @@
 					  <option value="Rogue">Rogue</option>
 					  <option value="Sorcerer">Sorcerer</option>
 					  <option value="Warlock">Warlock</option>
-					  <option value="Wizard">Wizard</option>					  
+					  <option value="Wizard">Wizard</option>
 					</select>
-				<!-- 	Hide multiclasss option untill clicked, also a radio button would be better -->
-					<button id = "multiClassCheck">Multiclass?</button>
-<!-- 										<select id="charClass2">
-					  <option value="Barbarian">Barbarian</option>
-					  <option value="Bard">Bard</option>
-					  <option value="Cleric">Cleric</option>
-					  <option value="Druid">Druid</option>
-					  <option value="Fighter">Fighter</option>
-					  <option value="Monk">Monk</option>
-					  <option value="Paladin">Paladin</option>
-					  <option value="Ranger">Ranger</option>
-					  <option value="Rogue">Rogue</option>
-					  <option value="Sorcerer">Sorcerer</option>
-					  <option value="Warlock">Warlock</option>
-					  <option value="Wizard">Wizard</option>					  
-					</select>
-										<select id="charClass3">
-					  <option value="Barbarian">Barbarian</option>
-					  <option value="Bard">Bard</option>
-					  <option value="Cleric">Cleric</option>
-					  <option value="Druid">Druid</option>
-					  <option value="Fighter">Fighter</option>
-					  <option value="Monk">Monk</option>
-					  <option value="Paladin">Paladin</option>
-					  <option value="Ranger">Ranger</option>
-					  <option value="Rogue">Rogue</option>
-					  <option value="Sorcerer">Sorcerer</option>
-					  <option value="Warlock">Warlock</option>
-					  <option value="Wizard">Wizard</option>					  
-					</select> --><br>
+					<span>level:</span>
+					<input input type="text" id="charLvl1"></input>
+					</span>
+					<br />
+					</span>
+					<button id = "multiClassCheck" onclick="addClass()">Add Class</button>
+					<br />
 					<label>Alignment:</label>
 					<table Class = "alignmentTable">
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LGradio">Lawful Good</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "NGradio">Neutral Good</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CGradio">Chaotic Good</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "LGradio" value="LG">Lawful Good</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "NGradio" value="NG">Neutral Good</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "CGradio" value="CG">Chaotic Good</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LNradio">Lawful Neutral</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "TNradio">True Neutral</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CNradio">Chaotic Neutral</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "LNradio" value="LN">Lawful Neutral</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "TNradio" value="TN">True Neutral</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "CNradio" value="CN">Chaotic Neutral</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment" input type = "radio" id = "LEradio">Lawful Evil</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "NEradio">Neutral Evil</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CLradio">Chaotic Evil</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "LEradio" value="LE">Lawful Evil</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "NEradio" value="NE">Neutral Evil</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "CLradio" value="CE">Chaotic Evil</input></td>
 					  </tr>
 					</table>
-					<label>Stastistics:</label><br>
-					<table Class = "statsTable">
+					<label>Stastistics:</label><br />
+					<table Class = "statsTable" id="statsTable">
 					  <tr>
-						<td><input input type="text" id="charSTR">Strength</input></td>
-						<td><input input type="text" id="charDEX">Dexterity</input></td>
-						<td><input input type="text" id="charCON">Constitution</input></td>
-						<td><input input type="text" id="charINT">Intelligence</input></td>
-						<td><input input type="text" id="charWIS">Wisdom</input></td>
-						<td><input input type="text" id="charCHA">Charisma</input></td>
+						<td><input input type="text" id="charSTR" oninput="calcMod(this)">Strength</input></td>
+						<td><input input type="text" id="charDEX" oninput="calcMod(this)">Dexterity</input></td>
+						<td><input input type="text" id="charCON" oninput="calcMod(this)">Constitution</input></td>
+						<td><input input type="text" id="charINT" oninput="calcMod(this)">Intelligence</input></td>
+						<td><input input type="text" id="charWIS" oninput="calcMod(this)">Wisdom</input></td>
+						<td><input input type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
 					  </tr>
 					  <tr>
 						<td><label id ="STRmod">+0</label></td>
@@ -120,18 +215,18 @@
 						<td><label id ="CONmod">+0</label></td>
 						<td><label id ="INTmod">+0</label></td>
 						<td><label id ="WISmod">+0</label></td>
-						<td><label id ="CHAmod">+0</label></td>						
+						<td><label id ="CHAmod">+0</label></td>	
 					  </tr>
 					</table>
-					<label>Saving Throws</label><br>
+					<label>Saving Throws</label><br />
 					<input name ="savingThrows"  input type ="checkbox" id="charSTRsavethrow">Strength</input>
 					<input name ="savingThrows"  input type ="checkbox" id="charDEXsavethrow">Dexterity</input>
 					<input name ="savingThrows"  input type ="checkbox" id="charCONsavethrow">Constitution</input>
 					<input name ="savingThrows"  input type ="checkbox" id="charINTsavethrow">Intelligence</input>
 					<input name ="savingThrows"  input type ="checkbox" id="charWISsavethrow">Wisdom</input>
-					<input name ="savingThrows"  input type ="checkbox" id="charCHAsavethrow">Charisma</input><br>
-					<label>proficiencies</label><br>
-					<ul class = "doublelist">
+					<input name ="savingThrows"  input type ="checkbox" id="charCHAsavethrow">Charisma</input><br />
+					<label>proficiencies</label><br />
+					<ul class = "doublelist" id="proficienciesList">
 						<li><input name ="proficiencies"  input type ="checkbox" id="profAcrobatics_DEX">Acrobatics(Dex)</input></li>
 						<li><input name ="proficiencies"  input type ="checkbox" id="profAnimalHandling_WIS">Animal Handling(Wis)</input></li>
 						<li><input name ="proficiencies"  input type ="checkbox" id="profArcana_INT">Arcana(Int)</input></li>
@@ -150,13 +245,13 @@
 						<li><input name ="proficiencies"  input type ="checkbox" id="profStealth_DEX">Stealth(Dex)</input></li>
 						<li><input name ="proficiencies"  input type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
 					</ul>
-					<label>languages</label><br>
-					<ul class = "doublelist">
+					<label>languages</label><br />
+					<ul class = "doublelist" id="languagesList">
 						<li><input name ="languages"  input type ="checkbox" id="langCommon">Common</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langDwarvish">Dwarvish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langElvish">Elvish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langGiant">Giant</input></li>
-						<li><input name ="languages"  input type ="checkbox" id="langGnomish">Gnomishinput></li>
+						<li><input name ="languages"  input type ="checkbox" id="langGnomish">Gnomish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langGoblin">Goblin</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langHalfing">Halfling</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langOrc">Orc</input></li>
@@ -169,11 +264,94 @@
 						<li><input name ="languages"  input type ="checkbox" id="langSylvan">Sylvan</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langUnderCommon">UnderCommon</input></li>
 					</ul>
-					<label>Traits</label><br>
-					<label>Feats</label><br>
-					<label>AC </label><br>
-					<label>Attacks</label><br>
-
+					<label>Background</label><br />
+					<select id="backgrounds">
+					  <option value="Acolyte">Acolyte</option>
+					  <option value="Charlatan">Charlatan</option>
+					  <option value="Criminal">Criminal</option>
+					  <option value="Entertainer">Entertainer</option>
+					  <option value="Folk Hero">Folk Hero</option>
+					  <option value="Guild Artisan">Guild Artisan</option>
+					  <option value="Hermit">Hermit</option>
+					  <option value="Noble">Noble</option>
+					  <option value="Outlander">Outlander</option>
+					  <option value="Sage">Sage</option>
+					  <option value="Sailor">Sailor</option>
+					  <option value="Soldier">Soldier</option>
+					  <option value="Urchin">Urchin</option>
+					  <option value="Custom">Custom</option>
+					</select>
+					<br />
+					<label>Traits</label><br />
+					<!-- auto populate from background, class and race -->
+					<label>Feats</label><br />
+					<select id="feats">
+					  <option value="Alert">Alert</option>
+					  <option value="Athlete">Athlete</option>
+					  <option value="Actor">Actor</option>
+					  <option value="Charger">Charger</option>
+					  <option value="Crossbow Expert">Crossbow Expert</option>
+					  <option value="Defensive Duelist">Defensive Duelist</option>
+					  <option value="Dual Wielder">Dual Wielder</option>
+					  <option value="Dungeon Delver">Dungeon Delver</option>
+					  <option value="Durable">Durable</option>
+					  <option value="Elemental Adept">Elemental Adept</option>
+					  <option value="Grappler">Grappler</option>
+					  <option value="Great Weapons Master">Great Weapons Master</option>
+					  <option value="Healer">Healer</option>
+					  <option value="Heavily Armored">Heavily Armored</option>
+					  <option value="Heavy Armor Master">Heavy Armor Master</option>
+					  <option value="Inspiring Leader">Inspiring Leader</option>
+					  <option value="Keen Mind">Keen Mind</option>
+					  <option value="Lightly Armored">Lightly Armored</option>
+					  <option value="Linguist">Linguist</option>
+					  <option value="Lucky">Lucky</option>
+					  <option value="Mage Slayer">Mage Slayer</option>
+					  <option value="Magic Initiate">Magic Initiate</option>
+					  <option value="Martial Adept">Martial Adept</option>
+					  <option value="Medium Armor Master">Medium Armor Master</option>
+					  <option value="Mobile">Mobile</option>
+					  <option value="Moderately Armored">Moderately Armored</option>
+					  <option value="Mounted Combatant">Mounted Combatant</option>
+					  <option value="Observant">Observant</option>
+					  <option value="Polearm Master">Polearm Master</option>
+					  <option value="Resilient">Resilient</option>
+					  <option value="Ritual Caster">Ritual Caster</option>
+					  <option value="Savage Attacker">Savage Attacker</option>
+					  <option value="Sentinel">Sentinel</option>
+					  <option value="Sharpshooter">Sharpshooter</option>
+					  <option value="Shield Master">Shield Master</option>
+					  <option value="Skilled">Skilled</option>
+					  <option value="Skulker">Skulker</option>
+					  <option value="Spell Sniper">Spell Sniper</option>
+					  <option value="Tavern Brawler">Tavern Brawler</option>
+					  <option value="Tough">Tough</option>
+					  <option value="War Caster">War Caster</option>
+					  <option value="Weapon Master">Weapon Master</option>
+					</select>
+					<button onclick="addFeat()">Add Feat</button>
+					<br />
+					<label>AC </label><br /> 
+					<!-- get armour they are wearing then auto calc -->
+					<label>Attacks</label><br />
+					<table Class = "attacksTable" id="attacksTable">
+					  <tr>
+						<th><span>Name</span></th>
+						<th><span>Attack Bonus</span></th>
+						<th><span>Damange Type</span></th>
+						<th><span>Damage</span></th>
+						<th><span>Aditional Details</span></th>
+						<th><button onclick="addAttack()">Add New Attack</button></th>
+					  </tr>
+					  <tr>
+						<td><input name="attName"></input></td>
+						<td><input name="attBonus"></input></td>
+						<td><input name="attType"></input></td>
+						<td><input name="attDmg"></input></td>
+						<td><input name="attDetails"></input></td>
+						<td><button id="remove_but" type="button" onclick="removeAttack(this)">Remove</button></td>
+					  </tr>
+					</table>
 <!-- 					new charecter or import 
 Name, class multi?, level race 
 alignmnent speed current experience
