@@ -79,6 +79,38 @@
 		    function removeAttack(sender) {
 		    	$(sender).parent().parent().remove();
 		    }
+
+		    function save() {
+				var saveStr = new Object();
+
+				saveStr["name"] = $("#charName").val();
+
+				if ($("#charRace").val() == "Custom") {
+					saveStr["race"] = $("#charRaceCustom").val();
+				} else {
+					saveStr["race"] = $("#charRace").val();
+				}
+
+				saveStr["class"] = $("#classes").html(); //may not work may need to loop
+
+				saveStr["alignment"] = $("input[name=alignment]:checked").val();
+
+				saveStr["statistics"] = JSON.stringify($("#statsTable").html());
+
+				saveStr["proficiencies"] = $("#proficienciesList input:checked");
+
+				saveStr["languages"] = $("#languagesList input:checked");
+
+				saveStr["background"] = $("#backgrounds").val();
+
+				saveStr["attacks"] = JSON.stringify($("#attacksTable").html());
+
+				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
+		    }
+
+		    function load() {
+
+		    }
 		</script> 
 
 		<title>DND TOOLS</title> 
@@ -116,7 +148,7 @@
 					<span id="classes">
 					<span name="class">
 					<label>Class</label>
-					<select id="charClass1">
+					<select name="charClass">
 					  <option value="Barbarian">Barbarian</option>
 					  <option value="Bard">Bard</option>
 					  <option value="Cleric">Cleric</option>
@@ -140,19 +172,19 @@
 					<label>Alignment:</label>
 					<table Class = "alignmentTable">
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LGradio">Lawful Good</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "NGradio">Neutral Good</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CGradio">Chaotic Good</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "LGradio" value="LG">Lawful Good</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "NGradio" value="NG">Neutral Good</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "CGradio" value="CG">Chaotic Good</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment"  input type = "radio" id = "LNradio">Lawful Neutral</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "TNradio">True Neutral</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CNradio">Chaotic Neutral</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "LNradio" value="LN">Lawful Neutral</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "TNradio" value="TN">True Neutral</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "CNradio" value="CN">Chaotic Neutral</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment" input type = "radio" id = "LEradio">Lawful Evil</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "NEradio">Neutral Evil</input></td>
-						<td><input name ="alignment"  input type = "radio" id = "CLradio">Chaotic Evil</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "LEradio" value="LE">Lawful Evil</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "NEradio" value="NE">Neutral Evil</input></td>
+						<td><input name ="alignment"  input type = "radio" id = "CLradio" value="CE">Chaotic Evil</input></td>
 					  </tr>
 					</table>
 					<label>Stastistics:</label><br />
@@ -182,7 +214,7 @@
 					<input name ="savingThrows"  input type ="checkbox" id="charWISsavethrow">Wisdom</input>
 					<input name ="savingThrows"  input type ="checkbox" id="charCHAsavethrow">Charisma</input><br />
 					<label>proficiencies</label><br />
-					<ul class = "doublelist">
+					<ul class = "doublelist" id="proficienciesList">
 						<li><input name ="proficiencies"  input type ="checkbox" id="profAcrobatics_DEX">Acrobatics(Dex)</input></li>
 						<li><input name ="proficiencies"  input type ="checkbox" id="profAnimalHandling_WIS">Animal Handling(Wis)</input></li>
 						<li><input name ="proficiencies"  input type ="checkbox" id="profArcana_INT">Arcana(Int)</input></li>
@@ -202,7 +234,7 @@
 						<li><input name ="proficiencies"  input type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
 					</ul>
 					<label>languages</label><br />
-					<ul class = "doublelist">
+					<ul class = "doublelist" id="languagesList">
 						<li><input name ="languages"  input type ="checkbox" id="langCommon">Common</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langDwarvish">Dwarvish</input></li>
 						<li><input name ="languages"  input type ="checkbox" id="langElvish">Elvish</input></li>
@@ -221,7 +253,7 @@
 						<li><input name ="languages"  input type ="checkbox" id="langUnderCommon">UnderCommon</input></li>
 					</ul>
 					<label>Background</label><br />
-					<select id="feats">
+					<select id="backgrounds">
 					  <option value="Acolyte">Acolyte</option>
 					  <option value="Charlatan">Charlatan</option>
 					  <option value="Criminal">Criminal</option>
