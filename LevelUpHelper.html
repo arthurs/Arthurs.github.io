@@ -15,7 +15,7 @@
 
 		    	span += $("span[name=class]").first().html();
 
-		    	span += "<button id=\"remove_but\" type=\"button\" onclick=\"removeClass(this)\">Remove</button>"
+		    	span += "<button name=\"remove_but\" type=\"button\" onclick=\"removeClass(this)\">Remove</button>"
 
 		    	span += "<br />"
 
@@ -61,6 +61,23 @@
 						break;
 				}
 		    	//var pcLevel = parseInt($("#pcLevel").val()) || 0;
+		    }
+
+		    function addAttack() {
+		    	var row = "<tr>";
+		    	row += '<td><input name="attName"></input></td>';
+				row += '<td><input name="attBonus"></input></td>';
+				row += '<td><input name="attType"></input></td>';
+				row += '<td><input name="attDmg"></input></td>';
+				row += '<td><input name="attDetails"></input></td>';
+				row += '<td><button id="remove_but" type="button" onclick="removeAttack(this)">Remove</button></td>';
+				row += '</tr>';
+
+				$("#attacksTable").append(row);
+		    }
+
+		    function removeAttack(sender) {
+		    	$(sender).parent().parent().remove();
 		    }
 		</script> 
 
@@ -222,6 +239,7 @@
 					</select>
 					<br />
 					<label>Traits</label><br />
+					<!-- auto populate from background, class and race -->
 					<label>Feats</label><br />
 					<select id="feats">
 					  <option value="Alert">Alert</option>
@@ -267,11 +285,29 @@
 					  <option value="War Caster">War Caster</option>
 					  <option value="Weapon Master">Weapon Master</option>
 					</select>
-					<button id = "multiClassCheck" onclick="addFeat()">Add Feat</button>
+					<button onclick="addFeat()">Add Feat</button>
 					<br />
 					<label>AC </label><br /> 
+					<!-- get armour they are wearing then auto calc -->
 					<label>Attacks</label><br />
-
+					<table Class = "attacksTable" id="attacksTable">
+					  <tr>
+						<th><span>Name</span></th>
+						<th><span>Attack Bonus</span></th>
+						<th><span>Damange Type</span></th>
+						<th><span>Damage</span></th>
+						<th><span>Aditional Details</span></th>
+						<th><button onclick="addAttack()">Add New Attack</button></th>
+					  </tr>
+					  <tr>
+						<td><input name="attName"></input></td>
+						<td><input name="attBonus"></input></td>
+						<td><input name="attType"></input></td>
+						<td><input name="attDmg"></input></td>
+						<td><input name="attDetails"></input></td>
+						<td><button id="remove_but" type="button" onclick="removeAttack(this)">Remove</button></td>
+					  </tr>
+					</table>
 <!-- 					new charecter or import 
 Name, class multi?, level race 
 alignmnent speed current experience
