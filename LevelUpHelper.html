@@ -15,6 +15,8 @@
 
 		    	span += $("span[name=class]").first().html();
 
+		    	span = span.substring(0, span.indexOf('<br>'));
+
 		    	span += "<button name=\"remove_but\" type=\"button\" onclick=\"removeClass(this)\">Remove</button>"
 
 		    	span += "<br />"
@@ -93,11 +95,16 @@
 					saveStr["race"] = $("#charRaceCustom").val();
 				} else {
 					saveStr["race"] = $("#charRace").val();
-					console.log($("#charRace").val())
 				}
 
-
-				saveStr["class"] = $("#classes").html(); //may not work may need to loop
+				saveStr["class"] = new Object();
+				
+				$("#classes").children().each(function (idx, itm) {
+					var chaClass = $($(itm).children().get(1)).val();
+					var chaLevel = $($(itm).children().get(3)).val();
+					var chaClassRow = {class: chaClass, level: chaLevel};
+					(saveStr["class"])[idx] = chaClassRow;
+				});
 
 
 				saveStr["proficiencies"] = new Array();
@@ -132,8 +139,15 @@
 					$("#charRace").val(loadStr["race"]);
 
 
-					$("#classes").html(loadStr["class"]);
-
+					$.each(loadStr["class"], function(idx, itm){
+						console.log(itm);
+						if (idx > 0) {
+							addClass();
+						}
+						$($($("#classes").children().get(idx)).children().get(1)).val(itm["class"]);
+						$($($("#classes").children().get(idx)).children().get(3)).val(itm["level"]);
+					});
+					
 
 					$("#proficienciesList input:checked").each(function(idx, itm) {
 						$(itm).prop('checked', false);
@@ -207,8 +221,8 @@
 					</select>
 					<span>level:</span>
 					<input type="text" id="charLvl1"></input>
-					</span>
 					<br />
+					</span>
 					</span>
 					<button id = "multiClassCheck" onclick="addClass()">Add Class</button>
 					<br />
