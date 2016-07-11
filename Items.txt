@@ -9,7 +9,7 @@ Studded leather-13
 <Medium Armor>
 Hide-12
 Chain shirt-20
-Seale mai!-45
+Scale mail-45
 Breastplate-20
 Half plate-40
 </Medium Armor>
