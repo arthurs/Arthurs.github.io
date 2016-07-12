@@ -169,267 +169,345 @@
 		    }
 
 		    function exportChar(sender) {
+
+		    	var charName = $("#charName").val();
+		    	var charClass = $($("select[name=charClass]").first()).val();
+		    	var charLevel = "level " + $($("#charLvl1").first()).val();
+		    	var background = $("#backgrounds").val();
+		    	var chaRace = $("#charRace").val();
+		    	var alignment = $("input[name=alignment]:checked").val();
+		    	var charStr = $("#charSTR").val();
+		    	var charStrMod = $("#STRmod").html();
+		    	var charDex = $("#charDEX").val();
+		    	var charDexMod = $("#DEXmod").html();
+		    	var charCon = $("#charCON").val();
+		    	var charConMod = $("#CONmod").html();
+		    	var charInt = $("#charINT").val();
+		    	var charIntMod = $("#INTmod").html();
+		    	var charWis = $("#charWIS").val();
+		    	var charWisMod = $("#WISmod").html();
+		    	var charCha = $("#charCHA").val();
+				var charChaMod = $("#CHAmod").html();
+				var profBonus = Math.floor((($($("#charLvl1").first()).val() - 1) / 4) + 2);
+				var STRSaveCheck = (($("#charSTRsavethrow").prop("checked")) ? "Yes" : "Off");
+				var DEXSaveCheck = (($("#charDEXsavethrow").prop("checked")) ? "Yes" : "Off");
+				var CONSaveCheck = (($("#charCONsavethrow").prop("checked")) ? "Yes" : "Off");
+				var INTSaveCheck = (($("#charINTsavethrow").prop("checked")) ? "Yes" : "Off");
+				var WISSaveCheck = (($("#charWISsavethrow").prop("checked")) ? "Yes" : "Off");
+				var CHASaveCheck = (($("#charCHAsavethrow").prop("checked")) ? "Yes" : "Off");
+				var STRSave = ((STRSaveCheck == "Yes") ? parseInt(charStrMod) + parseInt(profBonus) : charStrMod);
+				var DEXSave = ((DEXSaveCheck == "Yes") ? parseInt(charDexMod) + parseInt(profBonus) : charDexMod);
+				var CONSave = ((CONSaveCheck == "Yes") ? parseInt(charConMod) + parseInt(profBonus) : charConMod);
+				var INTSave = ((INTSaveCheck == "Yes") ? parseInt(charIntMod) + parseInt(profBonus) : charIntMod);
+				var WISSave = ((WISSaveCheck == "Yes") ? parseInt(charWisMod) + parseInt(profBonus) : charWisMod);
+				var CHASave = ((CHASaveCheck == "Yes") ? parseInt(charChaMod) + parseInt(profBonus) : charChaMod);
+				var AcrobaticsProf = (($("#profAcrobatics_DEX").prop("checked")) ? "Yes" : "Off");
+				var AnimalProf = (($("#profAnimalHandling_WIS").prop("checked")) ? "Yes" : "Off");
+				var ArcanaProf = (($("#profArcana_INT").prop("checked")) ? "Yes" : "Off");
+				var AthleticsProf = (($("#profAthletics_STR").prop("checked")) ? "Yes" : "Off");
+				var DeceptionProf = (($("#profDeception_CHA").prop("checked")) ? "Yes" : "Off");
+				var HistoryProf = (($("#profHistory_INT").prop("checked")) ? "Yes" : "Off");
+				var InsightProf = (($("#profInsight_WIS").prop("checked")) ? "Yes" : "Off");
+				var IntimidationProf = (($("#profIntimidation_CHA").prop("checked")) ? "Yes" : "Off");
+				var InvestigationProf = (($("#profInvestigation_INT").prop("checked")) ? "Yes" : "Off");
+				var MedicineProf = (($("#profMedicine_WIS").prop("checked")) ? "Yes" : "Off");
+				var NatureProf = (($("#profNature_INT").prop("checked")) ? "Yes" : "Off");
+				var PerceptionProf = (($("#profPerception_WIS").prop("checked")) ? "Yes" : "Off");
+				var PerformanceProf = (($("#profPerformance_CHA").prop("checked")) ? "Yes" : "Off");
+				var PersuasionProf = (($("#profPersuasion_CHA").prop("checked")) ? "Yes" : "Off");
+				var ReligionProf = (($("#profReligion_INT").prop("checked")) ? "Yes" : "Off");
+				var SleightProf = (($("#profSleightOfHand_DEX").prop("checked")) ? "Yes" : "Off");
+				var StealthProf = (($("#profStealth_DEX").prop("checked")) ? "Yes" : "Off");
+				var SurvivalProf = (($("#profSurvival_WIS").prop("checked")) ? "Yes" : "Off");
+				var Acrobatics = ((STRSaveCheck == "Yes") ? parseInt(charDexMod) + parseInt(profBonus) : charDexMod);
+				var Animal = ((DEXSaveCheck == "Yes") ? parseInt(charWisMod) + parseInt(profBonus) : charWisMod);
+				var Arcana = ((CONSaveCheck == "Yes") ? parseInt(charIntMod) + parseInt(profBonus) : charIntMod);
+				var Athletics = ((INTSaveCheck == "Yes") ? parseInt(charStrMod) + parseInt(profBonus) : charStrMod);
+				var Deception = ((WISSaveCheck == "Yes") ? parseInt(charChaMod) + parseInt(profBonus) : charChaMod);
+				var History = ((CHASaveCheck == "Yes") ? parseInt(charIntMod) + parseInt(profBonus) : charIntMod);
+				var Insight = ((STRSaveCheck == "Yes") ? parseInt(charWisMod) + parseInt(profBonus) : charWisMod);
+				var Intimidation = ((DEXSaveCheck == "Yes") ? parseInt(charChaMod) + parseInt(profBonus) : charChaMod);
+				var Investigation = ((CONSaveCheck == "Yes") ? parseInt(charIntMod) + parseInt(profBonus) : charIntMod);
+				var Medicine = ((INTSaveCheck == "Yes") ? parseInt(charWisMod) + parseInt(profBonus) : charWisMod);
+				var Nature = ((WISSaveCheck == "Yes") ? parseInt(charIntMod) + parseInt(profBonus) : charIntMod);
+				var Perception = ((CHASaveCheck == "Yes") ? parseInt(charWisMod) + parseInt(profBonus) : charWisMod);
+				var Performance = ((STRSaveCheck == "Yes") ? parseInt(charChaMod) + parseInt(profBonus) : charChaMod);
+				var Persuasion = ((DEXSaveCheck == "Yes") ? parseInt(charChaMod) + parseInt(profBonus) : charChaMod);
+				var Religion = ((CONSaveCheck == "Yes") ? parseInt(charIntMod) + parseInt(profBonus) : charIntMod);
+				var Sleight = ((INTSaveCheck == "Yes") ? parseInt(charDexMod) + parseInt(profBonus) : charDexMod);
+				var Stealth = ((WISSaveCheck == "Yes") ? parseInt(charDexMod) + parseInt(profBonus) : charDexMod);
+				var Survival = ((CHASaveCheck == "Yes") ? parseInt(charWisMod) + parseInt(profBonus) : charWisMod);
+				var languages = (($("#langCommon").prop("checked")) ? "Common \n" : "");
+				languages += (($("#langDwarvish").prop("checked")) ? "Dwarvish \n" : "");
+				languages += (($("#langElvish").prop("checked")) ? "Elvish \n" : "");
+				languages += (($("#langGiant").prop("checked")) ? "Giant \n" : "");
+				languages += (($("#langGnomish").prop("checked")) ? "Gnomish \n" : "");
+				languages += (($("#langGoblin").prop("checked")) ? "Goblin \n" : "");
+				languages += (($("#langHalfing").prop("checked")) ? "Halfing \n" : "");
+				languages += (($("#langOrc").prop("checked")) ? "Orc \n" : "");
+				languages += (($("#langAbyssal").prop("checked")) ? "Abyssal \n" : "");
+				languages += (($("#langCelestial").prop("checked")) ? "Celestial \n" : "");
+				languages += (($("#langDraconic").prop("checked")) ? "Draconic \n" : "");
+				languages += (($("#langDeepSpeech").prop("checked")) ? "DeepSpeech \n" : "");
+				languages += (($("#langInfernal").prop("checked")) ? "Infernal \n" : "");
+				languages += (($("#langPrimordial").prop("checked")) ? "Primordial \n" : "");
+				languages += (($("#langSylvan").prop("checked")) ? "Sylvan \n" : "");
+				languages += (($("#langUnderCommon").prop("checked")) ? "UnderCommon \n" : "");
+
+
 		    	var txt = '<?xml version="1.0" encoding="UTF-8"?> \n';
 		    	txt += '<fields xmlns:xfdf="http://ns.adobe.com/xfdf-transition/"> \n';
-		    	txt += '<CharacterName>char name</CharacterName> \n';
-		    	txt += '<ClassLevel>class and lvl</ClassLevel> \n';
-		    	txt += '<Background>background</Background> \n';
-		    	txt += '<PlayerName>player name</PlayerName> \n';
-		    	txt += '<Race xfdf:original="Race ">race</Race> \n';
-		    	txt += '<Alignment>True Neutral</Alignment> \n';
-		    	txt += '<XP>xp</XP> \n';
-		    	txt += '<STR>str</STR> \n';
-		    	txt += '<STRmod>strmod</STRmod> \n';
-		    	txt += '<DEX>Dex</DEX> \n';
-		    	txt += '<DEXmod xfdf:original="DEXmod ">dexmod</DEXmod> \n';
-		    	txt += '<CON>con</CON> \n';
-		    	txt += '<CONmod>conmod</CONmod> \n';
-		    	txt += '<INT>int</INT> \n';
-		    	txt += '<INTmod>intmod</INTmod> \n';
-		    	txt += '<WIS>wis</WIS> \n';
-		    	txt += '<WISmod>wismod</WISmod> \n';
-		    	txt += '<CHA>cha</CHA> \n';
-		    	txt += '<CHamod>chamod</CHamod> \n';
-		    	txt += '<Inspiration>insp</Inspiration> \n';
-		    	txt += '<ProfBonus>profbon</ProfBonus> \n';
-		    	txt += '<CheckBox11 xfdf:original="Check Box 11">Off</CheckBox11> \n';
-		    	txt += '<STStrength xfdf:original="ST Strength">save str</STStrength> \n';
-		    	txt += '<CheckBox18 xfdf:original="Check Box 18">Off</CheckBox18> \n';
-		    	txt += '<STDexterity xfdf:original="ST Dexterity">save dex</STDexterity> \n';
-		    	txt += '<CheckBox19 xfdf:original="Check Box 19">Off</CheckBox19> \n';
-		    	txt += '<STConstitution xfdf:original="ST Constitution">save con</STConstitution> \n';
-		    	txt += '<CheckBox20 xfdf:original="Check Box 20">Off</CheckBox20> \n';
-		    	txt += '<STIntelligence xfdf:original="ST Intelligence">save int</STIntelligence> \n';
-		    	txt += '<CheckBox21 xfdf:original="Check Box 21">Off</CheckBox21> \n';
-		    	txt += '<STWisdom xfdf:original="ST Wisdom">save wis</STWisdom> \n';
-		    	txt += '<CheckBox22 xfdf:original="Check Box 22">Off</CheckBox22> \n';
-		    	txt += '<STCharisma xfdf:original="ST Charisma">save cha</STCharisma> \n';
-		    	txt += '<CheckBox23 xfdf:original="Check Box 23">Off</CheckBox23> \n';
-		    	txt += '<Acrobatics>acro</Acrobatics> \n';
-		    	txt += '<CheckBox24 xfdf:original="Check Box 24">Off</CheckBox24> \n';
-		    	txt += '<Animal>AH</Animal> \n';
-		    	txt += '<CheckBox25 xfdf:original="Check Box 25">Off</CheckBox25> \n';
-		    	txt += '<Arcana>arc</Arcana> \n';
-		    	txt += '<CheckBox26 xfdf:original="Check Box 26">Off</CheckBox26> \n';
-		    	txt += '<Athletics>ath</Athletics> \n';
-		    	txt += '<CheckBox27 xfdf:original="Check Box 27">Off</CheckBox27> \n';
-		    	txt += '<Deception xfdf:original="Deception ">dec</Deception> \n';
-		    	txt += '<CheckBox28 xfdf:original="Check Box 28">Off</CheckBox28> \n';
-		    	txt += '<History xfdf:original="History ">his</History> \n';
-		    	txt += '<CheckBox29 xfdf:original="Check Box 29">Off</CheckBox29> \n';
-		    	txt += '<Insight>ins</Insight> \n';
-		    	txt += '<CheckBox30 xfdf:original="Check Box 30">Off</CheckBox30> \n';
-		    	txt += '<Intimidation>inti</Intimidation> \n';
-		    	txt += '<CheckBox31 xfdf:original="Check Box 31">Off</CheckBox31> \n';
-		    	txt += '<Investigation xfdf:original="Investigation ">inves</Investigation> \n';
-		    	txt += '<CheckBox32 xfdf:original="Check Box 32">Off</CheckBox32> \n';
-		    	txt += '<Medicine>med</Medicine> \n';
-		    	txt += '<CheckBox33 xfdf:original="Check Box 33">Off</CheckBox33> \n';
-		    	txt += '<Nature>nat</Nature> \n';
-		    	txt += '<CheckBox34 xfdf:original="Check Box 34">Off</CheckBox34> \n';
-		    	txt += '<Perception xfdf:original="Perception ">prec</Perception> \n';
-		    	txt += '<CheckBox35 xfdf:original="Check Box 35">Off</CheckBox35> \n';
-		    	txt += '<Performance>perf</Performance> \n';
-		    	txt += '<CheckBox36 xfdf:original="Check Box 36">Off</CheckBox36> \n';
-		    	txt += '<Persuasion>pers</Persuasion> \n';
-		    	txt += '<CheckBox37 xfdf:original="Check Box 37">Off</CheckBox37> \n';
-		    	txt += '<Religion>rel</Religion> \n';
-		    	txt += '<CheckBox38 xfdf:original="Check Box 38">Off</CheckBox38> \n';
-		    	txt += '<SleightofHand>Slie</SleightofHand> \n';
-		    	txt += '<CheckBox39 xfdf:original="Check Box 39">Off</CheckBox39> \n';
-		    	txt += '<Stealth xfdf:original="Stealth ">sth</Stealth> \n';
-		    	txt += '<CheckBox40 xfdf:original="Check Box 40">Off</CheckBox40> \n';
-		    	txt += '<Survival>sur</Survival> \n';
-		    	txt += '<Passive>pas per</Passive> \n';
-				txt += '<ProficienciesLang>profLang</ProficienciesLang> \n';
-		    	txt += '<AC>12</AC> \n';
+		    	txt += '<CharacterName>' + charName + '</CharacterName> \n';
+		    	txt += '<ClassLevel>' + charClass + charLevel + '</ClassLevel> \n';
+		    	txt += '<Background>' + background + '</Background> \n';
+		    	//txt += '<PlayerName>Enter your name</PlayerName> \n';
+		    	txt += '<Race xfdf:original="Race ">' + chaRace + '</Race> \n';
+		    	txt += '<Alignment>' + alignment + '</Alignment> \n';
+		    	//txt += '<XP>xp</XP> \n';
+		    	txt += '<STR>' + charStr + '</STR> \n';
+		    	txt += '<STRmod>' + charStrMod + '</STRmod> \n';
+		    	txt += '<DEX>' + charDex + '</DEX> \n';
+		    	txt += '<DEXmod xfdf:original="DEXmod ">' + charDexMod + '</DEXmod> \n';
+		    	txt += '<CON>' + charCon + '</CON> \n';
+		    	txt += '<CONmod>' + charConMod + '</CONmod> \n';
+		    	txt += '<INT>' + charInt + '</INT> \n';
+		    	txt += '<INTmod>' + charIntMod + '</INTmod> \n';
+		    	txt += '<WIS>' + charWis + '</WIS> \n';
+		    	txt += '<WISmod>' + charWisMod + '</WISmod> \n';
+		    	txt += '<CHA>' + charCha + '</CHA> \n';
+		    	txt += '<CHamod>' + charChaMod + '</CHamod> \n';
+		    	//txt += '<Inspiration>insp</Inspiration> \n';
+		    	txt += '<ProfBonus>' + profBonus + '</ProfBonus> \n';
+		    	txt += '<CheckBox11 xfdf:original="Check Box 11">' + STRSaveCheck + '</CheckBox11> \n';
+		    	txt += '<STStrength xfdf:original="ST Strength">' + STRSave + '</STStrength> \n';
+		    	txt += '<CheckBox18 xfdf:original="Check Box 18">' + DEXSaveCheck + '</CheckBox18> \n';
+		    	txt += '<STDexterity xfdf:original="ST Dexterity">' + DEXSave + '</STDexterity> \n';
+		    	txt += '<CheckBox19 xfdf:original="Check Box 19">' + CONSaveCheck + '</CheckBox19> \n';
+		    	txt += '<STConstitution xfdf:original="ST Constitution">' + CONSave + '</STConstitution> \n';
+		    	txt += '<CheckBox20 xfdf:original="Check Box 20">' + INTSaveCheck + '</CheckBox20> \n';
+		    	txt += '<STIntelligence xfdf:original="ST Intelligence">' + INTSave + '</STIntelligence> \n';
+		    	txt += '<CheckBox21 xfdf:original="Check Box 21">' + WISSaveCheck + '</CheckBox21> \n';
+		    	txt += '<STWisdom xfdf:original="ST Wisdom">' + WISSave + '</STWisdom> \n';
+		    	txt += '<CheckBox22 xfdf:original="Check Box 22">' + CHASaveCheck + '</CheckBox22> \n';
+		    	txt += '<STCharisma xfdf:original="ST Charisma">' + CHASave + '</STCharisma> \n';
+		    	txt += '<CheckBox23 xfdf:original="Check Box 23">' + AcrobaticsProf + '</CheckBox23> \n';
+		    	txt += '<Acrobatics>' + Acrobatics + '</Acrobatics> \n';
+		    	txt += '<CheckBox24 xfdf:original="Check Box 24">' + AnimalProf + '</CheckBox24> \n';
+		    	txt += '<Animal>' + Animal + '</Animal> \n';
+		    	txt += '<CheckBox25 xfdf:original="Check Box 25">' + ArcanaProf + '</CheckBox25> \n';
+		    	txt += '<Arcana>' + Arcana + '</Arcana> \n';
+		    	txt += '<CheckBox26 xfdf:original="Check Box 26">' + AthleticsProf + '</CheckBox26> \n';
+		    	txt += '<Athletics>' + Athletics + '</Athletics> \n';
+		    	txt += '<CheckBox27 xfdf:original="Check Box 27">' + DeceptionProf + '</CheckBox27> \n';
+		    	txt += '<Deception xfdf:original="Deception ">' + Deception + '</Deception> \n';
+		    	txt += '<CheckBox28 xfdf:original="Check Box 28">' + HistoryProf + '</CheckBox28> \n';
+		    	txt += '<History xfdf:original="History ">' + History + '</History> \n';
+		    	txt += '<CheckBox29 xfdf:original="Check Box 29">' + InsightProf + '</CheckBox29> \n';
+		    	txt += '<Insight>' + Insight + '</Insight> \n';
+		    	txt += '<CheckBox30 xfdf:original="Check Box 30">' + IntimidationProf + '</CheckBox30> \n';
+		    	txt += '<Intimidation>' + Intimidation + '</Intimidation> \n';
+		    	txt += '<CheckBox31 xfdf:original="Check Box 31">' + InvestigationProf + '</CheckBox31> \n';
+		    	txt += '<Investigation xfdf:original="Investigation ">' + Investigation + '</Investigation> \n';
+		    	txt += '<CheckBox32 xfdf:original="Check Box 32">' + MedicineProf + '</CheckBox32> \n';
+		    	txt += '<Medicine>' + Medicine + '</Medicine> \n';
+		    	txt += '<CheckBox33 xfdf:original="Check Box 33">' + NatureProf + '</CheckBox33> \n';
+		    	txt += '<Nature>' + Nature + '</Nature> \n';
+		    	txt += '<CheckBox34 xfdf:original="Check Box 34">' + PerceptionProf + '</CheckBox34> \n';
+		    	txt += '<Perception xfdf:original="Perception ">' + Perception + '</Perception> \n';
+		    	txt += '<CheckBox35 xfdf:original="Check Box 35">' + PerformanceProf + '</CheckBox35> \n';
+		    	txt += '<Performance>' + Performance + '</Performance> \n';
+		    	txt += '<CheckBox36 xfdf:original="Check Box 36">' + PersuasionProf + '</CheckBox36> \n';
+		    	txt += '<Persuasion>' + Persuasion + '</Persuasion> \n';
+		    	txt += '<CheckBox37 xfdf:original="Check Box 37">' + ReligionProf + '</CheckBox37> \n';
+		    	txt += '<Religion>' + Religion + '</Religion> \n';
+		    	txt += '<CheckBox38 xfdf:original="Check Box 38">' + SleightProf + '</CheckBox38> \n';
+		    	txt += '<SleightofHand>' + Sleight + '</SleightofHand> \n';
+		    	txt += '<CheckBox39 xfdf:original="Check Box 39">' + StealthProf + '</CheckBox39> \n';
+		    	txt += '<Stealth xfdf:original="Stealth ">' + Stealth + '</Stealth> \n';
+		    	txt += '<CheckBox40 xfdf:original="Check Box 40">' + SurvivalProf + '</CheckBox40> \n';
+		    	txt += '<Survival>' + Survival + '</Survival> \n';
+		    	txt += '<Passive>' + (parseInt(Perception) + 10) + '</Passive> \n';
+				txt += '<ProficienciesLang>' + languages + '</ProficienciesLang> \n';
+		    	//txt += '<AC>12</AC> \n';
 
-		    	txt += '<Initiative>initiat</Initiative> \n';
-		    	txt += '<Speed>speed</Speed> \n';
-		    	txt += '<HPMax>hpmax</HPMax> \n';
-		    	txt += '<HPCurrent>hpcurr</HPCurrent> \n';
-		    	txt += '<HPTemp>temp hp</HPTemp> \n';
-		    	txt += '<HDTotal>HD tot</HDTotal> \n';
-		    	txt += '<HD>HD curr</HD> \n';
-		    	txt += '<CheckBox12 xfdf:original="Check Box 12">Off</CheckBox12>'; //death success \n 1
-		    	txt += '<CheckBox13 xfdf:original="Check Box 13">Off</CheckBox13>'; //death success \n 2
-		    	txt += '<CheckBox14 xfdf:original="Check Box 14">Off</CheckBox14>'; //death success \n 3
-		    	txt += '<CheckBox15 xfdf:original="Check Box 15">Off</CheckBox15>'; //death fail \n 1
-		    	txt += '<CheckBox16 xfdf:original="Check Box 16">Off</CheckBox16>'; //death fail \n 2
-		    	txt += '<CheckBox17 xfdf:original="Check Box 17">Off</CheckBox17>'; //death fail \n 3
-		    	txt += '<WpnName xfdf:original="Wpn Name">wep n1</WpnName> \n';
-		    	txt += '<Wpn1AtkBonus xfdf:original="Wpn1 AtkBonus">wep a1</Wpn1AtkBonus> \n';
-		    	txt += '<Wpn1Damage xfdf:original="Wpn1 Damage">wep d1</Wpn1Damage> \n';
-		    	txt += '<WpnName2 xfdf:original="Wpn Name 2">wep n2</WpnName2> \n';
-		    	txt += '<Wpn2AtkBonus xfdf:original="Wpn2 AtkBonus ">wep a2</Wpn2AtkBonus> \n';
-		    	txt += '<Wpn2Damage xfdf:original="Wpn2 Damage ">wep d2</Wpn2Damage> \n';
-		    	txt += '<WpnName3 xfdf:original="Wpn Name 3">wep n3</WpnName2> \n';
-		    	txt += '<Wpn3AtkBonus xfdf:original="Wpn3 AtkBonus  ">wep a3</Wpn2AtkBonus> \n';
-		    	txt += '<Wpn3Damage xfdf:original="Wpn3 Damage ">wep d3</Wpn2Damage> \n';
-		    	txt += '<AttacksSpellcasting>att notes</AttacksSpellcasting> \n';
-		    	txt += '<CP>CP</CP> \n';
-		    	txt += '<SP>SP</SP> \n';
-		    	txt += '<EP>EP</EP> \n';
-		    	txt += '<GP>GP</GP> \n';
-		    	txt += '<PP>PP</PP> \n';
-		    	txt += '<Equipment>equip</Equipment> \n';
+		    	txt += '<Initiative>' + charDexMod + '</Initiative> \n';
+		    	//txt += '<Speed>speed</Speed> \n';
+		    	//txt += '<HPMax>hpmax</HPMax> \n';
+		    	//txt += '<HPCurrent>hpcurr</HPCurrent> \n';
+		    	//txt += '<HPTemp>temp hp</HPTemp> \n';
+		    	//txt += '<HDTotal>HD tot</HDTotal> \n';
+		    	//txt += '<HD>HD curr</HD> \n';
+		    	//txt += '<CheckBox12 xfdf:original="Check Box 12">Off</CheckBox12>'; //death success \n 1
+		    	//txt += '<CheckBox13 xfdf:original="Check Box 13">Off</CheckBox13>'; //death success \n 2
+		    	//txt += '<CheckBox14 xfdf:original="Check Box 14">Off</CheckBox14>'; //death success \n 3
+		    	//txt += '<CheckBox15 xfdf:original="Check Box 15">Off</CheckBox15>'; //death fail \n 1
+		    	//txt += '<CheckBox16 xfdf:original="Check Box 16">Off</CheckBox16>'; //death fail \n 2
+		    	//txt += '<CheckBox17 xfdf:original="Check Box 17">Off</CheckBox17>'; //death fail \n 3
+		    	//txt += '<WpnName xfdf:original="Wpn Name">wep n1</WpnName> \n';
+		    	//txt += '<Wpn1AtkBonus xfdf:original="Wpn1 AtkBonus">wep a1</Wpn1AtkBonus> \n';
+		    	//txt += '<Wpn1Damage xfdf:original="Wpn1 Damage">wep d1</Wpn1Damage> \n';
+		    	//txt += '<WpnName2 xfdf:original="Wpn Name 2">wep n2</WpnName2> \n';
+		    	//txt += '<Wpn2AtkBonus xfdf:original="Wpn2 AtkBonus ">wep a2</Wpn2AtkBonus> \n';
+		    	//txt += '<Wpn2Damage xfdf:original="Wpn2 Damage ">wep d2</Wpn2Damage> \n';
+		    	//txt += '<WpnName3 xfdf:original="Wpn Name 3">wep n3</WpnName2> \n';
+		    	//txt += '<Wpn3AtkBonus xfdf:original="Wpn3 AtkBonus  ">wep a3</Wpn2AtkBonus> \n';
+		    	//txt += '<Wpn3Damage xfdf:original="Wpn3 Damage ">wep d3</Wpn2Damage> \n';
+		    	//txt += '<AttacksSpellcasting>att notes</AttacksSpellcasting> \n';
+		    	//txt += '<CP>CP</CP> \n';
+		    	//txt += '<SP>SP</SP> \n';
+		    	//txt += '<EP>EP</EP> \n';
+		    	//txt += '<GP>GP</GP> \n';
+		    	//txt += '<PP>PP</PP> \n';
+		    	//txt += '<Equipment>equip</Equipment> \n';
 
-		    	txt += '<PersonalityTraits xfdf:original="PersonalityTraits ">per trait</PersonalityTraits> \n';
-		    	txt += '<Ideals>ideals</Ideals> \n';
-		    	txt += '<Bonds>bonds</Bonds> \n';
-		    	txt += '<Flaws>flaws</Flaws> \n';
-		    	txt += '<FeaturesandTraits xfdf:original="Features and Traits">feats and traits </FeaturesandTraits> \n';
+		    	//txt += '<PersonalityTraits xfdf:original="PersonalityTraits ">per trait</PersonalityTraits> \n';
+		    	//txt += '<Ideals>ideals</Ideals> \n';
+		    	//txt += '<Bonds>bonds</Bonds> \n';
+		    	//txt += '<Flaws>flaws</Flaws> \n';
+		    	//txt += '<FeaturesandTraits xfdf:original="Features and Traits">feats and traits </FeaturesandTraits> \n';
 
 
 
-		    	txt += '<CharacterName2 xfdf:original="CharacterName 2">Char name pg2</CharacterName2 \n>'
-		    	txt += '<Age>age</Age> \n';
-		    	txt += '<Height>height</Height> \n';
-		    	txt += '<Weight>weight</Weight> \n';
-		    	txt += '<Eyes>eyes</Eyes> \n';
-		    	txt += '<Skin>skin</Skin> \n';
-		    	txt += '<Hair>hair</Hair> \n';
-		    	txt += ''; //apperance \n??
-		    	txt += '<Backstory>backstory</Backstory> \n';
+		    	//txt += '<CharacterName2 xfdf:original="CharacterName 2">Char name pg2</CharacterName2 \n>'
+		    	//txt += '<Age>age</Age> \n';
+		    	//txt += '<Height>height</Height> \n';
+		    	//txt += '<Weight>weight</Weight> \n';
+		    	//txt += '<Eyes>eyes</Eyes> \n';
+		    	//txt += '<Skin>skin</Skin> \n';
+		    	//txt += '<Hair>hair</Hair> \n';
+		    	//txt += ''; //apperance \n??
+		    	//txt += '<Backstory>backstory</Backstory> \n';
 
-		    	txt += '<Allies>allies</Allies> \n';
-		    	txt += '<FactionName>faction name</FactionName> \n';
-		    	txt += '';//symbol \n??
-		    	txt += '<FeatTraits xfdf:original="Feat+Traits">additon feat traits</FeatTraits> \n';
-		    	txt += '<Treasure>treasure</Treasure> \n';
+		    	//txt += '<Allies>allies</Allies> \n';
+		    	//txt += '<FactionName>faction name</FactionName> \n';
+		    	//txt += '';//symbol \n??
+		    	//txt += '<FeatTraits xfdf:original="Feat+Traits">additon feat traits</FeatTraits> \n';
+		    	//txt += '<Treasure>treasure</Treasure> \n';
  
 
 
-		    	txt += '<SpellcastingClass2 xfdf:original="Spellcasting Class 2">spell class</SpellcastingClass2> \n';
-		    	txt += '<SpellcastingAbility2 xfdf:original="SpellcastingAbility 2">spell abil</SpellcastingAbility2> \n';
-		    	txt += '<SpellSaveDC2 xfdf:original="SpellSaveDC  2">spell dc</SpellSaveDC2> \n';
-		    	txt += '<SpellAtkBonus2 xfdf:original="SpellAtkBonus 2">spell att</SpellAtkBonus2> \n';
-		    	txt += '<Spells1014 xfdf:original="Spells 1014">can 1</Spells1014> \n';
-		    	txt += '<Spells1016 xfdf:original="Spells 1016">can 2</Spells1016> \n';
-		    	txt += '<Spells1017 xfdf:original="Spells 1017">can 3</Spells1017> \n';
-		    	txt += '<Spells1018 xfdf:original="Spells 1018">can 4</Spells1018> \n';
-		    	txt += '<Spells1019 xfdf:original="Spells 1019">can 5</Spells1019> \n';
-		    	txt += '<Spells1020 xfdf:original="Spells 1020">can 6</Spells1020> \n';
-		    	txt += '<Spells1021 xfdf:original="Spells 1021">can 7</Spells1021> \n';
-		    	txt += '<Spells1022 xfdf:original="Spells 1022">can 8</Spells1022> \n';
-				txt += '<SlotsTotal19 xfdf:original="SlotsTotal 19">ST1</SlotsTotal19> \n';
-		    	txt += '<SlotsRemaining19 xfdf:original="SlotsRemaining 19">slots ex 1</SlotsRemaining19> \n';
-		    	txt += '<Spells1015 xfdf:original="Spells 1015">1 1</Spells1015> \n';
-		    	txt += '<Spells1023 xfdf:original="Spells 1023">1 2</Spells1023> \n';
-		    	txt += '<Spells1024 xfdf:original="Spells 1024">1 3</Spells1024> \n';
-		    	txt += '<Spells1025 xfdf:original="Spells 1025">1 4</Spells1025> \n';
-		    	txt += '<Spells1026 xfdf:original="Spells 1026">1 5</Spells1026> \n';
-		    	txt += '<Spells1027 xfdf:original="Spells 1027">1 6</Spells1027> \n';
-		    	txt += '<Spells1028 xfdf:original="Spells 1028">1 7</Spells1028> \n';
-		    	txt += '<Spells1029 xfdf:original="Spells 1029">1 8</Spells1029> \n';
-		    	txt += '<Spells1030 xfdf:original="Spells 1030">1 9</Spells1030> \n';
-		    	txt += '<Spells1031 xfdf:original="Spells 1031">1 10</Spells1031> \n';
-		    	txt += '<Spells1032 xfdf:original="Spells 1032">1 11</Spells1032> \n';
-		    	txt += '<Spells1033 xfdf:original="Spells 1033">1 12</Spells1033> \n';
-				txt += '<SlotsTotal20 xfdf:original="SlotsTotal 20">ST2</SlotsTotal20> \n';
-		    	txt += '<SlotsRemaining20 xfdf:original="SlotsRemaining 20">slots ex 2</SlotsRemaining20> \n';
-		    	txt += '<Spells1046 xfdf:original="Spells 1046">2 1</Spells1046> \n';
-		    	txt += '<Spells1034 xfdf:original="Spells 1034">2 2</Spells1034> \n';
-		    	txt += '<Spells1035 xfdf:original="Spells 1035">2 3</Spells1035> \n';
-		    	txt += '<Spells1036 xfdf:original="Spells 1036">2 4</Spells1036> \n';
-		    	txt += '<Spells1037 xfdf:original="Spells 1037">2 5</Spells1037> \n';
-		    	txt += '<Spells1038 xfdf:original="Spells 1038">2 6</Spells1038> \n';
-		    	txt += '<Spells1039 xfdf:original="Spells 1039">2 7</Spells1039> \n';
-		    	txt += '<Spells1040 xfdf:original="Spells 1040">2 8</Spells1040> \n';
-		    	txt += '<Spells1041 xfdf:original="Spells 1041">2 9</Spells1041> \n';
-		    	txt += '<Spells1042 xfdf:original="Spells 1042">2 10</Spells1042> \n';
-		    	txt += '<Spells1043 xfdf:original="Spells 1043">2 11</Spells1043> \n';
-		    	txt += '<Spells1044 xfdf:original="Spells 1044">2 12</Spells1044> \n';
-		    	txt += '<Spells1045 xfdf:original="Spells 1045">2 13</Spells1045> \n';
-				txt += '<SlotsTotal21 xfdf:original="SlotsTotal 21">ST3</SlotsTotal21> \n';
-		    	txt += '<SlotsRemaining21 xfdf:original="SlotsRemaining 21">slots ex 3</SlotsRemaining21> \n';
-		    	txt += '<Spells1048 xfdf:original="Spells 1048">3 1</Spells1048> \n';
-		    	txt += '<Spells1047 xfdf:original="Spells 1047">3 2</Spells1047> \n';
-		    	txt += '<Spells1049 xfdf:original="Spells 1049">3 3</Spells1049> \n';
-		    	txt += '<Spells1050 xfdf:original="Spells 1050">3 4</Spells1050> \n';
-		    	txt += '<Spells1051 xfdf:original="Spells 1051">3 5</Spells1051> \n';
-		    	txt += '<Spells1052 xfdf:original="Spells 1052">3 6</Spells1052> \n';
-		    	txt += '<Spells1053 xfdf:original="Spells 1053">3 7</Spells1053> \n';
-		    	txt += '<Spells1054 xfdf:original="Spells 1054">3 8</Spells1054> \n';
-		    	txt += '<Spells1055 xfdf:original="Spells 1055">3 9</Spells1055> \n';
-		    	txt += '<Spells1056 xfdf:original="Spells 1056">3 10</Spells1056> \n';
-		    	txt += '<Spells1057 xfdf:original="Spells 1057">3 11</Spells1057> \n';
-		    	txt += '<Spells1058 xfdf:original="Spells 1058">3 12</Spells1058> \n';
-		    	txt += '<Spells1059 xfdf:original="Spells 1059">3 13</Spells1059> \n';
-				txt += '<SlotsTotal22 xfdf:original="SlotsTotal 22">ST4</SlotsTotal22> \n';
-		    	txt += '<SlotsRemaining22 xfdf:original="SlotsRemaining 22">slots ex 4</SlotsRemaining22> \n';
-		    	txt += '<Spells1061 xfdf:original="Spells 1061">4 1</Spells1061> \n';
-		    	txt += '<Spells1060 xfdf:original="Spells 1060">4 2</Spells1060> \n';
-		    	txt += '<Spells1062 xfdf:original="Spells 1062">4 3</Spells1062> \n';
-		    	txt += '<Spells1063 xfdf:original="Spells 1063">4 4</Spells1063> \n';
-		    	txt += '<Spells1064 xfdf:original="Spells 1064">4 5</Spells1064> \n';
-		    	txt += '<Spells1065 xfdf:original="Spells 1065">4 6</Spells1065> \n';
-		    	txt += '<Spells1066 xfdf:original="Spells 1066">4 7</Spells1066> \n';
-		    	txt += '<Spells1067 xfdf:original="Spells 1067">4 8</Spells1067> \n';
-		    	txt += '<Spells1068 xfdf:original="Spells 1068">4 9</Spells1068> \n';
-		    	txt += '<Spells1069 xfdf:original="Spells 1069">4 10</Spells1069> \n';
-		    	txt += '<Spells1070 xfdf:original="Spells 1070">4 11</Spells1070> \n';
-		    	txt += '<Spells1071 xfdf:original="Spells 1071">4 12</Spells1071> \n';
-		    	txt += '<Spells1072 xfdf:original="Spells 1072">4 13</Spells1072> \n';
-				txt += '<SlotsTotal23 xfdf:original="SlotsTotal 23">ST5</SlotsTotal23> \n';
-		    	txt += '<SlotsRemaining23 xfdf:original="SlotsRemaining 23">slots ex 5</SlotsRemaining23> \n';
-		    	txt += '<Spells1074 xfdf:original="Spells 1074">5 1</Spells1074> \n';
-		    	txt += '<Spells1073 xfdf:original="Spells 1073">5 2</Spells1073> \n';
-		    	txt += '<Spells1075 xfdf:original="Spells 1075">5 3</Spells1075> \n';
-		    	txt += '<Spells1076 xfdf:original="Spells 1076">5 4</Spells1076> \n';
-		    	txt += '<Spells1077 xfdf:original="Spells 1077">5 5</Spells1077> \n';
-		    	txt += '<Spells1078 xfdf:original="Spells 1078">5 6</Spells1078> \n';
-		    	txt += '<Spells1079 xfdf:original="Spells 1079">5 7</Spells1079> \n';
-		    	txt += '<Spells1080 xfdf:original="Spells 1080">5 8</Spells1080> \n';
-		    	txt += '<Spells1081 xfdf:original="Spells 1081">5 9</Spells1081> \n';
-				txt += '<SlotsTotal24 xfdf:original="SlotsTotal 24">ST6</SlotsTotal24> \n';
-		    	txt += '<SlotsRemaining24 xfdf:original="SlotsRemaining 24">slots ex 6</SlotsRemaining24> \n';
-		    	txt += '<Spells1083 xfdf:original="Spells 1083">6 1</Spells1083> \n';
-		    	txt += '<Spells1082 xfdf:original="Spells 1082">6 2</Spells1082> \n';
-		    	txt += '<Spells1084 xfdf:original="Spells 1084">6 3</Spells1084> \n';
-		    	txt += '<Spells1085 xfdf:original="Spells 1085">6 4</Spells1085> \n';
-		    	txt += '<Spells1086 xfdf:original="Spells 1086">6 5</Spells1086> \n';
-		    	txt += '<Spells1087 xfdf:original="Spells 1087">6 6</Spells1087> \n';
-		    	txt += '<Spells1088 xfdf:original="Spells 1088">6 7</Spells1088> \n';
-		    	txt += '<Spells1089 xfdf:original="Spells 1089">6 8</Spells1089> \n';
-		    	txt += '<Spells1090 xfdf:original="Spells 1090">6 9</Spells1090> \n';
-				txt += '<SlotsTotal25 xfdf:original="SlotsTotal 25">ST7</SlotsTotal25> \n';
-		    	txt += '<SlotsRemaining25 xfdf:original="SlotsRemaining 25">slots ex 7</SlotsRemaining25> \n';
-		    	txt += '<Spells1092 xfdf:original="Spells 1092">7 1</Spells1092> \n';
-		    	txt += '<Spells1091 xfdf:original="Spells 1091">7 2</Spells1091> \n';
-		    	txt += '<Spells1093 xfdf:original="Spells 1093">7 3</Spells1093> \n';
-		    	txt += '<Spells1094 xfdf:original="Spells 1094">7 4</Spells1094> \n';
-		    	txt += '<Spells1095 xfdf:original="Spells 1095">7 5</Spells1095> \n';
-		    	txt += '<Spells1096 xfdf:original="Spells 1096">7 6</Spells1096> \n';
-		    	txt += '<Spells1097 xfdf:original="Spells 1097">7 7</Spells1097> \n';
-		    	txt += '<Spells1098 xfdf:original="Spells 1098">7 8</Spells1098> \n';
-		    	txt += '<Spells1099 xfdf:original="Spells 1099">7 9</Spells1099> \n';
-				txt += '<SlotsTotal26 xfdf:original="SlotsTotal 26">ST8</SlotsTotal26> \n';
-		    	txt += '<SlotsRemaining26 xfdf:original="SlotsRemaining 26">slots ex 8</SlotsRemaining26> \n';
-		    	txt += '<Spells10101 xfdf:original="Spells 10101">8 1</Spells10101> \n';
-		    	txt += '<Spells10100 xfdf:original="Spells 10100">8 2</Spells10100> \n';
-		    	txt += '<Spells10102 xfdf:original="Spells 10102">8 3</Spells10102> \n';
-		    	txt += '<Spells10103 xfdf:original="Spells 10103">8 4</Spells10103> \n';
-		    	txt += '<Spells10104 xfdf:original="Spells 10104">8 5</Spells10104> \n';
-		    	txt += '<Spells10105 xfdf:original="Spells 10105">8 6</Spells10105> \n';
-		    	txt += '<Spells10106 xfdf:original="Spells 10106">8 7</Spells10106> \n';
-				txt += '<SlotsTotal27 xfdf:original="SlotsTotal 27">ST9</SlotsTotal27> \n';
-		    	txt += '<SlotsRemaining27 xfdf:original="SlotsRemaining 27">slots ex 9</SlotsRemaining27> \n';
-		    	txt += '<Spells10108 xfdf:original="Spells 10108">9 1</Spells10108> \n';
-		    	txt += '<Spells10107 xfdf:original="Spells 10107">9 2</Spells10107> \n';
-		    	txt += '<Spells10109 xfdf:original="Spells 10109">9 3</Spells10109> \n';
-		    	txt += '<Spells101010 xfdf:original="Spells 101010">9 4</Spells101010> \n';
-		    	txt += '<Spells101011 xfdf:original="Spells 101011">9 5</Spells101011> \n';
-		    	txt += '<Spells101012 xfdf:original="Spells 101012">9 6</Spells101012> \n';
-		    	txt += '<Spells101013 xfdf:original="Spells 101013">9 7</Spells101013> \n';
-
-
-
-
-
-
-
-
+		    	//txt += '<SpellcastingClass2 xfdf:original="Spellcasting Class 2">spell class</SpellcastingClass2> \n';
+		    	//txt += '<SpellcastingAbility2 xfdf:original="SpellcastingAbility 2">spell abil</SpellcastingAbility2> \n';
+		    	//txt += '<SpellSaveDC2 xfdf:original="SpellSaveDC  2">spell dc</SpellSaveDC2> \n';
+		    	//txt += '<SpellAtkBonus2 xfdf:original="SpellAtkBonus 2">spell att</SpellAtkBonus2> \n';
+		    	//txt += '<Spells1014 xfdf:original="Spells 1014">can 1</Spells1014> \n';
+		    	//txt += '<Spells1016 xfdf:original="Spells 1016">can 2</Spells1016> \n';
+		    	//txt += '<Spells1017 xfdf:original="Spells 1017">can 3</Spells1017> \n';
+		    	//txt += '<Spells1018 xfdf:original="Spells 1018">can 4</Spells1018> \n';
+		    	//txt += '<Spells1019 xfdf:original="Spells 1019">can 5</Spells1019> \n';
+		    	//txt += '<Spells1020 xfdf:original="Spells 1020">can 6</Spells1020> \n';
+		    	//txt += '<Spells1021 xfdf:original="Spells 1021">can 7</Spells1021> \n';
+		    	//txt += '<Spells1022 xfdf:original="Spells 1022">can 8</Spells1022> \n';
+				//txt += '<SlotsTotal19 xfdf:original="SlotsTotal 19">ST1</SlotsTotal19> \n';
+		    	//txt += '<SlotsRemaining19 xfdf:original="SlotsRemaining 19">slots ex 1</SlotsRemaining19> \n';
+		    	//txt += '<Spells1015 xfdf:original="Spells 1015">1 1</Spells1015> \n';
+		    	//txt += '<Spells1023 xfdf:original="Spells 1023">1 2</Spells1023> \n';
+		    	//txt += '<Spells1024 xfdf:original="Spells 1024">1 3</Spells1024> \n';
+		    	//txt += '<Spells1025 xfdf:original="Spells 1025">1 4</Spells1025> \n';
+		    	//txt += '<Spells1026 xfdf:original="Spells 1026">1 5</Spells1026> \n';
+		    	//txt += '<Spells1027 xfdf:original="Spells 1027">1 6</Spells1027> \n';
+		    	//txt += '<Spells1028 xfdf:original="Spells 1028">1 7</Spells1028> \n';
+		    	//txt += '<Spells1029 xfdf:original="Spells 1029">1 8</Spells1029> \n';
+		    	//txt += '<Spells1030 xfdf:original="Spells 1030">1 9</Spells1030> \n';
+		    	//txt += '<Spells1031 xfdf:original="Spells 1031">1 10</Spells1031> \n';
+		    	//txt += '<Spells1032 xfdf:original="Spells 1032">1 11</Spells1032> \n';
+		    	//txt += '<Spells1033 xfdf:original="Spells 1033">1 12</Spells1033> \n';
+				//txt += '<SlotsTotal20 xfdf:original="SlotsTotal 20">ST2</SlotsTotal20> \n';
+		    	//txt += '<SlotsRemaining20 xfdf:original="SlotsRemaining 20">slots ex 2</SlotsRemaining20> \n';
+		    	//txt += '<Spells1046 xfdf:original="Spells 1046">2 1</Spells1046> \n';
+		    	//txt += '<Spells1034 xfdf:original="Spells 1034">2 2</Spells1034> \n';
+		    	//txt += '<Spells1035 xfdf:original="Spells 1035">2 3</Spells1035> \n';
+		    	//txt += '<Spells1036 xfdf:original="Spells 1036">2 4</Spells1036> \n';
+		    	//txt += '<Spells1037 xfdf:original="Spells 1037">2 5</Spells1037> \n';
+		    	//txt += '<Spells1038 xfdf:original="Spells 1038">2 6</Spells1038> \n';
+		    	//txt += '<Spells1039 xfdf:original="Spells 1039">2 7</Spells1039> \n';
+		    	//txt += '<Spells1040 xfdf:original="Spells 1040">2 8</Spells1040> \n';
+		    	//txt += '<Spells1041 xfdf:original="Spells 1041">2 9</Spells1041> \n';
+		    	//txt += '<Spells1042 xfdf:original="Spells 1042">2 10</Spells1042> \n';
+		    	//txt += '<Spells1043 xfdf:original="Spells 1043">2 11</Spells1043> \n';
+		    	//txt += '<Spells1044 xfdf:original="Spells 1044">2 12</Spells1044> \n';
+		    	//txt += '<Spells1045 xfdf:original="Spells 1045">2 13</Spells1045> \n';
+				//txt += '<SlotsTotal21 xfdf:original="SlotsTotal 21">ST3</SlotsTotal21> \n';
+		    	//txt += '<SlotsRemaining21 xfdf:original="SlotsRemaining 21">slots ex 3</SlotsRemaining21> \n';
+		    	//txt += '<Spells1048 xfdf:original="Spells 1048">3 1</Spells1048> \n';
+		    	//txt += '<Spells1047 xfdf:original="Spells 1047">3 2</Spells1047> \n';
+		    	//txt += '<Spells1049 xfdf:original="Spells 1049">3 3</Spells1049> \n';
+		    	//txt += '<Spells1050 xfdf:original="Spells 1050">3 4</Spells1050> \n';
+		    	//txt += '<Spells1051 xfdf:original="Spells 1051">3 5</Spells1051> \n';
+		    	//txt += '<Spells1052 xfdf:original="Spells 1052">3 6</Spells1052> \n';
+		    	//txt += '<Spells1053 xfdf:original="Spells 1053">3 7</Spells1053> \n';
+		    	//txt += '<Spells1054 xfdf:original="Spells 1054">3 8</Spells1054> \n';
+		    	//txt += '<Spells1055 xfdf:original="Spells 1055">3 9</Spells1055> \n';
+		    	//txt += '<Spells1056 xfdf:original="Spells 1056">3 10</Spells1056> \n';
+		    	//txt += '<Spells1057 xfdf:original="Spells 1057">3 11</Spells1057> \n';
+		    	//txt += '<Spells1058 xfdf:original="Spells 1058">3 12</Spells1058> \n';
+		    	//txt += '<Spells1059 xfdf:original="Spells 1059">3 13</Spells1059> \n';
+				//txt += '<SlotsTotal22 xfdf:original="SlotsTotal 22">ST4</SlotsTotal22> \n';
+		    	//txt += '<SlotsRemaining22 xfdf:original="SlotsRemaining 22">slots ex 4</SlotsRemaining22> \n';
+		    	//txt += '<Spells1061 xfdf:original="Spells 1061">4 1</Spells1061> \n';
+		    	//txt += '<Spells1060 xfdf:original="Spells 1060">4 2</Spells1060> \n';
+		    	//txt += '<Spells1062 xfdf:original="Spells 1062">4 3</Spells1062> \n';
+		    	//txt += '<Spells1063 xfdf:original="Spells 1063">4 4</Spells1063> \n';
+		    	//txt += '<Spells1064 xfdf:original="Spells 1064">4 5</Spells1064> \n';
+		    	//txt += '<Spells1065 xfdf:original="Spells 1065">4 6</Spells1065> \n';
+		    	//txt += '<Spells1066 xfdf:original="Spells 1066">4 7</Spells1066> \n';
+		    	//txt += '<Spells1067 xfdf:original="Spells 1067">4 8</Spells1067> \n';
+		    	//txt += '<Spells1068 xfdf:original="Spells 1068">4 9</Spells1068> \n';
+		    	//txt += '<Spells1069 xfdf:original="Spells 1069">4 10</Spells1069> \n';
+		    	//txt += '<Spells1070 xfdf:original="Spells 1070">4 11</Spells1070> \n';
+		    	//txt += '<Spells1071 xfdf:original="Spells 1071">4 12</Spells1071> \n';
+		    	//txt += '<Spells1072 xfdf:original="Spells 1072">4 13</Spells1072> \n';
+				//txt += '<SlotsTotal23 xfdf:original="SlotsTotal 23">ST5</SlotsTotal23> \n';
+		    	//txt += '<SlotsRemaining23 xfdf:original="SlotsRemaining 23">slots ex 5</SlotsRemaining23> \n';
+		    	//txt += '<Spells1074 xfdf:original="Spells 1074">5 1</Spells1074> \n';
+		    	//txt += '<Spells1073 xfdf:original="Spells 1073">5 2</Spells1073> \n';
+		    	//txt += '<Spells1075 xfdf:original="Spells 1075">5 3</Spells1075> \n';
+		    	//txt += '<Spells1076 xfdf:original="Spells 1076">5 4</Spells1076> \n';
+		    	//txt += '<Spells1077 xfdf:original="Spells 1077">5 5</Spells1077> \n';
+		    	//txt += '<Spells1078 xfdf:original="Spells 1078">5 6</Spells1078> \n';
+		    	//txt += '<Spells1079 xfdf:original="Spells 1079">5 7</Spells1079> \n';
+		    	//txt += '<Spells1080 xfdf:original="Spells 1080">5 8</Spells1080> \n';
+		    	//txt += '<Spells1081 xfdf:original="Spells 1081">5 9</Spells1081> \n';
+				//txt += '<SlotsTotal24 xfdf:original="SlotsTotal 24">ST6</SlotsTotal24> \n';
+		    	//txt += '<SlotsRemaining24 xfdf:original="SlotsRemaining 24">slots ex 6</SlotsRemaining24> \n';
+		    	//txt += '<Spells1083 xfdf:original="Spells 1083">6 1</Spells1083> \n';
+		    	//txt += '<Spells1082 xfdf:original="Spells 1082">6 2</Spells1082> \n';
+		    	//txt += '<Spells1084 xfdf:original="Spells 1084">6 3</Spells1084> \n';
+		    	//txt += '<Spells1085 xfdf:original="Spells 1085">6 4</Spells1085> \n';
+		    	//txt += '<Spells1086 xfdf:original="Spells 1086">6 5</Spells1086> \n';
+		    	//txt += '<Spells1087 xfdf:original="Spells 1087">6 6</Spells1087> \n';
+		    	//txt += '<Spells1088 xfdf:original="Spells 1088">6 7</Spells1088> \n';
+		    	//txt += '<Spells1089 xfdf:original="Spells 1089">6 8</Spells1089> \n';
+		    	//txt += '<Spells1090 xfdf:original="Spells 1090">6 9</Spells1090> \n';
+				//txt += '<SlotsTotal25 xfdf:original="SlotsTotal 25">ST7</SlotsTotal25> \n';
+		    	//txt += '<SlotsRemaining25 xfdf:original="SlotsRemaining 25">slots ex 7</SlotsRemaining25> \n';
+		    	//txt += '<Spells1092 xfdf:original="Spells 1092">7 1</Spells1092> \n';
+		    	//txt += '<Spells1091 xfdf:original="Spells 1091">7 2</Spells1091> \n';
+		    	//txt += '<Spells1093 xfdf:original="Spells 1093">7 3</Spells1093> \n';
+		    	//txt += '<Spells1094 xfdf:original="Spells 1094">7 4</Spells1094> \n';
+		    	//txt += '<Spells1095 xfdf:original="Spells 1095">7 5</Spells1095> \n';
+		    	//txt += '<Spells1096 xfdf:original="Spells 1096">7 6</Spells1096> \n';
+		    	//txt += '<Spells1097 xfdf:original="Spells 1097">7 7</Spells1097> \n';
+		    	//txt += '<Spells1098 xfdf:original="Spells 1098">7 8</Spells1098> \n';
+		    	//txt += '<Spells1099 xfdf:original="Spells 1099">7 9</Spells1099> \n';
+				//txt += '<SlotsTotal26 xfdf:original="SlotsTotal 26">ST8</SlotsTotal26> \n';
+		    	//txt += '<SlotsRemaining26 xfdf:original="SlotsRemaining 26">slots ex 8</SlotsRemaining26> \n';
+		    	//txt += '<Spells10101 xfdf:original="Spells 10101">8 1</Spells10101> \n';
+		    	//txt += '<Spells10100 xfdf:original="Spells 10100">8 2</Spells10100> \n';
+		    	//txt += '<Spells10102 xfdf:original="Spells 10102">8 3</Spells10102> \n';
+		    	//txt += '<Spells10103 xfdf:original="Spells 10103">8 4</Spells10103> \n';
+		    	//txt += '<Spells10104 xfdf:original="Spells 10104">8 5</Spells10104> \n';
+		    	//txt += '<Spells10105 xfdf:original="Spells 10105">8 6</Spells10105> \n';
+		    	//txt += '<Spells10106 xfdf:original="Spells 10106">8 7</Spells10106> \n';
+				//txt += '<SlotsTotal27 xfdf:original="SlotsTotal 27">ST9</SlotsTotal27> \n';
+		    	//txt += '<SlotsRemaining27 xfdf:original="SlotsRemaining 27">slots ex 9</SlotsRemaining27> \n';
+		    	//txt += '<Spells10108 xfdf:original="Spells 10108">9 1</Spells10108> \n';
+		    	//txt += '<Spells10107 xfdf:original="Spells 10107">9 2</Spells10107> \n';
+		    	//txt += '<Spells10109 xfdf:original="Spells 10109">9 3</Spells10109> \n';
+		    	//txt += '<Spells101010 xfdf:original="Spells 101010">9 4</Spells101010> \n';
+		    	//txt += '<Spells101011 xfdf:original="Spells 101011">9 5</Spells101011> \n';
+		    	//txt += '<Spells101012 xfdf:original="Spells 101012">9 6</Spells101012> \n';
+		    	//txt += '<Spells101013 xfdf:original="Spells 101013">9 7</Spells101013> \n';
 
 
 
@@ -499,19 +577,19 @@
 					<label>Alignment:</label>
 					<table Class = "alignmentTable">
 					  <tr>
-						<td><input name ="alignment"  type = "radio" id = "LGradio" value="LG">Lawful Good</input></td>
-						<td><input name ="alignment"  type = "radio" id = "NGradio" value="NG">Neutral Good</input></td>
-						<td><input name ="alignment"  type = "radio" id = "CGradio" value="CG">Chaotic Good</input></td>
+						<td><input name ="alignment"  type = "radio" id = "LGradio" value="Lawful Good">Lawful Good</input></td>
+						<td><input name ="alignment"  type = "radio" id = "NGradio" value="Neutral Good">Neutral Good</input></td>
+						<td><input name ="alignment"  type = "radio" id = "CGradio" value="Chaotic Good">Chaotic Good</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment"  type = "radio" id = "LNradio" value="LN">Lawful Neutral</input></td>
-						<td><input name ="alignment"  type = "radio" id = "TNradio" value="TN">True Neutral</input></td>
-						<td><input name ="alignment"  type = "radio" id = "CNradio" value="CN">Chaotic Neutral</input></td>
+						<td><input name ="alignment"  type = "radio" id = "LNradio" value="Lawful Neutral">Lawful Neutral</input></td>
+						<td><input name ="alignment"  type = "radio" id = "TNradio" value="True Neutral">True Neutral</input></td>
+						<td><input name ="alignment"  type = "radio" id = "CNradio" value="Chaotic Neutral">Chaotic Neutral</input></td>
 					  </tr>
 					  <tr>
-						<td><input name ="alignment"  type = "radio" id = "LEradio" value="LE">Lawful Evil</input></td>
-						<td><input name ="alignment"  type = "radio" id = "NEradio" value="NE">Neutral Evil</input></td>
-						<td><input name ="alignment"  type = "radio" id = "CLradio" value="CE">Chaotic Evil</input></td>
+						<td><input name ="alignment"  type = "radio" id = "LEradio" value="Lawful Evil">Lawful Evil</input></td>
+						<td><input name ="alignment"  type = "radio" id = "NEradio" value="Neutral Evil">Neutral Evil</input></td>
+						<td><input name ="alignment"  type = "radio" id = "CLradio" value="Chaotic Evil">Chaotic Evil</input></td>
 					  </tr>
 					</table>
 					<label>Stastistics:</label><br />
@@ -522,7 +600,7 @@
 						<td><input type="text" id="charCON" oninput="calcMod(this)">Constitution</input></td>
 						<td><input type="text" id="charINT" oninput="calcMod(this)">Intelligence</input></td>
 						<td><input type="text" id="charWIS" oninput="calcMod(this)">Wisdom</input></td>
-						<td><type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
+						<td><input type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
 					  </tr>
 					  <tr>
 						<td><label id ="STRmod">+0</label></td>
@@ -556,6 +634,7 @@
 						<li><input name ="proficiencies" value="Perception" type ="checkbox" id="profPerception_WIS">Perception(Wis)</input></li>
 						<li><input name ="proficiencies" value="Performance" type ="checkbox" id="profPerformance_CHA">Performance(Cha)</input></li>
 						<li><input name ="proficiencies" value="Persuasion" type ="checkbox" id="profPersuasion_CHA">Persuasion(Cha)</input></li>
+						<li><input name ="proficiencies" value="Religion" type ="checkbox" id="profReligion_INT">Religion(Int)</input></li>
 						<li><input name ="proficiencies" value="Sleight Of Hand" type ="checkbox" id="profSleightOfHand_DEX">Sleight Of Hand(Dex)</input></li>
 						<li><input name ="proficiencies" value="Stealth" type ="checkbox" id="profStealth_DEX">Stealth(Dex)</input></li>
 						<li><input name ="proficiencies" value="Survival" type ="checkbox" id="profSurvival_WIS">Survival(Wis)</input></li>
