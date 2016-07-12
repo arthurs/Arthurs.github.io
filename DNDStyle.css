@@ -28,14 +28,20 @@ h1{
 	color:White;
 }
 #add1_but,#add5_but,#add10_but{
-	background-color: green;
-	height:50px;
-	width: 55px;
+	background-image:url(health_plus_button.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border-color:transparent;
+	 width: 100px;
+    height: 100px;
 }
 #add-1_but,#add-5_but,#add-10_but{
-	background-color: red;
-	height:50px;
-	width: 55px;
+	background-image:url(health_neg_button.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border-color:transparent;
+	 width: 100px;
+    height: 100px;
 }
 #remove_but{
 	background-color: Black;
@@ -44,8 +50,9 @@ h1{
 	background-color: blue;
 }
 #turn{
-	height:60px;
-	width: 80px;
+   width: 80px;
+    height: 80px;
+
 }
 
 .doublelist{
