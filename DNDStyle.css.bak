@@ -10,7 +10,7 @@ button{
 	background-color: #3c2f28;
 	border-color:#c6be3a;
 	padding:2px;
-	margin-left:2px;
+	margin-left:5px;
 }
 table{
 	border-color: transparent;
