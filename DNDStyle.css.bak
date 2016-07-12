@@ -3,11 +3,14 @@ Body{
 }
 * {
     box-sizing: border-box;
-	color:White;
+	color:#ffefd5;
 
 }
 button{
-	background-color: brown;
+	background-color: #3c2f28;
+	border-color:#c6be3a;
+	padding:2px;
+	margin-left:2px;
 }
 table{
 	border-color: transparent;
@@ -25,33 +28,79 @@ select{
 	color:Black;
 }
 h1{
-	color:White;
+	color:#ffefd5;
 }
 #add1_but,#add5_but,#add10_but{
-	background-image:url(health_plus_button);
+	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
 	background-color: transparent;
-	border-color:transparent;
-	 width: 100px;
+	width: 100px;
     height: 100px;
+	border: none;
+
 }
+/* #order button:hover {background-color: #3e8e41
+} */
+
+#order button:active {
+  transform: translateY(4px);
+}
+
+/* ripple effect */
+/* #order buton{
+	position: relative;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#order button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+#order button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+} */
+
+
 #add-1_but,#add-5_but,#add-10_but{
 	background-image:url(health_neg_button.png);
 	background-repeat: no-repeat;
 	background-color: transparent;
-	border-color:transparent;
+	border: none;
 	 width: 100px;
     height: 100px;
+
 }
 #remove_but{
-	background-color: Black;
+	background-color: #3c2f28;
+	border-color:#c6be3a;
+
 }
 #copy_but,#changeini_but,#change_name_but{
-	background-color: blue;
+	background-color: #3c2f28;
+	border-color:#c6be3a;
+
 }
 #turn{
    width: 80px;
     height: 80px;
+
 
 }
 
