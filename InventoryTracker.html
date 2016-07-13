@@ -93,7 +93,7 @@
 			   			item += "</td><td>";
 			   			item += "1";
 			   			item += "</td><td>";
-			   			item += $("#items").val();
+			   			item += parseInt($("#items").val());
 			   			item += "</td><td>";
 			   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"increment(this, 1)\">+1</button>"
 			   			item += "<button id=\"remove_but\" type=\"button\" onclick=\"increment(this, -1)\">-1</button>"
@@ -221,6 +221,38 @@
 				$("#inv tr").last().remove();
 				total();
 			}
+
+			function exportInv(sender) {
+				var cp = $("#copper").val();
+				var sp = $("#silver").val();
+				var gp = $("#gold").val();
+				var pp = $("#platinum").val();
+
+				var equip = "";
+
+				$("#inv tr").each(function(idx,itm){
+					if ($($(itm).children().get(0)).html() == "Item Name") {
+						//ignore headers
+					} else if ($($(itm).children().get(0)).html() == "<b>Total Weight</b>") {
+						equip += "\n\n total Weight: " + $($(itm).children().get(1)).html() + "lb \n";
+					} else {
+						equip += $($(itm).children().get(1)).html() + " x " + $($(itm).children().get(0)).html() + " " + $($(itm).children().get(2)).html() + "lb \n";
+					}
+				});
+
+				var txt = '<?xml version="1.0" encoding="UTF-8"?> \n';
+				txt += '<fields xmlns:xfdf="http://ns.adobe.com/xfdf-transition/"> \n';
+
+				txt += '<CP>' + cp + '</CP> \n';
+		    	txt += '<SP>' + sp + '</SP> \n';
+		    	txt += '<GP>' + gp + '</GP> \n';
+		    	txt += '<PP>' + pp + '</PP> \n';
+		    	txt += '<Equipment>' + equip + '</Equipment> \n';
+
+				txt += '</fields> \n';
+
+		    	sender.href = 'data:xml/plain;charset=utf-8,' + encodeURIComponent(txt);
+			}
 		</script> 
 
 		<style>
@@ -251,6 +283,7 @@
 			</div>
 			<div class= "PH_main_content" id="main">
 				<div id="inventory">
+					<a href="" id="link" onclick="exportInv(this)" download="Inventory.xml">Export</a>	<br />
 					Character Strength: <input type="text" id="Strength" oninput="calc()">
 					<br />
 					<span id="capacity">Carrying Cappacity: 0</span>
