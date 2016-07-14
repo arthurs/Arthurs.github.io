@@ -108,6 +108,23 @@
 				}
 				sort();
 			}
+
+			function save() {
+				var saveStr = new Object();
+
+				saveStr["table"] = JSON.stringify($("#order").html());
+
+				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
+			}
+
+			function load() {
+				var loadStr = JSON.parse(window.prompt("Load","Enter saved string"));
+
+				if (loadStr != null) {
+
+					$("#order").html(JSON.parse(loadStr["table"]));
+				}
+			}
 		</script>
 
 		<title>DND TOOLS</title> 
@@ -138,6 +155,9 @@
 				initiative: <input type="text" id="initiative">
 				health: <input type="text" id="health">
 				<button id="add" type="button" onclick="add()">add</button>
+				<br />
+				<button id="save" type="button" onclick="save()">Save</button>
+				<button id="load" type="button" onclick="load()">Load</button>
 
 			</div>
 			<div class= "PH_modules_list"id="PH_modules_list">
