@@ -318,6 +318,38 @@
 					var wep3Damage = "";
 				}
 
+				var speed = 0;
+				var traits = "";
+				switch (chaRace) {
+					case "Dwarf":
+						speed = 25;
+						break;
+					case "Elf":
+						speed = 30;
+						break;
+					case "Halfling":
+						speed = 25;
+						break;
+					case "Human":
+						speed = 30;
+						break;
+					case "Dragonborn":
+						speed = 30;
+						break;
+					case "Gnome":
+						speed = 25;
+						break;
+					case "Half-Elf":
+						speed = 30;
+						break;
+					case "Half-Orc":
+						speed = 30;
+						break;
+					case "Tiefling":
+						speed = 30;
+						break;
+				}
+
 
 		    	var txt = '<?xml version="1.0" encoding="UTF-8"?> \n';
 		    	txt += '<fields xmlns:xfdf="http://ns.adobe.com/xfdf-transition/"> \n';
@@ -395,7 +427,7 @@
 		    	txt += '<AC>' + AC + '</AC> \n';
 
 		    	txt += '<Initiative>' + charDexMod + '</Initiative> \n';
-		    	//txt += '<Speed>speed</Speed> \n';
+		    	txt += '<Speed>' + speed + '</Speed> \n';
 		    	//txt += '<HPMax>hpmax</HPMax> \n';
 		    	//txt += '<HPCurrent>hpcurr</HPCurrent> \n';
 		    	//txt += '<HPTemp>temp hp</HPTemp> \n';
@@ -602,14 +634,15 @@
 					<input type="text" id="charName"></input><br />
 					<label>Race:</label>
 					<select id="charRace">
-					  <option value="Human">Human</option>
-					  <option value="Elf">Elf</option>
 					  <option value="Dwarf">Dwarf</option>
+					  <option value="Elf">Elf</option>
+					  <option value="Halfing">Halfling</option>
+					  <option value="Human">Human</option>
+					  <option value="Dragonborn">Dragonborn</option>
 					  <option value="Gnome">Gnome</option>
 					  <option value="Half-Elf">Half-Elf</option>
 					  <option value="Half-Orc">Half-Orc</option>
-					  <option value="Halfing">Halfling</option>
-					  <option value="Dragonborne">Dragonborn</option>
+					  <option value="Tiefling">Tiefling</option>
 					</select>
 					<span>custom:</span>
 					<input type="text" id="charRaceCustom"></input><br />
