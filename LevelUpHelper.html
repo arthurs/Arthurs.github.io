@@ -191,7 +191,7 @@
 		    		}
 		    	}
 
-		    	console.log(AC);
+		    	$("#ac").html(AC);
 		    }
 
 		    function exportChar(sender) {
@@ -279,6 +279,7 @@
 				languages += (($("#langPrimordial").prop("checked")) ? "Primordial \n" : "");
 				languages += (($("#langSylvan").prop("checked")) ? "Sylvan \n" : "");
 				languages += (($("#langUnderCommon").prop("checked")) ? "UnderCommon \n" : "");
+				var AC = $("#ac").html();
 
 
 		    	var txt = '<?xml version="1.0" encoding="UTF-8"?> \n';
@@ -354,7 +355,7 @@
 		    	txt += '<Survival>' + Survival + '</Survival> \n';
 		    	txt += '<Passive>' + (parseInt(Perception) + 10) + '</Passive> \n';
 				txt += '<ProficienciesLang>' + languages + '</ProficienciesLang> \n';
-		    	//txt += '<AC>12</AC> \n';
+		    	txt += '<AC>' + AC + '</AC> \n';
 
 		    	txt += '<Initiative>' + charDexMod + '</Initiative> \n';
 		    	//txt += '<Speed>speed</Speed> \n';
@@ -752,7 +753,9 @@
 					<button onclick="addFeat()">Add Feat</button>
 					<br />
 					<label>AC </label><br /> 
+					<label>Armour </label>
 					<select id="armour" onchange="calcAC()">
+					  <option value="10-Dex">No Armour</option>
 					  <option value="11-Dex">Padded</option>
 					  <option value="11-Dex">Leather</option>
 					  <option value="12-Dex">Studded Leather</option>
@@ -766,6 +769,8 @@
 					  <option value="17">Splint</option>
 					  <option value="18">Plate</option>
 					</select>
+					<br />
+					<label>total AC </label><span id="ac">10</span>
 					<br />
 					<label>Attacks</label><br />
 					<table Class = "attacksTable" id="attacksTable">
