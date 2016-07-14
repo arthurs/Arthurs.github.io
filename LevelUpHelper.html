@@ -172,6 +172,28 @@
 				}
 		    }
 
+		    function calcAC() {
+		    	var value = $("#armour").val().split('-')
+
+		    	var AC = parseInt(value[0]);
+
+		    	if (value.length >= 2) {
+		    		if (value[1] == "Dex") {
+		    			if (value.length = 3) {
+		    				mod = $("#DEXmod").html();
+		    				if (mod > value[2]) {
+		    					mod = value[2];
+		    				}
+		    				AC += parseInt($("#DEXmod").html());
+		    			} else {
+		    				AC += parseInt($("#DEXmod").html());
+		    			}
+		    		}
+		    	}
+
+		    	console.log(AC);
+		    }
+
 		    function exportChar(sender) {
 
 		    	var charName = $("#charName").val();
@@ -534,7 +556,7 @@
 			<div class= "PH_ads">
 				<p>w/e here</p>
 			</div>
-			<div class= "PH_main_content" id="main">
+			<div class= "PH_main_content" id="main" style="height:auto">
 				<div>
 					<h1>Character Helper</h1>
 					<a href="" id="link" onclick="exportChar(this)" download="Character.xml">Export</a>	<br />
@@ -607,12 +629,12 @@
 						<td><input type="text" id="charCHA" oninput="calcMod(this)">Charisma</input></td>
 					  </tr>
 					  <tr>
-						<td><label id ="STRmod">+0</label></td>
-						<td><label id ="DEXmod">+0</label></td>
-						<td><label id ="CONmod">+0</label></td>
-						<td><label id ="INTmod">+0</label></td>
-						<td><label id ="WISmod">+0</label></td>
-						<td><label id ="CHAmod">+0</label></td>	
+						<td><label id ="STRmod">0</label></td>
+						<td><label id ="DEXmod">0</label></td>
+						<td><label id ="CONmod">0</label></td>
+						<td><label id ="INTmod">0</label></td>
+						<td><label id ="WISmod">0</label></td>
+						<td><label id ="CHAmod">0</label></td>	
 					  </tr>
 					</table>
 					<label>Saving Throws</label><br />
@@ -730,7 +752,21 @@
 					<button onclick="addFeat()">Add Feat</button>
 					<br />
 					<label>AC </label><br /> 
-					<!-- get armour they are wearing then auto calc -->
+					<select id="armour" onchange="calcAC()">
+					  <option value="11-Dex">Padded</option>
+					  <option value="11-Dex">Leather</option>
+					  <option value="12-Dex">Studded Leather</option>
+					  <option value="12-Dex-2">Hide</option>
+					  <option value="13-Dex-2">Chain Shirt</option>
+					  <option value="14-Dex-2">Scale Mail</option>
+					  <option value="14-Dex-2">Breastplate</option>
+					  <option value="15-Dex-2">Half Plate</option>
+					  <option value="14">Ring Mail</option>
+					  <option value="16">Chain Mail</option>
+					  <option value="17">Splint</option>
+					  <option value="18">Plate</option>
+					</select>
+					<br />
 					<label>Attacks</label><br />
 					<table Class = "attacksTable" id="attacksTable">
 					  <tr>
