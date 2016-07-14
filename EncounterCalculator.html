@@ -95,6 +95,53 @@
 
 				$("#encExp").html(experiance);
 			}
+
+			function exportToTracker() {
+				var buttons = '<td> \
+					<button id="add1_but" type="button" onclick="addHealth(this, 1)">+1HP</button> \
+					<button id="add5_but" type="button" onclick="addHealth(this, 5)">+5HP</button> \
+					<button id="add10_but" type="button" onclick="addHealth(this, 10)">+10HP</button> \
+					<button id="add-1_but" type="button" onclick="addHealth(this, -1)">-1HP</button> \
+					<button id="add-5_but" type="button" onclick="addHealth(this, -5)">-5HP</button> \
+					<button id="add-10_but" type="button" onclick="addHealth(this, -10)">-10HP</button> \
+					<button id="remove_but" type="button" onclick="removeChar(this)">Remove</button> \
+					<button id="copy_but" type="button" onclick="duplicate(this)">Add Copy</button> \
+					<button id="changeini_but" type="button" onclick="change(this, 0)">Change Initiative</button> \
+					<button id="change_name_but" type="button" onclick="change(this, 1)">Change Name</button> \
+					<button id="change_name_but" type="button" onclick="change(this, 2)">Change Health</button> \
+					</td>';
+
+				var headers = '<tr> \
+					<th>Initiative</th> \
+					<th>Name</th> \
+					<th>Health</th> \
+					<th>Actions</th> \
+					</tr>';
+
+				var exportStr = "<tbody>";
+				exportStr += headers;
+
+				$("#encounters tr").each(function (idx, itm) {
+					if ($($(itm).children().get(0)).html() != "Enemy Name") {
+						exportStr += "<tr>";
+						exportStr += "<td>0</td>"; //initiative
+						exportStr += "<td>" + $($(itm).children().get(0)).html() + "</td>"; //initiative
+						exportStr += "<td>0</td>"; //health
+						exportStr += buttons;
+						exportStr += "</tr>";
+					}
+				});
+
+
+				exportStr += "</tr>";
+				exportStr += "</tbody>";
+
+				var obj = new Object();
+
+				obj["table"] = JSON.stringify(exportStr);
+
+				alert("Copy and paste this string into the combat tracker:\n" + JSON.stringify(obj));
+			}
 		</script> 
 
 		<title>DND TOOLS</title> 
