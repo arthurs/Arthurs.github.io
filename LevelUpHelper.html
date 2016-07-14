@@ -281,6 +281,43 @@
 				languages += (($("#langUnderCommon").prop("checked")) ? "UnderCommon \n" : "");
 				var AC = $("#ac").html();
 
+				var wepnotes = ""
+				var wep1 = $($($("#attacksTable").children()).get(0)).children().get(1);
+				if (wep1 != null) {
+					var wep1Name = $($($($(wep1).children()).get(0)).children().get(0)).val();
+					var wep1Bonus = $($($($(wep1).children()).get(1)).children().get(0)).val();
+					var wep1Damage = $($($($(wep1).children()).get(3)).children().get(0)).val() + " " + $($($($(wep1).children()).get(2)).children().get(0)).val();
+					wepnotes += "1) " + $($($($(wep1).children()).get(4)).children().get(0)).val() + "\n";
+				} else {
+					var wep1Name = "";
+					var wep1Bonus = "";
+					var wep1Damage = "";
+				}
+
+				var wep2 = $($($("#attacksTable").children()).get(0)).children().get(2);
+				if (wep2 != null) {
+					var wep2Name = $($($($(wep2).children()).get(0)).children().get(0)).val();
+					var wep2Bonus = $($($($(wep2).children()).get(1)).children().get(0)).val();
+					var wep2Damage = $($($($(wep2).children()).get(3)).children().get(0)).val() + " " + $($($($(wep2).children()).get(2)).children().get(0)).val();
+					wepnotes += "2) " + $($($($(wep1).children()).get(4)).children().get(0)).val() + "\n";
+				} else {
+					var wep2Name = "";
+					var wep2Bonus = "";
+					var wep2Damage = "";
+				}
+
+				var wep3 = $($($("#attacksTable").children()).get(0)).children().get(3);
+				if (wep3 != null) {
+					var wep3Name = $($($($(wep3).children()).get(0)).children().get(0)).val();
+					var wep3Bonus = $($($($(wep3).children()).get(1)).children().get(0)).val();
+					var wep3Damage = $($($($(wep3).children()).get(3)).children().get(0)).val() + " " + $($($($(wep3).children()).get(2)).children().get(0)).val();
+					wepnotes += "3) " + $($($($(wep1).children()).get(4)).children().get(0)).val() + "\n";
+				} else {
+					var wep3Name = "";
+					var wep3Bonus = "";
+					var wep3Damage = "";
+				}
+
 
 		    	var txt = '<?xml version="1.0" encoding="UTF-8"?> \n';
 		    	txt += '<fields xmlns:xfdf="http://ns.adobe.com/xfdf-transition/"> \n';
@@ -370,16 +407,16 @@
 		    	//txt += '<CheckBox15 xfdf:original="Check Box 15">Off</CheckBox15>'; //death fail \n 1
 		    	//txt += '<CheckBox16 xfdf:original="Check Box 16">Off</CheckBox16>'; //death fail \n 2
 		    	//txt += '<CheckBox17 xfdf:original="Check Box 17">Off</CheckBox17>'; //death fail \n 3
-		    	//txt += '<WpnName xfdf:original="Wpn Name">wep n1</WpnName> \n';
-		    	//txt += '<Wpn1AtkBonus xfdf:original="Wpn1 AtkBonus">wep a1</Wpn1AtkBonus> \n';
-		    	//txt += '<Wpn1Damage xfdf:original="Wpn1 Damage">wep d1</Wpn1Damage> \n';
-		    	//txt += '<WpnName2 xfdf:original="Wpn Name 2">wep n2</WpnName2> \n';
-		    	//txt += '<Wpn2AtkBonus xfdf:original="Wpn2 AtkBonus ">wep a2</Wpn2AtkBonus> \n';
-		    	//txt += '<Wpn2Damage xfdf:original="Wpn2 Damage ">wep d2</Wpn2Damage> \n';
-		    	//txt += '<WpnName3 xfdf:original="Wpn Name 3">wep n3</WpnName2> \n';
-		    	//txt += '<Wpn3AtkBonus xfdf:original="Wpn3 AtkBonus  ">wep a3</Wpn2AtkBonus> \n';
-		    	//txt += '<Wpn3Damage xfdf:original="Wpn3 Damage ">wep d3</Wpn2Damage> \n';
-		    	//txt += '<AttacksSpellcasting>att notes</AttacksSpellcasting> \n';
+		    	txt += '<WpnName xfdf:original="Wpn Name">' + wep1Name + '</WpnName> \n';
+		    	txt += '<Wpn1AtkBonus xfdf:original="Wpn1 AtkBonus">' + wep1Bonus + '</Wpn1AtkBonus> \n';
+		    	txt += '<Wpn1Damage xfdf:original="Wpn1 Damage">' + wep1Damage + '</Wpn1Damage> \n';
+		    	txt += '<WpnName2 xfdf:original="Wpn Name 2">' + wep2Name + '</WpnName2> \n';
+		    	txt += '<Wpn2AtkBonus xfdf:original="Wpn2 AtkBonus ">' + wep2Bonus + '</Wpn2AtkBonus> \n';
+		    	txt += '<Wpn2Damage xfdf:original="Wpn2 Damage ">' + wep2Damage + '</Wpn2Damage> \n';
+		    	txt += '<WpnName3 xfdf:original="Wpn Name 3">' + wep3Name + '</WpnName2> \n';
+		    	txt += '<Wpn3AtkBonus xfdf:original="Wpn3 AtkBonus  ">' + wep3Bonus + '</Wpn2AtkBonus> \n';
+		    	txt += '<Wpn3Damage xfdf:original="Wpn3 Damage ">' + wep3Damage + '</Wpn2Damage> \n';
+		    	txt += '<AttacksSpellcasting>' + wepnotes + '</AttacksSpellcasting> \n';
 		    	//txt += '<CP>CP</CP> \n';
 		    	//txt += '<SP>SP</SP> \n';
 		    	//txt += '<EP>EP</EP> \n';
@@ -812,3 +849,4 @@ Attacks -->
 		</div>
 	</body>
 </html>
+
