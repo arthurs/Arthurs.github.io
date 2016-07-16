@@ -36,10 +36,11 @@
     		  						var button = "<button type=\"button\" onclick=\"changeList('" + item + "')\">" + item + "</button>";
     		  						$("#itemsDiv").prepend(button)
     		  					} else {
-    		  						itemsList[current].push(itm);
     		  						if (itm.indexOf("<") == 0) {
+    		  							itemsList[current].push("");
 										depth += 1;
     		  						}
+    		  						itemsList[current].push(itm);
 								}
 		  					}
     		  			}
