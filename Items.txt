@@ -173,7 +173,7 @@ Piton-0.25
 Poison, basic (vial)-0
 Pole (10 foot)-7
 Pot, iron-10
-Polion of healing-0.5
+Potion of healing-0.5
 Pouch-1
 Quiver-1
 Ram, portable-35
