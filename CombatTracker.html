@@ -49,6 +49,8 @@
 				item += "</td><td>";
 				item += $("#health").val();
 				item += "</td><td>";
+				item += $("#AC").val();
+				item += "</td><td>";
 				item += "<button  id=\"add1_but\" type=\"button\" onclick=\"addHealth(this, 1)\">+1HP</button >"
 				item += "<button  id=\"add5_but\" type=\"button\" onclick=\"addHealth(this, 5)\">+5HP</button >"
 				item += "<button  id=\"add10_but\" type=\"button\" onclick=\"addHealth(this, 10)\">+10HP</button >"
@@ -60,6 +62,7 @@
 				item += "<button  id=\"changeini_but\" type=\"button\" onclick=\"change(this, 0)\">Change Initiative</button >"
 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button >"
 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 2)\">Change Health</button >"
+				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 3)\">Change AC</button >"
 				item += "</td></tr>";
 
 				$("#order").append(item);
@@ -145,6 +148,7 @@
 						<th>Initiative</th>
 						<th>Name</th>
 						<th>Health</th>
+						<th>AC</th>
 						<th>Actions</th>
 					</tr>
 				</table>
@@ -154,6 +158,7 @@
 				name: <input type="text" id="name">
 				initiative: <input type="text" id="initiative">
 				health: <input type="text" id="health">
+				AC: <input type="text" id="AC">
 				<button id="add" type="button" onclick="add()">add</button>
 				<br />
 				<button id="save" type="button" onclick="save()">Save</button>
