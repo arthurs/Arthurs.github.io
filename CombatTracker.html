@@ -115,7 +115,7 @@
 			function save() {
 				var saveStr = new Object();
 
-				saveStr["table"] = JSON.stringify($("#order").html());
+				saveStr["table"] = JSON.stringify($("#order tbody tr:gt(0)").html());
 
 				alert("Copy and store this string:\n" + JSON.stringify(saveStr));
 			}
@@ -125,7 +125,11 @@
 
 				if (loadStr != null) {
 
-					$("#order").html(JSON.parse(loadStr["table"]));
+					var test = JSON.parse(loadStr["table"]);
+
+					console.log(test);
+
+					$("#order").append(JSON.parse(loadStr["table"]));
 				}
 			}
 		</script>

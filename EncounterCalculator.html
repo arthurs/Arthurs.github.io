@@ -111,30 +111,26 @@
 					<button id="change_name_but" type="button" onclick="change(this, 2)">Change Health</button> \
 					</td>';
 
-				var headers = '<tr> \
-					<th>Initiative</th> \
-					<th>Name</th> \
-					<th>Health</th> \
-					<th>Actions</th> \
-					</tr>';
-
-				var exportStr = "<tbody>";
-				exportStr += headers;
+				var exportStr = "";
 
 				$("#encounters tr").each(function (idx, itm) {
 					if ($($(itm).children().get(0)).html() != "Enemy Name") {
-						exportStr += "<tr>";
-						exportStr += "<td>0</td>"; //initiative
-						exportStr += "<td>" + $($(itm).children().get(0)).html() + "</td>"; //initiative
-						exportStr += "<td>0</td>"; //health
-						exportStr += buttons;
-						exportStr += "</tr>";
+						var amount = $($(itm).children().get(2)).html();
+						while (amount > 0) {
+							exportStr += "<tr>";
+							exportStr += "<td>0</td>"; //initiative
+							exportStr += "<td>" + $($(itm).children().get(0)).html() + "</td>"; //initiative
+							exportStr += "<td>0</td>"; //health
+							exportStr += "<td>0</td>"; //AC
+							exportStr += buttons;
+							exportStr += "</tr>";
+							amount --;
+						}
 					}
 				});
 
 
 				exportStr += "</tr>";
-				exportStr += "</tbody>";
 
 				var obj = new Object();
 
