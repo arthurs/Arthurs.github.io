@@ -100,7 +100,7 @@
 			}
 
 			function duplicate(sender) {
-				$("#order").append("<tr>" + $(sender).parent().parent().html() + "</tr>");
+				$("#order").append("<tr>" + $(sender).parent().parent().parent().html() + "</tr>");
 				sort();
 			}
 
@@ -110,7 +110,7 @@
 				    var row = $(sender).parent().parent()
 					var children = row.children();
 					children[column] = "<td>" + value + "</td>";
-					$($(sender).parent().parent().children()[column]).replaceWith(children[column]);
+					$($(sender).parent().parent().parent().children()[column]).replaceWith(children[column]);
 				}
 				sort();
 			}
