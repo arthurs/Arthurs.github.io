@@ -9,6 +9,13 @@
 		      $("#Header1").load("Header.html"); 
 			  $("#PH_modules_list").load("Modules.html"); 
 		    });
+
+		    function helpLvl() {
+		    	$.get('levels/Sorcerer.txt', function(data) {
+		    		var info = JSON.parse(data)
+		    		$("#class").html(info[2]);
+		    	}, 'text');
+		    }
 		</script> 
 
 		<title>DND TOOLS</title> 
@@ -25,7 +32,66 @@
 				<p>w/e here</p>
 			</div>
 			<div class= "PH_main_content" id="main">
-				
+				<label>Race:</label>
+				<select id="charRace">
+				  <option value="Dwarf">Dwarf</option>
+				  <option value="Elf">Elf</option>
+				  <option value="Halfing">Halfling</option>
+				  <option value="Human">Human</option>
+				  <option value="Dragonborn">Dragonborn</option>
+				  <option value="Gnome">Gnome</option>
+				  <option value="Half-Elf">Half-Elf</option>
+				  <option value="Half-Orc">Half-Orc</option>
+				  <option value="Tiefling">Tiefling</option>
+				</select>
+				<label>Class</label>
+				<select name="charClass">
+				  <option value="Barbarian">Barbarian</option>
+				  <option value="Bard">Bard</option>
+				  <option value="Cleric">Cleric</option>
+				  <option value="Druid">Druid</option>
+				  <option value="Fighter">Fighter</option>
+				  <option value="Monk">Monk</option>
+				  <option value="Paladin">Paladin</option>
+				  <option value="Ranger">Ranger</option>
+				  <option value="Rogue">Rogue</option>
+				  <option value="Sorcerer">Sorcerer</option>
+				  <option value="Warlock">Warlock</option>
+				  <option value="Wizard">Wizard</option>
+				</select>
+				<label>Levling to</label>
+				<select name="charClass">
+				  <option value="2">Level 2</option>
+				  <option value="3">Level 3</option>
+				  <option value="4">Level 4</option>
+				  <option value="5">Level 5</option>
+				  <option value="6">Level 6</option>
+				  <option value="7">Level 7</option>
+				  <option value="8">Level 8</option>
+				  <option value="9">Level 9</option>
+				  <option value="10">Level 10</option>
+				  <option value="11">Level 11</option>
+				  <option value="12">Level 12</option>
+				  <option value="13">Level 13</option>
+				  <option value="14">Level 14</option>
+				  <option value="15">Level 15</option>
+				  <option value="16">Level 16</option>
+				  <option value="17">Level 17</option>
+				  <option value="18">Level 18</option>
+				  <option value="19">Level 19</option>
+				  <option value="20">Level 20</option>
+				</select>
+				<button id = "multiClassCheck" onclick="helpLvl()">Help me Level!</button>
+				<br />
+				<label>Race Changes:</label>
+				<br />
+				<span id="race"> </span>
+				<br />
+				<br />
+				<br />
+				<label>Class Changes:</label>
+				<br />
+				<span id="class">test</span>
 			</div>
 			<div class= "PH_modules_list" id="PH_modules_list">
 			</div>
