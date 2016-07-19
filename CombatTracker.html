@@ -51,18 +51,21 @@
 				item += "</td><td>";
 				item += $("#AC").val();
 				item += "</td><td>";
-				item += "<button  id=\"add1_but\" type=\"button\" onclick=\"addHealth(this, 1)\">+1HP</button >"
-				item += "<button  id=\"add5_but\" type=\"button\" onclick=\"addHealth(this, 5)\">+5HP</button >"
-				item += "<button  id=\"add10_but\" type=\"button\" onclick=\"addHealth(this, 10)\">+10HP</button >"
 				item += "<button  id=\"add-1_but\" type=\"button\" onclick=\"addHealth(this, -1)\">-1HP</button >"
 				item += "<button  id=\"add-5_but\" type=\"button\" onclick=\"addHealth(this, -5)\">-5HP</button >"
 				item += "<button  id=\"add-10_but\" type=\"button\" onclick=\"addHealth(this, -10)\">-10HP</button >"
+				item += "<button  id=\"add1_but\" type=\"button\" onclick=\"addHealth(this, 1)\">+1HP</button >"
+				item += "<button  id=\"add5_but\" type=\"button\" onclick=\"addHealth(this, 5)\">+5HP</button >"
+				item += "<button  id=\"add10_but\" type=\"button\" onclick=\"addHealth(this, 10)\">+10HP</button >"
+				item += "</td><td>";
+				item += "<div class=\"ctracker_buttons\">"
 				item += "<button  id=\"remove_but\" type=\"button\" onclick=\"removeChar(this)\">Remove</button >"
 				item += "<button  id=\"copy_but\" type=\"button\" onclick=\"duplicate(this)\">Add Copy</button >"
 				item += "<button  id=\"changeini_but\" type=\"button\" onclick=\"change(this, 0)\">Change Initiative</button >"
 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button >"
 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 2)\">Change Health</button >"
 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 3)\">Change AC</button >"
+				item += "</div>"
 				item += "</td></tr>";
 
 				$("#order").append(item);
@@ -85,7 +88,7 @@
 			}
 
 			function removeChar(sender) {
-				$(sender).parent().parent().remove();
+				$(sender).parent().parent().parent().remove();
 			}
 
 			function addHealth(sender, amount) {
@@ -97,7 +100,7 @@
 			}
 
 			function duplicate(sender) {
-				$("#order").append("<tr>" + $(sender).parent().parent().html() + "</tr>");
+				$("#order").append("<tr>" + $(sender).parent().parent().parent().html() + "</tr>");
 				sort();
 			}
 
@@ -107,7 +110,7 @@
 				    var row = $(sender).parent().parent()
 					var children = row.children();
 					children[column] = "<td>" + value + "</td>";
-					$($(sender).parent().parent().children()[column]).replaceWith(children[column]);
+					$($(sender).parent().parent().parent().children()[column]).replaceWith(children[column]);
 				}
 				sort();
 			}
@@ -145,25 +148,27 @@
 
 				<table id="order" border="1">
 					<tr>
-						<th>Initiative</th>
-						<th>Name</th>
-						<th>Health</th>
-						<th>AC</th>
-						<th>Actions</th>
+						<th><label>Initiative</label></th>
+						<th><label>Name</label></th>
+						<th><label>Health</label></th>
+						<th><label>AC</label></th>
+						<th><label>Health</label></th>
+						<th><label>Actions</label></th>
 					</tr>
 				</table>
 
 				<button id="turn" type="button" onclick="nextTurn()">Next Turn</button>
 
-				name: <input type="text" id="name">
-				initiative: <input type="text" id="initiative">
-				health: <input type="text" id="health">
-				AC: <input type="text" id="AC">
+				<label>name:</label> <input type="text" id="name">
+				<label>initiative:</label> <input type="text" id="initiative">
+				<label>health:</label> <input type="text" id="health">
+				<label>AC:</label> <input type="text" id="AC">
 				<button id="add" type="button" onclick="add()">add</button>
 				<br />
-				<button id="save" type="button" onclick="save()">Save</button>
-				<button id="load" type="button" onclick="load()">Load</button>
-
+				<div class ="spaced">
+					<button id="save" type="button" onclick="save()">Save</button>
+					<button id="load" type="button" onclick="load()">Load</button>
+				</div>
 			</div>
 			<div class= "PH_modules_list"id="PH_modules_list">
 			</div>

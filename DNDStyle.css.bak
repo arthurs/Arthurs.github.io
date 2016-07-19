@@ -1,5 +1,5 @@
 Body{
-	background-color:#291709;
+	background-color:#221307;
 	background-image: url("./wood_1.jpg");
 }
 * {
@@ -12,6 +12,9 @@ button{
 	border-color:#c6be3a;
 	padding:2px;
 	margin-left:5px;
+	font-size:1em;
+	border-radius: 1px;
+	box-shadow: 0px 0px 5px #fff;
 }
 table{
 	border-color: transparent;
@@ -31,6 +34,9 @@ select{
 h1{
 	color:#ffefd5;
 }
+label{
+	font-size:1.2em;
+}
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
@@ -38,8 +44,15 @@ h1{
 	width: 100px;
     height: 100px;
 	border: none;
+	box-shadow: none;
 
 }
+#remove_but{
+	margin-top:10px;
+	box-shadow: 0px 0px 15px #f0514e;
+}
+
+
 /* #order button:hover {background-color: #3e8e41
 } */
 
@@ -86,6 +99,7 @@ h1{
 	border: none;
 	 width: 100px;
     height: 100px;
+	box-shadow: none;
 
 }
 #remove_but{
@@ -99,12 +113,20 @@ h1{
 
 }
 #turn{
-   width: 80px;
+	width: 80px;
     height: 80px;
+	border-radius: 15px;
+	
 
 
 }
-
+.ctracker_buttons{
+	max-width: 150px;
+}
+.ctracker_buttons button{
+	max-width: 150px;
+	margin:4px;
+}
 .doublelist{
 	-webkit-column-count: 2; -webkit-column-gap:20px;
 	-moz-column-count:2; -moz-column-gap:20px;
@@ -263,5 +285,8 @@ border-color: black;
 }
 .sickdragonimg_ph{
 	min-height: 200px;
+}
+.spaced{
+margin: 5px 0px 0px 0px;	
 }
 
