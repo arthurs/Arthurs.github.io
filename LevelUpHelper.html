@@ -11,11 +11,18 @@
 		    });
 
 		    function helpLvl() {
+		    	var charRace = $("#charRace").val()
 		    	var charClass = $("#charClass").val()
-		    	console.log(charClass);
+		    	var charLevel = $("#charLevel").val()
+
+				$.get('levels/' + charRace + '.txt', function(data) {
+		    		var info = JSON.parse(data)
+		    		$("#race").html(info[charLevel]);
+		    	}, 'text');
+
 		    	$.get('levels/' + charClass + '.txt', function(data) {
 		    		var info = JSON.parse(data)
-		    		$("#class").html(info[2]);
+		    		$("#class").html(info[charLevel]);
 		    	}, 'text');
 		    }
 		</script> 
