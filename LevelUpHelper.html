@@ -11,7 +11,9 @@
 		    });
 
 		    function helpLvl() {
-		    	$.get('levels/Sorcerer.txt', function(data) {
+		    	var charClass = $("#charClass").val()
+		    	console.log(charClass);
+		    	$.get('levels/' + charClass + '.txt', function(data) {
 		    		var info = JSON.parse(data)
 		    		$("#class").html(info[2]);
 		    	}, 'text');
@@ -45,7 +47,7 @@
 				  <option value="Tiefling">Tiefling</option>
 				</select>
 				<label>Class</label>
-				<select name="charClass">
+				<select id="charClass">
 				  <option value="Barbarian">Barbarian</option>
 				  <option value="Bard">Bard</option>
 				  <option value="Cleric">Cleric</option>
@@ -60,7 +62,7 @@
 				  <option value="Wizard">Wizard</option>
 				</select>
 				<label>Levling to</label>
-				<select name="charClass">
+				<select id="charLevel">
 				  <option value="2">Level 2</option>
 				  <option value="3">Level 3</option>
 				  <option value="4">Level 4</option>
