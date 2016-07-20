@@ -1,0 +1,14 @@
+{"Acolyte": "",
+"Charlatan": "",
+"Criminal": "",
+"Entertainer": "",
+"Folk": "",
+"Guild": "",
+"Hermit": "",
+"Noble": "",
+"Outlander": "",
+"Sage": "",
+"Sailor": "",
+"Soldier": "",
+"Urchin": ""
+}
