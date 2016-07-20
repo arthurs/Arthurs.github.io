@@ -179,15 +179,13 @@
 
 		    	if (value.length >= 2) {
 		    		if (value[1] == "Dex") {
+		    			var mod = $("#DEXmod").html();
 		    			if (value.length = 3) {
-		    				mod = $("#DEXmod").html();
 		    				if (mod > value[2]) {
 		    					mod = value[2];
 		    				}
-		    				AC += parseInt($("#DEXmod").html());
-		    			} else {
-		    				AC += parseInt($("#DEXmod").html());
 		    			}
+	    				AC += parseInt(mod);
 		    		}
 		    	}
 
