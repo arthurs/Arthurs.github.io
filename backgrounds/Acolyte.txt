@@ -1,4 +1,4 @@
-{"skills" : ["Insight", "Religion"],
+{"Skills" : ["Insight", "Religion"],
 	"ToolProf" : [],
 	"Languanges" : ["Choose", "Choose"],
 	"Equipment":  [

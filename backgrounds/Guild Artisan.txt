@@ -1,0 +1,10 @@
+{"Skills" : ["Insight", "Persuasion"],
+	"ToolProf" : ["one type of artisan's tools"],
+	"Languanges" : ["Choose"],
+	"Equipment":  [
+	"A set of artisan's tools (one of your choice) <br />",
+	"a letter of introduction fro myour guild <br />",
+	"a set of traveler's clothes <br />",
+	"15 gp <br /> <br />"
+	]
+}

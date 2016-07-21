@@ -1,0 +1,10 @@
+{"Skills" : ["History", "Persuasion"],
+	"ToolProf" : ["one type of gaming set"],
+	"Languanges" : ["Choose"],
+	"Equipment":  [
+	"A set of fine clothes <br />",
+	"a signet ring <br />",
+	"a scroll of pedigree <br />",
+	"25 gp <br /> <br />"
+	]
+}

@@ -1,0 +1,11 @@
+{"Skills" : ["Medicine", "Religion"],
+	"ToolProf" : ["herbalism kit"],
+	"Languanges" : ["Choose"],
+	"Equipment":  [
+	"A scroll case stuffed full of notes from your studies or prayers <br />",
+	"a winter blanket <br />",
+	"a set of common clothes <br />",
+	"a herbalism kit <br />",
+	"5 gp <br /> <br />"
+	]
+}

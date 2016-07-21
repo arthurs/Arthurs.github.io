@@ -1,0 +1,12 @@
+{"Skills" : ["Sleight Of Hand", "Stealth"],
+	"ToolProf" : ["Disguise kit", "thieves' tools"],
+	"Languanges" : ["Choose", "Choose"],
+	"Equipment":  [
+	"a small knife <br />",
+	"a map of the city you grew up in <br />",
+	"a pet mouse <br />",
+	"a token to remember your parents by <br />",
+	"a set of common clothes <br />",
+	"10 gp <br /> <br />"
+	]
+}

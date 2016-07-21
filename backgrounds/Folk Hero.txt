@@ -1,0 +1,12 @@
+{"Skills" : ["Animal Handling", "Survival"],
+	"ToolProf" : ["one type of artisan's tools", "vehicles (land)"],
+	"Languanges" : [],
+	"Equipment":  [
+	"A set of artisan's tools (one of your choice) <br />",
+	"a shovel <br />",
+	"a iron pot <br />",
+	"a set of common clothes <br />",
+	"common clothes <br />",
+	"10 gp <br /> <br />"
+	]
+}

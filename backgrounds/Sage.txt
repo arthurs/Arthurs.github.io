@@ -1,0 +1,12 @@
+{"Skills" : ["Arcana", "History"],
+	"ToolProf" : [],
+	"Languanges" : ["Choose", "Choose"],
+	"Equipment":  [
+	"A bottle of black ink <br />",
+	"a quill <br />",
+	"a small knife <br />",
+	"a letter from a dead colleague posing a question you have not yet been able to answer <br />",
+	"a set of common clothes <br />",
+	"10 gp <br /> <br />"
+	]
+}

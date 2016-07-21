@@ -1,0 +1,9 @@
+{"Skills" : ["Deception", "Stealth"],
+	"ToolProf" : ["One type of gaming set", "Thieves' Tools"],
+	"Languanges" : [],
+	"Equipment":  [
+	"A crowbar <br />",
+	"a set of dark common clothes including a hood <br />",
+	"15 gp <br /> <br />"
+	]
+}

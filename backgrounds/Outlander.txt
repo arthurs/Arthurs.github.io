@@ -1,0 +1,12 @@
+{"Skills" : ["Athletics", "Survival"],
+	"ToolProf" : ["one type of musical instrument"],
+	"Languanges" : ["Choose"],
+	"Equipment":  [
+	"A staff <br />",
+	"a hunting trap <br />",
+	"a trophy from an animal you killed <br />",
+	"a set of traverler's cloths <br />",
+	"common clothes <br />",
+	"10 gp <br /> <br />"
+	]
+}

@@ -1,0 +1,10 @@
+{"Skills" : ["Acrobatics", "Performance"],
+	"ToolProf" : ["Disguise kit", "on type of musical instrument"],
+	"Languanges" : [],
+	"Equipment":  [
+	"A musical instrument (one of your choice) <br />",
+	"a favor of an admirer (lover letter, lock of hair, or trinket) <br />",
+	"a costume <br />",
+	"15 gp <br /> <br />"
+	]
+}

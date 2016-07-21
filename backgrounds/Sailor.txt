@@ -1,0 +1,11 @@
+{"Skills" : ["Athletics", "Perception"],
+	"ToolProf" : ["Navigator's tools", "vehicles (water)"],
+	"Languanges" : ["Choose", "Choose"],
+	"Equipment":  [
+	"A belaying pin (club) <br />",
+	"50 feet of silk rope <br />",
+	"a luckyi charm such as a rabbit foot or a small stone with a hole in the center <br />",
+	"a set of common clothes <br />",
+	"10 gp <br /> <br />"
+	]
+}

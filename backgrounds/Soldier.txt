@@ -1,0 +1,11 @@
+{"Skills" : ["Athletics", "Intimidation"],
+	"ToolProf" : ["on type of gaming set", "vehicles (land)"],
+	"Languanges" : ["Choose", "Choose"],
+	"Equipment":  [
+	"An insignia of rank <br />",
+	"a trophy taken from a fallen enemy <br />",
+	"a set of bone dice or a deck of cards <br />",
+	"a set of common clothes <br />",
+	"10 gp <br /> <br />"
+	]
+}

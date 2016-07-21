@@ -1,0 +1,10 @@
+{"Skills" : ["Deception", "Sleight Of Hand"],
+	"ToolProf" : ["Disguise kit", "Forgey kit"],
+	"Languanges" : [],
+	"Equipment":  [
+	"A set of fine cloths <br />",
+	"a disguise kit <br />",
+	"tools of the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards, or a signet ring of an imaginary duke) <br />",
+	"15 gp <br /> <br />"
+	]
+}
