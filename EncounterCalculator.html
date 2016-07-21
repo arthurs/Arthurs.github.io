@@ -82,16 +82,24 @@
 					case (scaledExp <= easyCap):
 						$("#encDiff").html("Easy");
 						break;
-					case (npcAmount <= mediumCap):
+					case (scaledExp <= mediumCap):
 						$("#encDiff").html("Medium");
 						break;
-					case (npcAmount <= hardCap):
+					case (scaledExp <= hardCap):
 						$("#encDiff").html("Hard");
 						break;
-					case (npcAmount <= deadlyCap):
+					case (scaledExp <= deadlyCap):
 						$("#encDiff").html("Deadly");
 						break;
+					default:
+						$("#encDiff").html("Impossible");
+						break;
 				}
+
+				console.log(easyCap);
+				console.log(mediumCap);
+				console.log(hardCap);
+				console.log(deadlyCap);
 
 				$("#encExp").html(experiance);
 			}
