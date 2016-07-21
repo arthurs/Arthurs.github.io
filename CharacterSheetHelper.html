@@ -280,7 +280,7 @@
 		    function countSkillChoices() {
 		    	var count = 0;
 		    	$("#proficienciesList input").each(function (idx, itm) {
-					if (skills.indexOf($(itm).prop("value")) == -1 && $(itm).prop("checked") == true) {//this
+					if (skills.indexOf($(itm).prop("value")) == -1 && $(itm).prop("checked") == true) {
 						count ++;
 					}
 				});
@@ -291,7 +291,7 @@
 		    function countLanguageChoices() {
 		    	var count = 0;
 		    	$("#languagesList input").each(function (idx, itm) {
-					if (languagesKnown.indexOf($(itm).prop("value")) == -1 && $(itm).prop("checked") == true) {//this
+					if (languagesKnown.indexOf($(itm).prop("value")) == -1 && $(itm).prop("checked") == true) {
 						count ++;
 					}
 				});
