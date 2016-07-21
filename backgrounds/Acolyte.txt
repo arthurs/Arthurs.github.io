@@ -1,0 +1,12 @@
+{"skills" : ["Insight", "Religion"],
+	"ToolProf" : [],
+	"languanges" : ["Choose", "Choose"],
+	"Equipment":  [
+	"A Holy symbol <br />",
+	"a prayer book or prayer wheel <br />",
+	"5 sticks of incense <br />",
+	"vestments <br />",
+	"common clothes <br />",
+	"15 gp <br /> <br />"
+	]
+}
