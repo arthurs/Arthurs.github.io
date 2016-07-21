@@ -199,14 +199,12 @@
 		    function setBackground() {
 		    	var background = $("#backgrounds").val();
 
-		    	console.log(skills);
 		    	$(currentBackgroundSkills).each(function (idx, itm) {
 		    		var index = skills.indexOf(itm);
 		    		if (index > -1) {
 						skills.splice(index, 1);
 					}
 		    	});
-		    	console.log(skills);
 
 		    	currentBackgroundSkills = [];
 		    	if (background == "None") {
@@ -217,7 +215,7 @@
 			    		$(backgrounds["skills"]).each(function(idx, itm) {
 			    			currentBackgroundSkills.push(itm);
 			    		});
-			    		$("#backgroundText").html(backgrounds);
+			    		fillBackgroundText(backgrounds);
 			    		skills = skills.concat(currentBackgroundSkills);
 			    		setSkills();
 			    	}, 'text');
@@ -229,9 +227,36 @@
 					$(itm).prop("checked", false);
 				});
 
+				var choose = 0;
 		    	$(skills).each(function (idx, itm) {
-		    		$("#prof" + itm).prop("checked", true);
+		    		if (itm == "Choose") {
+		    			choose += 1;
+		    		} else {
+		    			$("#prof" + itm).prop("checked", true);
+		    		}
 		    	});
+		    	$("#profChoices").html("<br /> " + choose + " proficiencies choices")
+		    	countSkillChoices();
+		    }
+
+		    function countSkillChoices() {
+		    	var count = 0;
+		    	$("#proficienciesList input").each(function (idx, itm) {
+					if (skills.indexOf($(itm).prop("id").slice(4)) == -1 && $(itm).prop("checked") == true) {
+						count ++;
+					}
+				});
+
+				$("#profChosen").html("<br /> " + count + " proficiencies chosen")
+		    }
+
+		    function fillBackgroundText(backgrounds) {
+		    	var text = "Skill Proficiencies: " + backgrounds["skills"].join(", ") + "<br />";
+		    	text += "Tool Proficiencies: " + backgrounds["ToolProf"].join(", ") + "<br />";
+		    	text += "Languages Known: " + backgrounds["Languanges"].join(", ") + "<br />";
+		    	text += "Equipment: <br />" + backgrounds["Equipment"].join("") + "<br />";
+
+		    	$("#backgroundText").html(text);
 		    }
 
 		    function exportChar(sender) {
@@ -757,26 +782,26 @@
 					<input name ="savingThrows"  type ="checkbox" id="charINTsavethrow">Intelligence</input>
 					<input name ="savingThrows"  type ="checkbox" id="charWISsavethrow">Wisdom</input>
 					<input name ="savingThrows"  type ="checkbox" id="charCHAsavethrow">Charisma</input><br />
-					<label>proficiencies</label><br />
+					<label>proficiencies<span id="profChoices"> </span><span id="profChosen"> </span></label><br />
 					<ul class = "doublelist" id="proficienciesList">
-						<li><input name ="proficiencies" value="Acrobatics" type ="checkbox" id="profAcrobatics">Acrobatics(Dex)</input></li>
-						<li><input name ="proficiencies" value="Animal Handling" type ="checkbox" id="profAnimalHandling">Animal Handling(Wis)</input></li>
-						<li><input name ="proficiencies" value="Arcana" type ="checkbox" id="profArcana">Arcana(Int)</input></li>
-						<li><input name ="proficiencies" value="Athletics" type ="checkbox" id="profAthletics">Athletics(Str)</input></li>
-						<li><input name ="proficiencies" value="Deception" type ="checkbox" id="profDeception">Deception(Cha)</input></li>
-						<li><input name ="proficiencies" value="History" type ="checkbox" id="profHistory">History(Int)</input></li>
-						<li><input name ="proficiencies" value="Insight" type ="checkbox" id="profInsight">Insight(Wis)</input></li>
-						<li><input name ="proficiencies" value="Intimidation" type ="checkbox" id="profIntimidation">Intimidation(Cha)</input></li>
-						<li><input name ="proficiencies" value="Investigation" type ="checkbox" id="profInvestigation">Investigation(Int)</input></li>
-						<li><input name ="proficiencies" value="Medicine" type ="checkbox" id="profMedicine">Medicine(Wis)</input></li>
-						<li><input name ="proficiencies" value="Nature" type ="checkbox" id="profNature">Nature(Int)</input></li>
-						<li><input name ="proficiencies" value="Perception" type ="checkbox" id="profPerception">Perception(Wis)</input></li>
-						<li><input name ="proficiencies" value="Performance" type ="checkbox" id="profPerformance">Performance(Cha)</input></li>
-						<li><input name ="proficiencies" value="Persuasion" type ="checkbox" id="profPersuasion">Persuasion(Cha)</input></li>
-						<li><input name ="proficiencies" value="Religion" type ="checkbox" id="profReligion">Religion(Int)</input></li>
-						<li><input name ="proficiencies" value="Sleight Of Hand" type ="checkbox" id="profSleightOfHand">Sleight Of Hand(Dex)</input></li>
-						<li><input name ="proficiencies" value="Stealth" type ="checkbox" id="profStealth">Stealth(Dex)</input></li>
-						<li><input name ="proficiencies" value="Survival" type ="checkbox" id="profSurvival">Survival(Wis)</input></li>
+						<li><input name ="proficiencies" value="Acrobatics" type ="checkbox" id="profAcrobatics" onchange="countSkillChoices()">Acrobatics(Dex)</input></li>
+						<li><input name ="proficiencies" value="Animal Handling" type ="checkbox" id="profAnimalHandling" onchange="countSkillChoices()">Animal Handling(Wis)</input></li>
+						<li><input name ="proficiencies" value="Arcana" type ="checkbox" id="profArcana" onchange="countSkillChoices()">Arcana(Int)</input></li>
+						<li><input name ="proficiencies" value="Athletics" type ="checkbox" id="profAthletics" onchange="countSkillChoices()">Athletics(Str)</input></li>
+						<li><input name ="proficiencies" value="Deception" type ="checkbox" id="profDeception" onchange="countSkillChoices()">Deception(Cha)</input></li>
+						<li><input name ="proficiencies" value="History" type ="checkbox" id="profHistory" onchange="countSkillChoices()">History(Int)</input></li>
+						<li><input name ="proficiencies" value="Insight" type ="checkbox" id="profInsight" onchange="countSkillChoices()">Insight(Wis)</input></li>
+						<li><input name ="proficiencies" value="Intimidation" type ="checkbox" id="profIntimidation" onchange="countSkillChoices()">Intimidation(Cha)</input></li>
+						<li><input name ="proficiencies" value="Investigation" type ="checkbox" id="profInvestigation" onchange="countSkillChoices()">Investigation(Int)</input></li>
+						<li><input name ="proficiencies" value="Medicine" type ="checkbox" id="profMedicine" onchange="countSkillChoices()">Medicine(Wis)</input></li>
+						<li><input name ="proficiencies" value="Nature" type ="checkbox" id="profNature" onchange="countSkillChoices()">Nature(Int)</input></li>
+						<li><input name ="proficiencies" value="Perception" type ="checkbox" id="profPerception" onchange="countSkillChoices()">Perception(Wis)</input></li>
+						<li><input name ="proficiencies" value="Performance" type ="checkbox" id="profPerformance" onchange="countSkillChoices()">Performance(Cha)</input></li>
+						<li><input name ="proficiencies" value="Persuasion" type ="checkbox" id="profPersuasion" onchange="countSkillChoices()">Persuasion(Cha)</input></li>
+						<li><input name ="proficiencies" value="Religion" type ="checkbox" id="profReligion" onchange="countSkillChoices()">Religion(Int)</input></li>
+						<li><input name ="proficiencies" value="Sleight Of Hand" type ="checkbox" id="profSleightOfHand" onchange="countSkillChoices()">Sleight Of Hand(Dex)</input></li>
+						<li><input name ="proficiencies" value="Stealth" type ="checkbox" id="profStealth" onchange="countSkillChoices()">Stealth(Dex)</input></li>
+						<li><input name ="proficiencies" value="Survival" type ="checkbox" id="profSurvival" onchange="countSkillChoices()">Survival(Wis)</input></li>
 					</ul>
 					<label>languages</label><br />
 					<ul class = "doublelist" id="languagesList">
