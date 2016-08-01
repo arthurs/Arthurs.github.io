@@ -42,8 +42,9 @@ label{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
 	background-color: transparent;
-	width: 100px;
-    height: 100px;
+	background-size:100%;
+	 width: 50px;
+    height: 50px;
 	border: none;
 	box-shadow: none;
 
@@ -62,16 +63,9 @@ label{
 }
 
 /* ripple effect */
-/* #order buton{
-	position: relative;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    -webkit-transition-duration: 0.4s;
-    overflow: hidden;
-    cursor: pointer;
+ #order buton {
 }
-
+/*
 #order button:after {
     content: "";
     background: #f1f1f1;
@@ -98,8 +92,9 @@ label{
 	background-repeat: no-repeat;
 	background-color: transparent;
 	border: none;
-	 width: 100px;
-    height: 100px;
+	background-size:100%;
+	 width: 50px;
+    height: 50px;
 	box-shadow: none;
 
 }
@@ -111,6 +106,8 @@ label{
 #copy_but,#changeini_but,#change_name_but{
 	background-color: #3c2f28;
 	border-color:#c6be3a;
+	height: 20px;
+	font-size:0.7em;
 
 }
 #turn{
@@ -177,6 +174,7 @@ label{
 .PH_modules_list,.PH_main_content,.PH_ads,.navbar{
 	border-style: solid;
 	border-width: 27px;
+	min-height: 1000px;
 	-moz-border-image: url(Metal_Border_2.png) 27 repeat;
 	-webkit-border-image: url(Metal_Border_2.png) 27 repeat;
 	-o-border-image: url(Metal_Border_2.png) 27 repeat;
@@ -185,7 +183,7 @@ label{
 
 .body_content{
 	box-sizing: border-box;
-	height: 1000px;
+	min-height: 1000px;
 }
 li a:hover {
     background-color: #111;
