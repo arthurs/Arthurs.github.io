@@ -101,6 +101,9 @@
         vertical-align: top;
         margin: 4mm 1mm 0mm 0mm;
     }
+	#LootDescription{
+	margin-top: 4px;
+	}
     </style>
 
     <title>DND TOOLS</title> 
@@ -117,46 +120,38 @@
         <p>w/e here</p>
       </div>
       <div class= "PH_main_content">
-        Name: <input type="text" id="Name"> <br />
-        Casting time: <input type="text" id="CastingTime"> <br />
-        Range: <input type="text" id="Range"> <br />
-        Components: <input type="text" id="Components"> <br />
-        Duration: <input type="text" id="Duration"> <br />
-        Classes: <input type="text" id="Classes"> <br />
-        Level: <input type="text" id="Level"> <br />
-        School: <input type="text" id="School"> <br />
-        Explination: <br />
-        <textarea rows="4" cols="50" id="Description"> </textarea> <br />
-        <button id="add" type="button" onclick="add()">Add</button>
-        <button id="add" type="button" onclick="clearLast()">Clear Last</button>
-        <button id="add" type="button" onclick="clearAll()">Clear All</button>
-        <br />
-        <br />
-        <br />
-        <br />
+	  <div class="body_box">
+			<h2>Spell Card</h2>
+			Name: <input type="text" id="Name"> <br />
+			Casting time: <input type="text" id="CastingTime"> <br />
+			Range: <input type="text" id="Range"> <br />
+			Components: <input type="text" id="Components"> <br />
+			Duration: <input type="text" id="Duration"> <br />
+			Classes: <input type="text" id="Classes"> <br />
+			Level: <input type="text" id="Level"> <br />
+			School: <input type="text" id="School"> <br />
+			Explination: <br />
+			<textarea rows="4" cols="50" id="Description"> </textarea> <br />
+			<button id="add" type="button" onclick="add()">Add</button>
+			<button id="add" type="button" onclick="clearLast()">Clear Last</button>
+			<button id="add" type="button" onclick="clearAll()">Clear All</button>
+		</div>
 
-        Name <input type="text" id="LootName"> <br />
-        Type <input type="text" id="LootType"> <br />
-        Weight <input type="text" id="LootWeight"> <br />
-        Cost <input type="text" id="LootCost"> <br />
-        <textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
-        <button id="add" type="button" onclick="addLoot()">Add</button>
-        <br />
-        <br />
+		<div class="body_box">
+			<h2>Item Card</h2>
+			Name <input type="text" id="LootName"> <br />
+			Type <input type="text" id="LootType"> <br />
+			Weight <input type="text" id="LootWeight"> <br />
+			Cost <input type="text" id="LootCost"> <br />
+			<textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
+			<button id="add" type="button" onclick="addLoot()">Add</button>
+			</div>
+			<br/>
+			<br/>
+			<br/>
         <button id="add" type="button" onclick="printPage()">Print Cards</button>
 
-        
-
-      </div>
-      <div class= "PH_modules_list" id="PH_modules_list">
-      </div>
-    </div>
-    <div class = "footer">
-      <div class ="navbar">
-        <p>Navbar</p>
-      </div>
-    </div>
-    <div class= "Print_preview" id="Print_preview">
+            <div class= "Print_preview" id="Print_preview">
       <div id="1-1" class="card">
       </div>
       <div id="1-2" class="card">
@@ -176,5 +171,16 @@
       <div id="3-3" class="card">
       </div>
     </div>
+
+      </div>
+      <div class= "PH_modules_list" id="PH_modules_list">
+      </div>
+    </div>
+    <div class = "footer">
+      <div class ="navbar">
+        <p>Navbar</p>
+      </div>
+    </div>
+
   </body>
 </html>
