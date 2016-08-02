@@ -106,7 +106,7 @@
 		color: black;
     }
     .card {
-        font-size: 12px;
+        font-size: .8em;
         height: 89mm; 
         width: 64mm;
         display: inline-block;
@@ -121,6 +121,7 @@
 	}
 	.descriptioncontainer{
 	word-break: break-word;
+	        font-size: .75em;
 	}
 	.print_body_box{
 	position: relative;
@@ -137,8 +138,11 @@
 	vertical-align: right;
 	margin:2px;
 	max-width:35%;
-	
 	}
+	.center_box{
+	margin: auto;
+	}
+	
     </style>
 
     <title>DND TOOLS</title> 
@@ -154,7 +158,12 @@
       <div class= "PH_ads">
         <p>w/e here</p>
       </div>
+	  <!-- add javascript to load/swap different inputs   -->
       <div class= "PH_main_content">
+	  <h1 class="pageheader";>Card Creator</h1>
+	 <div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
+				</div>
+				<br/>
 	  <div class="body_box">
 			<h2>Spell Card</h2>
 			Name: <input type="text" id="Name"> <br />
@@ -169,8 +178,6 @@
 			<textarea rows="4" cols="50" id="Description"> </textarea> <br />
 			Image url:<input type="text" id="SpellImage"> <br />
 			<button id="add" type="button" onclick="add()">Add</button>
-			<button id="add" type="button" onclick="clearLast()">Clear Last</button>
-			<button id="add" type="button" onclick="clearAll()">Clear All</button>
 		</div>
 
 		<div class="body_box">
@@ -186,8 +193,12 @@
 			</div>
 			<br/>
 			<br/>
+			<div class="center_box">
+				<button id="add" type="button" onclick="clearLast()">Clear Last</button>
+				<button id="add" type="button" onclick="clearAll()">Clear All</button>
+				<button id="add" type="button" onclick="printPage()">Print Cards</button>
+			</div>
 			<br/>
-        <button id="add" type="button" onclick="printPage()">Print Cards</button>
 
             <div class= "Print_preview" id="Print_preview">
       <div id="1-1" class="card">

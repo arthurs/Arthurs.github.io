@@ -53,7 +53,7 @@
 				item += "</td><td>";
 				item += "<button  id=\"add-1_but\" type=\"button\" onclick=\"addHealth(this, -1)\">-1</button >"
 				item += "<button  id=\"add-5_but\" type=\"button\" onclick=\"addHealth(this, -5)\">-5</button >"
-				item += "<button  id=\"add-10_but\" type=\"button\" onclick=\"addHealth(this, -10)\">-10HP</button >"
+				item += "<button  id=\"add-10_but\" type=\"button\" onclick=\"addHealth(this, -10)\">-10</button >"
 				item += "<button  id=\"add1_but\" type=\"button\" onclick=\"addHealth(this, 1)\">+1</button >"
 				item += "<button  id=\"add5_but\" type=\"button\" onclick=\"addHealth(this, 5)\">+5</button >"
 				item += "<button  id=\"add10_but\" type=\"button\" onclick=\"addHealth(this, 10)\">+10</button >"
