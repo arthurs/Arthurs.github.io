@@ -14,7 +14,8 @@
     <script> 
         function add(){
           var text = "";
-          text += "<b>" + $("#Name").val() + "</b> &nbsp &nbsp &nbsp &nbsp";
+		  text += "<div class= 'print_body_box'>";
+          text += "" + $("#Name").val() + "</b> &nbsp &nbsp &nbsp &nbsp";
           text += $("#School").val() + "&nbsp";
           text += $("#Level").val() + "<br />";
           text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br />";
@@ -23,9 +24,16 @@
           text += "<b>Duration: </b>" + $("#Duration").val() + "<br />";
           text += "<b>Classes: </b>" + $("#Classes").val() + "<br />";
           text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br /><br />";
-
+		  text += "</div>";
+		  text += "<div class= 'print_image_box'>";
+		  var test = $("#SpellImage").val();
+		  if( test !== "" ){
+			text +="<img src='"+ $("#SpellImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+		  }
+		  text += "</div>";
+		  text += "<div class= 'descriptioncontainer'>";
           text += $("#Description").val().replace(/\n/g, '<br/>');
-
+		  text += "</div>";
           $("#Print_preview").children().each(function(idx, card){
             if ($.trim($(card).html()) == "") {
               $(card).html(text);
@@ -36,12 +44,18 @@
 
         function addLoot(){
           var text = "";
-          
+          text += "<div class= 'print_body_box'>";
           text += "<b>Name: </b>" + $("#LootName").val() + "<br />";
           text += "<b>Type: </b>" + $("#LootType").val() + "<br />";
           text += "<b>Weight: </b>" + $("#LootWeight").val() + "<br />";
           text += "<b>Value: </b>" + $("#LootCost").val() + "<br /><br />";
-
+		  text += "</div>";
+		  text += "<div class= 'print_image_box'>";
+		  var test = $("##LootImage").val();
+		  if( test !== "" ){
+			text +="<img src='"+ $("##LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+		  }
+		  text += "</div>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
           $("#Print_preview").children().each(function(idx, card){
@@ -104,6 +118,26 @@
 	#LootDescription{
 	margin-top: 4px;
 	}
+	.descriptioncontainer{
+	word-break: break-word;
+	}
+	.print_body_box{
+	position: relative;
+    display: inline-block;
+	vertical-align: top;
+	margin:2px;
+	max-width:59%;
+	width:59%;
+	
+	}
+		.print_image_box{
+	position: relative;
+    display: inline-block;
+	vertical-align: right;
+	margin:2px;
+	max-width:35%;
+	
+	}
     </style>
 
     <title>DND TOOLS</title> 
@@ -132,6 +166,7 @@
 			School: <input type="text" id="School"> <br />
 			Explination: <br />
 			<textarea rows="4" cols="50" id="Description"> </textarea> <br />
+			Image url:<input type="text" id="SpellImage"> <br />
 			<button id="add" type="button" onclick="add()">Add</button>
 			<button id="add" type="button" onclick="clearLast()">Clear Last</button>
 			<button id="add" type="button" onclick="clearAll()">Clear All</button>
@@ -139,11 +174,13 @@
 
 		<div class="body_box">
 			<h2>Item Card</h2>
-			Name <input type="text" id="LootName"> <br />
-			Type <input type="text" id="LootType"> <br />
-			Weight <input type="text" id="LootWeight"> <br />
-			Cost <input type="text" id="LootCost"> <br />
+			Name: <input type="text" id="LootName"> <br />
+			Type: <input type="text" id="LootType"> <br />
+			Weight: <input type="text" id="LootWeight"> <br />
+			Cost: <input type="text" id="LootCost"> <br />
+			Description:<br />
 			<textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
+			Image url:<input type="text" id="LootImage"> <br />
 			<button id="add" type="button" onclick="addLoot()">Add</button>
 			</div>
 			<br/>
