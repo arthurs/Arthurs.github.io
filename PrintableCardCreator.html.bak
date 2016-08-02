@@ -51,7 +51,10 @@
           text += "<b>Value: </b>" + $("#LootCost").val() + "<br /><br />";
 		  text += "</div>";
 		  text += "<div class= 'print_image_box'>";
-		  text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+		  var test = $("##LootImage").val();
+		  if( test !== "" ){
+			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+		  }
 		  text += "</div>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
@@ -100,6 +103,7 @@
         height: 297mm; 
         width: 210mm;
         background: white;
+		color: black;
     }
     .card {
         font-size: 12px;
