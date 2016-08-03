@@ -13,23 +13,9 @@
 
 		<script> 
 			function nextTurn(){
-				var found = false;
-				$("#order tr").each(function(idx, tr){
-					if ($(tr).hasClass("active")){
-						$(tr).removeClass("active");
-						if (idx == $("#order tr").length - 1){
-							$($("#order tr").get(1)).addClass("active");
-						} else {
-							$($("#order tr").get(idx + 1)).addClass("active");
-						}
-						found = true;
-						return false;
-					}
-				});
-
-				if (!found) {
-					$("#order tr:nth-child(2)").addClass("active");
-				}
+				var temp = $("#order tr").last();
+				$("#order tr").last().remove();
+				$("#order tr:nth-child(1)").after(temp);
 			}
 
 			function add(){
@@ -85,6 +71,7 @@
 				});
 				items.reverse();
 				for (var i = 0; i < items.length; i++){$("#order").append(items[i])}
+
 			}
 
 			function removeChar(sender) {
