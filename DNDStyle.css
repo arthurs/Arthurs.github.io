@@ -1,10 +1,10 @@
 Body{
 	background-color:#221307;
 	background-image: url("./wood_1.jpg");
+	color:#ffefd5;
 }
 * {
     box-sizing: border-box;
-	color:#ffefd5;
 
 }
 button{
@@ -15,6 +15,7 @@ button{
 	font-size:1em;
 	border-radius: 1px;
 	box-shadow: 0px 0px 5px #fff;
+	color:#ffefd5;
 }
 table{
 	border-color: transparent;
@@ -42,8 +43,9 @@ label{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
 	background-color: transparent;
-	width: 100px;
-    height: 100px;
+	background-size:100%;
+	 width: 50px;
+    height: 50px;
 	border: none;
 	box-shadow: none;
 
@@ -62,16 +64,9 @@ label{
 }
 
 /* ripple effect */
-/* #order buton{
-	position: relative;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    -webkit-transition-duration: 0.4s;
-    overflow: hidden;
-    cursor: pointer;
+ #order buton {
 }
-
+/*
 #order button:after {
     content: "";
     background: #f1f1f1;
@@ -98,8 +93,9 @@ label{
 	background-repeat: no-repeat;
 	background-color: transparent;
 	border: none;
-	 width: 100px;
-    height: 100px;
+	background-size:100%;
+	 width: 50px;
+    height: 50px;
 	box-shadow: none;
 
 }
@@ -111,21 +107,25 @@ label{
 #copy_but,#changeini_but,#change_name_but{
 	background-color: #3c2f28;
 	border-color:#c6be3a;
+	height: 20px;
+	font-size:0.7em;
 
 }
 #turn{
 	width: 80px;
     height: 80px;
 	border-radius: 15px;
-	
-
-
 }
 .tooltipbutton{
 	border: none;
-	background-color: #3c2f28;
+	background-image:url(Information_button.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+	background-size:100%;
+	height:40px;
+	width:40px;
 	font-size:.8em;
-	border-radius:50%;
+	box-shadow:none;
 }
 .HeaderBox{
 	position: relative;
@@ -137,7 +137,6 @@ label{
 .tooltip{
 	position: relative;
     display: inline;
-	color:white;
 	font-size:1.4em;
 }
 .tooltip .tooltiptext {
@@ -182,10 +181,19 @@ label{
 	-o-border-image: url(Metal_Border_2.png) 27 repeat;
 	border-image: url(Metal_Border_2.png) 27 fill repeat;
 }
+.PH_modules_list,.PH_main_content,.PH_ads{
+	min-height: 1000px;
+}
+
 
 .body_content{
 	box-sizing: border-box;
-	height: 1000px;
+	min-height: 1000px;
+}
+.body_box{
+	position: relative;
+    display: inline-block;
+	vertical-align: top;
 }
 li a:hover {
     background-color: #111;
@@ -294,14 +302,14 @@ border-color: black;
 }
 .Print_preview{
 	background-color: #F5F5F5;
-	display: inline-block;
+	display: block;
 	vertical-align: top;
 	height: 297mm; 
 	width: 200mm;
 	padding: 0 0 0 7px;
-	left: 50%;
-	position: absolute;
-	margin-left: -149mm;
+	position: Relative;
+	color:black;
+	margin: auto;
 }
 
 .PH_main_content{
