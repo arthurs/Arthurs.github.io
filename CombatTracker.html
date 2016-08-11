@@ -119,7 +119,16 @@
 				}
 			}
 		</script>
+<style>
+	#main_container{
+		max-width: 760px;
 
+	}
+	#table_container{
+		max-width:100%;
+
+	}
+</style>
 		<title>DND TOOLS</title> 
 	</head>
 	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
@@ -136,30 +145,35 @@
 				<div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
 				</div>
 				</div>
-	
-				
-				<table id="order" border="1">
-					<tr>
-						<th><label>Initiative </label></th>
-						<th><label>Name</label></th>
-						<th><label>Health</label></th>
-						<th><label>AC</label></th>
-						<th><label>Health</label></th>
-						<th><label>Actions</label></th>
-					</tr>
-				</table>
-
-				<button id="turn" type="button" onclick="nextTurn()">Next Turn</button>
-
-				<label>name:</label> <input type="text" id="name">
-				<label>initiative:</label> <input type="text" id="initiative">
-				<label>health:</label> <input type="text" id="health">
-				<label>AC:</label> <input type="text" id="AC">
-				<button id="add" type="button" onclick="add()">add</button>
 				<br />
-				<div class ="spaced">
-					<button id="save" type="button" onclick="save()">Save</button>
-					<button id="load" type="button" onclick="load()">Load</button>
+
+				<div class = "body_border_box" id="main_container">
+					<h4>Add Character</h4>
+					<label>Name:</label> <input type="text" id="name">
+					<label>Initiative:</label> <input type="text" id="initiative">
+					<label>Health:</label> <input type="text" id="health">
+					<label>AC:</label> <input type="text" id="AC">
+					<button id="add" type="button" onclick="add()">add</button>
+				</div>
+				<div class = "body_border_box" id="main_container">
+					<div class ="spaced">
+						<button id="turn" type="button" onclick="nextTurn()">Next Turn</button>
+						<button id="save" type="button" onclick="save()">Save</button>
+						<button id="load" type="button" onclick="load()">Load</button>
+					</div>	
+					<br />
+					<div class = "body_border_box" id="table_container">
+						<table id="order" border="1">
+							<tr>
+								<th><label>Initiative </label></th>
+								<th><label>Name</label></th>
+								<th><label>Health</label></th>
+								<th><label>AC</label></th>
+								<th><label>Health</label></th>
+								<th><label>Actions</label></th>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class= "PH_modules_list"id="PH_modules_list">
