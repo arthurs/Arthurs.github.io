@@ -197,7 +197,7 @@ label{
 }
 .body_border_box{
 	position: relative;
-    display: inline-block;
+    display: block;
 	vertical-align: top;
 	border-width: 2px;
 	border-color: rgb(198, 190, 58);

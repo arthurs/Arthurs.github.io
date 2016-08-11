@@ -327,6 +327,8 @@ tr.active{
 	position: Relative;
 	color:black;
 	margin: auto;
+	margin-top:4px;
+	margin-bottom:4px;
 }
 
 .PH_main_content{

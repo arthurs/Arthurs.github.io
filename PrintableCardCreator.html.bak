@@ -119,6 +119,9 @@
 	#LootDescription{
 	margin-top: 4px;
 	}
+	#printviewoptions{
+	max-width;
+	}
 	.descriptioncontainer{
 	word-break: break-word;
 	        font-size: .75em;
@@ -141,6 +144,9 @@
 	}
 	.center_box{
 	margin: auto;
+	max-width:762.891px;
+	margin-top:4px;
+	margin-bottom:4px;
 	}
 	
     </style>
@@ -160,68 +166,69 @@
       </div>
 	  <!-- add javascript to load/swap different inputs   -->
       <div class= "PH_main_content">
-	  <h1 class="pageheader";>Card Creator</h1>
-	 <div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
-				</div>
-				<be/>
-	  <div class="body_box">
-			<h2>Spell Card</h2>
-			Name: <input type="text" id="Name"> <br />
-			Casting time: <input type="text" id="CastingTime"> <br />
-			Range: <input type="text" id="Range"> <br />
-			Components: <input type="text" id="Components"> <br />
-			Duration: <input type="text" id="Duration"> <br />
-			Classes: <input type="text" id="Classes"> <br />
-			Level: <input type="text" id="Level"> <br />
-			School: <input type="text" id="School"> <br />
-			Explination: <br />
-			<textarea rows="4" cols="50" id="Description"> </textarea> <br />
-			Image url:<input type="text" id="SpellImage"> <br />
-			<button id="add" type="button" onclick="add()">Add</button>
+		<h1 class="pageheader";>Card Creator</h1>
+		<div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
 		</div>
+		<br/>
+		<div class = "body_border_box" id="main_container">
+		  <div class="body_box">
+				<h2>Spell Card</h2>
+				Name: <input type="text" id="Name"> <br />
+				Casting time: <input type="text" id="CastingTime"> <br />
+				Range: <input type="text" id="Range"> <br />
+				Components: <input type="text" id="Components"> <br />
+				Duration: <input type="text" id="Duration"> <br />
+				Classes: <input type="text" id="Classes"> <br />
+				Level: <input type="text" id="Level"> <br />
+				School: <input type="text" id="School"> <br />
+				Explination: <br />
+				<textarea rows="4" cols="50" id="Description"> </textarea> <br />
+				Image url:<input type="text" id="SpellImage"> <br />
+				<button id="add" type="button" onclick="add()">Add</button>
+			</div>
 
-		<div class="body_box">
-			<h2>Item Card</h2>
-			Name: <input type="text" id="LootName"> <br />
-			Type: <input type="text" id="LootType"> <br />
-			Weight: <input type="text" id="LootWeight"> <br />
-			Cost: <input type="text" id="LootCost"> <br />
-			Description:<br />
-			<textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
-			Image url:<input type="text" id="LootImage"> <br />
-			<button id="add" type="button" onclick="addLoot()">Add</button>
+			<div class="body_box">
+				<h2>Item Card</h2>
+				Name: <input type="text" id="LootName"> <br />
+				Type: <input type="text" id="LootType"> <br />
+				Weight: <input type="text" id="LootWeight"> <br />
+				Cost: <input type="text" id="LootCost"> <br />
+				Description:<br />
+				<textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
+				Image url:<input type="text" id="LootImage"> <br />
+				<button id="add" type="button" onclick="addLoot()">Add</button>
 			</div>
 			<br/>
 			<br/>
-			<div class="center_box">
-				<button id="add" type="button" onclick="clearLast()">Clear Last</button>
-				<button id="add" type="button" onclick="clearAll()">Clear All</button>
-				<button id="add" type="button" onclick="printPage()">Print Cards</button>
-			</div>
-			<br/>
-
+		</div>	
+		<div class = "body_border_box" id="main_container">
+				<div class="center_box" id="printviewoptions">
+			<button id="add" type="button" onclick="clearLast()">Clear Last</button>
+			<button id="add" type="button" onclick="clearAll()">Clear All</button>
+			<button id="add" type="button" onclick="printPage()">Print Cards</button>
+		</div>
             <div class= "Print_preview" id="Print_preview">
-      <div id="1-1" class="card">
-      </div>
-      <div id="1-2" class="card">
-      </div>
-      <div id="1-3" class="card">
-      </div>
-      <div id="2-1" class="card">
-      </div>
-      <div id="2-2" class="card">
-      </div>
-      <div id="2-3" class="card">
-      </div>
-      <div id="3-1" class="card">
-      </div>
-      <div id="3-2" class="card">
-      </div>
-      <div id="3-3" class="card">
-      </div>
-    </div>
-
-      </div>
+			  <div id="1-1" class="card">
+			  </div>
+			  <div id="1-2" class="card">
+			  </div>
+			  <div id="1-3" class="card">
+			  </div>
+			  <div id="2-1" class="card">
+			  </div>
+			  <div id="2-2" class="card">
+			  </div>
+			  <div id="2-3" class="card">
+			  </div>
+			  <div id="3-1" class="card">
+			  </div>
+			  <div id="3-2" class="card">
+			  </div>
+			  <div id="3-3" class="card">
+			  </div>
+			</div>
+		</div>
+     </div>
       <div class= "PH_modules_list" id="PH_modules_list">
       </div>
     </div>
