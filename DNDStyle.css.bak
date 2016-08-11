@@ -326,7 +326,9 @@ tr.active{
 	padding: 0 0 0 7px;
 	position: Relative;
 	color:black;
-	margin: auto;
+	/* margin: auto; */
+	margin-top:4px;
+	margin-bottom:4px;
 }
 
 .PH_main_content{
