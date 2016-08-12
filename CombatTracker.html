@@ -21,10 +21,16 @@
 
 			function add(){
 				var initiative = 0;
-				if ($("#initiative").val() == -1) {
-					initiative = Rolld20(1)
+				if ($("#initiative").val() == '') {
+					initiative = RollDice(1,"d20") + parseInt($("#dexMod").val());
 				} else {
 					initiative = $("#initiative").val();
+				}
+
+				if ($("#health").val() == '') {
+					health = RollDice($("#numDice").val(), $("#dice").val());
+				} else {
+					health = $("#health").val();
 				}
 
 				var item = "";
@@ -34,7 +40,7 @@
 				item += "</td><td>";
 				item += $("#name").val();
 				item += "</td><td>";
-				item += $("#health").val();
+				item += health
 				item += "</td><td>";
 				item += $("#AC").val();
 				item += "</td><td>";
@@ -158,10 +164,19 @@
 
 				<div class = "body_border_box" id="main_container">
 					<h4>Add Character</h4>
-					<label>Name:</label> <input type="text" id="name">
-					<label>Initiative:</label> <input type="text" id="initiative">
-					<label>Health:</label> <input type="text" id="health">
-					<label>AC:</label> <input type="text" id="AC">
+					<label>Name:</label> <input type="text" id="name"> <br />
+					<label>Initiative: Pre Rolled</label> <input type="text" id="initiative"> <label> Or Dex Mod</label> <input type="text" id="dexMod"><br />
+					<label>Health:</label> <input type="text" id="health"> <label> Or #<input type="text" id="numDice"> 
+					<select id="dice">
+					  <option value="d4">d4</option>
+					  <option value="d6">d6</option>
+					  <option value="d8">d8</option>
+					  <option value="d10">d10</option>
+					  <option value="d12">d12</option>
+					  <option value="d20">d20</option>
+					</select>
+					</label> <br />
+					<label>AC:</label> <input type="text" id="AC"> <br />
 					<button id="add" type="button" onclick="add()">add</button>
 				</div>
 				<div class = "body_border_box" id="main_container">
