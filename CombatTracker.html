@@ -13,9 +13,9 @@
 
 		<script> 
 			function nextTurn(){
-				var temp = $("#order tr").last();
-				$("#order tr").last().remove();
-				$("#order tr:nth-child(1)").after(temp);
+				var temp = $("#order tr:nth-child(2)");
+				$("#order tr:nth-child(2)").remove();
+				$("#order tr").last().after(temp);
 			}
 
 			function add(){
