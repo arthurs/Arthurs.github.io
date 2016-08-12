@@ -87,7 +87,15 @@
 			}
 
 			function duplicate(sender) {
-				$("#order").append("<tr>" + $(sender).parent().parent().parent().html() + "</tr>");
+				var copy = $(sender).parent().parent().parent().html();
+				$("#order").append("<tr>" + copy + "</tr>");
+				if ($($("#order tr").last().children()[1]).html().indexOf("(") >= 0) {
+					string = $($("#order tr").last().children()[1]).html();
+					count = parseInt(string.match(/[(][0-9]+(?!.*[0-9])[)]/)[0].replace('(', '').replace('(', ''));
+					$($("#order tr").last().children()[1]).html(string.replace(/[(][0-9]+(?!.*[0-9])[)]/, "(" + (count + 1) + ")" , 10));
+				} else {
+					$($("#order tr").last().children()[1]).html($($("#order tr").last().children()[1]).html() + "(1)");
+				}
 				sort();
 			}
 
