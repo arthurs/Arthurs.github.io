@@ -20,7 +20,7 @@
 		    		$("#race").html(info[charLevel]);
 		    	}, 'text');
 
-		    	$.get('levels/' + charClass + '.txt', function(data) {
+		    	$.get('class/' + charClass + '.txt', function(data) {
 		    		var info = JSON.parse(data)
 		    		$("#class").html(info[charLevel]);
 		    	}, 'text');
