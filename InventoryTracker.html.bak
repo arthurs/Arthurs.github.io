@@ -259,10 +259,13 @@
 		<style>
 		    #inventory { 
 		        vertical-align: top;
+				padding:2px;
 		    }
 		    #itemsDiv { 
 		        display: inline-block;
 		        vertical-align: top;
+				width:40%;
+				margin-left:1%;
 		    }
 			#add{
 			vertical-align: top;
@@ -270,7 +273,12 @@
 			}
 			#invtable{
 			display: inline-block;
-			min-width:50%;
+			min-width:40%;
+			margin-left:17%;
+			}
+			#coins{
+			margin-left:1%;
+			padding:2px;
 			}
 			
 	    </style>
@@ -295,9 +303,9 @@
 					<a href="" id="link" onclick="exportInv(this)" download="Inventory.xml">Export</a>
 				</div>
 				<div class = "body_border_box" id="">
+				<div id="inventory">
 				Character Strength: <input type="text" id="Strength" oninput="calc()">
 				<br />
-				<div id="inventory">
 				<span id="capacity">Carrying Cappacity: 0</span>
 						<br />
 						<span id="Free">Free Weight: 0</span>
@@ -309,10 +317,10 @@
 						</div>
 					<div class = "body_border_box" id="">	
 					<div id="coins">
-					Copper Coins: <input name="Copper" type="text" size="5" placeholder="0" id="copper" oninput="total()">
-					Silver Coins: <input type="text" size="5" placeholder="0" id="silver" oninput="total()">
-					Gold Coins: <input type="text" size="5" placeholder="0" id="gold" oninput="total()">
-					Platinum Coins: <input type="text"size="5" placeholder="0" id="platinum" oninput="total()">
+					Copper: <input name="Copper" type="text" size="5" placeholder="0" id="copper" oninput="total()">
+					Silver: <input type="text" size="5" placeholder="0" id="silver" oninput="total()">
+					Gold: <input type="text" size="5" placeholder="0" id="gold" oninput="total()">
+					Platinum: <input type="text"size="5" placeholder="0" id="platinum" oninput="total()">
 					</div>
 					
 					<div id="itemsDiv">

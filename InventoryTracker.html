@@ -259,18 +259,28 @@
 		<style>
 		    #inventory { 
 		        vertical-align: top;
+				padding:2px;
 		    }
 		    #itemsDiv { 
 		        display: inline-block;
 		        vertical-align: top;
+				width:40%;
+				margin-left:1%;
 		    }
 			#add{
 			vertical-align: top;
 			box-shadow: 0px 0px 15px #33ff33;
+			padding:2px;
 			}
 			#invtable{
 			display: inline-block;
-			min-width:50%;
+			min-width:40%;
+			margin-left:17%;.
+			padding:2px;
+			}
+			#coins{
+			margin-left:1%;
+			padding:2px;
 			}
 			
 	    </style>
@@ -295,9 +305,9 @@
 					<a href="" id="link" onclick="exportInv(this)" download="Inventory.xml">Export</a>
 				</div>
 				<div class = "body_border_box" id="">
+				<div id="inventory">
 				Character Strength: <input type="text" id="Strength" oninput="calc()">
 				<br />
-				<div id="inventory">
 				<span id="capacity">Carrying Cappacity: 0</span>
 						<br />
 						<span id="Free">Free Weight: 0</span>
