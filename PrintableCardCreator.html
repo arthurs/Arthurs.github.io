@@ -169,7 +169,18 @@
         }
 
         function updateCount() {
-          $("#cardCount").html(cards.length + " cards")
+            $("#cardCount").html(cards.length + " cards")
+          }
+
+        function save() {
+          alert("Copy and store this string:\n" + JSON.stringify(cards));
+        }
+
+        function load() {
+          var cards = JSON.parse(window.prompt("Load","Enter saved string"));
+          $("#currentCard").html(cards[0]);
+          currentCard = cards.length - 1;
+          updateCount()
         }
     </script> 
 
@@ -340,6 +351,8 @@
       <button id="add" type="button" onclick="removeCurrent()">Remove</button>
       <button id="add" type="button" onclick="clearAll()">Clear All</button>
       <button id="add" type="button" onclick="printPage()">Print</button>
+      <button id="add" type="button" onclick="save()">save</button>
+      <button id="add" type="button" onclick="load()">load</button>
       <span id="cardCount">0 cards</span>
 		</div>
       <div id="currentCard" class="card Card_preview">
