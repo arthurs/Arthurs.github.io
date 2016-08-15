@@ -100,10 +100,10 @@ br.clearLeft {
         <div id="navWrap">
             <div id="nav">
                 <ul>
-					<li><a href="index.html"class="smoothScroll">Home </a></li>
-					<li><a href="About.html"class="smoothScroll">About</a></li>
-					<li><a href="Contact.html"class="smoothScroll">Contact</a></li>
-					<li><a href="Future.html"class="smoothScroll">Future</a></li>
+                    <li><a href="#" class="smoothScroll">Demo Link 1</a></li>
+                    <li><a href="#" class="smoothScroll">Demo Link 2</a></li>
+                    <li><a href="#" class="smoothScroll">Demo Link 3</a></li>
+                    <li><a href="#" class="smoothScroll">Demo Link 4</a></li>
                 </ul>    
                 <br class="clearLeft" />
             </div>
