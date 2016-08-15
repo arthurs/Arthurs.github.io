@@ -116,10 +116,18 @@
         }
 
         function printPage() {
-          for (i=0; i <= 9; i++) {
-            $($("#Print_preview").children()[i]).html(cards[i]);
+          pages = Math.floor(cards.length / 9);
+          var printContents = ""
+
+          for (i=0; i <= pages; i++){
+            var start = i * 9;
+            for (j=start; j <= start + 9; j++) {
+              $($("div[name=Print_preview]").children()[j]).html(cards[j]);
+            }
+            console.log(start);
+            printContents += $("div[name=Print_preview]").html();
           }
-          var printContents = $("#Print_preview").html();
+
           var originalContents = $("body").html();
           
           $("body").html(printContents);
@@ -328,7 +336,7 @@
 		</div>
       <div id="currentCard" class="card Card_preview">
       </div>
-      <div class= "Print_preview" id="Print_preview" style="display:none">
+      <div class= "Print_preview" name="Print_preview" style="display:none">
 			  <div id="1-1" class="card">
 			  </div>
 			  <div id="1-2" class="card">
