@@ -309,10 +309,10 @@
 						</div>
 					<div class = "body_border_box" id="">	
 					<div id="coins">
-					Copper: <input name="Copper" type="text" size="5" placeholder="0" id="copper" oninput="total()">
-					Silver: <input type="text" size="5" placeholder="0" id="silver" oninput="total()">
-					Gold: <input type="text" size="5" placeholder="0" id="gold" oninput="total()">
-					Platinum: <input type="text"size="5" placeholder="0" id="platinum" oninput="total()">
+					Copper Coins: <input name="Copper" type="text" size="5" placeholder="0" id="copper" oninput="total()">
+					Silver Coins: <input type="text" size="5" placeholder="0" id="silver" oninput="total()">
+					Gold Coins: <input type="text" size="5" placeholder="0" id="gold" oninput="total()">
+					Platinum Coins: <input type="text"size="5" placeholder="0" id="platinum" oninput="total()">
 					</div>
 					
 					<div id="itemsDiv">
