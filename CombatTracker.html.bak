@@ -3,6 +3,7 @@
 	<head>
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript" src="Scripts/Dice.js"></script>
 
 		<script> 
 		    $(function(){
@@ -13,17 +14,23 @@
 
 		<script> 
 			function nextTurn(){
-				var temp = $("#order tr").last();
-				$("#order tr").last().remove();
-				$("#order tr:nth-child(1)").after(temp);
+				var temp = $("#order tr:nth-child(2)");
+				$("#order tr:nth-child(2)").remove();
+				$("#order tr").last().after(temp);
 			}
 
 			function add(){
 				var initiative = 0;
-				if ($("#initiative").val() == -1) {
-					initiative = parseInt(Math.random() * 20 + 1);
+				if ($("#dexmodcheck").is(":checked") ==true) {
+					initiative = RollDice(1,"d20") + parseInt($("#dexMod").val());
 				} else {
 					initiative = $("#initiative").val();
+				}
+
+				if ($("#healthrollcheck").is(":checked") ==true){
+					health = RollDice($("#numDice").val(), $("#dice").val());
+				} else {
+					health = $("#health").val();
 				}
 
 				var item = "";
@@ -33,7 +40,7 @@
 				item += "</td><td>";
 				item += $("#name").val();
 				item += "</td><td>";
-				item += $("#health").val();
+				item += health
 				item += "</td><td>";
 				item += $("#AC").val();
 				item += "</td><td>";
@@ -87,7 +94,15 @@
 			}
 
 			function duplicate(sender) {
-				$("#order").append("<tr>" + $(sender).parent().parent().parent().html() + "</tr>");
+				var copy = $(sender).parent().parent().parent().html();
+				$("#order").append("<tr>" + copy + "</tr>");
+				if ($($("#order tr").last().children()[1]).html().indexOf("(") >= 0) {
+					string = $($("#order tr").last().children()[1]).html();
+					count = parseInt(string.match(/[(][0-9]+(?!.*[0-9])[)]/)[0].replace('(', '').replace('(', ''));
+					$($("#order tr").last().children()[1]).html(string.replace(/[(][0-9]+(?!.*[0-9])[)]/, "(" + (count + 1) + ")" , 10));
+				} else {
+					$($("#order tr").last().children()[1]).html($($("#order tr").last().children()[1]).html() + "(1)");
+				}
 				sort();
 			}
 
@@ -118,14 +133,29 @@
 					$("#order").append(JSON.parse(loadStr["table"]));
 				}
 			}
+			function selectdexmod(){
+			if($("#dexmodcheck").is(":checked") ==true){
+				$("#Initiativeinput").html('<label>Dex Mod:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="dexMod">') ;
+				}else{
+				$("#Initiativeinput").html('<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> ') ;
+				}
+			}
+			function selectHealth(){
+			if($("#healthrollcheck").is(":checked") ==true){
+			$("#healthinput").html('<label>Dice:</label><input type="text" placeholder="0" maxlength="3" size="5" id="numDice"><select id="dice"><option value="d4">d4</option><option value="d6">d6</option><option value="d8">d8</option><option value="d10">d10</option><option value="d12">d12</option><option value="d20">d20</option></select> ') ;
+
+				}else{
+			$("#healthinput").html('<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">') ;				}
+			}
 		</script>
 <style>
 	#main_container{
 		max-width: 760px;
 
 	}
+
 	#table_container{
-		max-width:98%;
+		max-width:100%;
 
 	}
 </style>
@@ -149,10 +179,19 @@
 
 				<div class = "body_border_box" id="main_container">
 					<h4>Add Character</h4>
-					<label>Name:</label> <input type="text" id="name">
-					<label>Initiative:</label> <input type="text" id="initiative">
-					<label>Health:</label> <input type="text" id="health">
-					<label>AC:</label> <input type="text" id="AC">
+					<label>Name:</label> <input type="text" id="name"> <br />
+					<label>Initiative:</label> <input type ="checkbox" id="dexmodcheck" onclick="selectdexmod()">Roll?</input>
+					<br />
+					<div id ="Initiativeinput">
+						<label>Pre Rolled</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> 
+					</div>
+					<!-- Pre Rolled</label> <input type="text" id="initiative"> <label> Or Dex Mod</label> <input type="text" id="dexMod"> -->
+					<label>Health:</label><input type ="checkbox" id="healthrollcheck"  onclick="selectHealth()">Roll?</input>
+					<br />
+					<div id = "healthinput">
+						<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">
+					</div>
+					<label>AC:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="AC"> <br />
 					<button id="add" type="button" onclick="add()">add</button>
 				</div>
 				<div class = "body_border_box" id="main_container">

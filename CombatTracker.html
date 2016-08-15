@@ -21,13 +21,13 @@
 
 			function add(){
 				var initiative = 0;
-				if ($("#initiative").val() == '') {
+				if ($("#dexmodcheck").is(":checked") ==true) {
 					initiative = RollDice(1,"d20") + parseInt($("#dexMod").val());
 				} else {
 					initiative = $("#initiative").val();
 				}
 
-				if ($("#health").val() == '') {
+				if ($("#healthrollcheck").is(":checked") ==true){
 					health = RollDice($("#numDice").val(), $("#dice").val());
 				} else {
 					health = $("#health").val();
@@ -133,12 +133,27 @@
 					$("#order").append(JSON.parse(loadStr["table"]));
 				}
 			}
+			function selectdexmod(){
+			if($("#dexmodcheck").is(":checked") ==true){
+				$("#Initiativeinput").html('<label>Dex Mod:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="dexMod">') ;
+				}else{
+				$("#Initiativeinput").html('<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> ') ;
+				}
+			}
+			function selectHealth(){
+			if($("#healthrollcheck").is(":checked") ==true){
+			$("#healthinput").html('<label>Dice:</label><input type="text" placeholder="0" maxlength="3" size="5" id="numDice"><select id="dice"><option value="d4">d4</option><option value="d6">d6</option><option value="d8">d8</option><option value="d10">d10</option><option value="d12">d12</option><option value="d20">d20</option></select> ') ;
+
+				}else{
+			$("#healthinput").html('<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">') ;				}
+			}
 		</script>
 <style>
 	#main_container{
 		max-width: 760px;
 
 	}
+
 	#table_container{
 		max-width:100%;
 
@@ -165,18 +180,18 @@
 				<div class = "body_border_box" id="main_container">
 					<h4>Add Character</h4>
 					<label>Name:</label> <input type="text" id="name"> <br />
-					<label>Initiative: Pre Rolled</label> <input type="text" id="initiative"> <label> Or Dex Mod</label> <input type="text" id="dexMod"><br />
-					<label>Health:</label> <input type="text" id="health"> <label> Or #<input type="text" id="numDice"> 
-					<select id="dice">
-					  <option value="d4">d4</option>
-					  <option value="d6">d6</option>
-					  <option value="d8">d8</option>
-					  <option value="d10">d10</option>
-					  <option value="d12">d12</option>
-					  <option value="d20">d20</option>
-					</select>
-					</label> <br />
-					<label>AC:</label> <input type="text" id="AC"> <br />
+					<label>Initiative:</label> <input type ="checkbox" id="dexmodcheck" onclick="selectdexmod()">Roll?</input>
+					<br />
+					<div id ="Initiativeinput">
+						<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> 
+					</div>
+					<!-- Pre Rolled</label> <input type="text" id="initiative"> <label> Or Dex Mod</label> <input type="text" id="dexMod"> -->
+					<label>Health:</label><input type ="checkbox" id="healthrollcheck"  onclick="selectHealth()">Roll?</input>
+					<br />
+					<div id = "healthinput">
+						<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">
+					</div>
+					<label>AC:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="AC"> <br />
 					<button id="add" type="button" onclick="add()">add</button>
 				</div>
 				<div class = "body_border_box" id="main_container">
