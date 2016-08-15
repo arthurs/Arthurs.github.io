@@ -39,6 +39,17 @@ h1{
 label{
 	font-size:1.2em;
 }
+input:not([type]), input[type="text"]
+{
+background:#FFF8DC;
+ /* css 3 */
+ border-radius:5px;
+ /* mozilla */
+ -moz-border-radius:5px;
+ /* webkit */
+ -webkit-border-radius:5px;
+}
+
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
@@ -150,7 +161,7 @@ label{
  
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    z-index: 1;
+    z-index: 5;
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
