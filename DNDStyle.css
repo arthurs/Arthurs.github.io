@@ -25,12 +25,14 @@ input{
 }
 textarea{
 	color:Black;
+	background:#FFF8DC;
 }
 select option{
 	color:Black;
 }
 select{
 	color:Black;
+	background:#FFF8DC;
 }
 h1{
 	color:#ffefd5;
@@ -39,8 +41,7 @@ h1{
 label{
 	font-size:1.2em;
 }
-input:not([type]), input[type="text"]
-{
+input,[type="text"],[type="checkbox"]:checked + label{
 background:#FFF8DC;
  /* css 3 */
  border-radius:5px;
@@ -329,7 +330,7 @@ tr.active{
 	vertical-align: top;
 }
 .Print_preview{
-	background-color: #F5F5F5;
+	background-color: #fdf5e8;
 	display: block;
 	vertical-align: top;
 	height: 297mm; 

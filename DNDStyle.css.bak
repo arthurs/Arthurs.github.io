@@ -25,12 +25,14 @@ input{
 }
 textarea{
 	color:Black;
+	background:#FFF8DC;
 }
 select option{
 	color:Black;
 }
 select{
 	color:Black;
+	background:#FFF8DC;
 }
 h1{
 	color:#ffefd5;
@@ -39,8 +41,7 @@ h1{
 label{
 	font-size:1.2em;
 }
-input:not([type]), input[type="text"]
-{
+input,[type="text"],[type="checkbox"]:checked + label{
 background:#FFF8DC;
  /* css 3 */
  border-radius:5px;
@@ -49,6 +50,7 @@ background:#FFF8DC;
  /* webkit */
  -webkit-border-radius:5px;
 }
+
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
@@ -160,7 +162,7 @@ background:#FFF8DC;
  
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    z-index: 1;
+    z-index: 5;
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
