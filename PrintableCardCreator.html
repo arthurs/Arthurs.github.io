@@ -35,7 +35,20 @@
             + (($("#Material").prop("checked")) ? "M " : "")
             + "<br />";
           text += "<b>Duration: </b>" + $("#Duration").val() + "<br />";
-          //text += "<b>Classes: </b>" + $("#Classes").val() + "<br />";
+          text += "<b>Classes: </b>" 
+            + (($("#Bararian").prop("checked")) ? "Bararian " : "")
+            + (($("#Bard").prop("checked")) ? "Bard " : "")
+            + (($("#Cleric").prop("checked")) ? "Cleric " : "")
+            + (($("#Druid").prop("checked")) ? "Druid " : "")
+            + (($("#Fighter").prop("checked")) ? "Fighter " : "")
+            + (($("#Monk").prop("checked")) ? "Monk " : "")
+            + (($("#Paladin").prop("checked")) ? "Paladin " : "")
+            + (($("#Ranger").prop("checked")) ? "Ranger " : "")
+            + (($("#Rogue").prop("checked")) ? "Rogue " : "")
+            + (($("#Sorcerer").prop("checked")) ? "Sorcerer " : "")
+            + (($("#Warlock").prop("checked")) ? "Warlock " : "")
+            + (($("#Wizard").prop("checked")) ? "Wizard " : "")
+            + "<br />";
           text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br /><br />";
     		  text += "</div>";
     		  text += "<div class= 'print_image_box'>";
