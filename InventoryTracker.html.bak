@@ -270,15 +270,18 @@
 			#add{
 			vertical-align: top;
 			box-shadow: 0px 0px 15px #33ff33;
+			padding:2px;
 			}
 			#invtable{
 			display: inline-block;
 			min-width:40%;
-			margin-left:17%;
+			margin-left:17%;.
+			padding:2px;
 			}
 			#coins{
 			margin-left:1%;
 			padding:2px;
+			margin-bottom:4px;
 			}
 			
 	    </style>
