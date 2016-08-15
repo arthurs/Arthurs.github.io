@@ -20,6 +20,9 @@
     </script> 
 
     <script> 
+        var cards = []
+        var currentCard = 0;
+
         function add(){
           var text = "";
 		      text += "<div class= 'print_body_box'>";
@@ -60,12 +63,15 @@
     		  text += "<div class= 'descriptioncontainer'>";
               text += $("#Description").val().replace(/\n/g, '<br/>');
     		  text += "</div>";
-          $("#Print_preview").children().each(function(idx, card){
-            if ($.trim($(card).html()) == "") {
-              $(card).html(text);
-              return false;
-            }
-          });
+          //$("#Print_preview").children().each(function(idx, card){
+          //  if ($.trim($(card).html()) == "") {
+          //    $(card).html(text);
+          //    return false;
+          //  }
+          //});
+          cards.push(text);
+          $("#currentCard").html(text);
+          currentCard = cards.length - 1;
         }
 
         function addLoot(){
@@ -84,12 +90,15 @@
     		  text += "</div>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
-          $("#Print_preview").children().each(function(idx, card){
-            if ($.trim($(card).html()) == "") {
-              $(card).html(text);
-              return false;
-            }
-          });
+          //$("#Print_preview").children().each(function(idx, card){
+          //  if ($.trim($(card).html()) == "") {
+          //    $(card).html(text);
+          //    return false;
+          //  }
+          //});
+          cards.push(text);
+          $("#currentCard").html(text);
+          currentCard = cards.length - 1;
         }
 
         function clearLast(){
@@ -102,12 +111,14 @@
         }
 
         function clearAll(){
-          $("#Print_preview").children().each(function(idx, card){
-            $(card).html("");
-          });
+          cards = []
+          $("#currentCard").html("");
         }
 
         function printPage() {
+          for (i=0; i <= 9; i++) {
+            $($("#Print_preview").children()[i]).html(cards[i]);
+          }
           var printContents = $("#Print_preview").html();
           var originalContents = $("body").html();
           
@@ -120,6 +131,30 @@
           $("body").removeClass("print");
 
           $("body").html(originalContents);
+        }
+
+        function nextCard() {
+          currentCard++;
+          if (currentCard >= cards.length) {
+            currentCard = cards.length - 1;
+          }
+          $("#currentCard").html(cards[currentCard]);
+        }
+
+        function prevCard() {
+          currentCard--;
+          if (currentCard < 0) {
+            currentCard = 0;
+          }
+          $("#currentCard").html(cards[currentCard]);
+        }
+
+        function removeCurrent() {
+          cards.splice(currentCard, 1);
+          if (currentCard >= cards.length) {
+            currentCard = cards.length - 1;
+          }
+          $("#currentCard").html(cards[currentCard]); 
         }
     </script> 
 
@@ -265,6 +300,7 @@
           <textarea rows="4" cols="50" id="Description"> </textarea> <br />
           Image url:<input type="text" id="SpellImage"> <br />
           <button id="add" type="button" onclick="add()">Add</button>
+          
         </div>
 
         <div class="body_box" id="item">
@@ -278,17 +314,21 @@
           Image url:<input type="text" id="LootImage"> <br />
           <button id="add" type="button" onclick="addLoot()">Add</button>
         </div>
-        <br/>
-        <br/>
+
+        
       </div>
     </div>
 		<div class = "body_border_box" id="main_container">
 				<div class="center_box" id="printviewoptions">
-			<button id="add" type="button" onclick="clearLast()">Clear Last</button>
-			<button id="add" type="button" onclick="clearAll()">Clear All</button>
-			<button id="add" type="button" onclick="printPage()">Print Cards</button>
+			<button id="add" type="button" onclick="nextCard()">Next</button>
+      <button id="add" type="button" onclick="prevCard()">Previous</button>
+      <button id="add" type="button" onclick="removeCurrent()">Remove</button>
+      <button id="add" type="button" onclick="clearAll()">Clear All</button>
+      <button id="add" type="button" onclick="printPage()">Print</button>
 		</div>
-            <div class= "Print_preview" id="Print_preview">
+      <div id="currentCard" class="card Card_preview">
+      </div>
+      <div class= "Print_preview" id="Print_preview" style="display:none">
 			  <div id="1-1" class="card">
 			  </div>
 			  <div id="1-2" class="card">

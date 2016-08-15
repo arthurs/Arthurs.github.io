@@ -343,6 +343,18 @@ tr.active{
 	margin-bottom:4px;
 }
 
+.Card_preview{
+	background-color: #fdf5e8;
+	display: block;
+	vertical-align: top;
+	padding: 0 0 0 7px;
+	position: Relative;
+	color:black;
+	margin: auto;
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
 .PH_main_content{
 	display: inline-block;
     position: relative;
