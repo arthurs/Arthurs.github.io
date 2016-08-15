@@ -72,6 +72,7 @@
           cards.push(text);
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
+          updateCount()
         }
 
         function addLoot(){
@@ -99,6 +100,7 @@
           cards.push(text);
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
+          updateCount()
         }
 
         function clearLast(){
@@ -163,6 +165,11 @@
             currentCard = cards.length - 1;
           }
           $("#currentCard").html(cards[currentCard]); 
+          updateCount()
+        }
+
+        function updateCount() {
+          $("#cardCount").html(cards.length + " cards")
         }
     </script> 
 
@@ -333,6 +340,7 @@
       <button id="add" type="button" onclick="removeCurrent()">Remove</button>
       <button id="add" type="button" onclick="clearAll()">Clear All</button>
       <button id="add" type="button" onclick="printPage()">Print</button>
+      <span id="cardCount">0 cards</span>
 		</div>
       <div id="currentCard" class="card Card_preview">
       </div>
