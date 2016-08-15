@@ -39,6 +39,16 @@ h1{
 label{
 	font-size:1.2em;
 }
+input:not([type]), input[type="text"]
+{
+background:#FFF8DC;
+ /* css 3 */
+ border-radius:5px;
+ /* mozilla */
+ -moz-border-radius:5px;
+ /* webkit */
+ -webkit-border-radius:5px;
+}
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
@@ -326,7 +336,7 @@ tr.active{
 	padding: 0 0 0 7px;
 	position: Relative;
 	color:black;
-	/* margin: auto; */
+	margin: auto;
 	margin-top:4px;
 	margin-bottom:4px;
 }
