@@ -26,7 +26,7 @@
           text += "" + $("#Name").val() + "</b> &nbsp &nbsp &nbsp &nbsp";
           text += $("#School").val() + "&nbsp";
           text += $("#Level").val() + "<br />";
-          text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br />";
+          text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "(R)" + "<br />";
           text += "<b>Range: </b>" + $("#Range").val() + "<br />";
 
           text += "<b>Components: </b>"
@@ -75,13 +75,13 @@
           text += "<b>Type: </b>" + $("#LootType").val() + "<br />";
           text += "<b>Weight: </b>" + $("#LootWeight").val() + "<br />";
           text += "<b>Value: </b>" + $("#LootCost").val() + "<br /><br />";
-		  text += "</div>";
-		  text += "<div class= 'print_image_box'>";
-		  var test = $("#LootImage").val();
-		  if( test !== "" ){
-			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
-		  }
-		  text += "</div>";
+    		  text += "</div>";
+    		  text += "<div class= 'print_image_box'>";
+    		  var test = $("#LootImage").val();
+    		  if( test !== "" ){
+    			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+    		  }
+    		  text += "</div>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
           $("#Print_preview").children().each(function(idx, card){
@@ -216,7 +216,9 @@
             <option value="8 Hour">8 Hours</option>
             <option value="12 Hour">12 Hours</option>
             <option value="24 Hour">24 Hours</option>
-          </select> <br />
+          </select> 
+          <input type ="checkbox" id="ritual">Ritual</input>
+          <br />
           Range: <input type="text" id="Range"> <br />
           Components: 
           <input name ="components"  type ="checkbox" id="Verbal">Verbal (V)</input>
