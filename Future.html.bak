@@ -18,14 +18,13 @@
 		<div Id = "Header1">
 			<!-- import header goes here -->
 		</div>
-		<div Class = "sickdragonimg_ph">
-		</div>
-		<div class= "body_content">
-			<div class= "PH_ads">
-				<p>w/e here</p>
+		<div class= "Left_Menu_spacer">
 			</div>
-			<div class= "PH_main_content" id="main">
-				<div class ="main_content general">
+			
+		<div class= "body_content">
+
+			<div class= "main_content" id="main">
+				div class ="main_content general">
 				<h1>planned</h1>
 					<ul>
 						<li>Character sheets</li>
@@ -36,15 +35,15 @@
 						<li>Simple map maker</li>
 						<li>Story helper</li>
 					</ul>
-				</div>
 			</div>
-			<div class= "PH_modules_list" id="PH_modules_list">
+			<div class= "modules_list" id="PH_modules_list">
 			</div>
 		</div>
 		<div class = "footer">
 			<div class ="navbar">
 				<p>Navbar</p>
 			</div>
+
 		</div>
 	</body>
 </html>
