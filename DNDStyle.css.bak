@@ -186,10 +186,94 @@ background:#FFF8DC;
 	list-style-type:none;
 }
 
+#wrap {
+   margin: 10px auto;        
+   background: #666;
+   padding: 10px;
+   width: 100%;
+}
+#header {
+   background-color: #666;
+   color: #FFF;
+      height:100%;
+}
+#logo {
+   font-size: 30px;  
+   line-height: 40px;    
+   padding: 5px;
+   background: #191919;
+   width:100%;  
+   position: fixed;   
+   z-index:100;
+   height:50px;
+	  
+}
+#navWrap {
+}
+#nav {
+<!-- margin = logo height -->
+   height:100%;
+   z-index:100; 
+   position: fixed;
+   margin-top: 50px;
+
+}
+#nav a{
+	display: inline-block;
+	padding: 0% 2.5%;}
+	
+#nav ul {
+   margin: 0;
+   padding: 0;    
+}
+#nav li {
+   float: left;
+   padding: 4px 4px;
+   background-color: #333333;
+   margin: 4px;
+   color: #F00;
+   list-style-type: none;
+   border-style: outset;
+   width: 100%
+}
+#nav li a {
+   color: #ffffff;  
+   text-decoration: none;  
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	display:block;
+	color: white;
+	text-align: center;
+	text-decoration: none;   
+}
+#nav li a:hover {  
+}
+#leftside{
+	width:120px;
+   height:100%;
+}
+.Left_Menu_spacer{
+	width:120px;
+	background: #191919;
+	height:100%;
+	display: block;
+	position: fixed;    
+	vertical-align: top;
+	box-sizing:;
+}
+br.clearLeft {
+   clear: left;        
+}​
+.Rectangle_1 {
+  background-color: rgb(185, 180, 171);
+  z-index: 3;
+}
+
 .modules_list,.main_content,.PH_ads,.navbar{
 	border-style: transparent;
 	background:#111111;
-	opacity: 0.2;
+	background-color:rgba(17,17,17, 0.2);
 	margin:auto;
 	
 /* 	border-width: 27px;
