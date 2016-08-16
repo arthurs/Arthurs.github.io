@@ -32,7 +32,7 @@
 				<p>short info about what to expect when emailing or what ever<p>
 				</div>
 			</div>
-			<div class= "PH_modules_list" id="PH_modules_list">
+			<div class= "modules_list" id="PH_modules_list">
 			</div>
 		</div>
 		<div class = "footer">
