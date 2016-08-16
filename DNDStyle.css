@@ -51,6 +51,9 @@ background:#FFF8DC;
  /* webkit */
  -webkit-border-radius:5px;
 }
+th{
+	border-color: transparent;
+}
 
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
@@ -231,7 +234,7 @@ background:#FFF8DC;
    padding: 4px 4px;
    background-color: #333333;
    margin: 4px;
-   color: #F00;
+   border-color: #d3d8dd;
    list-style-type: none;
    border-style: outset;
    width: 100%
