@@ -181,7 +181,7 @@
         }
 
         function load() {
-          var cards = JSON.parse(window.prompt("Load","Enter saved string"));
+          cards = JSON.parse(window.prompt("Load","Enter saved string"));
           $("#currentCard").html(cards[0]);
           currentCard = cards.length - 1;
           updateCount()
