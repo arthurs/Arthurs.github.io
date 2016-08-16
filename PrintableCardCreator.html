@@ -10,13 +10,11 @@
       $( function() {
         $( "#tabs" ).tabs();
       } );
-    </script>
 
-    <script> 
-        $(function(){
-          $("#Header1").load("Header.html"); 
-          $("#PH_modules_list").load("Modules.html"); 
-        });
+      $(function(){
+        $("#Header1").load("Header.html"); 
+        $("#PH_modules_list").load("Modules.html"); 
+      });
     </script> 
 
     <script> 
@@ -122,10 +120,10 @@
           pages = Math.floor(cards.length / 9);
           var printContents = ""
 
-          for (i=0; i <= pages; i++){
+          for (i=0; i < pages; i++){
             var start = i * 9;
             for (j=start; j <= start + 9; j++) {
-              $($("div[name=Print_preview]").children()[j]).html(cards[j]);
+              $($("div[name=Print_preview]").children()[j - start]).html(cards[j]);
             }
             console.log(start);
             printContents += $("div[name=Print_preview]").html();
@@ -177,7 +175,6 @@
           }
 
         function save(sender) {
-          //alert("Copy and store this string:\n" + JSON.stringify(cards));
           var text = JSON.stringify(cards);
           sender.href = 'data:xml/plain;charset=utf-8,' + encodeURIComponent(text);
         }
