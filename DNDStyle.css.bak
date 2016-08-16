@@ -311,7 +311,7 @@ br.clearLeft {
 .body_content{
 	box-sizing: border-box;
 	min-height: 1000px;
-	margin-left:120px;
+	margin-left:128px;
 	padding-top: 50px;
 
 }
@@ -345,7 +345,7 @@ tr.active{
 }
 .navbar{
 	margin:4px;
-	margin-left:120px;
+	margin-left:128px;
 }
 
 .navbarmenu{
