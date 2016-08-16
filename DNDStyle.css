@@ -186,20 +186,39 @@ background:#FFF8DC;
 	list-style-type:none;
 }
 
-.PH_modules_list,.PH_main_content,.PH_ads,.navbar{
-	border-style: solid;
-	border-width: 27px;
+.modules_list,.main_content,.PH_ads,.navbar{
+	border-style: transparent;
+	background:#111111;
+	opacity: 0.2;
+	margin:auto;
+	
+/* 	border-width: 27px;
 	-moz-border-image: url(Metal_Border_2.png) 27 repeat;
 	-webkit-border-image: url(Metal_Border_2.png) 27 repeat;
 	-o-border-image: url(Metal_Border_2.png) 27 repeat;
-	border-image: url(Metal_Border_2.png) 27 fill repeat;
+	border-image: url(Metal_Border_2.png) 27 fill repeat; */
+}
+.main_content{
+	display: inline-block;
+    position: relative;
+	width: 80%;
+	height: 100%;
+	vertical-align: top;
+}
+
+.modules_list{
+	display: inline-block;
+    position: relative;
+	width: 19%;
+	height: 100%;
+	vertical-align: top;
 }
 .Topbar{
 	background:	#191919;
 	width:100%;
 	height:50px;
 }
-.PH_modules_list,.PH_main_content,.PH_ads{
+.modules_list,.main_content,.PH_ads{
 	min-height: 1000px;
 }
 
@@ -207,6 +226,9 @@ background:#FFF8DC;
 .body_content{
 	box-sizing: border-box;
 	min-height: 1000px;
+	margin-left:120px;
+	padding-top: 50px;
+
 }
 .body_box{
 	position: relative;
@@ -237,7 +259,8 @@ tr.active{
     background-color: #372e20;
 }
 .navbar{
-		width: 100%;
+	margin:4px;
+	margin-left:120px;
 }
 
 .navbarmenu{
@@ -361,21 +384,6 @@ tr.active{
 	margin-bottom:4px;
 }
 
-.PH_main_content{
-	display: inline-block;
-    position: relative;
-	width: 69%;
-	height: 100%;
-	vertical-align: top;
-}
-
-.PH_modules_list{
-	display: inline-block;
-    position: relative;
-	width: 20%;
-	height: 100%;
-	vertical-align: top;
-}
 .sickdragonimg_ph{
 	min-height: 200px;
 }

@@ -4,8 +4,8 @@
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="javascript/smoothscroll.js"></script>
-		<script> 
+		<script type="text/javascript" src="Scripts/smoothscroll.js"></script>
+<!-- 		<script> 
 		    $(function(){
 		      $("#Header1").load("Header.html"); 
 			  $("#PH_modules_list").load("Modules.html"); 
@@ -38,7 +38,7 @@
     });
 });
 
-		</script>
+		</script> -->
 		
 <style>
 #wrap {
@@ -50,42 +50,81 @@
 #header {
    background-color: #666;
    color: #FFF;
+      height:100%;
 }
 #logo {
    font-size: 30px;  
    line-height: 40px;    
    padding: 5px;
+   background: #191919;
+   width:100%;  
+   position: fixed;   
+   z-index:100;
+   height:50px;
+	  
 }
 #navWrap {
-   height: 30px;
 }
 #nav {
-   padding: 5px;
-   background: #191919; 
-   z-index:100;   
+<!-- margin = logo height -->
+   height:100%;
+   z-index:100; 
+   position: fixed;
+   margin-top: 50px;
+
 }
+#nav a{
+	display: inline-block;
+	padding: 0% 2.5%;}
+	
 #nav ul {
    margin: 0;
    padding: 0;    
 }
 #nav li {
    float: left;
-   padding: 3px 8px;
+   padding: 4px 4px;
    background-color: #333333;
-   margin: 0 10px 0 0;
+   margin: 4px;
    color: #F00;
    list-style-type: none;
+   border-style: outset;
+   width: 100%
 }
 #nav li a {
    color: #ffffff;  
-   text-decoration: none;    
+   text-decoration: none;  
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	display:block;
+	color: white;
+	text-align: center;
+	text-decoration: none;   
 }
-#nav li a:hover {
-   text-decoration: underline;   
+#nav li a:hover {  
+}
+#leftside{
+	width:120px;
+   height:100%;
+}
+.Left_Menu_spacer{
+	width:120px;
+	background: #191919;
+	height:100%;
+	display: block;
+	position: fixed;    
+	vertical-align: top;
+	box-sizing:;
 }
 br.clearLeft {
    clear: left;        
 }​
+.Rectangle_1 {
+  background-color: rgb(185, 180, 171);
+  z-index: 3;
+}
+
 </style>
 		
 
@@ -93,33 +132,33 @@ br.clearLeft {
 	</head>
 	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
 	<body>
-		<div Id = "Header1">
+	<div>
 			<!-- import header goes here -->
-   <div id="header">
-        <div id="logo">Welcome to DND tools!</div>
-        <div id="navWrap">
+		<div id="logo">Welcome to DND tools!</div>
             <div id="nav">
-                <ul>
-					<li><a href="index.html"class="smoothScroll">Home </a></li>
-					<li><a href="About.html"class="smoothScroll">About</a></li>
-					<li><a href="Contact.html"class="smoothScroll">Contact</a></li>
-					<li><a href="Future.html"class="smoothScroll">Future</a></li>
-                </ul>    
-                <br class="clearLeft" />
-            </div>
-        </div>
-    </div>
+				<div id="leftside">
+					<ul>
+						<li><a href="index.html"class="smoothScroll">Home </a></li>
+						<li><a href="About.html"class="smoothScroll">About</a></li>
+						<li><a href="Contact.html"class="smoothScroll">Contact</a></li>
+						<li><a href="Future.html"class="smoothScroll">Future</a></li>
+						<li><a href="CombatTracker.html">Combat Tracker </a></li>
+						<li><a href="PrintableCardCreator.html">Card Creator</a></li>
+						<li><a href="InventoryTracker.html">Inventory Tracker</a></li>
+						<li><a href="LevelUpHelper.html">Level Up Helper</a></li>
+						<li><a href="CharacterSheetHelper.html">Character Sheet Helper</a></li>
+						<li><a href="EncounterCalculator.html">Encounter Calculator</a></li>
+					</ul>    
+					<br class="clearLeft" />
+				</div>
+			</div>
 		</div>
-		<div Class = "sickdragonimg_ph">
-		</div>
+			<div class= "Left_Menu_spacer">
+			</div>
 		<div class= "body_content">
-			<div class= "PH_ads">
-				<p>w/e here</p>
+			<div class= "main_content" id="main">
 			</div>
-			<div class= "PH_main_content" id="main">
-				
-			</div>
-			<div class= "PH_modules_list" id="PH_modules_list">
+			<div class= "modules_list" id="PH_modules_list">
 			</div>
 		</div>
 		<div class = "footer">

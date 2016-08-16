@@ -18,18 +18,18 @@
 		<div Id = "Header1">
 			<!-- import header goes here -->
 		</div>
-		<div Class = "sickdragonimg_ph">
+		<div class= "Left_Menu_spacer">
 		</div>
 		<div class= "body_content">
 			<div class= "PH_ads">
 				<p>w/e here</p>
 			</div>
-			<div class= "PH_main_content" id="main">
+			<div class= "main_content" id="main">
 				<div class ="main_content general">
-				<h1>contact</h1>
+				<h1>Contact</h1>
 				<br>
 				email or just a auto email form
-				<p>short info<p>
+				<p>short info about what to expect when emailing or what ever<p>
 				</div>
 			</div>
 			<div class= "PH_modules_list" id="PH_modules_list">

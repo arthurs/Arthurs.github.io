@@ -7,6 +7,7 @@
 		<script> 
 		    $(function(){
 		      $("#Header1").load("Header.html"); 
+			  $("#PH_modules_list").load("Modules.html"); 
 		    });
 		</script> 
 
@@ -15,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
 	<body>
 		<div Id = "Header1">
-			<! import header goes here />
+			<!-- import header goes here -->
 		</div>
 		<div Class = "sickdragonimg_ph">
 		</div>
@@ -45,22 +46,11 @@
 					<a href="#archive">Archive</a>
 				</div>
 			</div>
-			<div class= "PH_modules_list";>
-				<h1>Modules</h1>
-				<div class ="Modulenavbar">
-					<div class = "Modulenavbarmenu">
-						<ul >
-						  <li><a href="CombatTracker.html">Combat Tracker </a></li>
-						  <li><a href="#about">About</a></li>
-						  <li><a href="#contact">Contact</a></li>
-						  <li><a href="#future">Future</a></li>
-						</ul>
-					</div>
-				</div> 
+			<div class= "PH_modules_list" id="PH_modules_list">
 			</div>
 		</div>
-		<div class = "footer";>
-			<div class ="navbar";>
+		<div class = "footer">
+			<div class ="navbar">
 				<p>Navbar</p>
 			</div>
 		</div>
