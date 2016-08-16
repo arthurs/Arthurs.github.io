@@ -3,6 +3,14 @@
   <head>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+
+    <script>
+      $( function() {
+        $( "#tabs" ).tabs();
+      } );
+    </script>
 
     <script> 
         $(function(){
@@ -12,34 +20,60 @@
     </script> 
 
     <script> 
+        var cards = []
+        var currentCard = 0;
+
         function add(){
           var text = "";
-		  text += "<div class= 'print_body_box'>";
-          text += "" + $("#Name").val() + "</b> &nbsp &nbsp &nbsp &nbsp";
+		      text += "<div class= 'print_body_box'>";
+          text += "" + $("#Name").val() + "</b><br />";
           text += $("#School").val() + "&nbsp";
           text += $("#Level").val() + "<br />";
-          text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br />";
+          text += $("#CastingTime").val() 
+          + (($("#ritual").prop("checked")) ? "(R) " : "")
+          + "<br />";
           text += "<b>Range: </b>" + $("#Range").val() + "<br />";
-          text += "<b>Components: </b>" + $("#Components").val() + "<br />";
+
+          text += "<b>Components: </b>"
+            + (($("#Verbal").prop("checked")) ? "V " : "")
+            + (($("#Somatic").prop("checked")) ? "S " : "")
+            + (($("#Material").prop("checked")) ? "M " : "")
+            + "<br />";
           text += "<b>Duration: </b>" + $("#Duration").val() + "<br />";
-          text += "<b>Classes: </b>" + $("#Classes").val() + "<br />";
-          text += "<b>Casting Time: </b>" + $("#CastingTime").val() + "<br /><br />";
-		  text += "</div>";
-		  text += "<div class= 'print_image_box'>";
-		  var test = $("#SpellImage").val();
-		  if( test !== "" ){
-			text +="<img src='"+ $("#SpellImage").val() +"'alt='card_img' height ='100%' width='100%'>";
-		  }
-		  text += "</div>";
-		  text += "<div class= 'descriptioncontainer'>";
-          text += $("#Description").val().replace(/\n/g, '<br/>');
-		  text += "</div>";
-          $("#Print_preview").children().each(function(idx, card){
-            if ($.trim($(card).html()) == "") {
-              $(card).html(text);
-              return false;
-            }
-          });
+          text += "<b>Classes: </b>" 
+            + (($("#Bararian").prop("checked")) ? "Bararian " : "")
+            + (($("#Bard").prop("checked")) ? "Bard " : "")
+            + (($("#Cleric").prop("checked")) ? "Cleric " : "")
+            + (($("#Druid").prop("checked")) ? "Druid " : "")
+            + (($("#Fighter").prop("checked")) ? "Fighter " : "")
+            + (($("#Monk").prop("checked")) ? "Monk " : "")
+            + (($("#Paladin").prop("checked")) ? "Paladin " : "")
+            + (($("#Ranger").prop("checked")) ? "Ranger " : "")
+            + (($("#Rogue").prop("checked")) ? "Rogue " : "")
+            + (($("#Sorcerer").prop("checked")) ? "Sorcerer " : "")
+            + (($("#Warlock").prop("checked")) ? "Warlock " : "")
+            + (($("#Wizard").prop("checked")) ? "Wizard " : "")
+            + "<br />";
+    		  text += "</div>";
+    		  text += "<div class= 'print_image_box'>";
+    		  var test = $("#SpellImage").val();
+    		  if( test !== "" ){
+    			text +="<img src='"+ $("#SpellImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+    		  }
+    		  text += "</div>";
+    		  text += "<div class= 'descriptioncontainer'>";
+              text += $("#Description").val().replace(/\n/g, '<br/>');
+    		  text += "</div>";
+          //$("#Print_preview").children().each(function(idx, card){
+          //  if ($.trim($(card).html()) == "") {
+          //    $(card).html(text);
+          //    return false;
+          //  }
+          //});
+          cards.push(text);
+          $("#currentCard").html(text);
+          currentCard = cards.length - 1;
+          updateCount()
         }
 
         function addLoot(){
@@ -49,21 +83,25 @@
           text += "<b>Type: </b>" + $("#LootType").val() + "<br />";
           text += "<b>Weight: </b>" + $("#LootWeight").val() + "<br />";
           text += "<b>Value: </b>" + $("#LootCost").val() + "<br /><br />";
-		  text += "</div>";
-		  text += "<div class= 'print_image_box'>";
-		  var test = $("#LootImage").val();
-		  if( test !== "" ){
-			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
-		  }
-		  text += "</div>";
+    		  text += "</div>";
+    		  text += "<div class= 'print_image_box'>";
+    		  var test = $("#LootImage").val();
+    		  if( test !== "" ){
+    			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+    		  }
+    		  text += "</div>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
 
-          $("#Print_preview").children().each(function(idx, card){
-            if ($.trim($(card).html()) == "") {
-              $(card).html(text);
-              return false;
-            }
-          });
+          //$("#Print_preview").children().each(function(idx, card){
+          //  if ($.trim($(card).html()) == "") {
+          //    $(card).html(text);
+          //    return false;
+          //  }
+          //});
+          cards.push(text);
+          $("#currentCard").html(text);
+          currentCard = cards.length - 1;
+          updateCount()
         }
 
         function clearLast(){
@@ -76,13 +114,23 @@
         }
 
         function clearAll(){
-          $("#Print_preview").children().each(function(idx, card){
-            $(card).html("");
-          });
+          cards = []
+          $("#currentCard").html("");
         }
 
         function printPage() {
-          var printContents = $("#Print_preview").html();
+          pages = Math.floor(cards.length / 9);
+          var printContents = ""
+
+          for (i=0; i <= pages; i++){
+            var start = i * 9;
+            for (j=start; j <= start + 9; j++) {
+              $($("div[name=Print_preview]").children()[j]).html(cards[j]);
+            }
+            console.log(start);
+            printContents += $("div[name=Print_preview]").html();
+          }
+
           var originalContents = $("body").html();
           
           $("body").html(printContents);
@@ -94,6 +142,49 @@
           $("body").removeClass("print");
 
           $("body").html(originalContents);
+        }
+
+        function nextCard() {
+          currentCard++;
+          if (currentCard >= cards.length) {
+            currentCard = cards.length - 1;
+          }
+          $("#currentCard").html(cards[currentCard]);
+          updateCount();
+        }
+
+        function prevCard() {
+          currentCard--;
+          if (currentCard < 0) {
+            currentCard = 0;
+          }
+          $("#currentCard").html(cards[currentCard]);
+          updateCount();
+        }
+
+        function removeCurrent() {
+          cards.splice(currentCard, 1);
+          if (currentCard >= cards.length) {
+            currentCard = cards.length - 1;
+          }
+          $("#currentCard").html(cards[currentCard]); 
+          updateCount();
+        }
+
+        function updateCount() {
+            $("#cardCurrent").html((currentCard + 1) + "/")
+            $("#cardCount").html(cards.length + " cards")
+          }
+
+        function save() {
+          alert("Copy and store this string:\n" + JSON.stringify(cards));
+        }
+
+        function load() {
+          var cards = JSON.parse(window.prompt("Load","Enter saved string"));
+          $("#currentCard").html(cards[0]);
+          currentCard = cards.length - 1;
+          updateCount()
         }
     </script> 
 
@@ -120,7 +211,7 @@
 	margin-top: 4px;
 	}
 	#main_container{
-	max-width:760px;
+	max-width:780px;
 	}
 	.descriptioncontainer{
 	word-break: break-word;
@@ -161,53 +252,116 @@
     <div Class = "sickdragonimg_ph">
     </div>
     <div class= "body_content">
-      <div class= "PH_ads">
-        <p>w/e here</p>
-      </div>
 	  <!-- add javascript to load/swap different inputs   -->
-      <div class= "PH_main_content">
+	  <div class= "Left_Menu_spacer">
+	  </div>
+      <div class= "main_content">
 		<h1 class="pageheader";>Card Creator</h1>
 		<div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
 		</div>
 		<br/>
 		<div class = "body_border_box" id="main_container">
-		  <div class="body_box">
-				<h2>Spell Card</h2>
-				Name: <input type="text" id="Name"> <br />
-				Casting time: <input type="text" id="CastingTime"> <br />
-				Range: <input type="text" id="Range"> <br />
-				Components: <input type="text" id="Components"> <br />
-				Duration: <input type="text" id="Duration"> <br />
-				Classes: <input type="text" id="Classes"> <br />
-				Level: <input type="text" id="Level"> <br />
-				School: <input type="text" id="School"> <br />
-				Explination: <br />
-				<textarea rows="4" cols="50" id="Description"> </textarea> <br />
-				Image url:<input type="text" id="SpellImage"> <br />
-				<button id="add" type="button" onclick="add()">Add</button>
-			</div>
+      <div id="tabs">
+        <ul>
+          <li><a href="#spell">Spell Card</a></li>
+          <li><a href="#item">Item Card</a></li>
+        </ul>
+        <div class="body_box" id="spell">
+          <h2>Spell Card</h2>
+          Name: <input type="text" id="Name"> <br />
+          Casting time:
+          <select id="CastingTime">
+            <option value="1 Action">1 Action</option>
+            <option value="1 Bonus Action">1 Bonus Action</option>
+            <option value="1 Reaction">1 Reaction</option>
+            <option value="1 Minute">1 Minute</option>
+            <option value="10 Minutes">10 Minutes</option>
+            <option value="1 Hour">1 Hour</option>
+            <option value="8 Hour">8 Hours</option>
+            <option value="12 Hour">12 Hours</option>
+            <option value="24 Hour">24 Hours</option>
+          </select> 
+          <input type ="checkbox" id="ritual">Ritual</input>
+          <br />
+          Range: <input type="text" id="Range"> <br />
+          Components: 
+          <input name ="components"  type ="checkbox" id="Verbal">Verbal (V)</input>
+          <input name ="components"  type ="checkbox" id="Somatic">Somatic (S)</input>
+          <input name ="components"  type ="checkbox" id="Material">Material (M)</input><br />
+          Duration: <input type="text" id="Duration"> <br />
+          Classes:
+          <input name ="classes"  type ="checkbox" id="Bararian">Bararian</input>
+          <input name ="classes"  type ="checkbox" id="Bard">Bard</input>
+          <input name ="classes"  type ="checkbox" id="Cleric">Cleric</input>
+          <input name ="classes"  type ="checkbox" id="Druid">Druid</input>
+          <input name ="classes"  type ="checkbox" id="Fighter">Fighter</input>
+          <input name ="classes"  type ="checkbox" id="Monk">Monk</input> <br />
+          <input name ="classes"  type ="checkbox" id="Paladin">Paladin</input>
+          <input name ="classes"  type ="checkbox" id="Ranger">Ranger</input>
+          <input name ="classes"  type ="checkbox" id="Rogue">Rogue</input>
+          <input name ="classes"  type ="checkbox" id="Sorcerer">Sorcerer</input>
+          <input name ="classes"  type ="checkbox" id="Warlock">Warlock</input>
+          <input name ="classes"  type ="checkbox" id="Wizard">Wizard</input> <br />
+          Level:
+          <select id="Level">
+            <option value="Cantrip">Cantrip</option>
+            <option value="lvl 1">Level 1</option>
+            <option value="lvl 2">Level 2</option>
+            <option value="lvl 3">Level 3</option>
+            <option value="lvl 4">Level 4</option>
+            <option value="lvl 5">Level 5</option>
+            <option value="lvl 6">Level 6</option>
+            <option value="lvl 7">Level 7</option>
+            <option value="lvl 8">Level 8</option>
+            <option value="lvl 9">Level 9</option>
+          </select> <br />
+          School:
+          <select id="School">
+            <option value="Abjuration">Abjuration</option>
+            <option value="Conjuration">Conjuration</option>
+            <option value="Divination">Divination</option>
+            <option value="Enchantment">Enchantment</option>
+            <option value="Evocation">Evocation</option>
+            <option value="Illusion">Illusion</option>
+            <option value="Necromancy">Necromancy</option>
+            <option value="Transmutation">Transmutation</option>
+          </select> <br />
+          Explination: <br />
+          <textarea rows="4" cols="50" id="Description"> </textarea> <br />
+          Image url:<input type="text" id="SpellImage"> <br />
+          <button id="add" type="button" onclick="add()">Add</button>
+          
+        </div>
 
-			<div class="body_box">
-				<h2>Item Card</h2>
-				Name: <input type="text" id="LootName"> <br />
-				Type: <input type="text" id="LootType"> <br />
-				Weight: <input type="text" id="LootWeight"> <br />
-				Cost: <input type="text" id="LootCost"> <br />
-				Description:<br />
-				<textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
-				Image url:<input type="text" id="LootImage"> <br />
-				<button id="add" type="button" onclick="addLoot()">Add</button>
-			</div>
-			<br/>
-			<br/>
-		</div>	
+        <div class="body_box" id="item">
+          <h2>Item Card</h2>
+          Name: <input type="text" id="LootName"> <br />
+          Type: <input type="text" id="LootType"> <br />
+          Weight: <input type="text" id="LootWeight"> <br />
+          Cost: <input type="text" id="LootCost"> <br />
+          Description:<br />
+          <textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
+          Image url:<input type="text" id="LootImage"> <br />
+          <button id="add" type="button" onclick="addLoot()">Add</button>
+        </div>
+
+        
+      </div>
+    </div>
 		<div class = "body_border_box" id="main_container">
 				<div class="center_box" id="printviewoptions">
-			<button id="add" type="button" onclick="clearLast()">Clear Last</button>
-			<button id="add" type="button" onclick="clearAll()">Clear All</button>
-			<button id="add" type="button" onclick="printPage()">Print Cards</button>
+			<button id="add" type="button" onclick="nextCard()">Next</button>
+      <button id="add" type="button" onclick="prevCard()">Previous</button>
+      <button id="add" type="button" onclick="removeCurrent()">Remove</button>
+      <button id="add" type="button" onclick="clearAll()">Clear All</button>
+      <button id="add" type="button" onclick="printPage()">Print</button>
+      <button id="add" type="button" onclick="save()">save</button>
+      <button id="add" type="button" onclick="load()">load</button>
+      <span id="cardCurrent">0/</span><span id="cardCount">0 cards</span>
 		</div>
-            <div class= "Print_preview" id="Print_preview">
+      <div id="currentCard" class="card Card_preview">
+      </div>
+      <div class= "Print_preview" name="Print_preview" style="display:none">
 			  <div id="1-1" class="card">
 			  </div>
 			  <div id="1-2" class="card">
@@ -229,7 +383,7 @@
 			</div>
 		</div>
      </div>
-      <div class= "PH_modules_list" id="PH_modules_list">
+      <div class= "modules_list" id="PH_modules_list">
       </div>
     </div>
     <div class = "footer">
