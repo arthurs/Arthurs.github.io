@@ -234,7 +234,7 @@ th{
    padding: 4px 4px;
    background-color: #333333;
    margin: 4px;
-   color: #F00;
+   border-color: #d3d8dd;
    list-style-type: none;
    border-style: outset;
    width: 100%
