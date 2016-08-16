@@ -24,8 +24,8 @@
 		<div class= "body_content">
 
 			<div class= "main_content" id="main">
-				div class ="main_content general">
-				<h1>planned</h1>
+				<div class ="main_content general">
+					<h1>planned</h1>
 					<ul>
 						<li>Character sheets</li>
 						<li>Level up helper</li>
@@ -35,6 +35,7 @@
 						<li>Simple map maker</li>
 						<li>Story helper</li>
 					</ul>
+				</div>
 			</div>
 			<div class= "modules_list" id="PH_modules_list">
 			</div>

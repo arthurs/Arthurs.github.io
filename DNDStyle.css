@@ -254,13 +254,14 @@ background:#FFF8DC;
    height:100%;
 }
 .Left_Menu_spacer{
-	width:120px;
+	width:128px;
 	background: #191919;
 	height:100%;
 	display: block;
 	position: fixed;    
 	vertical-align: top;
 	box-sizing:;
+	z-index:99;
 }
 br.clearLeft {
    clear: left;        
@@ -310,7 +311,7 @@ br.clearLeft {
 .body_content{
 	box-sizing: border-box;
 	min-height: 1000px;
-	margin-left:120px;
+	margin-left:128px;
 	padding-top: 50px;
 
 }

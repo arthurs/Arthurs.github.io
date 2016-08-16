@@ -254,13 +254,14 @@ background:#FFF8DC;
    height:100%;
 }
 .Left_Menu_spacer{
-	width:120px;
+	width:128px;
 	background: #191919;
 	height:100%;
 	display: block;
 	position: fixed;    
 	vertical-align: top;
 	box-sizing:;
+	z-index:99;
 }
 br.clearLeft {
    clear: left;        
@@ -273,7 +274,7 @@ br.clearLeft {
 .modules_list,.main_content,.PH_ads,.navbar{
 	border-style: transparent;
 	background:#111111;
-	background-color:rgba(17,17,17, 0.2);
+	background-color:rgba(17,17,17, 0.3);
 	margin:auto;
 	
 /* 	border-width: 27px;
