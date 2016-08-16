@@ -161,7 +161,7 @@
 	#container_inputs{
 		height:50px;
 		margin-top:4px;
-		margin-bottom:2px;
+		margin-bottom:4px;
 	}
 	#container_health,#container_init{
 		height:50px;
@@ -175,12 +175,13 @@
 		padding:2px;
 		border-radius: 3px
 	}
-	#container_init{
-		height:50px;
-		width:140px;
-		display:inline-block;
-		margin-left:4px;
+	.spaced_lab{
+	margin-left:4px;
 	}
+	#add{
+	display:inline-block;
+	}
+
 </style>
 		<title>DND TOOLS</title> 
 	</head>
@@ -199,8 +200,8 @@
 				</div>
 				<br />
 				<div class = "body_border_box" id="main_container">
-					<h4>Add Character</h4>
-					<label>Name:</label> <input type="text" id="name"> <br />
+					<label class="spaced_lab">Name:</label> <input type="text" id="name"> 
+					<label class="spaced_lab">AC:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="AC"> <br />
 					<div id ="container_inputs">
 						<div id ="container_init">
 							<label>Initiative:</label> <input type ="checkbox" id="dexmodcheck" onclick="selectdexmod()">Roll?</input>
@@ -215,7 +216,6 @@
 								<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">
 							</div>
 						</div>
-						<label>AC:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="AC"> <br />
 					</div>
 					<button id="add" type="button" onclick="add()">add</button>
 				</div>
