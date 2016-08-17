@@ -135,17 +135,17 @@
 			}
 			function selectdexmod(){
 			if($("#dexmodcheck").is(":checked") ==true){
-				$("#Initiativeinput").html('<label>Dex Mod:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="dexMod">') ;
+				$("#Initiativeinput").html('<label>Dex Mod:</label> <input type="text" placeholder="0" maxlength="3" size="3" id="dexMod">') ;
 				}else{
-				$("#Initiativeinput").html('<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> ') ;
+				$("#Initiativeinput").html('<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="3" id="initiative"> ') ;
 				}
 			}
 			function selectHealth(){
 			if($("#healthrollcheck").is(":checked") ==true){
-			$("#healthinput").html('<label>Dice:</label><input type="text" placeholder="0" maxlength="3" size="5" id="numDice"><select id="dice"><option value="d4">d4</option><option value="d6">d6</option><option value="d8">d8</option><option value="d10">d10</option><option value="d12">d12</option><option value="d20">d20</option></select> ') ;
+			$("#healthinput").html('<label>Dice:</label><input type="text" placeholder="0" maxlength="3" size="3" id="numDice"><select id="dice"><option value="d4">d4</option><option value="d6">d6</option><option value="d8">d8</option><option value="d10">d10</option><option value="d12">d12</option><option value="d20">d20</option></select> ') ;
 
 				}else{
-			$("#healthinput").html('<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">') ;				}
+			$("#healthinput").html('<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="3" id="health">') ;				}
 			}
 		</script>
 <style>
@@ -158,6 +158,30 @@
 		max-width:100%;
 
 	}
+	#container_inputs{
+		height:50px;
+		margin-top:4px;
+		margin-bottom:4px;
+	}
+	#container_health,#container_init{
+		height:50px;
+		width:140px;
+		display:inline-block;
+		margin-left:4px;
+		background-color: rgba(17,17,17, 0.8);
+		border-style:solid;
+		border-color:#926f36;
+		border-width:1px;
+		padding:2px;
+		border-radius: 3px
+	}
+	.spaced_lab{
+	margin-left:4px;
+	}
+	#add{
+	display:inline-block;
+	}
+
 </style>
 		<title>DND TOOLS</title> 
 	</head>
@@ -171,26 +195,28 @@
 		<div class= "body_content">
 			<div class= "main_content" id="main">
 				<div class = "HeaderBox"><h1 class="pageheader";>Combat Tracker</h1> 
-				<div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
-				</div>
+					<div class="tooltip"><button class ="tooltipbutton"></button><span class="tooltiptext">This is a place holder tooltip for the combat tracker page, this page will allow you to easily track and manage your DND combat. You can also save and load the current state of the tracker.</span>
+					</div>
 				</div>
 				<br />
-
 				<div class = "body_border_box" id="main_container">
-					<h4>Add Character</h4>
-					<label>Name:</label> <input type="text" id="name"> <br />
-					<label>Initiative:</label> <input type ="checkbox" id="dexmodcheck" onclick="selectdexmod()">Roll?</input>
-					<br />
-					<div id ="Initiativeinput">
-						<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> 
+					<label class="spaced_lab">Name:</label> <input type="text" id="name"> 
+					<label class="spaced_lab">AC:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="AC"> <br />
+					<div id ="container_inputs">
+						<div id ="container_init">
+							<label>Initiative:</label> <input type ="checkbox" id="dexmodcheck" onclick="selectdexmod()">Roll?</input>
+							<div id ="Initiativeinput">
+								<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="initiative"> 
+							</div>
+						</div>
+						<div id ="container_health">
+							<label>Health:</label><input type ="checkbox" id="healthrollcheck"  onclick="selectHealth()">Roll?</input>
+							<br />
+							<div id = "healthinput">
+								<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">
+							</div>
+						</div>
 					</div>
-					<!-- Pre Rolled</label> <input type="text" id="initiative"> <label> Or Dex Mod</label> <input type="text" id="dexMod"> -->
-					<label>Health:</label><input type ="checkbox" id="healthrollcheck"  onclick="selectHealth()">Roll?</input>
-					<br />
-					<div id = "healthinput">
-						<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="5" id="health">
-					</div>
-					<label>AC:</label> <input type="text" placeholder="0" maxlength="3" size="5" id="AC"> <br />
 					<button id="add" type="button" onclick="add()">add</button>
 				</div>
 				<div class = "body_border_box" id="main_container">
