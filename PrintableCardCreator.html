@@ -217,7 +217,7 @@
           card1text = card1text.split('');
 
           card2text = [];
-          lastChar = '';
+          lastChar = ' ';
 
           while ((card1Height > cont1Height) || (lastChar != ' ')) {
 
@@ -235,7 +235,7 @@
             text += "<div id='cardDesc' class= 'descriptioncontainer'>";
             text += card1text.join('');
             text += "</div>";
-            cards.pop();
+            cards.splice(currentCard, 1);
             cards.push(text);
 
 
