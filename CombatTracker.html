@@ -57,6 +57,7 @@
 <!-- 				item += "<button  id=\"changeini_but\" type=\"button\" onclick=\"change(this, 0)\">Change Initiative</button >" -->
 <!-- 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button >" -->
 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 2)\">Change Health</button >"
+				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"damage(this, 2)\">Do Damage</button >"
 <!-- 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 3)\">Change AC</button >" -->
 				item += "</div>"
 				item += "</td></tr>";
@@ -109,10 +110,19 @@
 			function change(sender, column) {
 				var value = prompt("Enter new value", "");
 				if (value != null) {
-				    var row = $(sender).parent().parent()
-					var children = row.children();
-					children[column] = "<td>" + value + "</td>";
-					$($(sender).parent().parent().parent().children()[column]).replaceWith(children[column]);
+				    var newVal = "<td>" + value + "</td>";
+					$($(sender).parent().parent().parent().children()[column]).replaceWith(newVal);
+				}
+				sort();
+			}
+
+			function damage(sender, column) {
+				var value = prompt("Enter amount of damage", "");
+				if (value != null) {
+					var health = $($(sender).parent().parent().parent().children()[column]).html();
+					console.log(health);
+					var newVal = "<td>" + (health - value) + "</td>";
+					$($(sender).parent().parent().parent().children()[column]).replaceWith(newVal);
 				}
 				sort();
 			}
