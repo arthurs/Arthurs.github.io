@@ -12,7 +12,7 @@ button{
 	height:32px;
 	background-color: #3c2f28;
 	border-color:#c6be3a;
-	padding:4px;
+	/* padding:4px; */
 	margin-left:4px;
 	font-size:1em;
 	border-radius: 4px;
@@ -58,10 +58,9 @@ background:#FFF8DC;
  margin-bottom:2px;
 }
 }
-th{
+th,td,tr,tbody{
 	border-color: transparent;
 }
-
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
 	background-repeat: no-repeat;
@@ -165,10 +164,16 @@ th{
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 400px;
-    background-color: black;
+    background: #191919;
+	border-style:solid;
+	border-width:1px;
+	border-color:#505050;
+	border-radius:5px;
     color: #fff;
-    text-align: center;
-    padding: 5px 0;
+	font-size:.6em;
+    text-align: left;
+    padding: 4px 0;
+	padding-left:4px;
     border-radius: 6px;
  
     /* Position the tooltip text - see examples below! */
@@ -287,7 +292,7 @@ br.clearLeft {
   z-index: 3;
 }
 
-.modules_list,.main_content,.PH_ads,.navbar{
+.modules_list,.main_content,.PH_ads,{
 	border-style: transparent;
 	background:#111111;
 	background-color:rgba(17,17,17, 0.3);
@@ -311,7 +316,7 @@ br.clearLeft {
 .modules_list{
 	display: inline-block;
     position: relative;
-	width: 19%;
+	width: 15%;
 	height: 100%;
 	vertical-align: top;
 }
@@ -366,6 +371,19 @@ tr.active{
 	display:inline-block;
 	height:20px;
 	width:128px;
+}
+.list_general{
+	
+}
+.list_general ul{
+	padding: 4px;
+	width:80%;
+	height:100%;
+}
+.list_general li{
+	height:100%;
+	list-style-type:none;
+
 }
 
 .navbar{

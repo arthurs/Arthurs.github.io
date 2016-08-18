@@ -10,6 +10,12 @@
 			  $("#PH_modules_list").load("Modules.html"); 
 		    });
 		</script> 
+		<style>
+		#tooltip_list{
+		height:20px;
+		width:20px;
+		}
+		</style>
 
 		<title>DND TOOLS</title> 
 	</head>
@@ -24,16 +30,41 @@
 		<div class= "body_content">
 
 			<div class= "main_content" id="main">
-				<div class ="main_content general">
-					<h1>planned</h1>
+				<div class = "body_border_box" id="main_container">
+					<p>This is where you will find our ambitious prospects for the site, it should be noted these are not promises but what we would like to do.</p>
+					<h3>Finished Modules</h3>
+					<h3>In-development Modules</h3>
+					<div class="list_general">
+						<ul>
+							<li>
+							<div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+							</div>
+							Character sheets
+							</li>
+							<li>
+							<div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+							</div>
+							Level up helper
+							</li>
+						</ul>
+					</div>
+					<h3>Planned Modules</h3>
+					<div class="list_general">
 					<ul>
-						<li>Character sheets</li>
-						<li>Level up helper</li>
-						<li>horde creator</li>
-						<li>Npc creator</li>
-						<li>Monster/villain creator</li>
-						<li>Simple map maker</li>
-						<li>Story helper</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>Character sheets</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>Level up helper</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>horde creator</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>Npc creator</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>Monster/villain creator</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>Simple map maker</li>
+						<li><div class="tooltip"><button class ="tooltipbutton"id="tooltip_list"></button><span class="tooltiptext">placeholder</span>
+						</div>Story helper</li>
 					</ul>
 				</div>
 			</div>

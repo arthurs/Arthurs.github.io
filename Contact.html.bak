@@ -21,15 +21,15 @@
 		<div class= "Left_Menu_spacer">
 		</div>
 		<div class= "body_content">
-			<div class= "PH_ads">
-				<p>w/e here</p>
-			</div>
+		
 			<div class= "main_content" id="main">
-				<div class ="main_content general">
-				<h1>Contact</h1>
-				<br>
-				email or just a auto email form
-				<p>short info about what to expect when emailing or what ever<p>
+				<div class="body_border_box">
+					<div class ="main_content general">
+						<h1>Contact</h1>
+						<br>
+						email or just a auto email form
+						<p>short info about what to expect when emailing or what ever<p>
+					</div>
 				</div>
 			</div>
 			<div class= "modules_list" id="PH_modules_list">

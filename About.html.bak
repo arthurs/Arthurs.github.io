@@ -18,17 +18,15 @@
 		<div Id = "Header1">
 			<!-- import header goes here -->
 		</div>
-		<div Class = "sickdragonimg_ph">
-		</div>
 		<div class= "Left_Menu_spacer">
 		</div>
 		<div class= "body_content">
 			<div class= "main_content" id="main">
-				<div class ="main_content general">
-				<h1>About some sorta awesome dudes</h1>
-				<p>who we,our backgrounds </p>
-				<br>
-				<p>about the site and who it is aimed at and what it aims todo</p>
+				<div class="body_border_box">
+					<h1>About us</h1>
+					<p>We are two IT graduates with a passion for DND and RPGs, we thought that combining these two ruling factors of our lives might end up as something cool, thusly this website was conceived. We have high 'hopes' for what it may eventually become, but in the mean time we seek to provide useful tools to assist in playing RPGs, (mainly DnD). IT should be noted that this website is not meant to replace or enable online games but assist in the ease and efficiency of real life play, tools for both players and DMs. We would encourage those whom find the site useful to let us know, especially with suggestions, bugs and comments. </p>
+					<br>
+					<p>about the site and who it is aimed at and what it aims todo</p>
 				</div>
 			</div>
 			<div class= "modules_list" id="PH_modules_list">

@@ -1,4 +1,5 @@
-<div id="logo">
+<div id="logo">		
+<img class = "img_logo"></img> 
 	<div class="navbarmenu">
 		<ul>
 			<li><a href="index.html"class="smoothScroll">Home </a></li>
