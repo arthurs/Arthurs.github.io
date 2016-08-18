@@ -344,7 +344,6 @@ br.clearLeft {
 	vertical-align: top;
 }
 .body_border_box{
-	position: relative;
     display: block;
 	vertical-align: top;
 	border-width: 2px;
@@ -354,7 +353,7 @@ br.clearLeft {
 	border-radius: 10px;
 	background-color: #17100d;
 	z-index: 4;
-	
+	overflow: auto;
 	Padding:8px;
 	margin: auto;
 	margin-top:10px;

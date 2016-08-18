@@ -275,9 +275,6 @@
 	#LootDescription{
 		margin-top: 4px;
 	}
-	#main_container{
-		max-width:780px;
-	}
 	.descriptioncontainer{
 		word-break: break-word;
 	        font-size: .75em;
@@ -320,7 +317,7 @@
 	}
 	#card_wrap{
 	}
-		#Description,#LootDescription{
+	#Description,#LootDescription{
 		max-width:236.434px;
 	}
 	#classes{
@@ -373,7 +370,35 @@
 		border-style: outset;
 		border-color: #c6be3a;*/
 }
+
+.main_content_divider{
+	display:inline-block;
 	
+	padding:2px;
+
+	/*
+	height:600px;
+	border-style:solid;
+	border-width:1px;
+	background-color:black;
+	*/
+}
+
+#selection_container{
+	width:20%;
+	float:left;
+}
+#prievew_container{
+	width:calc(50% - 10%);
+	float:right;
+}
+#input_container{
+width:calc(50% - 10%);
+}
+#prievew_container:after,#input_container:after,#selection_container:after{
+	 display:block;
+	 clear: both;
+}
     </style>
 
     <title>DND TOOLS</title> 
@@ -394,98 +419,101 @@
 		</div>
 		<br/>
 		<div class = "body_border_box" id="main_container">
-      <div id="tabs">
-		<div id="tablistwrap">
-			<ul>
-			  <li><a href="#spell">Spell Card</a></li>
-			  <li><a href="#item">Item Card</a></li>
-			</ul>
-		</div>
-		<div id="card_wrap">
-			<div class="body_box" id="spell">
-			  <h2>Spell Card</h2>
-			  Name: <input type="text" id="Name"> <br />
-			  Casting time:
-			  <select id="CastingTime">
-				<option value="1 Action">1 Action</option>
-				<option value="1 Bonus Action">1 Bonus Action</option>
-				<option value="1 Reaction">1 Reaction</option>
-				<option value="1 Minute">1 Minute</option>
-				<option value="10 Minutes">10 Minutes</option>
-				<option value="1 Hour">1 Hour</option>
-				<option value="8 Hour">8 Hours</option>
-				<option value="12 Hour">12 Hours</option>
-				<option value="24 Hour">24 Hours</option>
-			  </select> 
-			  <input type ="checkbox" id="ritual">Ritual</input>
-			  <br />
-			  Range: <input type="text" id="Range"> <br />
-			  Components: 
-			  <input name ="components"  type ="checkbox" id="Verbal">Verbal (V)</input>
-			  <input name ="components"  type ="checkbox" id="Somatic">Somatic (S)</input>
-			  <input name ="components"  type ="checkbox" id="Material">Material (M)</input><br />
-			  Duration: <input type="text" id="Duration"> <br />
-			  
-			  <div id="classes">
-			  <input name ="classes"  type ="checkbox" id="Bararian">Bararian</input>
-			  <input name ="classes"  type ="checkbox" id="Bard">Bard</input>
-			  <input name ="classes"  type ="checkbox" id="Cleric">Cleric</input>
-			  <input name ="classes"  type ="checkbox" id="Druid">Druid</input>
-			  <input name ="classes"  type ="checkbox" id="Fighter">Fighter</input>
-			  <input name ="classes"  type ="checkbox" id="Monk">Monk</input> <br />
-			  <input name ="classes"  type ="checkbox" id="Paladin">Paladin</input>
-			  <input name ="classes"  type ="checkbox" id="Ranger">Ranger</input>
-			  <input name ="classes"  type ="checkbox" id="Rogue">Rogue</input>
-			  <input name ="classes"  type ="checkbox" id="Sorcerer">Sorcerer</input>
-			  <input name ="classes"  type ="checkbox" id="Warlock">Warlock</input>
-			  <input name ="classes"  type ="checkbox" id="Wizard">Wizard</input> <br />
-			  </div>
-			  Level:
-			  <select id="Level">
-				<option value="Cantrip">Cantrip</option>
-				<option value="lvl 1">Level 1</option>
-				<option value="lvl 2">Level 2</option>
-				<option value="lvl 3">Level 3</option>
-				<option value="lvl 4">Level 4</option>
-				<option value="lvl 5">Level 5</option>
-				<option value="lvl 6">Level 6</option>
-				<option value="lvl 7">Level 7</option>
-				<option value="lvl 8">Level 8</option>
-				<option value="lvl 9">Level 9</option>
-			  </select> <br />
-			  School:
-			  <select id="School">
-				<option value="Abjuration">Abjuration</option>
-				<option value="Conjuration">Conjuration</option>
-				<option value="Divination">Divination</option>
-				<option value="Enchantment">Enchantment</option>
-				<option value="Evocation">Evocation</option>
-				<option value="Illusion">Illusion</option>
-				<option value="Necromancy">Necromancy</option>
-				<option value="Transmutation">Transmutation</option>
-			  </select> <br />
-			  Explination: <br />
-			  <textarea rows="4" cols="50" id="Description"> </textarea> <br />
-			  Image url:<input type="text" id="SpellImage"> <br />
-			  <button id="add" type="button" onclick="add()">Add</button>
-			  
-			</div>
+				<div class="main_content_divider" id="selection_container">
+				</div>
+				<div class="main_content_divider" id="input_container">
+				<div id="tabs">
+					<div id="tablistwrap">
+						<ul>
+						  <li><a href="#spell">Spell Card</a></li>
+						  <li><a href="#item">Item Card</a></li>
+						</ul>
+					</div>
+					<div id="card_wrap">
+						<div class="body_box" id="spell">
+						  <h2>Spell Card</h2>
+						  Name: <input type="text" id="Name"> <br />
+						  Casting time:
+						  <select id="CastingTime">
+							<option value="1 Action">1 Action</option>
+							<option value="1 Bonus Action">1 Bonus Action</option>
+							<option value="1 Reaction">1 Reaction</option>
+							<option value="1 Minute">1 Minute</option>
+							<option value="10 Minutes">10 Minutes</option>
+							<option value="1 Hour">1 Hour</option>
+							<option value="8 Hour">8 Hours</option>
+							<option value="12 Hour">12 Hours</option>
+							<option value="24 Hour">24 Hours</option>
+						  </select> 
+						  <input type ="checkbox" id="ritual">Ritual</input>
+						  <br />
+						  Range: <input type="text" id="Range"> <br />
+						  Components: 
+						  <input name ="components"  type ="checkbox" id="Verbal">Verbal (V)</input>
+						  <input name ="components"  type ="checkbox" id="Somatic">Somatic (S)</input>
+						  <input name ="components"  type ="checkbox" id="Material">Material (M)</input><br />
+						  Duration: <input type="text" id="Duration"> <br />
+						  
+						  <div id="classes">
+						  <input name ="classes"  type ="checkbox" id="Bararian">Bararian</input>
+						  <input name ="classes"  type ="checkbox" id="Bard">Bard</input>
+						  <input name ="classes"  type ="checkbox" id="Cleric">Cleric</input>
+						  <input name ="classes"  type ="checkbox" id="Druid">Druid</input>
+						  <input name ="classes"  type ="checkbox" id="Fighter">Fighter</input>
+						  <input name ="classes"  type ="checkbox" id="Monk">Monk</input> <br />
+						  <input name ="classes"  type ="checkbox" id="Paladin">Paladin</input>
+						  <input name ="classes"  type ="checkbox" id="Ranger">Ranger</input>
+						  <input name ="classes"  type ="checkbox" id="Rogue">Rogue</input>
+						  <input name ="classes"  type ="checkbox" id="Sorcerer">Sorcerer</input>
+						  <input name ="classes"  type ="checkbox" id="Warlock">Warlock</input>
+						  <input name ="classes"  type ="checkbox" id="Wizard">Wizard</input> <br />
+						  </div>
+						  Level:
+						  <select id="Level">
+							<option value="Cantrip">Cantrip</option>
+							<option value="lvl 1">Level 1</option>
+							<option value="lvl 2">Level 2</option>
+							<option value="lvl 3">Level 3</option>
+							<option value="lvl 4">Level 4</option>
+							<option value="lvl 5">Level 5</option>
+							<option value="lvl 6">Level 6</option>
+							<option value="lvl 7">Level 7</option>
+							<option value="lvl 8">Level 8</option>
+							<option value="lvl 9">Level 9</option>
+						  </select> <br />
+						  School:
+						  <select id="School">
+							<option value="Abjuration">Abjuration</option>
+							<option value="Conjuration">Conjuration</option>
+							<option value="Divination">Divination</option>
+							<option value="Enchantment">Enchantment</option>
+							<option value="Evocation">Evocation</option>
+							<option value="Illusion">Illusion</option>
+							<option value="Necromancy">Necromancy</option>
+							<option value="Transmutation">Transmutation</option>
+						  </select> <br />
+						  Explination: <br />
+						  <textarea rows="4" cols="50" id="Description"> </textarea> <br />
+						  Image url:<input type="text" id="SpellImage"> <br />
+						  <button id="add" type="button" onclick="add()">Add</button>
+						  
+						</div>
 
-			<div class="body_box" id="item">
-			  <h2>Item Card</h2>
-			  Name: <input type="text" id="LootName"> <br />
-			  Type: <input type="text" id="LootType"> <br />
-			  Weight: <input type="text" id="LootWeight"> <br />
-			  Cost: <input type="text" id="LootCost"> <br />
-			  Description:<br />
-			  <textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
-			  Image url:<input type="text" id="LootImage"> <br />
-			  <button id="add" type="button" onclick="addLoot()">Add</button>
-			</div>
-		</div>       
-      </div>
-    </div>
-		<div class = "body_border_box" id="main_container">
+						<div class="body_box" id="item">
+						  <h2>Item Card</h2>
+						  Name: <input type="text" id="LootName"> <br />
+						  Type: <input type="text" id="LootType"> <br />
+						  Weight: <input type="text" id="LootWeight"> <br />
+						  Cost: <input type="text" id="LootCost"> <br />
+						  Description:<br />
+						  <textarea rows="4" cols="50" id="LootDescription"> </textarea> <br />
+						  Image url:<input type="text" id="LootImage"> <br />
+						  <button id="add" type="button" onclick="addLoot()">Add</button>
+						</div>
+					</div>       
+				  </div>
+				</div>
+				<div class="main_content_divider" id="prievew_container">
 				<div class="center_box" id="printviewoptions">
 			<button id="add" type="button" onclick="nextCard()">Next</button>
       <button id="add" type="button" onclick="prevCard()">Previous</button>
@@ -519,6 +547,11 @@
 			  <div id="3-3" class="card">
 			  </div>
 			</div>
+				</div>
+		</div>
+
+		<div class = "body_border_box" id="main_container">
+				
 		</div>
      </div>
       <div class= "modules_list" id="PH_modules_list">

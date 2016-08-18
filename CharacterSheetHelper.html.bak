@@ -589,13 +589,10 @@
 		<div Id = "Header1">
 			<!-- import header goes here -->
 		</div>
-		<div Class = "sickdragonimg_ph">
+		<div class= "Left_Menu_spacer">
 		</div>
 		<div class= "body_content">
-			<div class= "PH_ads">
-				<p>w/e here</p>
-			</div>
-			<div class= "PH_main_content" id="main" style="height:auto">
+			<div class= "main_content" id="main" style="height:auto">
 				<div>
 					<h1>Character Helper</h1>
 					<a href="" id="link" onclick="exportChar(this)" download="Character.xml">Export</a>	<br />
@@ -837,7 +834,7 @@
 					</table>				
 				</div>
 			</div>
-			<div class= "PH_modules_list" id="PH_modules_list">
+			<div class= "modules_list" id="PH_modules_list">
 			</div>
 		</div>
 		<div class = "footer">

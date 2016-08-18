@@ -150,13 +150,11 @@
 		<div Id = "Header1">
 			<!-- import header goes here -->
 		</div>
-		<div Class = "sickdragonimg_ph">
+		<div class= "Left_Menu_spacer">
 		</div>
 		<div class= "body_content">
-			<div class= "PH_ads">
-				<p>w/e here</p>
-			</div>
-			<div class= "PH_main_content" id="main">
+
+			<div class= "main_content" id="main">
 				<span><b> Player Characters: </b><br /> </span>
 				<span>Amount: </span><input type="text" id="pcNumber"> <br />
 				<span>Average Level: </span><input type="text" id="pcLevel"> <br />
@@ -190,7 +188,7 @@
 				<span><b>Dificulty: </b> </span> <span id="encDiff"> </span> <br />
 				<span><b>Experiance: </b> </span> <span id="encExp"> </span> <br />
 			</div>
-			<div class= "PH_modules_list" id="PH_modules_list">
+			<div class= "modules_list" id="PH_modules_list">
 			</div>
 		</div>
 		<div class = "footer">
