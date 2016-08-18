@@ -51,6 +51,7 @@ background:#FFF8DC;
  -moz-border-radius:5px;
  /* webkit */
  -webkit-border-radius:5px;
+ padding-right:2px;
 }
 th{
 	border-color: transparent;
@@ -322,8 +323,9 @@ br.clearLeft {
 .body_content{
 	box-sizing: border-box;
 	min-height: 1000px;
-	margin-left: calc(20% - 136px);
+	margin-left:136px;
 	padding-top: 50px;
+	width: calc(100% - 136px);
 
 }
 .body_box{
