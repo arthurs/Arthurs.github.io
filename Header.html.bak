@@ -1,17 +1,22 @@
-<div id="logo">Welcome to DND tools!</div>
-            <div id="nav">
-			<div id="leftside">
-                <ul>
-					<li><a href="index.html"class="smoothScroll">Home </a></li>
-					<li><a href="About.html"class="smoothScroll">About</a></li>
-					<li><a href="Contact.html"class="smoothScroll">Contact</a></li>
-					<li><a href="Future.html"class="smoothScroll">Future</a></li>
-					<li><a href="CombatTracker.html">Combat Tracker </a></li>
-					<li><a href="PrintableCardCreator.html">Card Creator</a></li>
-					<li><a href="InventoryTracker.html">Inventory Tracker</a></li>
-					<li><a href="LevelUpHelper.html">Level Up Helper</a></li>
-					<li><a href="CharacterSheetHelper.html">Character Sheet Helper</a></li>
-					<li><a href="EncounterCalculator.html">Encounter Calculator</a></li>
-                </ul>    
-                <br class="clearLeft" />
-				</div>
+<div id="logo">
+	<div class="navbarmenu">
+		<ul>
+			<li><a href="index.html"class="smoothScroll">Home </a></li>
+			<li><a href="About.html"class="smoothScroll">About</a></li>
+			<li><a href="Contact.html"class="smoothScroll">Contact</a></li>
+			<li><a href="Future.html"class="smoothScroll">Future</a></li>
+		</ul>
+	</div>
+</div>
+<div id="nav">
+	<div id="leftside">
+			<li><a href="CombatTracker.html">Combat Tracker </a></li>
+			<li><a href="PrintableCardCreator.html">Card Creator</a></li>
+			<li><a href="InventoryTracker.html">Inventory Tracker</a></li>
+			<li><a href="LevelUpHelper.html">Level Up Helper</a></li>
+			<li><a href="CharacterSheetHelper.html">Character Sheet Helper</a></li>
+			<li><a href="EncounterCalculator.html">Encounter Calculator</a></li>
+		</ul>    
+		<br class="clearLeft" />
+		</div>
+	</div>
