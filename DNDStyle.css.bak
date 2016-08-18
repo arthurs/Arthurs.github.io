@@ -35,6 +35,8 @@ select option{
 select{
 	color:Black;
 	background:#FFF8DC;
+	border-width: 2px;
+}
 }
 h1{
 	color:#ffefd5;
@@ -51,7 +53,9 @@ background:#FFF8DC;
  -moz-border-radius:5px;
  /* webkit */
  -webkit-border-radius:5px;
- padding-right:2px;
+ margin-right:4px;
+ border-width: 2px;
+}
 }
 th{
 	border-color: transparent;
