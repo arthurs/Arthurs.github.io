@@ -23,6 +23,7 @@
 
         function add(){
           var text = "";
+          text += "<div id='cardHeader'>";
 		      text += "<div class= 'print_body_box'>";
           text += "" + $("#Name").val() + "</b><br />";
           text += $("#School").val() + "&nbsp";
@@ -59,7 +60,8 @@
     			text +="<img src='"+ $("#SpellImage").val() +"'alt='card_img' height ='100%' width='100%'>";
     		  }
     		  text += "</div>";
-    		  text += "<div class= 'descriptioncontainer'>";
+          text += "</div>";
+    		  text += "<div id='cardDesc' class= 'descriptioncontainer'>";
               text += $("#Description").val().replace(/\n/g, '<br/>');
     		  text += "</div>";
           //$("#Print_preview").children().each(function(idx, card){
@@ -72,10 +74,12 @@
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
           updateCount()
+          checkOverflow();
         }
 
         function addLoot(){
           var text = "";
+          text += "<div id='cardHeader'>";
           text += "<div class= 'print_body_box'>";
           text += "<b>Name: </b>" + $("#LootName").val() + "<br />";
           text += "<b>Type: </b>" + $("#LootType").val() + "<br />";
@@ -88,7 +92,10 @@
     			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
     		  }
     		  text += "</div>";
+          text += "</div>";
+          text += "<div id='cardDesc' class= 'descriptioncontainer'>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
+          text += "</div>";
 
           //$("#Print_preview").children().each(function(idx, card){
           //  if ($.trim($(card).html()) == "") {
@@ -100,6 +107,7 @@
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
           updateCount()
+          checkOverflow();
         }
 
         function clearLast(){
@@ -190,6 +198,58 @@
           currentCard = parseInt($("#cardNum").val()) - 1;
           $("#currentCard").html(cards[currentCard]);
           updateCount()
+        }
+
+        function checkOverflow() {
+          //existing text must be rendered in the first container so we know how high it is compared to the div
+
+          //get references to avoid overhead in jQuery
+          var cont1 = $('#currentCard');
+          var header = $('#cardHeader');
+          var cont1Height = cont1.height() - header.height();
+
+          var card1 = $('#cardDesc');
+          var card1Height = card1.height();
+
+          var card2 = $('#cardDesc');
+
+          var card1text = card1.html();
+          card1text = card1text.split('');
+
+          card2text = [];
+          lastChar = '';
+
+          while ((card1Height > cont1Height) || (lastChar != ' ')) {
+
+              lastChar = card1text.pop();
+              card2text.unshift(lastChar);
+
+              textTemp = card1text.join('');
+              card1.html(textTemp);
+
+              card1Height = card1.height();
+          }
+
+          if (card2text != []) {
+            text = $("#cardHeader").html();
+            text += "<div id='cardDesc' class= 'descriptioncontainer'>";
+            text += card1text.join('');
+            text += "</div>";
+            cards.pop();
+            cards.push(text);
+
+
+            text = $("#cardHeader").html();
+            text += "<div id='cardDesc' class= 'descriptioncontainer'>";
+            text += card2text.join('');
+            text += "</div>";
+            cards.push(text);
+
+
+            $("#currentCard").html(text);
+            currentCard = cards.length - 1;
+            updateCount();
+          }
         }
     </script> 
 
