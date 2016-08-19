@@ -324,6 +324,7 @@
 	#spell,#item{
 		border-style:solid;
 		border-width:3px;
+		border-radius:5px;
 		border-color: #FFF8DC;
 		color:Black;
 		position: relative;
@@ -434,7 +435,8 @@ width:calc(50% - 10%);
 		-webkit-margin-start: 0%;
 		-webkit-margin-end: 0%;
 		-webkit-padding-start: 0px;
-		margin:1%;
+		margin:auto;
+		padding: 0px;
 
 
 }
@@ -447,7 +449,8 @@ width:calc(50% - 10%);
 
 }
 .button_tab li button{
-width:100%
+width:100%;
+font-size:.8em;
 }
 #spell_class,#item_types{
 	display:none;
