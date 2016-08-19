@@ -216,7 +216,7 @@
           var card1text = card1.html();
           card1text = card1text.split('');
 
-          card2text = [];
+          var card2text = [];
           lastChar = ' ';
 
           while ((card1Height > cont1Height) || (lastChar != ' ')) {
@@ -230,7 +230,7 @@
               card1Height = card1.height();
           }
 
-          if (card2text != []) {
+          if (card2text.length > 0) {
             text = $("#cardHeader").html();
             text += "<div id='cardDesc' class= 'descriptioncontainer'>";
             text += card1text.join('');
