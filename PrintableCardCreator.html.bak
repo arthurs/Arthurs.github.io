@@ -5,22 +5,42 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
-
+<!--       $( function() {
+        $( "#tabs" ).tabs();
+      } ); -->
     <script>
-      $( function() {
-        $( "#tablistwrap" ).tabs();
-      } );
+
 
       $(function(){
         $("#Header1").load("Header.html"); 
-        $("#PH_modules_list").load("Modules.html"); 
+        $("#PH_modules_list").load("Modules.html");
+		$(hidedivs(toHide))	;	
       });
     </script> 
 
     <script> 
         var cards = []
         var currentCard = 0;
-
+		var toHide=["#card_wrap"];
+		
+		
+	function hidedivs(toHide){
+		for (i = 0; i < toHide.length; i++) {
+			$(toHide[i] + " > div").css( "display", "none" );		
+			}
+	};
+		
+	function selectShow(tab,show){
+		$(tab + " > div").css( "display", "none" );
+		$(show).css( "display", "block" );
+	};
+		function selectShow(tab,tabtwo,show,showtwo){
+		$(tab + " > div").css( "display", "none" );
+		$(tabtwo + " > div").css( "display", "none" );
+		$(show).css( "display", "block" );
+		$(showtwo).css( "display", "block" );
+		
+	};
         function add(){
           var text = "";
           text += "<div id='cardHeader'>";
@@ -216,7 +236,7 @@
           var card1text = card1.html();
           card1text = card1text.split('');
 
-          card2text = [];
+          var card2text = [];
           lastChar = ' ';
 
           while ((card1Height > cont1Height) || (lastChar != ' ')) {
@@ -230,7 +250,7 @@
               card1Height = card1.height();
           }
 
-          if (card2text != []) {
+          if (card2text.length > 0) {
             text = $("#cardHeader").html();
             text += "<div id='cardDesc' class= 'descriptioncontainer'>";
             text += card1text.join('');
@@ -399,6 +419,40 @@ width:calc(50% - 10%);
 	 display:block;
 	 clear: both;
 }
+.button_tab{
+	margin:4px;
+	background-color: rgba(17,17,17, 0.8);
+    border-style: solid;
+    border-color: #926f36;
+    border-width: 1px;
+    padding: 4px;
+}
+.button_tab ul{
+		box-sizing: border-box;
+		-webkit-margin-before: 0em;
+		-webkit-margin-after: 0em;
+		-webkit-margin-start: 0%;
+		-webkit-margin-end: 0%;
+		-webkit-padding-start: 0px;
+		margin:1%;
+
+
+}
+.button_tab li{
+		display:inline-block;
+		list-style-type:none;
+		padding:2px;
+		padding-top:4px;
+		width:calc(33% - 4px);
+
+}
+.button_tab li button{
+width:100%
+}
+#spell_class,#item_types{
+	display:none;
+}
+		
     </style>
 
     <title>DND TOOLS</title> 
@@ -420,14 +474,38 @@ width:calc(50% - 10%);
 		<br/>
 		<div class = "body_border_box" id="main_container">
 				<div class="main_content_divider" id="selection_container">
+					<div id="Card_type_select">
+						<div class ="button_tab" id="tablistwrap">
+							<ul>
+							  <li> <button id="add" type="button"onclick="selectShow('#Card_subtype_select','#card_wrap','#spell_class','#spell')">spell</button></li>
+							  <li> <button id="add" type="button"onclick="selectShow('#Card_subtype_select','#card_wrap','#item_types','#item')">Item</button></li>
+							</ul>
+						</div>
+						<div  id="Card_subtype_select">
+							<div class ="button_tab" id="spell_class">
+								<ul>
+									<li><button id="add" type="button"onclick="selectShow()">Bard</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Cleric</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Druid</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Paladin</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Ranger</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Sorcerer</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Warlock</button></li>
+									<li><button id="add" type="button"onclick="selectShow()">Wizard</button></li>
+								</ul>
+							</div>
+							<div class ="button_tab" id="item_types">
+								<ul>
+								  <li><button id="add" type="button"onclick="selectShow()">Weapon</button></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="main_content_divider" id="input_container">
 				<div id="tabs">
 					<div id="tablistwrap">
-						<ul>
-						  <li><a href="#spell">Spell Card</a></li>
-						  <li><a href="#item">Item Card</a></li>
-						</ul>
+
 					</div>
 					<div id="card_wrap">
 						<div class="body_box" id="spell">
