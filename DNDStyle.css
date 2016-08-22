@@ -60,6 +60,10 @@ background:#FFF8DC;
 }
 th,td,tr,tbody{
 	border-color: transparent;
+	border-width:4px;
+}
+td{
+
 }
 #add1_but,#add5_but,#add10_but{
 	background-image:url(health_plus_button.png);
@@ -70,6 +74,7 @@ th,td,tr,tbody{
     height: 50px;
 	border: none;
 	box-shadow: none;
+
 
 }
 #remove_but{
@@ -310,8 +315,13 @@ br.clearLeft {
 	width: 80%;
 	height: 100%;
 	vertical-align: top;
-	margin-left: calc(10% - 136px);
+	margin-left: 10%;
 }
+/* @media screen and (max-width:1477px){
+	.main_content{
+		margin-left:136px;
+	}
+} */
 
 .modules_list{
 	display: inline-block;

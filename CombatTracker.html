@@ -44,12 +44,13 @@
 				item += "</td><td>";
 				item += $("#AC").val();
 				item += "</td><td>";
-				item += "<button  id=\"add-1_but\" type=\"button\" onclick=\"addHealth(this, -1)\">-1</button >"
+				item += "<div><button  id=\"add-1_but\" type=\"button\" onclick=\"addHealth(this, -1)\">-1</button >"
 				item += "<button  id=\"add-5_but\" type=\"button\" onclick=\"addHealth(this, -5)\">-5</button >"
-				item += "<button  id=\"add-10_but\" type=\"button\" onclick=\"addHealth(this, -10)\">-10</button >"
-				item += "<button  id=\"add1_but\" type=\"button\" onclick=\"addHealth(this, 1)\">+1</button >"
+				item += "<button  id=\"add-10_but\" type=\"button\" onclick=\"addHealth(this, -10)\">-10</button ></div>"
+				
+				item += "<div><button  id=\"add1_but\" type=\"button\" onclick=\"addHealth(this, 1)\">+1</button >"
 				item += "<button  id=\"add5_but\" type=\"button\" onclick=\"addHealth(this, 5)\">+5</button >"
-				item += "<button  id=\"add10_but\" type=\"button\" onclick=\"addHealth(this, 10)\">+10</button >"
+				item += "<button  id=\"add10_but\" type=\"button\" onclick=\"addHealth(this, 10)\">+10</button ></div>"
 				item += "</td><td>";
 				item += "<div class=\"ctracker_buttons\">"
 				item += "<button  id=\"remove_but\" type=\"button\" onclick=\"removeChar(this)\">Remove</button ><br>"
@@ -236,7 +237,7 @@
 					<div class = "body_border_box" id="table_container">
 						<table id="order">
 							<tr>
-								<th><label>Initiative </label></th>
+								<th><label>Initiative</label></th>
 								<th><label>Name</label></th>
 								<th><label>Health</label></th>
 								<th><label>AC</label></th>
