@@ -145,7 +145,7 @@
         }
 
         function printPage() {
-          pages = Math.floor(cards.length / 9);
+          pages = Math.ceil(cards.length / 9);
           var printContents = ""
 
           for (i=0; i < pages; i++){
