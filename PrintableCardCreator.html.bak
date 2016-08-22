@@ -328,13 +328,23 @@
 		border-color: #FFF8DC;
 		color:Black;
 		position: relative;
-		width: 64mm;
-		min-height: 89mm;
 		margin:auto;
 		vertical-align: top;
 		display:block;
 		background-color: #fdf5e8;
+		  width: 21.6vw;
+		  height:30vw;
 	
+	}
+	#spell label,#item label{
+	}
+	#spell span,#item span{
+	width: 120px;
+	font-weight: bold;
+    float: left;
+	}
+	#spell select,#item select,spell input, [type="text"],#item input, [type="text"]{
+	width:40%;
 	}
 	#card_wrap{
 	}
@@ -450,7 +460,7 @@ width:calc(50% - 10%);
 }
 .button_tab li button{
 width:100%;
-font-size:.8em;
+font-size:.75em;
 }
 #spell_class,#item_types{
 	display:none;
@@ -513,8 +523,8 @@ font-size:.8em;
 					<div id="card_wrap">
 						<div class="body_box" id="spell">
 						  <h2>Spell Card</h2>
-						  Name: <input type="text" id="Name"> <br />
-						  Casting time:
+						  <label><span>Name:</span> <input type="text" id="Name"></label> <br />
+						  <label><span>Casting time:</span>
 						  <select id="CastingTime">
 							<option value="1 Action">1 Action</option>
 							<option value="1 Bonus Action">1 Bonus Action</option>
@@ -525,15 +535,15 @@ font-size:.8em;
 							<option value="8 Hour">8 Hours</option>
 							<option value="12 Hour">12 Hours</option>
 							<option value="24 Hour">24 Hours</option>
-						  </select> 
+						  </select> </label>
 						  <input type ="checkbox" id="ritual">Ritual</input>
 						  <br />
-						  Range: <input type="text" id="Range"> <br />
-						  Components: 
+						  <label><span>Range:</span></label> <input type="text" id="Range"> <br />
+						  <label><span>Components:</span></label> 
 						  <input name ="components"  type ="checkbox" id="Verbal">Verbal (V)</input>
 						  <input name ="components"  type ="checkbox" id="Somatic">Somatic (S)</input>
 						  <input name ="components"  type ="checkbox" id="Material">Material (M)</input><br />
-						  Duration: <input type="text" id="Duration"> <br />
+						  <label><span>Duration:</span> <input type="text" id="Duration"></label> <br />
 						  
 						  <div id="classes">
 						  <input name ="classes"  type ="checkbox" id="Bararian">Bararian</input>
@@ -549,7 +559,7 @@ font-size:.8em;
 						  <input name ="classes"  type ="checkbox" id="Warlock">Warlock</input>
 						  <input name ="classes"  type ="checkbox" id="Wizard">Wizard</input> <br />
 						  </div>
-						  Level:
+						  <label><span>Level:</span>
 						  <select id="Level">
 							<option value="Cantrip">Cantrip</option>
 							<option value="lvl 1">Level 1</option>
@@ -561,8 +571,8 @@ font-size:.8em;
 							<option value="lvl 7">Level 7</option>
 							<option value="lvl 8">Level 8</option>
 							<option value="lvl 9">Level 9</option>
-						  </select> <br />
-						  School:
+						  </select></label> <br />
+						  <label><span>School:</span>
 						  <select id="School">
 							<option value="Abjuration">Abjuration</option>
 							<option value="Conjuration">Conjuration</option>
@@ -572,10 +582,10 @@ font-size:.8em;
 							<option value="Illusion">Illusion</option>
 							<option value="Necromancy">Necromancy</option>
 							<option value="Transmutation">Transmutation</option>
-						  </select> <br />
-						  Explination: <br />
-						  <textarea rows="4" cols="50" id="Description"> </textarea> <br />
-						  Image url:<input type="text" id="SpellImage"> <br />
+						  </select></label> <br />
+						  <label><span>Explination:</span> <br />
+						  <textarea rows="4" cols="50" id="Description"> </textarea></label> <br />
+						  <label><span>Image url:</span><input type="text" id="SpellImage"></label> <br />
 						  <button id="add" type="button" onclick="add()">Add</button>
 						  
 						</div>
