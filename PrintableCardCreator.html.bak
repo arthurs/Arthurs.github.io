@@ -145,7 +145,7 @@
         }
 
         function printPage() {
-          pages = Math.floor(cards.length / 9);
+          pages = Math.ceil(cards.length / 9);
           var printContents = ""
 
           for (i=0; i < pages; i++){
@@ -608,13 +608,13 @@ width:calc(50% - 10%);
 
 						<div class="body_box" id="item">
 						  <h2>Item Card</h2>
-						  <label><span>Name:</span> <input type="text" id="LootName"></label> <br />
-						  <label><span>Type:</span> <input type="text" id="LootType"></label> <br />
-						  <label><span>Weight:</span> <input type="text" id="LootWeight"></label> <br />
-						  <label><span>Cost:</span> <input type="text" id="LootCost"></label> <br />
-						  <label><span>Description:</span><br />
+						  <label><span>Name</span> <input type="text" id="LootName"></label> <br />
+						  <label><span>Type</span> <input type="text" id="LootType"></label> <br />
+						  <label><span>Weight</span> <input type="text" id="LootWeight"></label> <br />
+						  <label><span>Cost</span> <input type="text" id="LootCost"></label> <br />
+						  <label><span>Description</span><br />
 						  <textarea rows="4" cols="50" id="LootDescription"> </textarea></label> <br />
-						 <label><span> Image url:</span><input type="text" id="LootImage"></label> <br />
+						 <label><span> Image url</span><input type="text" id="LootImage"></label> <br />
 						  <button id="add" type="button" onclick="addLoot()">Add</button></label>
 						</div>
 					</div>       

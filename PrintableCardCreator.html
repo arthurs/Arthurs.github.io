@@ -145,7 +145,7 @@
         }
 
         function printPage() {
-          pages = Math.ceil(cards.length / 9);
+          pages = Math.floor(cards.length / 9);
           var printContents = ""
 
           for (i=0; i < pages; i++){
@@ -345,8 +345,9 @@
 	font-weight: bold;
     float: left;
 	}
-	#spell select,#item select,spell input, [type="text"],#item input, [type="text"]{
+	#spell select,#item select,spell input, [type="text"],#item input, [type="text"],spell input, [type="checkbox"],#item input, [type="checkbox"]{
 	width:50%;
+	padding:2px;
 	}
 	#card_wrap{
 	}
