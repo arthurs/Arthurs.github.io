@@ -335,7 +335,7 @@
 		width: 21.6vw;
 		min-height: 30vw;
 		padding-left: 5%;
-	
+	  line-height: 30px;
 	}
 	#spell label,#item label{
 	}
@@ -345,9 +345,12 @@
 	font-weight: bold;
     float: left;
 	}
+  #spell select,#item select,spell input, [type="text"],#item input, [type="text"] {
+    width:50%;
+  }
+
 	#spell select,#item select,spell input, [type="text"],#item input, [type="text"],spell input, [type="checkbox"],#item input, [type="checkbox"]{
-	width:50%;
-	padding:2px;
+	 padding:2px;
 	}
 	#card_wrap{
 	}
@@ -478,7 +481,7 @@ width:calc(50% - 10%);
 }
 .threecolumndiv{
 	padding:2px;
-	width:calc(33% - 4px);
+	width:calc(33% - 8px);
 	display:inline-block;
 	
 }
@@ -555,9 +558,11 @@ width:calc(50% - 10%);
 						  </select> </label><br />
 						  <label><span>Range</span></label> <input type="text" id="Range"> <br />
 						  <label><span>Components</span></label> 
+              <div>
 						  <input name ="components"  type ="checkbox" id="Verbal">(V)</input>
 						  <input name ="components"  type ="checkbox" id="Somatic">(S)</input>
 						  <input name ="components"  type ="checkbox" id="Material">(M)</input><br />
+              </div>
 						  <label><span>Duration</span> <input type="text" id="Duration"></label> <br />
 						  
 						  <div id="classes">
