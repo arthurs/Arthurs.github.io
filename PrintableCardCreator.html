@@ -335,7 +335,7 @@
 		width: 21.6vw;
 		min-height: 30vw;
 		padding-left: 5%;
-	  line-height: 30px;
+		line-height: 30px;
 	}
 	#spell label,#item label{
 	}
@@ -485,6 +485,13 @@ width:calc(50% - 10%);
 	display:inline-block;
 	
 }
+#Card_Preview_nav{
+    width: 64mm;
+	margin: auto;
+}
+#printviewoptions{
+    width: 21.6vw;
+}
 		
     </style>
 
@@ -508,7 +515,9 @@ width:calc(50% - 10%);
 		<div class = "body_border_box" id="main_container">
 				<div class="main_content_divider" id="selection_container">
 					<div id="Card_type_select">
+					<span>Card Select</span>
 						<div class ="button_tab" id="tablistwrap">
+						<span>Card Type</span>
 							<ul>
 							  <li> <button id="add" type="button"onclick="selectShow('#Card_subtype_select','#card_wrap','#spell_class','#spell')">spell</button></li>
 							  <li> <button id="add" type="button"onclick="selectShow('#Card_subtype_select','#card_wrap','#item_types','#item')">Item</button></li>
@@ -516,6 +525,7 @@ width:calc(50% - 10%);
 						</div>
 						<div  id="Card_subtype_select">
 							<div class ="button_tab" id="spell_class">
+							<span>Class</span>
 								<ul>
 									<li><button id="add" type="button"onclick="selectShow()">Bard</button></li>
 									<li><button id="add" type="button"onclick="selectShow()">Cleric</button></li>
@@ -541,9 +551,10 @@ width:calc(50% - 10%);
 
 					</div>
 					<div id="card_wrap">
+					<span>Card input</span>
 						<div class="body_box" id="spell">
 						  <h2>Spell Card</h2>
-						  <label><span>Name</span> <input type="text" id="Name"></label> <br />
+						  <label><span>Name</span> <input type="text" placeholder="Magic Mis..." id="Name"></label> <br />
 						  <label><span>Casting time</span>
 						  <select id="CastingTime">
 							<option value="1 Action">1 Action</option>
@@ -556,14 +567,14 @@ width:calc(50% - 10%);
 							<option value="12 Hour">12 Hours</option>
 							<option value="24 Hour">24 Hours</option>
 						  </select> </label><br />
-						  <label><span>Range</span></label> <input type="text" id="Range"> <br />
+						  <label><span>Range</span></label> <input type="text" placeholder="30 feet"id="Range"> <br />
 						  <label><span>Components</span></label> 
               <div>
 						  <input name ="components"  type ="checkbox" id="Verbal">(V)</input>
 						  <input name ="components"  type ="checkbox" id="Somatic">(S)</input>
 						  <input name ="components"  type ="checkbox" id="Material">(M)</input><br />
               </div>
-						  <label><span>Duration</span> <input type="text" id="Duration"></label> <br />
+						  <label><span>Duration</span> <input type="text" placeholder="Instantaneous" id="Duration"></label> <br />
 						  
 						  <div id="classes">
 							  <div class="threecolumndiv"><input name ="classes"  type ="checkbox" id="Barbarian">Barbarian</input></div>
@@ -606,7 +617,7 @@ width:calc(50% - 10%);
 						  <label><span>Ritual</span><input type ="checkbox" id="ritual"></input></label>
 						  <br />
 						  <label><span>Description</span> <br />
-						  <textarea rows="4" cols="50" id="Description"> </textarea></label> <br />
+						  <textarea rows="4" cols="50" placeholder="Long Description...." id="Description"> </textarea></label> <br />
 						  <label><span>Image url</span><input type="text" id="SpellImage"></label> <br />
 						  <button id="add" type="button" onclick="add()">Add</button>
 						  
@@ -614,53 +625,57 @@ width:calc(50% - 10%);
 
 						<div class="body_box" id="item">
 						  <h2>Item Card</h2>
-						  <label><span>Name</span> <input type="text" id="LootName"></label> <br />
-						  <label><span>Type</span> <input type="text" id="LootType"></label> <br />
-						  <label><span>Weight</span> <input type="text" id="LootWeight"></label> <br />
-						  <label><span>Cost</span> <input type="text" id="LootCost"></label> <br />
+						  <label><span>Name</span> <input type="text" placeholder="Long Swo..." id="LootName"></label> <br />
+						  <label><span>Type</span> <input type="text" placeholder="Weap.." id="LootType"></label> <br />
+						  <label><span>Weight</span> <input type="text" placeholder="20 po..." id="LootWeight"></label> <br />
+						  <label><span>Cost</span> <input type="text" placeholder="Magic Mis..." id="LootCost"></label> <br />
 						  <label><span>Description</span><br />
 						  <textarea rows="4" cols="50" id="LootDescription"> </textarea></label> <br />
-						 <label><span> Image url</span><input type="text" id="LootImage"></label> <br />
+						 <label><span> Image url</span><input type="text" placeholder="http/...." id="LootImage"></label> <br />
 						  <button id="add" type="button" onclick="addLoot()">Add</button></label>
 						</div>
 					</div>       
 				  </div>
 				</div>
 				<div class="main_content_divider" id="prievew_container">
+				<span>Card Preview</span>
 				<div class="center_box" id="printviewoptions">
-			<button id="add" type="button" onclick="nextCard()">Next</button>
-      <button id="add" type="button" onclick="prevCard()">Previous</button>
-      <button id="add" type="button" onclick="removeCurrent()">Remove</button>
-      <button id="add" type="button" onclick="clearAll()">Clear All</button>
-      <button id="add" type="button" onclick="printPage()">Print</button>
-      <a href="" id="link" onclick="save(this)" download="cards.txt">Save</a>
-      <button id="add" type="button" onclick="load()">load</button>
-      <span id="cardCurrent">0/</span><span id="cardCount">0 cards</span>
-      <label>got to card: </label><input id="cardNum" onchange="setCardNum()"></input>
-		</div>
-      <div id="currentCard" class="card Card_preview">
-      </div>
-      <div class= "Print_preview" name="Print_preview" style="display:none">
-			  <div id="1-1" class="card">
-			  </div>
-			  <div id="1-2" class="card">
-			  </div>
-			  <div id="1-3" class="card">
-			  </div>
-			  <div id="2-1" class="card">
-			  </div>
-			  <div id="2-2" class="card">
-			  </div>
-			  <div id="2-3" class="card">
-			  </div>
-			  <div id="3-1" class="card">
-			  </div>
-			  <div id="3-2" class="card">
-			  </div>
-			  <div id="3-3" class="card">
-			  </div>
-			</div>
+					<button id="add" type="button" onclick="removeCurrent()">Remove</button>
+					<button id="add" type="button" onclick="clearAll()">Clear All</button>
+					<button id="add" type="button" onclick="printPage()">Print</button>
+					<a href="" id="link" onclick="save(this)" download="cards.txt">Save</a>
+					<button id="add" type="button" onclick="load()">load</button>
+					<span id="cardCurrent">0/</span><span id="cardCount">0 cards</span>
 				</div>
+				<div id="Card_Preview_nav">
+					<button id="add" type="button" onclick="prevCard()">Previous</button>
+					<button id="add" type="button" onclick="nextCard()">Next</button>
+					<br>
+					<label>got to card: </label><input id="cardNum" onchange="setCardNum()"></input>
+				</div>
+				<div id="currentCard" class="card Card_preview">
+				</div>
+				<div class= "Print_preview" name="Print_preview" style="display:none">
+				  <div id="1-1" class="card">
+				  </div>
+				  <div id="1-2" class="card">
+				  </div>
+				  <div id="1-3" class="card">
+				  </div>
+				  <div id="2-1" class="card">
+				  </div>
+				  <div id="2-2" class="card">
+				  </div>
+				  <div id="2-3" class="card">
+				  </div>
+				  <div id="3-1" class="card">
+				  </div>
+				  <div id="3-2" class="card">
+				  </div>
+				  <div id="3-3" class="card">
+				  </div>
+				</div>
+			</div>
 		</div>
      </div>
       <div class= "modules_list" id="PH_modules_list">

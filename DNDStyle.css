@@ -335,9 +335,9 @@ br.clearLeft {
 	width:100%;
 	height:50px;
 }
-.modules_list,.main_content,.PH_ads{
+/* .modules_list,.main_content,.PH_ads{
 	min-height: 1000px;
-}
+} */
 
 
 .body_content{

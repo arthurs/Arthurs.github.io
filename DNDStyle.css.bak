@@ -60,6 +60,7 @@ background:#FFF8DC;
 }
 th,td,tr,tbody{
 	border-color: transparent;
+	border-width:4px;
 }
 td{
 
