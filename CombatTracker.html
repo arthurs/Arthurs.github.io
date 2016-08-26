@@ -54,6 +54,7 @@
 				item += "</td><td>";
 				item += "<div class=\"ctracker_buttons\">"
 				item += "<button  id=\"remove_but\" type=\"button\" onclick=\"removeChar(this)\">Remove</button ><br>"
+				item += "<button  id=\"remove_but\" type=\"button\" onclick=\"modify(this)\">Modify</button ><br>"
 				item += "<button  id=\"copy_but\" type=\"button\" onclick=\"duplicate(this)\">Add Copy</button >"
 <!-- 				item += "<button  id=\"changeini_but\" type=\"button\" onclick=\"change(this, 0)\">Change Initiative</button >" -->
 <!-- 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button >" -->
@@ -144,19 +145,40 @@
 					$("#order").append(JSON.parse(loadStr["table"]));
 				}
 			}
+
 			function selectdexmod(){
-			if($("#dexmodcheck").is(":checked") ==true){
-				$("#Initiativeinput").html('<label>Dex Mod:</label> <input type="text" placeholder="0" maxlength="3" size="3" id="dexMod">') ;
-				}else{
-				$("#Initiativeinput").html('<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="3" id="initiative"> ') ;
+				if ($("#dexmodcheck").is(":checked") ==true){
+					$("#Initiativeinput").html('<label>Dex Mod:</label> <input type="text" placeholder="0" maxlength="3" size="3" id="dexMod">') ;
+				} else {
+					$("#Initiativeinput").html('<label>Init:</label> <input type="text" placeholder="0" maxlength="3" size="3" id="initiative"> ') ;
 				}
 			}
-			function selectHealth(){
-			if($("#healthrollcheck").is(":checked") ==true){
-			$("#healthinput").html('<label>Dice:</label><input type="text" placeholder="0" maxlength="3" size="3" id="numDice"><select id="dice"><option value="d4">d4</option><option value="d6">d6</option><option value="d8">d8</option><option value="d10">d10</option><option value="d12">d12</option><option value="d20">d20</option></select> ') ;
 
-				}else{
-			$("#healthinput").html('<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="3" id="health">') ;				}
+			function selectHealth(){
+				if ($("#healthrollcheck").is(":checked") ==true){
+					$("#healthinput").html('<label>Dice:</label><input type="text" placeholder="0" maxlength="3" size="3" id="numDice"><select id="dice"><option value="d4">d4</option><option value="d6">d6</option><option value="d8">d8</option><option value="d10">d10</option><option value="d12">d12</option><option value="d20">d20</option></select> ') ;
+
+				} else {
+					$("#healthinput").html('<label>HP:</label><input type="text" placeholder="0" maxlength="3" size="3" id="health">') ;
+				}
+			}
+
+			function modify(sender) {
+				var init = $($(sender).parent().parent().parent().children()[0]).html();
+				var name = $($(sender).parent().parent().parent().children()[1]).html();
+				var health = $($(sender).parent().parent().parent().children()[2]).html();
+				var AC = $($(sender).parent().parent().parent().children()[3]).html();
+
+				$("#name").val(name);
+				$("#AC").val(name);
+				$("#dexmodcheck").prop('checked', false);
+				selectdexmod();
+				$("#initiative").val(init);
+				$("#healthrollcheck").prop('checked', false);
+				selectHealth();
+				$("#health").val(init);
+
+				removeChar(sender);
 			}
 		</script>
 <style>
