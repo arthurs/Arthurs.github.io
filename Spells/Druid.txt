@@ -1,0 +1,28 @@
+{"Druid Craft" : [
+"spell",
+"druidcraft",
+"Abjuration",
+"Cantrip",
+"1 Action",
+false,
+"rng",
+false,
+false,
+false,
+"dur",
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+false,
+"Spellimg",
+"Desc"
+]
+}

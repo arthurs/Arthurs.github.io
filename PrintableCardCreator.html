@@ -345,51 +345,68 @@
             var data = cardsData[currentCard];
             removeCurrent();
 
-            switch (data[0]) {
-              case "spell":
-                selectShow('#Card_subtype_select','#card_wrap','#spell_class','#spell')
-                
-                $("#Name").val(data[1]);
-                $("#School").val(data[2]);
-                $("#Level").val(data[3]);
-                $("#CastingTime").val(data[4]);
-                $("#ritual").val(data[5]);
-                $("#Range").val(data[6]);
-                $("#Verbal").val(data[7]);
-                $("#Somatic").val(data[8]);
-                $("#Material").val(data[9]);
-                $("#Duration").val(data[10]);
-
-                $("#Barbarian").prop("checked", data[11]);
-                $("#Bard").prop("checked", data[12]);
-                $("#Cleric").prop("checked", data[13]);
-                $("#Druid").prop("checked", data[14]);
-                $("#Fighter").prop("checked", data[15]);
-                $("#Monk").prop("checked", data[16]);
-                $("#Paladin").prop("checked", data[17]);
-                $("#Ranger").prop("checked", data[18]);
-                $("#Rogue").prop("checked", data[19]);
-                $("#Sorcerer").prop("checked", data[20]);
-                $("#Warlock").prop("checked", data[21]);
-                $("#Wizard").prop("checked", data[22]);
-
-                $("#SpellImage").val(data[23]);
-                $("#Description").val(data[24]);
-
-                break;
-              case "loot":
-                selectShow('#Card_subtype_select','#card_wrap','#item_types','#item')
-
-                $("#LootName").val(data[1]);
-                $("#LootType").val(data[2]);
-                $("#LootWeight").val(data[3]);
-                $("#LootCost").val(data[4]);
-
-                $("#LootImage").val(data[5]);
-                $("#LootDescription").val(data[6]);
-                break;
-            }
+            loadDataToForm(data)
           }
+        }
+
+        function loadDataToForm(data){
+          switch (data[0]) {
+            case "spell":
+              selectShow('#Card_subtype_select','#card_wrap','#spell_class','#spell')
+              
+              $("#Name").val(data[1]);
+              $("#School").val(data[2]);
+              $("#Level").val(data[3]);
+              $("#CastingTime").val(data[4]);
+              $("#ritual").val(data[5]);
+              $("#Range").val(data[6]);
+              $("#Verbal").val(data[7]);
+              $("#Somatic").val(data[8]);
+              $("#Material").val(data[9]);
+              $("#Duration").val(data[10]);
+
+              $("#Barbarian").prop("checked", data[11]);
+              $("#Bard").prop("checked", data[12]);
+              $("#Cleric").prop("checked", data[13]);
+              $("#Druid").prop("checked", data[14]);
+              $("#Fighter").prop("checked", data[15]);
+              $("#Monk").prop("checked", data[16]);
+              $("#Paladin").prop("checked", data[17]);
+              $("#Ranger").prop("checked", data[18]);
+              $("#Rogue").prop("checked", data[19]);
+              $("#Sorcerer").prop("checked", data[20]);
+              $("#Warlock").prop("checked", data[21]);
+              $("#Wizard").prop("checked", data[22]);
+
+              $("#SpellImage").val(data[23]);
+              $("#Description").val(data[24]);
+
+              break;
+            case "loot":
+              selectShow('#Card_subtype_select','#card_wrap','#item_types','#item')
+
+              $("#LootName").val(data[1]);
+              $("#LootType").val(data[2]);
+              $("#LootWeight").val(data[3]);
+              $("#LootCost").val(data[4]);
+
+              $("#LootImage").val(data[5]);
+              $("#LootDescription").val(data[6]);
+              break;
+          }
+        }
+
+        function loadSpells() {
+          $.get('Spells/Druid.txt', function(data) {
+            var spells = JSON.parse(data)
+            for (var spell in spells) {
+              loadDataToForm(spells[spell]);
+            }
+          }, 'text');
+        }
+
+        function getCurrentCardData(){
+          alert("Copy and store this string:\n" + JSON.stringify(cardsData[currentCard]));
         }
     </script> 
 
