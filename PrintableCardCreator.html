@@ -20,6 +20,7 @@
 
     <script> 
         var cards = []
+        var cardsData = [];
         var currentCard = 0;
 		    var toHide=["#card_wrap"];
 		
@@ -89,6 +90,39 @@
           return text;
         }
 
+        function spellCardData() {
+          var data = []
+          data.push("spell");
+          data.push($("#Name").val());
+          data.push($("#School").val());
+          data.push($("#Level").val());
+          data.push($("#CastingTime").val());
+          data.push($("#ritual").prop("checked"));
+          data.push($("#Range").val());
+          data.push($("#Verbal").prop("checked"));
+          data.push($("#Somatic").prop("checked"));
+          data.push($("#Material").prop("checked"));
+          data.push($("#Duration").val());
+          
+          data.push($("#Barbarian").prop("checked"));
+          data.push($("#Bard").prop("checked"));
+          data.push($("#Cleric").prop("checked"));
+          data.push($("#Druid").prop("checked"));
+          data.push($("#Fighter").prop("checked"));
+          data.push($("#Monk").prop("checked"));
+          data.push($("#Paladin").prop("checked"));
+          data.push($("#Ranger").prop("checked"));
+          data.push($("#Rogue").prop("checked"));
+          data.push($("#Sorcerer").prop("checked"));
+          data.push($("#Warlock").prop("checked"));
+          data.push($("#Wizard").prop("checked"));
+
+          data.push($("#SpellImage").val());
+          data.push($("#Description").val());
+
+          return data;
+        }
+
         function lootCardText() {
           var text = "";
           text += "<div id='cardHeader'>";
@@ -111,9 +145,24 @@
           return text;
         }
 
+        function lootCardData() {
+          var data = []
+          data.push("loot");
+          data.push($("#LootName").val());
+          data.push($("#LootType").val());
+          data.push($("#LootWeight").val());
+          data.push($("#LootCost").val());
+
+          data.push($("#LootImage").val());
+          data.push($("#LootDescription").val());
+
+          return data;
+        }
+
         function addSpell(){
           var text = spellCardText()
           cards.push(text);
+          cardsData.push(spellCardData())
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
           updateCount()
@@ -123,6 +172,7 @@
         function insertSpell(){
           var text = spellCardText()
           cards.splice(currentCard, 0, text);
+          cards.splice(currentCard, 0, spellCardData());
           $("#currentCard").html(text);
           updateCount()
           checkOverflow();
@@ -131,6 +181,7 @@
         function addLoot(){
           var text = lootCardText()
           cards.push(text);
+          cardsData.push(lootCardData())
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
           updateCount()
@@ -140,6 +191,7 @@
         function insertLoot(){
           var text = lootCardText()
           cards.splice(currentCard, 0, text);
+          cards.splice(currentCard, 0, lootCardData());
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
           updateCount()
@@ -285,6 +337,58 @@
             $("#currentCard").html(text);
             currentCard = cards.length - 1;
             updateCount();
+          }
+        }
+
+        function modify() {
+          if (cards.length > 0) {
+            var data = cardsData[currentCard];
+            removeCurrent();
+
+            switch (data[0]) {
+              case "spell":
+                selectShow('#Card_subtype_select','#card_wrap','#spell_class','#spell')
+                
+                $("#Name").val(data[1]);
+                $("#School").val(data[2]);
+                $("#Level").val(data[3]);
+                $("#CastingTime").val(data[4]);
+                $("#ritual").val(data[5]);
+                $("#Range").val(data[6]);
+                $("#Verbal").val(data[7]);
+                $("#Somatic").val(data[8]);
+                $("#Material").val(data[9]);
+                $("#Duration").val(data[10]);
+
+                $("#Barbarian").prop("checked", data[11]);
+                $("#Bard").prop("checked", data[12]);
+                $("#Cleric").prop("checked", data[13]);
+                $("#Druid").prop("checked", data[14]);
+                $("#Fighter").prop("checked", data[15]);
+                $("#Monk").prop("checked", data[16]);
+                $("#Paladin").prop("checked", data[17]);
+                $("#Ranger").prop("checked", data[18]);
+                $("#Rogue").prop("checked", data[19]);
+                $("#Sorcerer").prop("checked", data[20]);
+                $("#Warlock").prop("checked", data[21]);
+                $("#Wizard").prop("checked", data[22]);
+
+                $("#SpellImage").val(data[23]);
+                $("#Description").val(data[24]);
+
+                break;
+              case "loot":
+                selectShow('#Card_subtype_select','#card_wrap','#item_types','#item')
+
+                $("#LootName").val(data[1]);
+                $("#LootType").val(data[2]);
+                $("#LootWeight").val(data[3]);
+                $("#LootCost").val(data[4]);
+
+                $("#LootImage").val(data[5]);
+                $("#LootDescription").val(data[6]);
+                break;
+            }
           }
         }
     </script> 
@@ -659,6 +763,7 @@ width:calc(50% - 10%);
 				<span>Card Preview</span>
 				<div class="center_box" id="printviewoptions">
 					<button id="add" type="button" onclick="removeCurrent()">Remove</button>
+          <button id="add" type="button" onclick="modify()">Modify</button>
 					<button id="add" type="button" onclick="clearAll()">Clear All</button>
 					<button id="add" type="button" onclick="printPage()">Print</button>
 					<a href="" id="link" onclick="save(this)" download="cards.txt">Save</a>
