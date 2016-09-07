@@ -21,30 +21,32 @@
     <script> 
         var cards = []
         var currentCard = 0;
-		var toHide=["#card_wrap"];
+		    var toHide=["#card_wrap"];
 		
 		
-	function hidedivs(toHide){
-		for (i = 0; i < toHide.length; i++) {
-			$(toHide[i] + " > div").css( "display", "none" );		
-			}
-	};
-		
-	function selectShow(tab,show){
-		$(tab + " > div").css( "display", "none" );
-		$(show).css( "display", "block" );
-	};
-		function selectShow(tab,tabtwo,show,showtwo){
-		$(tab + " > div").css( "display", "none" );
-		$(tabtwo + " > div").css( "display", "none" );
-		$(show).css( "display", "block" );
-		$(showtwo).css( "display", "block" );
-		
-	};
-        function add(){
+      	function hidedivs(toHide){
+      		for (i = 0; i < toHide.length; i++) {
+      			$(toHide[i] + " > div").css( "display", "none" );		
+      			}
+      	};
+      		
+      	function selectShow(tab,show){
+      		$(tab + " > div").css( "display", "none" );
+      		$(show).css( "display", "block" );
+      	};
+
+      	function selectShow(tab,tabtwo,show,showtwo){
+      		$(tab + " > div").css( "display", "none" );
+      		$(tabtwo + " > div").css( "display", "none" );
+      		$(show).css( "display", "block" );
+      		$(showtwo).css( "display", "block" );
+      		
+      	};
+
+        function spellCardText() {
           var text = "";
           text += "<div id='cardHeader'>";
-		      text += "<div class= 'print_body_box'>";
+          text += "<div class= 'print_body_box'>";
           text += "" + $("#Name").val() + "</b><br />";
           text += $("#School").val() + "&nbsp";
           text += $("#Level").val() + "<br />";
@@ -73,31 +75,21 @@
             + (($("#Warlock").prop("checked")) ? "Warlock " : "")
             + (($("#Wizard").prop("checked")) ? "Wizard " : "")
             + "<br />";
-    		  text += "</div>";
-    		  text += "<div class= 'print_image_box'>";
-    		  var test = $("#SpellImage").val();
-    		  if( test !== "" ){
-    			text +="<img src='"+ $("#SpellImage").val() +"'alt='card_img' height ='100%' width='100%'>";
-    		  }
-    		  text += "</div>";
           text += "</div>";
-    		  text += "<div id='cardDesc' class= 'descriptioncontainer'>";
-              text += $("#Description").val().replace(/\n/g, '<br/>');
-    		  text += "</div>";
-          //$("#Print_preview").children().each(function(idx, card){
-          //  if ($.trim($(card).html()) == "") {
-          //    $(card).html(text);
-          //    return false;
-          //  }
-          //});
-          cards.push(text);
-          $("#currentCard").html(text);
-          currentCard = cards.length - 1;
-          updateCount()
-          checkOverflow();
+          text += "<div class= 'print_image_box'>";
+          var test = $("#SpellImage").val();
+          if( test !== "" ){
+            text +="<img src='"+ $("#SpellImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+          }
+          text += "</div>";
+          text += "</div>";
+          text += "<div id='cardDesc' class= 'descriptioncontainer'>";
+          text += $("#Description").val().replace(/\n/g, '<br/>');
+          text += "</div>";
+          return text;
         }
 
-        function addLoot(){
+        function lootCardText() {
           var text = "";
           text += "<div id='cardHeader'>";
           text += "<div class= 'print_body_box'>";
@@ -105,25 +97,49 @@
           text += "<b>Type: </b>" + $("#LootType").val() + "<br />";
           text += "<b>Weight: </b>" + $("#LootWeight").val() + "<br />";
           text += "<b>Value: </b>" + $("#LootCost").val() + "<br /><br />";
-    		  text += "</div>";
-    		  text += "<div class= 'print_image_box'>";
-    		  var test = $("#LootImage").val();
-    		  if( test !== "" ){
-    			text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
-    		  }
-    		  text += "</div>";
+          text += "</div>";
+          text += "<div class= 'print_image_box'>";
+          var test = $("#LootImage").val();
+          if( test !== "" ){
+            text +="<img src='"+ $("#LootImage").val() +"'alt='card_img' height ='100%' width='100%'>";
+          }
+          text += "</div>";
           text += "</div>";
           text += "<div id='cardDesc' class= 'descriptioncontainer'>";
           text += $("#LootDescription").val().replace(/\n/g, '<br/>');
           text += "</div>";
+          return text;
+        }
 
-          //$("#Print_preview").children().each(function(idx, card){
-          //  if ($.trim($(card).html()) == "") {
-          //    $(card).html(text);
-          //    return false;
-          //  }
-          //});
+        function addSpell(){
+          var text = spellCardText()
           cards.push(text);
+          $("#currentCard").html(text);
+          currentCard = cards.length - 1;
+          updateCount()
+          checkOverflow();
+        }
+
+        function insertSpell(){
+          var text = spellCardText()
+          cards.splice(currentCard, 0, text);
+          $("#currentCard").html(text);
+          updateCount()
+          checkOverflow();
+        }
+
+        function addLoot(){
+          var text = lootCardText()
+          cards.push(text);
+          $("#currentCard").html(text);
+          currentCard = cards.length - 1;
+          updateCount()
+          checkOverflow();
+        }
+
+        function insertLoot(){
+          var text = lootCardText()
+          cards.splice(currentCard, 0, text);
           $("#currentCard").html(text);
           currentCard = cards.length - 1;
           updateCount()
@@ -619,7 +635,8 @@ width:calc(50% - 10%);
 						  <label><span>Description</span> <br />
 						  <textarea rows="4" cols="50" placeholder="Long Description...." id="Description"> </textarea></label> <br />
 						  <label><span>Image url</span><input type="text" id="SpellImage"></label> <br />
-						  <button id="add" type="button" onclick="add()">Add</button>
+						  <button id="add" type="button" onclick="addSpell()">Add</button>
+              <button id="add" type="button" onclick="insertSpell()">Insert</button>
 						  
 						</div>
 
@@ -633,6 +650,7 @@ width:calc(50% - 10%);
 						  <textarea rows="4" cols="50" id="LootDescription"> </textarea></label> <br />
 						 <label><span> Image url</span><input type="text" placeholder="http/...." id="LootImage"></label> <br />
 						  <button id="add" type="button" onclick="addLoot()">Add</button></label>
+              <button id="add" type="button" onclick="insertLoot()">Insert</button></label>
 						</div>
 					</div>       
 				  </div>
