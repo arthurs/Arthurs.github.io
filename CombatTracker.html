@@ -14,6 +14,27 @@
 
 		<script> 
 			function nextTurn(){
+				var effects = $($("#order tr:nth-child(2)").children()[6]).html().split(", ");
+				var removed = 0;
+
+				$(effects).each(function(idx, effect) {
+					var effectArray = effect.split(/[()]+/);
+					var effectDuration = parseInt(effectArray[1]) - 1;
+					if (effectDuration == 0) {
+						if (effects.length == 1) {
+							effects = [];
+						} else {
+							effects = $(effects).splice(idx, 1);
+						}
+
+						removed += 1;
+					} else {
+						effects[idx - removed] = effectArray[0] + "(" + effectDuration + ")" + effectArray[2];
+					}
+				});
+
+				$($("#order tr:nth-child(2)").children()[6]).html(effects.join(", "));
+
 				var temp = $("#order tr:nth-child(2)");
 				$("#order tr:nth-child(2)").remove();
 				$("#order tr").last().after(temp);
@@ -54,15 +75,16 @@
 				item += "</td><td>";
 				item += "<div class=\"ctracker_buttons\">"
 				item += "<button  id=\"remove_but\" type=\"button\" onclick=\"removeChar(this)\">Remove</button ><br>"
-				item += "<button  id=\"remove_but\" type=\"button\" onclick=\"modify(this)\">Modify</button ><br>"
+				item += "<button  id=\"modify_but\" type=\"button\" onclick=\"modify(this)\">Modify</button ><br>"
 				item += "<button  id=\"copy_but\" type=\"button\" onclick=\"duplicate(this)\">Add Copy</button >"
 <!-- 				item += "<button  id=\"changeini_but\" type=\"button\" onclick=\"change(this, 0)\">Change Initiative</button >" -->
 <!-- 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 1)\">Change Name</button >" -->
-				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 2)\">Change Health</button >"
-				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"damage(this, 2)\">Do Damage</button >"
+				item += "<button  id=\"change_health_but\" type=\"button\" onclick=\"change(this, 2)\">Change Health</button >"
+				item += "<button  id=\"damage_but\" type=\"button\" onclick=\"damage(this, 2)\">Do Damage</button >"
+				item += "<button  id=\"effect_but\" type=\"button\" onclick=\"addEffect(this)\">Add Effect</button >"
 <!-- 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 3)\">Change AC</button >" -->
 				item += "</div>"
-				item += "</td></tr>";
+				item += "</td><td></td></tr>";
 
 				$("#order").append(item);
 
@@ -180,6 +202,20 @@
 
 				removeChar(sender);
 			}
+
+			function addEffect(sender) {
+				var name = prompt("Enter the name of effect", "");
+				var duration = prompt("Enter the number of turns the effect lasts", "");
+
+				if (name != null && duration != null) {
+					var effects = $($(sender).parent().parent().parent().children()[6]);
+					if (effects.html() == "") {
+						$($(sender).parent().parent().parent().children()[6]).html(name + "(" + duration + ")");
+					} else {
+						$($(sender).parent().parent().parent().children()[6]).append(", " + name + "(" + duration + ")");
+					}
+				}
+			}
 		</script>
 <style>
 
@@ -265,6 +301,7 @@
 								<th><label>AC</label></th>
 								<th><label>Health</label></th>
 								<th><label>Actions</label></th>
+								<th><label>Effects</label></th>
 							</tr>
 						</table>
 					</div>
