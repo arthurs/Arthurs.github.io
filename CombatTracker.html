@@ -12,6 +12,8 @@
 		    });
 		</script> 
 
+		<title>DND TOOLS</title>
+
 		<script> 
 			var effects = {};
 
@@ -232,7 +234,6 @@
 			function addEffect(sender) {
 				var name = prompt("Enter the name of effect", "");
 				var duration = prompt("Enter the number of turns the effect lasts", "");
-
 				var charName = $($(sender).parent().parent().parent().children()[1]).html();
 
 				if (name != null && duration != null) {
@@ -255,39 +256,38 @@
 				}
 			}
 		</script>
-<style>
+		<style>
 
 
-	#table_container{
-		max-width:100%;
+			#table_container{
+				max-width:100%;
 
-	}
-	#container_inputs{
-		height: 60px;
-		margin-top:4px;
-		margin-bottom:4px;
-	}
-	#container_health,#container_init{
-		height:100%;
-		width:155px;
-		display:inline-block;
-		margin-left:4px;
-		background-color: rgba(17,17,17, 0.8);
-		border-style:solid;
-		border-color:#926f36;
-		border-width:1px;
-		padding:4px;
-		border-radius: 3px
-	}
-	.spaced_lab{
-	margin-left:4px;
-	}
-	#add{
-	display:inline-block;
-	}
+			}
+			#container_inputs{
+				height: 60px;
+				margin-top:4px;
+				margin-bottom:4px;
+			}
+			#container_health,#container_init{
+				height:100%;
+				width:155px;
+				display:inline-block;
+				margin-left:4px;
+				background-color: rgba(17,17,17, 0.8);
+				border-style:solid;
+				border-color:#926f36;
+				border-width:1px;
+				padding:4px;
+				border-radius: 3px
+			}
+			.spaced_lab{
+			margin-left:4px;
+			}
+			#add{
+			display:inline-block;
+			}
 
-</style>
-		<title>DND TOOLS</title> 
+		</style>
 	</head>
 	<link rel="stylesheet" type="text/css" href="DNDStyle.css">
 	<body>
