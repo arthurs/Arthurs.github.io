@@ -13,29 +13,32 @@
 		</script> 
 
 		<script> 
+			var effects = {};
+
 			function nextTurn(){
-				var effects = $($("#order tr:nth-child(2)").children()[6]).html().split(", ");
 				var removed = 0;
 
-				if (effects != "") {
-					$(effects).each(function(idx, effect) {
-						var effectArray = effect.split(/[()]+/);
-						var effectDuration = parseInt(effectArray[1]) - 1;
-						if (effectDuration == 0) {
-							if (effects.length == 1) {
-								effects = [];
-							} else {
-								effects = $(effects).splice(idx, 1);
-							}
+				var currentName = $($("#order tr:nth-child(2)").children()[1]).html();
 
+				if (effects[currentName].count != 0) {
+					$(effects[currentName]).each(function(idx, effect) {
+						var effectArray = effect.split(/[()]+/);
+						var effectDuration = parseInt(effectArray[1]);
+						effectDuration--;
+						if (effectDuration == 0) {
+							if (effects[currentName].length == 1) {
+								effects[currentName] = [];
+							} else {
+								effects[currentName].splice(idx, 1);
+							}
 							removed += 1;
 						} else {
-							effects[idx - removed] = effectArray[0] + "(" + effectDuration + ")" + effectArray[2];
+							effects[currentName][idx - removed] = effectArray[0] + "(" + effectDuration + ")" + effectArray[2];
 						}
 					});
 
-					if (effects.count != 0) {
-						$($("#order tr:nth-child(2)").children()[6]).html(effects.join(", "));
+					if (effects[currentName].count != 0) {
+						$($("#order tr:nth-child(2)").children()[6]).html(effects[currentName].join(", "));
 					}
 				}
 
@@ -58,12 +61,30 @@
 					health = $("#health").val();
 				}
 
+				var name = $("#name").val();
+
+				if (name in effects) {
+					var added = false;
+					var count = 1;
+					while (added == false) {
+						if ((name + "(" + count + ")") in effects) {
+							count ++;
+						} else {
+							added = true;
+							effects[name + "(" + count + ")"] = [];
+							name = name + "(" + count + ")";
+						}
+					}
+				} else {
+					effects[name] = [];
+				}
+
 				var item = "";
 
 				item += "<tr><td>";
 				item += initiative ;
 				item += "</td><td>";
-				item += $("#name").val();
+				item += name
 				item += "</td><td>";
 				item += health
 				item += "</td><td>";
@@ -86,6 +107,7 @@
 				item += "<button  id=\"change_health_but\" type=\"button\" onclick=\"change(this, 2)\">Change Health</button >"
 				item += "<button  id=\"damage_but\" type=\"button\" onclick=\"damage(this, 2)\">Do Damage</button >"
 				item += "<button  id=\"effect_but\" type=\"button\" onclick=\"addEffect(this)\">Add Effect</button >"
+				item += "<button  id=\"effect_but\" type=\"button\" onclick=\"removeEffect(this)\">Remove Effect</button >"
 <!-- 				item += "<button  id=\"change_name_but\" type=\"button\" onclick=\"change(this, 3)\">Change AC</button >" -->
 				item += "</div>"
 				item += "</td><td></td></tr>";
@@ -211,13 +233,25 @@
 				var name = prompt("Enter the name of effect", "");
 				var duration = prompt("Enter the number of turns the effect lasts", "");
 
+				var charName = $($(sender).parent().parent().parent().children()[1]).html();
+
 				if (name != null && duration != null) {
-					var effects = $($(sender).parent().parent().parent().children()[6]);
-					if (effects.html() == "") {
-						$($(sender).parent().parent().parent().children()[6]).html(name + "(" + duration + ")");
-					} else {
-						$($(sender).parent().parent().parent().children()[6]).append(", " + name + "(" + duration + ")");
-					}
+					effects[charName].push(name + "(" + duration + ")");
+				}
+
+				if (effects[charName].count != 0) {
+					$($(sender).parent().parent().parent().children()[6]).html(effects[charName].join(", "));
+				}
+			}
+
+			function removeEffect(sender) {
+				var index = prompt("Enter the index of effect", "");
+				var charName = $($(sender).parent().parent().parent().children()[1]).html();
+
+				effects[charName].splice((parseInt(index) - 1), 1);
+
+				if (effects[charName].count != 0) {
+					$($(sender).parent().parent().parent().children()[6]).html(effects[charName].join(", "));
 				}
 			}
 		</script>
