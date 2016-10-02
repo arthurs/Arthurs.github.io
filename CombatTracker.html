@@ -17,23 +17,27 @@
 				var effects = $($("#order tr:nth-child(2)").children()[6]).html().split(", ");
 				var removed = 0;
 
-				$(effects).each(function(idx, effect) {
-					var effectArray = effect.split(/[()]+/);
-					var effectDuration = parseInt(effectArray[1]) - 1;
-					if (effectDuration == 0) {
-						if (effects.length == 1) {
-							effects = [];
+				if (effects != "") {
+					$(effects).each(function(idx, effect) {
+						var effectArray = effect.split(/[()]+/);
+						var effectDuration = parseInt(effectArray[1]) - 1;
+						if (effectDuration == 0) {
+							if (effects.length == 1) {
+								effects = [];
+							} else {
+								effects = $(effects).splice(idx, 1);
+							}
+
+							removed += 1;
 						} else {
-							effects = $(effects).splice(idx, 1);
+							effects[idx - removed] = effectArray[0] + "(" + effectDuration + ")" + effectArray[2];
 						}
+					});
 
-						removed += 1;
-					} else {
-						effects[idx - removed] = effectArray[0] + "(" + effectDuration + ")" + effectArray[2];
+					if (effects.count != 0) {
+						$($("#order tr:nth-child(2)").children()[6]).html(effects.join(", "));
 					}
-				});
-
-				$($("#order tr:nth-child(2)").children()[6]).html(effects.join(", "));
+				}
 
 				var temp = $("#order tr:nth-child(2)");
 				$("#order tr:nth-child(2)").remove();
